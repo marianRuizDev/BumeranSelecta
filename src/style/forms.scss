@@ -1,0 +1,41 @@
+.form {
+    max-width: 40%;
+    margin: 3% 30% 2% 30%;
+}
+
+
+.btn-form {
+    width: 50%;
+    margin-left: 20%;
+    color: grey;
+    cursor: pointer;
+    transition: .3s ease all;
+    background-color: #EB0064;
+    border-color: none;
+    margin-top: 2%;
+}
+
+.btn-register {
+    color: #fff;
+    cursor: pointer;
+    transition: .3s ease all;
+}
+
+.title-register-login {
+    text-align: center;
+    color: #EB0064;
+    font-weight: 400;
+}
+
+.input {
+    border-radius: 5em;
+}
+
+.detalles {
+    color: #EB0064;
+}
+
+.obligatorio {
+    color: #ee3b3b;
+    font-weight: lighter;
+}
