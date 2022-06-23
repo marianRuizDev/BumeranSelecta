@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
-const db = require('./config/db');
+const dotenv = require('dotenv');
+dotenv.config({ path: './api/.env' });
+
 const cors = require('cors');
 const routes = require('./routes/index');
 const volleyball = require('volleyball');
@@ -9,8 +11,7 @@ const sessions = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/User');
-
-require('dotenv').config();
+const db = require('./config/db');
 
 //app.use(cors());
 

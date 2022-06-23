@@ -5,8 +5,8 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 //devolver todas los reclutadores
-router.get('/:id', (req, res) => {
-  Recruiter.findAll({ where: { id: req.params.id } })
+router.get('/', (req, res) => {
+  Recruiter.findAll()
     .then((search) => {
       res.send(search);
     })
@@ -16,9 +16,9 @@ router.get('/:id', (req, res) => {
 });
 
 //Crea un reclutador
-router.post('/register', (req, res) => {
-  const { name, lastname, country } = req.body;
-  Recruiter.findOne({ where: { name, lastname, country } }).then((result) => {
+router.post('/', (req, res) => {
+  const { name, lastName, country } = req.body;
+  Recruiter.findOne({ where: { name, lastName, country } }).then((result) => {
     if (result === null) {
       Recruiter.create(req.body).then((user) => res.status(201).send(user));
     } else {
@@ -70,7 +70,9 @@ router.delete('/:id', (req, res) => {
 
 //Pagination simple
 router.get('/list', (req, res) => {
-  const { page } = req.query;
+  let { page } = req.query;
+  Number(page);
+  console.log(page);
   let cant = page * 5;
   let offset = page === 1 ? 0 : cant - 5;
   Recruiter.findAll({ limit: 5, offset: offset }).then((users) =>
