@@ -84,3 +84,5 @@ router.post('/search', (req, res) => {
     where: { name: { [Op.like]: `%${req.body.search}%` } },
   }).then((users) => res.send(users));
 });
+
+module.exports = router;

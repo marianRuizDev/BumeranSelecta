@@ -9,9 +9,10 @@ const sessions = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/User');
+
 require('dotenv').config();
 
-app.use(cors());
+//app.use(cors());
 
 app.use(express.json());
 
@@ -69,6 +70,6 @@ passport.deserializeUser(function (id, done) {
 app.use('/api', routes);
 
 db.sync({ force: false }).then(() => {
-  app.listen(3001, () => console.log('Escuchando en el puerto 3001'));
+  app.listen(8000, () => console.log('Escuchando en el puerto 8000'));
 });
 //
