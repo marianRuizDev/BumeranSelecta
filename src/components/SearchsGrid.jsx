@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { VscTrash } from "react-icons/vsc";
 import SearchCard from "./SearchCard";
 
 function SearchsGrid() {
@@ -44,6 +45,14 @@ function SearchsGrid() {
       country: "Chile",
       area: "Marketing",
     },
+    {
+      country: "Argentina",
+      area: "Logística",
+    },
+    {
+      country: "Ecuador",
+      area: "Marketing",
+    },
   ];
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
@@ -59,11 +68,10 @@ function SearchsGrid() {
     setSelectedContry("");
     setJobArea("");
   };
-
   useEffect(() => {
     console.log("PAIS", selectedCountry);
-    console.log("AREA", jobArea);
   }, [selectedCountry]);
+
   return (
     <div class="container">
       <div class="row d-flex justify-content-center mt-5">
@@ -73,9 +81,11 @@ function SearchsGrid() {
             aria-label="Default select example"
             onChange={handleCountryChange}
           >
-            <option selected>País</option>
-            {paises.map((pais) => (
-              <option value={pais}>{pais}</option>
+            <option value={""}>País</option>
+            {paises.map((pais, index) => (
+              <option key={index} value={pais}>
+                {pais}
+              </option>
             ))}
           </select>
         </div>
@@ -85,28 +95,30 @@ function SearchsGrid() {
             class="form-select"
             aria-label="Default select example"
           >
-            <option selected>Área</option>
-            {areas.map((area) => (
-              <option value={area}>{area}</option>
+            <option value={""}>Área</option>
+            {areas.map((area, index) => (
+              <option key={index} value={area}>
+                {area}
+              </option>
             ))}
           </select>
         </div>
         <div class="col col-lg-2 ">
           <select class="form-select" aria-label="Default select example">
-            <option selected>Fecha</option>
+            <option value={""}>Fecha</option>
             <option value="1">Hoy</option>
             <option value="1">Esta semana</option>
             <option value="2">Este mes</option>
             <option value="3">Este año</option>
           </select>
         </div>
-        <div class="col col-lg-2">
+        <div class="col col-lg-1">
           <button onClick={handleReset} type="button" class="btn btn-dark">
-            Eliminar filtros
+            <VscTrash />
           </button>
         </div>
       </div>
-      <div class="row d-flex justify-content-center mt-4">
+      <div class="mt-4">
         <div class="col">
           {searchs
             .filter((val) => {
@@ -117,14 +129,18 @@ function SearchsGrid() {
               }
             })
             .filter((val) => {
-              if (selectedCountry === "" || selectedCountry === 1) {
+              if (selectedCountry === "") {
                 return val;
               } else if (val.country === selectedCountry) {
                 return val;
               }
             })
-            .map((search) => (
-              <SearchCard country={search.country} area={search.area} />
+            .map((search, index) => (
+              <SearchCard
+                key={index}
+                country={search.country}
+                area={search.area}
+              />
             ))}
         </div>
       </div>

@@ -16,7 +16,10 @@ function SearchCard({ country, area }) {
             />
           </div>
           <div class="col ">
-            <div class="card-body">
+            <div
+              class="card-body "
+              style={{ maxHeight: "190px", overflow: "hidden" }}
+            >
               <h5 class="card-title">
                 Supervisor Alto Horno y Laminación - Ternium
               </h5>
@@ -25,12 +28,19 @@ function SearchCard({ country, area }) {
                 experimentada en el sector. Funciones Principales: 1- Conocer
                 flujo del funcionamiento del alto Horno 2- Tener conocimiento
                 previo de mantenimiento durante el proceso de colada 3-
-                Implementar adecuadamente las tecnoñogías pedidas
+                Implementar adecuadamente las tecnoñogías pedidas Lorem ipsum
+                dolor sit, amet consectetur adipisicing elit. Praesentium ad
+                deserunt quas, nam cupiditate aliquid numquam odit explicabo aut
+                quo? Magnam neque iure repudiandae explicabo quis, reprehenderit
+                fugiat veniam omnis.
               </p>
             </div>
           </div>
-          <div class="col col-lg-1 d-flex">
-            <div class="vr mt-4" style={{ height: "130px" }}></div>
+          <div class="col col-lg-1">
+            <div
+              class="vr mt-4 bg-secondary"
+              style={{ height: "130px", width: "1px" }}
+            ></div>
           </div>
           <div class="col col-lg-4 mt-5">
             <div class="row">
