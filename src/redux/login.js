@@ -5,10 +5,13 @@ export const postLoginRequest = createAsyncThunk(
   "LOGIN",
   async ({ email, password }) => {
     try {
-      const data = await axios.post("http://localhost:3001/api/users/login", {
-        email: email.value,
-        password: password.value,
-      });
+      const data = await axios.post(
+        "http://localhost:8000/api/recruiter/login",
+        {
+          email: email.value,
+          password: password.value,
+        }
+      );
       return data;
     } catch (error) {
       console.log(error);
@@ -17,7 +20,7 @@ export const postLoginRequest = createAsyncThunk(
 );
 export const postLogoutRequest = createAsyncThunk("LOGOUT", async () => {
   try {
-    const data = await axios.post("http://localhost:3001/api/users/logout");
+    const data = await axios.post("http://localhost:8000/api/recruiter/logout");
     return data;
   } catch (error) {
     console.log(error);

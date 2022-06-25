@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { VscTrash } from "react-icons/vsc";
 import SearchCard from "./SearchCard";
+import "../style/searchs.scss";
 
 function SearchsGrid() {
   const paises = [
@@ -113,7 +115,12 @@ function SearchsGrid() {
           </select>
         </div>
         <div class="col col-lg-1">
-          <button onClick={handleReset} type="button" class="btn btn-dark">
+          <button
+            onClick={handleReset}
+            type="button"
+            class="btn btn-search "
+            id="btn-search"
+          >
             <VscTrash />
           </button>
         </div>
@@ -136,11 +143,13 @@ function SearchsGrid() {
               }
             })
             .map((search, index) => (
-              <SearchCard
-                key={index}
-                country={search.country}
-                area={search.area}
-              />
+              <Link to={`/searchs/${index}`}>
+                <SearchCard
+                  key={index}
+                  country={search.country}
+                  area={search.area}
+                />
+              </Link>
             ))}
         </div>
       </div>

@@ -1,23 +1,10 @@
-const S = require('sequelize');
-const db = require('../config/db');
+const S = require("sequelize");
+const db = require("../config/db");
 
 class User extends S.Model {}
 
 User.init(
   {
-    name: {
-      type: S.STRING,
-      allowNull: false,
-    },
-    lastName: {
-      type: S.STRING,
-      allowNull: false,
-    },
-
-    country: {
-      type: S.STRING,
-      allowNull: false,
-    },
     email: {
       type: S.STRING,
       allowNull: false,
@@ -27,12 +14,19 @@ User.init(
     },
     role: {
       type: S.STRING,
-      defaultValue: 'user',
+      defaultValue: "admin",
+    },
+    password: {
+      type: S.STRING,
+      allowNull: false,
+    },
+    salt: {
+      type: S.STRING,
     },
   },
   {
     sequelize: db,
-    modelName: 'user',
+    modelName: "user",
   }
 );
 

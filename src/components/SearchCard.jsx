@@ -2,6 +2,7 @@ import React from "react";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaBuilding } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
+import "../style/searchs.scss";
 
 function SearchCard({ country, area }) {
   return (
@@ -45,19 +46,19 @@ function SearchCard({ country, area }) {
           <div class="col col-lg-4 mt-5">
             <div class="row">
               <div class="col d-flex justify-content-left">
-                <IoLocationSharp size={30} />
+                <IoLocationSharp class="local" size={30} />
                 <p>{country}</p>
               </div>
             </div>
             <div class="row">
               <div class="col d-flex justify-content-left">
-                <FaBuilding size={30} />
+                <FaBuilding class="build" size={30} />
                 <p>Presencial</p>
               </div>
             </div>
             <div class="row">
               <div class="col d-flex justify-content-left">
-                <MdWork size={30} />
+                <MdWork class="work" size={30} />
                 <p>{area}</p>
               </div>
             </div>

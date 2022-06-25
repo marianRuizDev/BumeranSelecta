@@ -1,11 +1,11 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Recruiter = require('../models/Recruiter');
-const Sequelize = require('sequelize');
+const Recruiter = require("../models/Recruiter");
+const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
 //devolver todas los reclutadores
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   Recruiter.findAll()
     .then((search) => {
       res.send(search);
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 });
 
 //Crea un reclutador
-router.post('/', (req, res) => {
+router.post("/", (req, res) => {
   const { name, lastName, country } = req.body;
   Recruiter.findOne({ where: { name, lastName, country } }).then((result) => {
     if (result === null) {
@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
 });
 
 //Modifica una busqueda -modificar rating-
-router.put('/:id', function (req, res, next) {
+/* router.put('/:id', function (req, res, next) {
   const { id } = req.params;
 
   const response = (resReclut) => ({
@@ -59,17 +59,17 @@ router.put('/:id', function (req, res, next) {
       res.status(201).send(response(result[0])).status(202)
     )
     .catch(next);
-});
+}); */
 
 //Elimina un reclutador
-router.delete('/:id', (req, res) => {
+router.delete("/:id", (req, res) => {
   Recruiter.destroy({ where: { id: req.params.id } }).then(() =>
     res.sendStatus(202)
   );
 });
 
 //Pagination simple
-router.get('/list', (req, res) => {
+router.get("/list", (req, res) => {
   let { page } = req.query;
   Number(page);
   console.log(page);
@@ -81,7 +81,7 @@ router.get('/list', (req, res) => {
 });
 
 //Encontrar por nombre -deberia tener mas opciones ajustadas al formulario-
-router.post('/search', (req, res) => {
+router.post("/search", (req, res) => {
   Recruiter.findAll({
     where: { name: { [Op.like]: `%${req.body.search}%` } },
   }).then((users) => res.send(users));

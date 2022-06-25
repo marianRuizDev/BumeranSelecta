@@ -1,5 +1,5 @@
-const S = require('sequelize');
-const db = require('../config/db');
+const S = require("sequelize");
+const db = require("../config/db");
 
 class Recruiter extends S.Model {}
 
@@ -8,6 +8,13 @@ Recruiter.init(
     name: {
       type: S.STRING,
       allowNull: false,
+    },
+    email: {
+      type: S.STRING,
+      allowNull: false,
+      validate: {
+        isEmail: true,
+      },
     },
     lastName: {
       type: S.STRING,
@@ -32,7 +39,7 @@ Recruiter.init(
   },
   {
     sequelize: db,
-    modelName: 'recruiter',
+    modelName: "recruiter",
   }
 );
 
