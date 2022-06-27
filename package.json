@@ -34,9 +34,10 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
+    "sass": "^1.52.2",
     "sequelize": "^6.21.0",
     "volleyball": "^1.5.1",
-    "sass": "^1.52.2"
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

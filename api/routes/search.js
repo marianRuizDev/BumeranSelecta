@@ -4,6 +4,8 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const Search = require('../models/Search');
 
+
+
 //devolver todas las busquedas
 router.get('/:id', (req, res) => {
   Search.findAll({ where: { id: req.params.id } })

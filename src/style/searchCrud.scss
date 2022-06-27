@@ -1,0 +1,25 @@
+select,
+label,
+input,
+textarea {
+  margin: 8px;
+
+  max-width: 98%;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+
+  .box_01 {
+    min-width: 50%;
+  }
+  .box_02 {
+    min-width: 50%;
+  }
+}
+
+.box_button{
+    display: flex;
+    justify-content: center;
+}

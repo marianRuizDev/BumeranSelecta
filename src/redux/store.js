@@ -5,6 +5,7 @@ import { combineReducers } from "redux";
 import thunk from "redux-thunk";
 
 import loginReducer from "./login";
+import searchReducer from "./search";
 
 const persistConfig = {
   key: "root",
@@ -14,12 +15,14 @@ const persistConfig = {
 
 const reducer = combineReducers({
   login: loginReducer,
+  search:searchReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);
 
 const store = configureStore({
   reducer: persistedReducer,
+ 
   middleware: [thunk],
 });
 

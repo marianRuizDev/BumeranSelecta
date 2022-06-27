@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 import useInput from "../hooks/useInput";
+import { sendUserRegister } from "../redux/login";
 import "../style/forms.scss";
 
 const SingUp = () => {
@@ -10,14 +12,21 @@ const SingUp = () => {
   const email = useInput();
   const password = useInput();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  /* handler submit con el dispatch */
+ 
+
+  const handlerRegister = (e) => {
+    e.preventDefault();
+    dispatch(sendUserRegister({ name, lastName, email, country, password }));
+    navigate("/login");
+  };
 
   return (
     <div>
       <h3 className="title-register-login">Crea una cuenta</h3>
 
-      <form className="form">
+      <form className="form" onSubmit={handlerRegister}>
         <div clasName="row g-3">
           <div clasName="col">
             <label>

@@ -22,7 +22,7 @@ Search.init(
       allowNull: false,
     },
     vacancies: {
-      type: S.INTEGER,
+      type: S.STRING,
       allowNull: false,
     },
     status: {
