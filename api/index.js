@@ -10,6 +10,7 @@ const volleyball = require("volleyball");
 
 
 const User = require("./models/User");
+const Recruiter = require("./models/Recruiter");
 const db = require("./config/db");
 
 
@@ -36,7 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-
+// USER CONFI //
 passport.use(
   new LocalStrategy(
     {
@@ -60,7 +61,34 @@ passport.use(
     }
   )
 )
+// RECRUITER CONFI //
+passport.use(
+  "local2",
+  new LocalStrategy(
+    {
+      usernameField: "email",
+      passwordField: "password",
+    },
+    function (email, password, done) {
+      Recruiter.findOne({ where: { email } })
+        .then(recruiter => {
+          if (!recruiter) {
+            return done(null, false)
+          }
+          recruiter.hash(password, recruiter.salt).then(hash => {
+            if (hash !== recruiter.password) {
+              return done(null, false)
+            }
+            return done(null, recruiter)
+          })
+        })
+        .catch(done)
+    }
+  )
+)
 
+
+// USER CONFI //
 passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
@@ -72,6 +100,23 @@ passport.deserializeUser(function (id, done) {
     })
     .catch(done);
 });
+
+
+// RECRUITER CONFI //
+passport.serializeUser(function (recruiter, done) {
+  done(null, recruiter.id);
+});
+
+passport.deserializeUser(function (id, done) {
+  User.findByPk(id)
+    .then((recruiter) => {
+      done(null, recruiter);
+    })
+    .catch(done);
+});
+
+
+
 
 app.use("/api", routes);
 

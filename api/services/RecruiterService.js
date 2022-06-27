@@ -1,12 +1,12 @@
-const User = require("../models/User");
+const Recruiter = require("../models/Recruiter");
 
-class UserServices {
+class ServicesRecruiters {
   static async createUser(body) {
     const { name, lastName, email, password } = body;
    
 
     try {
-      const newUser = await User.findOrCreate({
+      const newUser = await Recruiter.findOrCreate({
         where: { email },
         defaults: {
           name,
@@ -28,4 +28,4 @@ class UserServices {
 
 }
 
-module.exports = UserServices;
+module.exports = ServicesRecruiters;

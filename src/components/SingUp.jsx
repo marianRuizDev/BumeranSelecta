@@ -6,11 +6,12 @@ import { sendUserRegister } from "../redux/login";
 import "../style/forms.scss";
 
 const SingUp = () => {
+
   const name = useInput();
   const lastName = useInput();
-  const country = useInput();
   const email = useInput();
   const password = useInput();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -18,7 +19,7 @@ const SingUp = () => {
 
   const handlerRegister = (e) => {
     e.preventDefault();
-    dispatch(sendUserRegister({ name, lastName, email, country, password }));
+    dispatch(sendUserRegister({ name, lastName, email, password }));
     navigate("/login");
   };
 
@@ -54,16 +55,7 @@ const SingUp = () => {
           </div>
         </div>
         <label></label>
-        <div className="mb-3">
-          <label>
-            Pais<span className="obligatorio">*</span>
-          </label>
-          <input
-            className="form-control input"
-            placeholder="Pais"
-            {...country}
-          />
-        </div>
+        
         <div className="mb-3">
           <label>
             Email<span className="obligatorio">*</span>

@@ -5,6 +5,10 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import useInput from "../../hooks/useInput";
 import { getOneSearches } from "../../redux/search";
 
+
+
+
+
 export default function SearchUpdate() {
   const { id } = useParams();
 
@@ -40,6 +44,7 @@ export default function SearchUpdate() {
       .catch((error) => console.log(error));
 
     navigate("/admin/searchs");
+    
   };
 
   const dispatch = useDispatch();

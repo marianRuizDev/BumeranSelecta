@@ -9,6 +9,9 @@ import { useDispatch } from "react-redux";
 const LogIn = () => {
   const email = useInput();
   const password = useInput();
+
+  const rol = useInput();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -16,7 +19,7 @@ const LogIn = () => {
 
   const handlerLogin = (e) => {
     e.preventDefault();
-    dispatch(postLoginRequest({ email, password }));
+    dispatch(postLoginRequest({ email, password,rol }));
     navigate("/");
   };
 
@@ -45,6 +48,16 @@ const LogIn = () => {
             {...password}
           />
         </div>
+
+
+        <input
+            type="email"
+            className="form-control input"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="rol"
+            {...rol}
+          />
         <p>
           ¿No tienes cuenta todavía? <span></span>
           <span>

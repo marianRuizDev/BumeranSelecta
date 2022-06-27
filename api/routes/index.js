@@ -1,19 +1,28 @@
 const express = require('express');
 const router = express.Router();
-
-const search2 = require('./searchRouter');
 const search = require('./search');
 const recruiters = require('./recruiter');
 const user = require('./user');
 
 
-//ariel prueba
+//Ariel prueba
+const search2 = require('./searchRouter');
+const recruiters2 = require('./recruitersRouter');
 
+
+
+
+router.use('/recruiter', recruiters2);
+router.use('/user', user);
 router.use('/search2', search2);
 
+//Fin ariel
 
-router.use('/search', search);
+
+
+
 router.use('/recruiter', recruiters);
-router.use('/user', user);
+router.use('/search', search);
+
 
 module.exports = router;

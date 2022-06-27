@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { sendAllSearches } from "../../redux/search";
 import SearchItem from "./SearchItem";
+import { MdCreateNewFolder } from "react-icons/md";
 
 export default function CrudSearch() {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ export default function CrudSearch() {
       <h1 class="text-center">Adminitracion de Publicaciones</h1>
       <div class="container">
         <Link to={"/admin/searchs/create"} class="btn btn-outline-primary mt-4">
-          <i class="bx bxs-plus-circle bx-md ">X</i>
+         <MdCreateNewFolder/>
         </Link>
 
         <table class="table table-bordered table-striped text-center mt-4">

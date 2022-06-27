@@ -19,17 +19,19 @@ User.init(
       allowNull: false,
     },
 
-    country: {
-      type: S.STRING,
-      allowNull: false,
-    },
+   
+
     email: {
       type: S.STRING,
-      allowNull: false,
+      unique: {
+        msg: "El email necesita ser unico",
+      },
+     
       validate: {
         isEmail: true,
       },
     },
+
     password: {
       type: S.STRING,
       allowNull: false,
@@ -39,9 +41,9 @@ User.init(
       type: S.STRING,
       allowNull: true,
     },
-    role: {
+    rol: {
       type: S.STRING,
-      defaultValue: "user",
+      defaultValue: "admin",
     },
   },
   {

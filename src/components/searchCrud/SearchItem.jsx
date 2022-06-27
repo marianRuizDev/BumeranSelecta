@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { AiFillEdit } from "react-icons/ai";
+import { RiDeleteBin5Fill } from "react-icons/ri";
 export default function SearchItem({ itemBusqueda, index }) {
   console.log(itemBusqueda);
 
@@ -13,11 +14,11 @@ export default function SearchItem({ itemBusqueda, index }) {
 
       <td>
         <Link to={`/admin/searchs/update/${itemBusqueda.id}`} class="btn btn-outline-warning m-2">
-          Editar
+        <AiFillEdit/>
         </Link>
 
         <a href="/delete/<%= cliente.id %>" class="btn btn-outline-danger m-1">
-          Eliminar
+         <RiDeleteBin5Fill/>
         </a>
       </td>
     </tr>

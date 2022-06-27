@@ -4,13 +4,12 @@ import { createReducer, createAsyncThunk } from "@reduxjs/toolkit";
 export const sendUserRegister = createAsyncThunk(
   "REGISTER",
 
-  ({ name,lastName,country,password,email }) => {
+  ({ name,lastName,password,email }) => {
     console.log(name.value)
     axios
-      .post("http://localhost:8000/api/user/register",  {
+      .post("http://localhost:8000/api/recruiter/register",  {
         name: name.value,
         lastName: lastName.value,
-        country: country.value,
         email: email.value,
         password: password.value
       })
@@ -20,16 +19,41 @@ export const sendUserRegister = createAsyncThunk(
 );
 export const postLoginRequest = createAsyncThunk(
   "LOGIN",
-  async ({ email, password }) => {
-    try {
-      const data = await axios.post("http://localhost:8000/api/user/login", {
-        email: email.value,
-        password: password.value,
-      });
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
+  async ({ email, password,rol }) => {
+
+if(rol.value == "user"){
+  try {
+    const data = await axios.post("http://localhost:8000/api/recruiter/login", {
+      email: email.value,
+      password: password.value,
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+else{
+  try {
+    const data = await axios.post("http://localhost:8000/api/recruiter/login", {
+      email: email.value,
+      password: password.value,
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+
+
+}
+
+
+
+
+ 
+
+
+
+
   }
 );
 export const postLogoutRequest = createAsyncThunk("LOGOUT", async () => {
