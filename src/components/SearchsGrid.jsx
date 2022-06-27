@@ -36,42 +36,52 @@ function SearchsGrid() {
       country: "Argentina",
       area: "Producción",
       time: new Date(2022, 5, 24, 16, 0, 0).getTime(),
+      status: "No iniciada",
     },
     {
       country: "Mexico",
       area: "Salud",
       time: new Date(2022, 5, 26, 15, 0, 0).getTime(),
+      status: "No iniciada",
     },
     {
       country: "Colombia",
       area: "Comercial",
       time: new Date(2022, 5, 23, 16, 0, 0).getTime(),
+      status: "No iniciada",
     },
     {
       country: "Chile",
       area: "Marketing",
       time: new Date(2022, 5, 22, 16, 0, 0).getTime(),
+      status: "No iniciada",
     },
     {
       country: "Argentina",
       area: "Logística",
       time: new Date(2022, 5, 18, 16, 0, 0).getTime(),
+      status: "En proceso",
     },
     {
       country: "Ecuador",
       area: "Marketing",
       time: new Date(2022, 3, 26, 16, 0, 0).getTime(),
+      status: "Finalizada",
     },
   ];
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [searchTime, setSearchTime] = useState("");
+  const [searchStatus, setSearchStatus] = useState("");
 
   const handleCountryChange = (e) => {
     setSelectedContry(e.target.value);
   };
   const handleJobAreaChange = (e) => {
     setJobArea(e.target.value);
+  };
+  const handlSearchStatusChange = (e) => {
+    setSearchStatus(e.target.value);
   };
   const handleSearchTimeChange = (e) => {
     setSearchTime(e.target.value);
@@ -84,6 +94,7 @@ function SearchsGrid() {
     setSelectedContry("");
     setJobArea("");
     setSearchTime("");
+    setSearchStatus("");
   };
 
   return (
@@ -130,6 +141,18 @@ function SearchsGrid() {
             <option value={365}>Este año</option>
           </select>
         </div>
+        <div class="col col-lg-2 ">
+          <select
+            onChange={handlSearchStatusChange}
+            class="form-select"
+            aria-label="Default select example"
+          >
+            <option value={""}>Status</option>
+            <option value={"No iniciada"}>No iniciada</option>
+            <option value={"En proceso"}>En proceso</option>
+            <option value={"Finalizada"}>Finalizada</option>
+          </select>
+        </div>
         <div class="col col-lg-1">
           <button
             onClick={handleReset}
@@ -144,6 +167,13 @@ function SearchsGrid() {
       <div class="mt-4">
         <div class="col">
           {searchs
+            .filter((val) => {
+              if (searchStatus === "") {
+                return val;
+              } else if (val.status === searchStatus) {
+                return val;
+              }
+            })
             .filter((val) => {
               if (searchTime === "") {
                 return val;
@@ -175,6 +205,7 @@ function SearchsGrid() {
                   country={search.country}
                   area={search.area}
                   time={search.time}
+                  status={search.status}
                 />
               </Link>
             ))}

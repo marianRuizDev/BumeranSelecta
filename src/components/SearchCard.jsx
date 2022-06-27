@@ -5,7 +5,7 @@ import { MdWork } from "react-icons/md";
 import logo from "../assets/navbar/Group.png";
 import "../style/searchs.scss";
 
-function SearchCard({ country, area, time }) {
+function SearchCard({ country, area, time, status }) {
   const date = new Date().getTime();
   const diff = (date - time) / (1000 * 60 * 60 * 24);
 
@@ -43,7 +43,7 @@ function SearchCard({ country, area, time }) {
               style={{ height: "130px", width: "1px" }}
             ></div>
           </div>
-          <div class="col col-lg-4 mt-5">
+          <div class="col col-lg-2 mt-5">
             <div class="row">
               <div class="col d-flex justify-content-left">
                 <IoLocationSharp class="local" size={30} />
@@ -62,6 +62,9 @@ function SearchCard({ country, area, time }) {
                 <p>{area}</p>
               </div>
             </div>
+          </div>
+          <div class="col col-lg-1">
+            <span class="badge">{status}</span>
           </div>
         </div>
         <div class="card-footer d-flex justify-content-center">
