@@ -18,7 +18,7 @@ import img8 from "../assets/contenido/descarga15.png";
 const Content = () => {
   return (
     <div>
-      <div clasName="contenido">
+      <div className="contenido">
         <div class="card-contenido">
           <div class="card-body">
             <h2 className="titulo-contenido">
