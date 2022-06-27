@@ -3,6 +3,7 @@ import img1 from '../assets/header/img1.png'
 import img2 from '../assets/header/img2.jpeg'
 import img5 from '../assets/header/img5.png'
 import Content from '../components/Content.jsx'
+import CardContenido from '../components/CardsContenido'
 import '../style/header.scss'
 
 
@@ -53,6 +54,7 @@ const Header = () => {
                 </button>
             </div>
             <Content />
+            <CardContenido />
         </div>
     )
 }
