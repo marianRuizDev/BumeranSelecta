@@ -80,25 +80,17 @@ const SingUp = () => {
             {...password}
           />
         </div>
-        <div clasName="form-check">
-          <input
-            clasName="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckDefault"
-          />
-          <label clasName="form-check-label" for="flexCheckDefault">
-            <p>
-              Al hacer click en Crear cuenta, acepto las{" "}
-              <span className="detalles">
-                <strong>
-                  Condiciones de uso y las Políticas de privacidad
-                </strong>
-              </span>{" "}
-              de Bumeran
-            </p>
-          </label>
-        </div>
+
+        <p>
+          Al hacer click en Crear cuenta, acepto las{" "}
+          <span className="detalles">
+            <strong>
+              Condiciones de uso y las Políticas de privacidad
+            </strong>
+          </span>{" "}
+          de Bumeran
+        </p>
+
         <button
           type="submit"
           className="btn btn-danger input btn-form btn-register"

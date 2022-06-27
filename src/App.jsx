@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import LogIn from "./components/LogIn";
 import SingUp from "./components/SingUp";
 import SearchsGrid from "./components/SearchsGrid";
+import ViewAdmin from './components/ViewAdmin'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/login" element={<LogIn />} />
         <Route path="/sigup" element={<SingUp />} />
         <Route path="/searchs" element={<SearchsGrid />} />
+        <Route path='/admin' element={<ViewAdmin />} />
       </Routes>
       <Footer />
     </>

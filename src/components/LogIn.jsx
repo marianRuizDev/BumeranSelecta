@@ -8,11 +8,13 @@ const LogIn = () => {
     const email = useInput()
     const password = useInput()
 
+
+
     return (
 
         <div>
-            <h3 className='title-register-login'>Iniciar sesión</h3>
-            <form className='form'>
+            <h3 className='title-login'>Iniciar sesión</h3>
+            <form className='form-login'>
                 <div className="mb-3">
                     <label>Email</label>
                     <input type="email" className="form-control input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='example@email.com' {...email} />
@@ -27,6 +29,7 @@ const LogIn = () => {
                     </Link>
                 </strong></span></p>
                 <button type="submit" className="btn btn-danger input btn-form btn-register">Ingresar</button>
+
             </form>
         </div>
     )

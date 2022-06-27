@@ -1,0 +1,68 @@
+.contenido {
+    width: auto;
+}
+
+.card-contenido {
+    height: 200px;
+}
+
+.card-contenido h2,
+p,
+h3 {
+    text-align: center;
+}
+
+.home {
+    height: 500px;
+}
+
+.rectangulo {
+    width: 45%;
+    margin-left: 27.5%;
+    border-top: 70px solid #13697a;
+    margin-top: 1.5%;
+}
+
+.rectangulo-1 {
+    width: 45%;
+    margin-left: 27.5%;
+    border-top: 70px solid #4fbedb;
+    margin-top: 1.5%;
+
+}
+
+.rectangulo-2 {
+    width: 66%;
+    margin-left: 17%;
+    border-top: 70px solid #ffbd11;
+    margin-top: 1.5%;
+    border-right: 40px solid transparent;
+    border-left: 40px solid transparent;
+}
+
+.rectangulo-3 {
+    height: 0px;
+    width: 100%;
+    border-right: 70px solid transparent;
+    border-left: 70px solid transparent;
+    border-top: 70px solid #f92374;
+    margin-top: 1.5%;
+}
+
+.rectangulo-4 {
+    height: 60px;
+    border-color: #fe0068;
+    background-color: #fe0068;
+    margin-top: 1.5%;
+
+}
+
+.iconos {
+    color: #fe0068;
+    height: 50%;
+    font-weight: 600;
+}
+
+.rec-titulo {
+    color: #fff;
+}
