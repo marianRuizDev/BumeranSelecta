@@ -2,6 +2,8 @@ import React from 'react'
 import img1 from '../assets/header/img1.png'
 import img2 from '../assets/header/img2.jpeg'
 import img5 from '../assets/header/img5.png'
+import Content from '../components/Content.jsx'
+import CardContenido from '../components/CardsContenido'
 import '../style/header.scss'
 
 
@@ -10,8 +12,6 @@ const Header = () => {
     /* Dar estilos */
     return (
         <div>
-
-
             <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="false">
                 <div className="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
@@ -21,21 +21,26 @@ const Header = () => {
                 <div className="carousel-inner">
                     <div className="carousel-item active">
                         <img src={img1} className="d-block w-100" alt="..." />
-                        <div className="carousel-caption d-none d-md-block">
-                            <h4 id='title-color'>¿Cómo ser un buen líder de equipo?</h4>
-
+                        <div className="carousel-caption d-none d-md-block contenedor-titulo">
+                            <h1 id='title-color-1'>Estrategías para liderar
+                                <br />un equipo y obtener
+                                <br />
+                                buenos resultados</h1>
                         </div>
                     </div>
                     <div className="carousel-item">
                         <img src={img5} className="d-block w-100" alt="..." />
-                        <div className="carousel-caption d-none d-md-block">
-                            <h4 id='title-color'>¿Cómo identificar en un aviso los elementos claves que busca el reclutador?</h4>
+                        <div className="carousel-caption d-none d-md-block contenedor-titulo-2">
+                            <h1 id='title-color-2'>¿Cómo identificar en un aviso
+                                <br /> los elementos claves que
+                                <br />busca el reclutador?</h1>
                         </div>
                     </div>
                     <div className="carousel-item">
                         <img src={img2} className="d-block w-100" alt="..." />
-                        <div className="carousel-caption d-none d-md-block">
-                            <h4 id='title-color'>¿Cómo evaluar una propuesta de empleo?</h4>
+                        <div className="carousel-caption d-none d-md-block contenedor-titulo-3">
+                            <h1 id='title-color-3'>Encuentra y elige
+                                <br />a los mejores reclutadores</h1>
                         </div>
                     </div>
                 </div>
@@ -48,6 +53,8 @@ const Header = () => {
                     <span className="visually-hidden">Next</span>
                 </button>
             </div>
+            <Content />
+            <CardContenido />
         </div>
     )
 }

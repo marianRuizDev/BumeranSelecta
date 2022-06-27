@@ -66,106 +66,108 @@ function SearchView() {
   return (
     <div class="container ">
       <div class="row">
-        <div class="col d-flex justify-content-center">
-          <h1>{selectedSearch.title}</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="d-flex justify-content-center">
-          <FaUsers size={20} style={{ alignSelf: "center" }} />
-          <h5 style={{ paddingTop: "0.5rem", marginLeft: "0.3rem" }}>
-            Puestos vacantes:{selectedSearch.vacancies}
-          </h5>
-        </div>
-      </div>
-      <div class="row mt-4">
-        <div class="col d-flex justify-content-center">
-          <div class="card" id="search-card">
-            <div class="card-body d-flex">
-              <div class="col d-flex justify-content-left">
-                <IoLocationSharp
-                  class="local"
-                  style={{ alignSelf: "center" }}
-                />
-                {selectedSearch.country}
+        <div class="card  mb-5">
+          <h1 class="d-flex justify-content-center margin-top">
+            {selectedSearch.title}
+          </h1>
+
+          <div class="d-flex justify-content-center mb-3">
+            <FaUsers size={20} style={{ alignSelf: "center" }} />
+            <h5 style={{ paddingTop: "0.5rem", marginLeft: "0.3rem" }}>
+              Puestos vacantes:{selectedSearch.vacancies}
+            </h5>
+          </div>
+          <div class="col  d-flex justify-content-center">
+            <h5 class="info-text">
+              <ul>
+                Importante empresa siderurgica en busca de persona capacitada y
+                experimentada en el sector.
+              </ul>
+              <ul class="mt-4">Funciones Principales:</ul>
+              <ul>* Conocer flujo del funcionamiento del alto Horno.</ul>
+              <ul>
+                * Tener conocimiento previo de mantenimiento durante el proceso
+                de colada.
+              </ul>
+              <ul>* Implementar adecuadamente las tecnoñogías pedidas.</ul>
+            </h5>
+          </div>
+          <div class="row mt-4">
+            <div class="col d-flex justify-content-center">
+              <div class="card" id="search-card">
+                <div class="card-body d-flex">
+                  <div class="col d-flex justify-content-left">
+                    <IoLocationSharp
+                      class="local"
+                      style={{ alignSelf: "center" }}
+                    />
+                    {selectedSearch.country}
+                  </div>
+                  <div
+                    class="vr bg-secondary"
+                    style={{ marginRight: "20px", width: "1px" }}
+                  ></div>
+                  <div class="col d-flex justify-content-left">
+                    <MdWork class="work" style={{ alignSelf: "center" }} />
+                    {selectedSearch.area_search}
+                  </div>
+                  <div
+                    class="vr bg-secondary"
+                    style={{ marginRight: "20px", width: "1px" }}
+                  ></div>
+                  <div class="col d-flex justify-content-left">
+                    <BsFillClockFill
+                      class="clock"
+                      style={{ alignSelf: "center" }}
+                    />
+                    {selectedSearch.jobSchedules}
+                  </div>
+                </div>
               </div>
-              <div
-                class="vr bg-secondary"
-                style={{ marginRight: "20px", width: "1px" }}
-              ></div>
-              <div class="col d-flex justify-content-left">
-                <MdWork class="work" style={{ alignSelf: "center" }} />
-                {selectedSearch.area_search}
-              </div>
-              <div
-                class="vr bg-secondary"
-                style={{ marginRight: "20px", width: "1px" }}
-              ></div>
-              <div class="col d-flex justify-content-left">
-                <BsFillClockFill
-                  class="clock"
-                  style={{ alignSelf: "center" }}
-                />
-                {selectedSearch.jobSchedules}
+            </div>
+          </div>
+          <div class="row margin-bot">
+            <div class="col d-flex justify-content-center">
+              <div class="card" id="search-card">
+                <div class="card-body d-flex">
+                  <div class="col d-flex justify-content-left">
+                    <FaBuilding class="local" style={{ alignSelf: "center" }} />
+                    Presencial
+                  </div>
+                  <div
+                    class="vr bg-secondary"
+                    style={{ marginRight: "20px", width: "1px" }}
+                  ></div>
+                  <div class="col d-flex justify-content-left">
+                    <RiMoneyDollarCircleFill
+                      class="work"
+                      style={{ alignSelf: "center" }}
+                    />
+                    {selectedSearch.salary}
+                  </div>
+                  <div
+                    class="vr bg-secondary"
+                    style={{ marginRight: "20px", width: "1px" }}
+                  ></div>
+                  <div class="col d-flex justify-content-left">
+                    <BsFillClockFill
+                      class="clock"
+                      style={{ alignSelf: "center" }}
+                    />
+                    {diff >= 1
+                      ? parseInt(diff) === 1
+                        ? "Publicado hace 1 día"
+                        : `Publicado hace ${parseInt(diff)} días`
+                      : `Publicado hace ${parseInt(diff * 24)} horas`}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col d-flex justify-content-center">
-          <div class="card" id="search-card">
-            <div class="card-body d-flex">
-              <div class="col d-flex justify-content-left">
-                <FaBuilding class="local" style={{ alignSelf: "center" }} />
-                Presencial
-              </div>
-              <div
-                class="vr bg-secondary"
-                style={{ marginRight: "20px", width: "1px" }}
-              ></div>
-              <div class="col d-flex justify-content-left">
-                <RiMoneyDollarCircleFill
-                  class="work"
-                  style={{ alignSelf: "center" }}
-                />
-                {selectedSearch.salary}
-              </div>
-              <div
-                class="vr bg-secondary"
-                style={{ marginRight: "20px", width: "1px" }}
-              ></div>
-              <div class="col d-flex justify-content-left">
-                <BsFillClockFill
-                  class="clock"
-                  style={{ alignSelf: "center" }}
-                />
-                {diff >= 1
-                  ? parseInt(diff) === 1
-                    ? "Publicado hace 1 día"
-                    : `Publicado hace ${parseInt(diff)} días`
-                  : `Publicado hace ${parseInt(diff * 24)} horas`}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row mt-5">
-        <div class="col  d-flex justify-content-center">
-          <h5 class="info-text">
-            <ul>
-              Importante empresa siderurgica en busca de persona capacitada y
-              experimentada en el sector.
-            </ul>
-            <ul class="mt-4">Funciones Principales:</ul>
-            <ul>- Conocer flujo del funcionamiento del alto Horno.</ul>
-            <ul>
-              - Tener conocimiento previo de mantenimiento durante el proceso de
-              colada.
-            </ul>
-            <ul>- Implementar adecuadamente las tecnoñogías pedidas.</ul>
-          </h5>
-        </div>
+      <div>
+        <h3 className="mb-4">Reclutadores recomendados</h3>
       </div>
       {recruiters
         .sort((x, y) => {
@@ -179,14 +181,18 @@ function SearchView() {
         })
         .map((recruiter, index) => (
           <div key={index} class="d-flex justify-content-center mb-4">
-            <div class="card" style={{ width: "70%" }}>
-              <div class="card-header">
+            <div class="card card-border-radius" style={{ width: "70%" }}>
+              <div class="card-header card-border-radius">
                 <div class="col d-flex justify-content-left">
                   <FaUserAlt
                     size={15}
-                    style={{ marginRight: "10px", alignSelf: "center" }}
+                    style={{
+                      marginRight: "10px",
+                      alignSelf: "center",
+                      color: "white",
+                    }}
                   />
-                  {recruiter.name}
+                  <div className="text-light">{recruiter.name}</div>
                 </div>
               </div>
               <div class="card-body">

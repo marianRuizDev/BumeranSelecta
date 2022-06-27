@@ -1,5 +1,5 @@
 .btn-search {
-  background-color: #eb0064 !important;
+  background-color: #545561ce;
   color: white;
 }
 
@@ -27,9 +27,8 @@
 }
 .card-header {
   width: 100%;
-  background-color: #505050a3;
-  border-color: black;
-  border-width: 1px;
+  background-color: #000cf1;
+  border-top-left-radius: 30px;
 }
 
 .card-img {
@@ -48,12 +47,35 @@
   line-height: 1rem;
   text-align: justify;
   font-weight: 100;
-  font-family: Georgia;
+  font-family: "Hind Vadodara", sans-serif;
 }
 
 .badge {
   background-color: #eb0064;
   width: 5rem;
+}
+
+.card-search {
+  background-image: linear-gradient(90deg, #000cf1b2, #eb0066d2);
+  bleed: normal;
+  height: 70px;
+}
+
+.select-container {
+  align-content: center;
+}
+
+.margin-bot {
+  margin-bottom: 10%;
+}
+
+.margin-top {
+  margin-top: 10%;
+  color: #000cf1;
+}
+
+.card-border-radius {
+  border-radius: 10px;
 }
 
 #info-col {

@@ -8,6 +8,7 @@ import LogIn from "./components/LogIn";
 import SingUp from "./components/SingUp";
 import SearchsGrid from "./components/SearchsGrid";
 import SearchView from "./components/SearchView";
+import ViewAdmin from "./components/ViewAdmin";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/sigup" element={<SingUp />} />
         <Route path="/searchs" element={<SearchsGrid />} />
         <Route path="/searchs/:id" element={<SearchView />} />
+        <Route path="/admin" element={<ViewAdmin />} />
       </Routes>
       <Footer />
     </>

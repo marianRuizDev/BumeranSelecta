@@ -99,69 +99,71 @@ function SearchsGrid() {
 
   return (
     <div class="container">
-      <div class="row d-flex justify-content-center mt-5">
-        <div class="col col-lg-2 ">
-          <select
-            class="form-select"
-            aria-label="Default select example"
-            onChange={handleCountryChange}
-          >
-            <option value={""}>País</option>
-            {paises.map((pais, index) => (
-              <option key={index} value={pais}>
-                {pais}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div class="col  col-lg-2 ">
-          <select
-            onChange={handleJobAreaChange}
-            class="form-select"
-            aria-label="Default select example"
-          >
-            <option value={""}>Área</option>
-            {areas.map((area, index) => (
-              <option key={index} value={area}>
-                {area}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div class="col col-lg-2 ">
-          <select
-            onChange={handleSearchTimeChange}
-            class="form-select"
-            aria-label="Default select example"
-          >
-            <option value={""}>Fecha</option>
-            <option value={1}>Hoy</option>
-            <option value={7}>Esta semana</option>
-            <option value={30}>Este mes</option>
-            <option value={365}>Este año</option>
-          </select>
-        </div>
-        <div class="col col-lg-2 ">
-          <select
-            onChange={handlSearchStatusChange}
-            class="form-select"
-            aria-label="Default select example"
-          >
-            <option value={""}>Status</option>
-            <option value={"No iniciada"}>No iniciada</option>
-            <option value={"En proceso"}>En proceso</option>
-            <option value={"Finalizada"}>Finalizada</option>
-          </select>
-        </div>
-        <div class="col col-lg-1">
-          <button
-            onClick={handleReset}
-            type="button"
-            class="btn btn-search "
-            id="btn-search"
-          >
-            <VscTrash />
-          </button>
+      <div class="card card-search">
+        <div class="row  d-flex justify-content-center mt-3">
+          <div class="col select-container col-lg-2 ">
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              onChange={handleCountryChange}
+            >
+              <option value={""}>País</option>
+              {paises.map((pais, index) => (
+                <option key={index} value={pais}>
+                  {pais}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div class="col  col-lg-2 ">
+            <select
+              onChange={handleJobAreaChange}
+              class="form-select"
+              aria-label="Default select example"
+            >
+              <option value={""}>Área</option>
+              {areas.map((area, index) => (
+                <option key={index} value={area}>
+                  {area}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div class="col col-lg-2 ">
+            <select
+              onChange={handleSearchTimeChange}
+              class="form-select"
+              aria-label="Default select example"
+            >
+              <option value={""}>Fecha</option>
+              <option value={1}>Hoy</option>
+              <option value={7}>Esta semana</option>
+              <option value={30}>Este mes</option>
+              <option value={365}>Este año</option>
+            </select>
+          </div>
+          <div class="col col-lg-2 ">
+            <select
+              onChange={handlSearchStatusChange}
+              class="form-select"
+              aria-label="Default select example"
+            >
+              <option value={""}>Status</option>
+              <option value={"No iniciada"}>No iniciada</option>
+              <option value={"En proceso"}>En proceso</option>
+              <option value={"Finalizada"}>Finalizada</option>
+            </select>
+          </div>
+          <div class="col col-lg-1">
+            <button
+              onClick={handleReset}
+              type="button"
+              class="btn btn-search "
+              id="btn-search"
+            >
+              <VscTrash />
+            </button>
+          </div>
         </div>
       </div>
       <div class="mt-4">

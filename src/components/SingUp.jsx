@@ -1,23 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import useInput from "../hooks/useInput";
 import "../style/forms.scss";
 
 const SingUp = () => {
+  const paises = [
+    "Argentina",
+    "Chile",
+    "Colombia",
+    "Ecuador",
+    "Mexico",
+    "Panama",
+    "Peru",
+    "Uruguay",
+  ];
   const name = useInput();
   const lastName = useInput();
-  const country = useInput();
   const email = useInput();
   const password = useInput();
   const dispatch = useDispatch();
 
   /* handler submit con el dispatch */
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div>
       <h3 className="title-register-login">Crea una cuenta</h3>
 
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <div clasName="row g-3">
           <div className="col">
             <label>
@@ -45,16 +56,7 @@ const SingUp = () => {
           </div>
         </div>
         <label></label>
-        <div className="mb-3">
-          <label>
-            Pais<span className="obligatorio">*</span>
-          </label>
-          <input
-            className="form-control input"
-            placeholder="Pais"
-            {...country}
-          />
-        </div>
+
         <div className="mb-3">
           <label>
             Email<span className="obligatorio">*</span>
@@ -80,25 +82,15 @@ const SingUp = () => {
             {...password}
           />
         </div>
-        <div clasName="form-check">
-          <input
-            clasName="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckDefault"
-          />
-          <label clasName="form-check-label" for="flexCheckDefault">
-            <p>
-              Al hacer click en Crear cuenta, acepto las{" "}
-              <span className="detalles">
-                <strong>
-                  Condiciones de uso y las Políticas de privacidad
-                </strong>
-              </span>{" "}
-              de Bumeran
-            </p>
-          </label>
-        </div>
+
+        <p>
+          Al hacer click en Crear cuenta, acepto las{" "}
+          <span className="detalles">
+            <strong>Condiciones de uso y las Políticas de privacidad</strong>
+          </span>{" "}
+          de Bumeran
+        </p>
+
         <button
           type="submit"
           className="btn btn-danger input btn-form btn-register"
