@@ -19,7 +19,7 @@ const SingUp = () => {
 
       <form className="form">
         <div clasName="row g-3">
-          <div clasName="col">
+          <div className="col">
             <label>
               Nombre(s)<span className="obligatorio">*</span>
             </label>
@@ -31,7 +31,7 @@ const SingUp = () => {
               {...name}
             />
           </div>
-          <div clasName="col">
+          <div className="col">
             <label>
               Apellido(s)<span className="obligatorio">*</span>
             </label>

@@ -2,19 +2,19 @@ import React from "react";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaBuilding } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
+import logo from "../assets/navbar/Group.png";
 import "../style/searchs.scss";
 
-function SearchCard({ country, area }) {
+function SearchCard({ country, area, time }) {
+  const date = new Date().getTime();
+  const diff = (date - time) / (1000 * 60 * 60 * 24);
+
   return (
     <div class="container mb-4">
       <div class="card">
         <div class="row">
-          <div class="col col-lg-2">
-            <img
-              src="https://play-lh.googleusercontent.com/m6ZiE8hHO29EuwHXFPXbpSHkr5mpc06rYQZZgC1G8llPi7VXtEILaE01ME5sgxLDAw"
-              alt="logo"
-              class="card-img"
-            />
+          <div class="col img-container col-lg-2">
+            <img src={logo} alt="logo" class="card-img" />
           </div>
           <div class="col ">
             <div
@@ -65,7 +65,13 @@ function SearchCard({ country, area }) {
           </div>
         </div>
         <div class="card-footer d-flex justify-content-center">
-          <small>Publicado hace 5 horas</small>
+          <small>
+            {diff >= 1
+              ? parseInt(diff) === 1
+                ? "Publicado hace 1 día"
+                : `Publicado hace ${parseInt(diff)} días`
+              : `Publicado hace ${parseInt(diff * 24)} horas`}
+          </small>
         </div>
       </div>
     </div>

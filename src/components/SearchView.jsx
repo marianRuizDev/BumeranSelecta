@@ -14,6 +14,8 @@ import "../style/searchs.scss";
 function SearchView() {
   const params = useParams();
   const id = params.id;
+  const date = new Date().getTime();
+
   const selectedSearch = {
     country: "Colombia",
     area_search: "Construcción",
@@ -23,8 +25,10 @@ function SearchView() {
     jobSchedules: "Full Time",
     salary: "$3000",
     title: "Supervisor Alto Horno y Laminación - Ternium",
-    time: "Publicado hace 2 días",
+    time: new Date(2022, 5, 26, 14, 0, 0).getTime(),
   };
+  const diff = (date - selectedSearch.time) / (1000 * 60 * 60 * 24);
+
   const recruiters = [
     {
       name: "Martina Muriel Méndez",
@@ -69,7 +73,7 @@ function SearchView() {
       <div class="row">
         <div class="d-flex justify-content-center">
           <FaUsers size={20} style={{ alignSelf: "center" }} />
-          <h5 style={{ paddingTop: "7px", marginLeft: "5px" }}>
+          <h5 style={{ paddingTop: "0.5rem", marginLeft: "0.3rem" }}>
             Puestos vacantes:{selectedSearch.vacancies}
           </h5>
         </div>
@@ -136,15 +140,19 @@ function SearchView() {
                   class="clock"
                   style={{ alignSelf: "center" }}
                 />
-                {selectedSearch.time}
+                {diff >= 1
+                  ? parseInt(diff) === 1
+                    ? "Publicado hace 1 día"
+                    : `Publicado hace ${parseInt(diff)} días`
+                  : `Publicado hace ${parseInt(diff * 24)} horas`}
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="row mt-5">
-        <div class="col d-flex justify-content-center">
-          <h5>
+        <div class="col  d-flex justify-content-center">
+          <h5 class="info-text">
             <ul>
               Importante empresa siderurgica en busca de persona capacitada y
               experimentada en el sector.
