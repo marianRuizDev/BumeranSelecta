@@ -43,6 +43,7 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@vitejs/plugin-react": "^1.3.0",
+    "mysql-db-seed": "^0.0.4",
     "vite": "^2.9.9"
   }
 }
