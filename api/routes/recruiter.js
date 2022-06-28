@@ -1,11 +1,38 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const Recruiter = require("../models/Recruiter");
-const Sequelize = require("sequelize");
+const Recruiter = require('../models/Recruiter');
+const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
+//all unic countrys
+router.get('/country', (req, res) => {
+  let countrys = [];
+  Recruiter.findAll({ attributes: ['country'], group: ['country'] })
+    .then((recruiter) =>
+      recruiter.map((recruiter) => {
+        countrys.push(recruiter.country);
+      })
+    )
+    .then(() => res.send(countrys));
+});
+
+//all unic experience fields
+router.get('/area', (req, res) => {
+  let areas = [];
+  Recruiter.findAll({
+    attributes: ['experienceField'],
+    group: ['experienceField'],
+  })
+    .then((area) =>
+      area.map((area) => {
+        areas.push(area.experienceField);
+      })
+    )
+    .then(() => res.send(areas));
+});
+
 //devolver todas los reclutadores
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   Recruiter.findAll()
     .then((search) => {
       res.send(search);
@@ -15,8 +42,18 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get('/:id', (req, res) => {
+  Recruiter.findAll({ where: { id: req.params.id } })
+    .then((search) => {
+      res.send(search);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+});
+
 //Crea un reclutador
-router.post("/", (req, res) => {
+router.post('/', (req, res) => {
   const { name, lastName, country } = req.body;
   Recruiter.findOne({ where: { name, lastName, country } }).then((result) => {
     if (result === null) {
@@ -62,14 +99,14 @@ router.post("/", (req, res) => {
 }); */
 
 //Elimina un reclutador
-router.delete("/:id", (req, res) => {
+router.delete('/:id', (req, res) => {
   Recruiter.destroy({ where: { id: req.params.id } }).then(() =>
     res.sendStatus(202)
   );
 });
 
 //Pagination simple
-router.get("/list", (req, res) => {
+router.get('/list', (req, res) => {
   let { page } = req.query;
   Number(page);
   console.log(page);
@@ -81,7 +118,7 @@ router.get("/list", (req, res) => {
 });
 
 //Encontrar por nombre -deberia tener mas opciones ajustadas al formulario-
-router.post("/search", (req, res) => {
+router.post('/search', (req, res) => {
   Recruiter.findAll({
     where: { name: { [Op.like]: `%${req.body.search}%` } },
   }).then((users) => res.send(users));

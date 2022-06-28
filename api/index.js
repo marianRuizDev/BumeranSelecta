@@ -1,19 +1,24 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const dotenv = require("dotenv");
-dotenv.config({ path: "./api/.env" });
+const dotenv = require('dotenv');
+dotenv.config({ path: './api/.env' });
 
-const cors = require("cors");
-const routes = require("./routes/index");
-const volleyball = require("volleyball");
-const cookieParser = require("cookie-parser");
-const sessions = require("express-session");
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
-const User = require("./models/User");
-const db = require("../config/db");
+const cors = require('cors');
+const routes = require('./routes/index');
+const volleyball = require('volleyball');
+const cookieParser = require('cookie-parser');
+const sessions = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const User = require('./models/Admin');
+const db = require('../config/db');
 
-//app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: ['http://localhost:3000'],
+  })
+);
 
 app.use(express.json());
 
@@ -23,7 +28,7 @@ app.use(cookieParser());
 
 app.use(
   sessions({
-    secret: "tmdb",
+    secret: 'tmdb',
     resave: true,
     saveUninitialized: true,
   })
@@ -35,8 +40,8 @@ app.use(passport.session());
 passport.use(
   new LocalStrategy(
     {
-      usernameField: "email",
-      passwordField: "password",
+      usernameField: 'email',
+      passwordField: 'password',
     },
     function (email, password, done) {
       User.findOne({ where: { email } })
@@ -68,9 +73,9 @@ passport.deserializeUser(function (id, done) {
     .catch(done);
 });
 
-app.use("/api", routes);
+app.use('/api', routes);
 
 db.sync({ force: false }).then(() => {
-  app.listen(8000, () => console.log("Escuchando en el puerto 8000"));
+  app.listen(8000, () => console.log('Escuchando en el puerto 8000'));
 });
 //
