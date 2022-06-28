@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import "../style/navbar.scss";
 
 const Navbar = () => {
+
+
+
   return (
     <nav className="navbar navbar-toggler navbar-expand-lg navbar-dark p-md-3">
-      {/* fixed-top */}
       <div className="container">
         <Link to={"/"} className="navbar-brand">
           <img src={marca} width={250} />
@@ -33,17 +35,17 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <Link className="nav-link text-danger" to={"/admin/searchs"}>
-                Búsquedas
+                Publicaciones
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link text-danger" to={"/admin"}>
-                Vista Admin
+                Reclutadores
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link text-danger" to={"/searchs"}>
-                Busquedas
+                Búsquedas
               </Link>
             </li>
             <li className="nav-item">

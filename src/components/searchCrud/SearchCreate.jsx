@@ -88,7 +88,7 @@ export default function SearchCreate() {
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="Ej 08:00 - 17:00 Hs"
+                    placeholder="Ej.: 08:00 - 17:00 Hs"
                     {...jobSchedules}
                   />
                 </div>
@@ -125,7 +125,7 @@ export default function SearchCreate() {
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="Ej: Empleado administrativo"
+                    placeholder="Ej.: Empleado administrativo"
                     {...title}
                   />
                 </div>
@@ -137,7 +137,7 @@ export default function SearchCreate() {
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="cateroria"
+                    placeholder="Cateroria"
                     {...category}
                   />
                 </div>
@@ -161,11 +161,11 @@ export default function SearchCreate() {
             </div>
 
             <div className="box_button">
-              <button type="submit" class="btn btn-primary m-2">
+              <button type="submit" class="btn btn-dark m-2">
                 Guardar
               </button>
 
-              <Link to={"/admin/searchs"} class="btn btn-outline-warning m-2">
+              <Link to={"/admin/searchs"} class="btn btn-danger m-2">
                 Cancelar
               </Link>
             </div>
