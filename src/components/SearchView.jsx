@@ -21,7 +21,7 @@ function SearchView() {
     area_search: "Construcción",
     position: "Supervisor",
     vacancies: 1,
-    status: "open",
+    status: "No iniciada",
     jobSchedules: "Full Time",
     salary: "$3000",
     title: "Supervisor Alto Horno y Laminación - Ternium",
@@ -67,6 +67,9 @@ function SearchView() {
     <div class="container ">
       <div class="row">
         <div class="card  mb-5">
+          <div className="badge-pos">
+            <span className="badge ">{selectedSearch.status}</span>
+          </div>
           <h1 class="d-flex justify-content-center margin-top">
             {selectedSearch.title}
           </h1>
@@ -166,87 +169,94 @@ function SearchView() {
           </div>
         </div>
       </div>
-      <div>
-        <h3 className="mb-4">Reclutadores recomendados</h3>
-      </div>
-      {recruiters
-        .sort((x, y) => {
-          if (x.rating < y.rating) {
-            return 1;
-          }
-          if (x.rating > y.rating) {
-            return -1;
-          }
-          return 0;
-        })
-        .map((recruiter, index) => (
-          <div key={index} class="d-flex justify-content-center mb-4">
-            <div class="card card-border-radius" style={{ width: "70%" }}>
-              <div class="card-header card-border-radius">
-                <div class="col d-flex justify-content-left">
-                  <FaUserAlt
-                    size={15}
-                    style={{
-                      marginRight: "10px",
-                      alignSelf: "center",
-                      color: "white",
-                    }}
-                  />
-                  <div className="text-light">{recruiter.name}</div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="row ">
-                  <div class="col col-lg-2 d-flex justify-content-center">
-                    <img
-                      src={recruiter.photo}
-                      alt="profile-picture"
-                      class="rounded-circle"
-                    />
+      {selectedSearch.status !== "Finalizada" ? (
+        <div>
+          <h3 className="mb-4">Reclutadores recomendados</h3>
+        </div>
+      ) : (
+        ""
+      )}
+
+      {selectedSearch.status !== "Finalizada"
+        ? recruiters
+            .sort((x, y) => {
+              if (x.rating < y.rating) {
+                return 1;
+              }
+              if (x.rating > y.rating) {
+                return -1;
+              }
+              return 0;
+            })
+            .map((recruiter, index) => (
+              <div key={index} class="d-flex justify-content-center mb-4">
+                <div class="card card-border-radius" style={{ width: "70%" }}>
+                  <div class="card-header card-border-radius">
+                    <div class="col d-flex justify-content-left">
+                      <FaUserAlt
+                        size={15}
+                        style={{
+                          marginRight: "10px",
+                          alignSelf: "center",
+                          color: "white",
+                        }}
+                      />
+                      <div className="text-light">{recruiter.name}</div>
+                    </div>
                   </div>
-                  <div
-                    class="col"
-                    id="info-col"
-                    style={{ alignSelf: "center" }}
-                  >
-                    <div class="row">
-                      <div class="col d-flex justify-content-left">
-                        <IoLocationSharp
-                          size={20}
-                          style={{ marginRight: "10px" }}
+                  <div class="card-body">
+                    <div class="row ">
+                      <div class="col col-lg-2 d-flex justify-content-center">
+                        <img
+                          src={recruiter.photo}
+                          alt="profile-picture"
+                          class="rounded-circle"
                         />
-                        {recruiter.country}
+                      </div>
+                      <div
+                        class="col"
+                        id="info-col"
+                        style={{ alignSelf: "center" }}
+                      >
+                        <div class="row">
+                          <div class="col d-flex justify-content-left">
+                            <IoLocationSharp
+                              size={20}
+                              style={{ marginRight: "10px" }}
+                            />
+                            {recruiter.country}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col d-flex justify-content-left">
+                            <MdWork size={20} style={{ marginRight: "10px" }} />
+                            {recruiter.area}
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="col col-lg-2 d-flex justify-content-center"
+                        style={{ marginRight: "10px", alignSelf: "center" }}
+                      >
+                        {recruiter.rating}
+                        <AiFillStar
+                          style={{ marginRight: "10px", alignSelf: "center" }}
+                        />
+                      </div>
+                      <div
+                        class="col col-lg-1  "
+                        style={{ marginRight: "10px", alignSelf: "center" }}
+                      >
+                        <button class="btn btn-dark">
+                          <MdOutlineAssignmentTurnedIn />
+                        </button>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col d-flex justify-content-left">
-                        <MdWork size={20} style={{ marginRight: "10px" }} />
-                        {recruiter.area}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col col-lg-2 d-flex justify-content-center"
-                    style={{ marginRight: "10px", alignSelf: "center" }}
-                  >
-                    {recruiter.rating}
-                    <AiFillStar
-                      style={{ marginRight: "10px", alignSelf: "center" }}
-                    />
-                  </div>
-                  <div
-                    class="col col-lg-1  "
-                    style={{ marginRight: "10px", alignSelf: "center" }}
-                  >
-                    <button class="btn btn-dark">
-                      <MdOutlineAssignmentTurnedIn />
-                    </button>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        ))}
+            ))
+        : ""}
     </div>
   );
 }

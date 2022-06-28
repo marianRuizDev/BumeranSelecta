@@ -89,7 +89,7 @@ const ViewAdmin = () => {
   };
 
   return (
-    <div>
+    <div className="container-xxl">
       <div className="card-busqueda">
         <div className="card-body">
           <div className="input-group mb-3">
@@ -152,13 +152,13 @@ const ViewAdmin = () => {
             <div className="col-lg-4">
               <h5 className="title-admin">Reclutador</h5>
             </div>
-            <div className="col-lg-1">
+            <div className="col-lg-3">
               <h5 className="title-admin">Ranking</h5>
             </div>
             <div className="col-lg-2">
               <h5 className="title-admin">Bus. Asignadas</h5>
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-3">
               <h5 className="title-admin">Permisos</h5>
             </div>
           </div>

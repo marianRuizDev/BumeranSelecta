@@ -17,7 +17,7 @@ import img8 from "../assets/contenido/descarga15.png";
 
 const Content = () => {
   return (
-    <div>
+    <div className="container-fluid">
       <div className="contenido">
         <div class="card-contenido">
           <div class="card-body">
@@ -33,10 +33,7 @@ const Content = () => {
           </div>
         </div>
         <div class="row home">
-          {/*  <div className="col-sm-1">
-                    </div> */}
-
-          <div class="col-lg-4">
+          <div class="col-lg-4 ">
             <div>
               <img src={img8} />
             </div>

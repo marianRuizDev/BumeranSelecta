@@ -32,8 +32,8 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-danger" to={"#"}>
-                Opción
+              <Link className="nav-link text-danger" to={"/admin/searchs"}>
+                Búsquedas
               </Link>
             </li>
             <li className="nav-item">
