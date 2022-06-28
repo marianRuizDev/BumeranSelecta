@@ -9,6 +9,7 @@ const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 const Recruiter = require('./Recruiter');
 const Search = require('./Search');
+const Admin = require('./Admin');
 
 let sequelize;
 if (config.use_env_variable) {
@@ -40,5 +41,6 @@ db.Sequelize = Sequelize;
 module.exports = {
   Recruiter,
   Search,
+  Admin,
   db,
 };
