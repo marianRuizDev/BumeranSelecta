@@ -1,39 +1,55 @@
-import React from "react";
-import { IoLocationSharp } from "react-icons/io5";
-import { FaBuilding } from "react-icons/fa";
-import { MdWork } from "react-icons/md";
-
-import perfil from "../assets/profiles/perfil2.png";
-import SearchCard from "./SearchCard";
-import "../style/profile.scss";
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { IoLocationSharp } from 'react-icons/io5';
+import { AiOutlineMail } from 'react-icons/ai';
+import { MdWork } from 'react-icons/md';
+import { fetchClient } from '../config/index';
+import perfil from '../assets/profiles/perfil2.png';
+import SearchCard from './SearchCard';
+import '../style/profile.scss';
 
 const Profile = () => {
-  //axios para tomar la data
+  let userId = useParams().id;
+  let [user, setUser] = useState({});
+
+  useEffect(() => {
+    if (userId) {
+      getUserAsync();
+    }
+  }, []);
+
+  const getUserAsync = async () => {
+    try {
+      const { data } = await fetchClient(
+        `http://localhost:8000/api/recruiter/${userId}`
+      );
+      setUser(data[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
       <div align="center">
-        <h1 className="titleProfile">Name</h1>
-        <div>
+        <h1 className="titleProfile">
+          {user.name} {user.lastName}
+        </h1>
+        <div className="col-sm">
           <img class="profileImg" src={perfil}></img>
-          <h2> Rating </h2>
-          <span>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo,
-            voluptas! Beatae, dignissimos at odit sit autem ad distinctio nisi
-            fuga neque! Repellat quam doloremque alias nihil sint cupiditate,
-            aspernatur soluta.
-          </span>
+          <h2> {user.rating} </h2>
+          <p>{user.description}</p>
         </div>
         <div align="center" className="description">
           <ul>
             <li>
-              <FaBuilding size={60} /> Data
+              <AiOutlineMail size={60} /> {user.email}
             </li>
             <li>
-              <IoLocationSharp size={60} /> Pais
+              <IoLocationSharp size={60} /> {user.country}
             </li>
             <li>
-              <MdWork size={60} /> Area
+              <MdWork size={60} /> {user.experienceField}
             </li>
           </ul>
         </div>
@@ -44,7 +60,7 @@ const Profile = () => {
           Busquedas activas
         </h2>
         <div class="col">
-          <SearchCard country={"argentina"} area={"produccion"} />
+          <SearchCard country={'argentina'} area={'produccion'} />
         </div>
       </div>
     </div>

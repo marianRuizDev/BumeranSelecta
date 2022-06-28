@@ -1,15 +1,51 @@
 const express = require("express");
-const sequelize = require("sequelize");
 const router = express.Router();
 const Recruiter = require("../models/Recruiter");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
+
+//all unic countrys
+router.get("/country", (req, res) => {
+  let countrys = [];
+  Recruiter.findAll({ attributes: ["country"], group: ["country"] })
+    .then((recruiter) =>
+      recruiter.map((recruiter) => {
+        countrys.push(recruiter.country);
+      })
+    )
+    .then(() => res.send(countrys));
+});
+
+//all unic experience fields
+router.get("/area", (req, res) => {
+  let areas = [];
+  Recruiter.findAll({
+    attributes: ["experienceField"],
+    group: ["experienceField"],
+  })
+    .then((area) =>
+      area.map((area) => {
+        areas.push(area.experienceField);
+      })
+    )
+    .then(() => res.send(areas));
+});
 
 //devolver todas los reclutadores
 router.get("/", (req, res) => {
   Recruiter.findAll()
     .then((search) => {
       console.log(search);
+      res.send(search);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+});
+
+router.get("/:id", (req, res) => {
+  Recruiter.findAll({ where: { id: req.params.id } })
+    .then((search) => {
       res.send(search);
     })
     .catch((err) => {

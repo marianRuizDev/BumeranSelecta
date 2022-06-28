@@ -1,28 +1,29 @@
 "use strict";
-const s = require("sequelize");
+const S = require("sequelize");
 const db = require("../../config/db");
 
-class Recruiter extends s.Model {
+class Recruiter extends S.Model {
   /**
    * Helper method for defining associations.
    * This method is not a part of Sequelize lifecycle.
-   * The `models/index` file will call this method automatically.
+   * The models/index file will call this method automatically.
    */
   static associate(models) {
     // define association here
   }
 }
+
 Recruiter.init(
   {
-    email: s.STRING,
-    password: s.STRING,
-    name: s.STRING,
-    lastName: s.STRING,
-    country: s.STRING,
-    description: s.TEXT,
-    experienceField: s.STRING,
-    rating: s.INTEGER,
-    activeSearchs: s.INTEGER,
+    email: S.STRING,
+    password: S.STRING,
+    name: S.STRING,
+    lastName: S.STRING,
+    country: S.STRING,
+    description: S.TEXT,
+    experienceField: S.STRING,
+    rating: S.INTEGER,
+    activeSearchs: S.INTEGER,
   },
   {
     sequelize: db,
