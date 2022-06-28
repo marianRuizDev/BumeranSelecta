@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaBuilding } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
@@ -8,9 +10,18 @@ import { VscTrash } from "react-icons/vsc";
 import logo from "../assets/navbar/Group.png";
 import "../style/searchs.scss";
 
-function SearchCard({ country, area, time, status }) {
+function SearchCard({ id, country, area, time, status, text }) {
+  const dispatch = useDispatch();
   const date = new Date().getTime();
   const diff = (date - time) / (1000 * 60 * 60 * 24);
+
+  const handleDeleteSearch = () => {
+    console.log("hola");
+  };
+
+  const textSplit = text.split(" ").slice(0, 50).join(" ");
+
+  console.log(textSplit);
 
   return (
     <div class="container mb-4">
@@ -20,26 +31,19 @@ function SearchCard({ country, area, time, status }) {
             <img src={logo} alt="logo" class="card-img" />
           </div>
           <div class="col ">
-            <div
-              class="card-body "
-              style={{ maxHeight: "190px", overflow: "hidden" }}
-            >
-              <h5 class="card-title">
-                Supervisor Alto Horno y Laminación - Ternium
-              </h5>
-              <p class="card-text">
-                Importante empresa siderurgica en busca de persona capacitada y
-                experimentada en el sector. Funciones Principales: 1- Conocer
-                flujo del funcionamiento del alto Horno 2- Tener conocimiento
-                previo de mantenimiento durante el proceso de colada 3-
-                Implementar adecuadamente las tecnoñogías pedidas Lorem ipsum
-                dolor sit, amet consectetur adipisicing elit. Praesentium ad
-                deserunt quas, nam cupiditate aliquid numquam odit explicabo aut
-                quo? Magnam neque iure repudiandae explicabo quis, reprehenderit
-                fugiat veniam omnis.
-              </p>
-            </div>
+            <Link to={`/searchs/${id}`}>
+              <div
+                class="card-body "
+                style={{ maxHeight: "190px", overflow: "hidden" }}
+              >
+                <h5 class="card-title">
+                  Supervisor Alto Horno y Laminación - Ternium
+                </h5>
+                <p class="card-text card-texto">{textSplit + "..."}</p>
+              </div>
+            </Link>
           </div>
+
           <div class="col col-lg-1">
             <div
               class="vr mt-4 bg-secondary"
@@ -66,28 +70,31 @@ function SearchCard({ country, area, time, status }) {
               </div>
             </div>
           </div>
-          <div class="col mt-4 col-lg-1">
-            <div className="row">
-              <span class="badge">{status}</span>
-            </div>
-            <div className="row d-flex">
-              <button className="btn">
-                <FaPencilAlt />
-              </button>
-              <button className="btn">
-                <VscTrash />
-              </button>
-            </div>
+          <div class="col mt-2 col-lg-1">
+            <span class="badge">{status}</span>
           </div>
         </div>
         <div class="card-footer d-flex justify-content-center">
-          <small>
-            {diff >= 1
-              ? parseInt(diff) === 1
-                ? "Publicado hace 1 día"
-                : `Publicado hace ${parseInt(diff)} días`
-              : `Publicado hace ${parseInt(diff * 24)} horas`}
-          </small>
+          <div className="col time-container">
+            <small>
+              {diff >= 1
+                ? parseInt(diff) === 1
+                  ? "Publicado hace 1 día"
+                  : `Publicado hace ${parseInt(diff)} días`
+                : `Publicado hace ${parseInt(diff * 24)} horas`}
+            </small>
+          </div>
+          <div className="col col-lg-5 modify-btns">
+            <Link to={"/admin/searchs/create"}>
+              <button className="btn ">
+                <FaPencilAlt />
+              </button>
+            </Link>
+
+            <button onClick={handleDeleteSearch} className="btn ">
+              <VscTrash />
+            </button>
+          </div>
         </div>
       </div>
     </div>

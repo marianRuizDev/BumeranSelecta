@@ -10,10 +10,10 @@ const cookieParser = require("cookie-parser");
 const sessions = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const User = require("./models/User");
+//const User = require("./models/User");
 const db = require("../config/db");
 
-//app.use(cors());
+app.use(cors());
 
 app.use(express.json());
 

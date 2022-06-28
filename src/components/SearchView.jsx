@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { FaUserAlt } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
@@ -9,6 +10,8 @@ import { BsFillClockFill } from "react-icons/bs";
 import { FaBuilding } from "react-icons/fa";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { FaUsers } from "react-icons/fa";
+
+import perfil from "../assets/profiles/perfil2.png";
 import "../style/searchs.scss";
 
 function SearchView() {
@@ -29,39 +32,8 @@ function SearchView() {
   };
   const diff = (date - selectedSearch.time) / (1000 * 60 * 60 * 24);
 
-  const recruiters = [
-    {
-      name: "Martina Muriel Méndez",
-      country: "Colombia",
-      area: "Construcción",
-      rating: 4.8,
-      photo: "https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg",
-    },
-    {
-      name: "Jorge Javier Jacob",
-      country: "Colombia",
-      area: "Construcción",
-      rating: 2,
-      photo:
-        "https://us.123rf.com/450wm/stocking/stocking1604/stocking160400408/55156780-retrato-de-un-apuesto-hombre-de-negocios.jpg?ver=6",
-    },
-    {
-      name: "Luis Lisandro Lezcano",
-      country: "Colombia",
-      area: "Construcción",
-      rating: 3.9,
-      photo:
-        "https://misimagenesde.com/wp-content/uploads/2017/04/barbas-3.jpg",
-    },
-    {
-      name: "Lionel Andrés Messi ",
-      country: "Argentina papá",
-      area: "Fulbo",
-      rating: 10,
-      photo:
-        "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/10/19/16346783870037.jpg",
-    },
-  ];
+  const recruiters = useSelector((state) => state.recruiters);
+  const recruitersCopy = [...recruiters];
 
   return (
     <div class="container ">
@@ -178,7 +150,7 @@ function SearchView() {
       )}
 
       {selectedSearch.status !== "Finalizada"
-        ? recruiters
+        ? recruitersCopy
             .sort((x, y) => {
               if (x.rating < y.rating) {
                 return 1;
@@ -188,6 +160,7 @@ function SearchView() {
               }
               return 0;
             })
+            .slice(0, 3)
             .map((recruiter, index) => (
               <div key={index} class="d-flex justify-content-center mb-4">
                 <div class="card card-border-radius" style={{ width: "70%" }}>
@@ -208,7 +181,7 @@ function SearchView() {
                     <div class="row ">
                       <div class="col col-lg-2 d-flex justify-content-center">
                         <img
-                          src={recruiter.photo}
+                          src={perfil}
                           alt="profile-picture"
                           class="rounded-circle"
                         />
@@ -230,7 +203,7 @@ function SearchView() {
                         <div class="row">
                           <div class="col d-flex justify-content-left">
                             <MdWork size={20} style={{ marginRight: "10px" }} />
-                            {recruiter.area}
+                            {recruiter.experienceField}
                           </div>
                         </div>
                       </div>

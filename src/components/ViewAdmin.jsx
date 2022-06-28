@@ -4,8 +4,14 @@ import { BsSearch } from "react-icons/bs";
 import { useEffect } from "react";
 import CardsAdmin from "./CardsAdmin";
 import "../style/viewAdmin.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { sendAllRecruiters } from "../redux/recruiters";
 
 const ViewAdmin = () => {
+  const dispatch = useDispatch();
+  const recruiters = useSelector((state) => state.recruiters);
+  const recruitersCopy = [...recruiters];
+
   const paises = [
     "Argentina",
     "Chile",
@@ -32,40 +38,6 @@ const ViewAdmin = () => {
     "Comercio Exterior",
   ];
 
-  const ranking = [10, 20, 30, 40, 50, 60, 70, 80, 90];
-
-  const reclutadores = [
-    {
-      nombre: "Juan Peréz",
-      cantidad: 10,
-      rank: 90,
-      country: "Argentina",
-      area: "Construcción",
-    },
-    {
-      nombre: "Chocolates havana",
-      cantidad: 100,
-      rank: 50,
-      country: "Chile",
-      area: "Ingenierías",
-    },
-    {
-      nombre: "hdfkahksjf",
-      cantidad: 5,
-      puntaje: 5.5,
-      rank: 70,
-      country: "Colombia",
-      area: "Salud",
-    },
-    {
-      nombre: "Pepe Rios",
-      cantidad: 3,
-      rank: 60,
-      country: "Chile",
-      area: "Construcción",
-    },
-  ];
-
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [value, setValue] = useState("");
@@ -85,8 +57,12 @@ const ViewAdmin = () => {
     setValue("");
     setSelectedContry("");
     setJobArea("");
-    setRanking("");
+    console.log(recruiters);
   };
+
+  useEffect(() => {
+    dispatch(sendAllRecruiters());
+  }, []);
 
   return (
     <div className="container-xxl">
@@ -167,12 +143,12 @@ const ViewAdmin = () => {
       <hr className="linea" />
 
       <div>
-        {reclutadores
+        {recruitersCopy
           .sort((x, y) => {
-            if (x.rank < y.rank) {
+            if (x.rating < y.rating) {
               return 1;
             }
-            if (x.rank > y.rank) {
+            if (x.rating > y.rating) {
               return -1;
             }
             return 0;
@@ -181,7 +157,7 @@ const ViewAdmin = () => {
             if (value === "") {
               return val;
             } else if (
-              val.nombre.toLowerCase().includes(value.toLocaleLowerCase())
+              val.name.toLowerCase().includes(value.toLocaleLowerCase())
             ) {
               return val;
             }
@@ -189,14 +165,7 @@ const ViewAdmin = () => {
           .filter((val) => {
             if (jobArea === "") {
               return val;
-            } else if (val.area === jobArea) {
-              return val;
-            }
-          })
-          .filter((val) => {
-            if (selectedCountry === "") {
-              return val;
-            } else if (val.country === selectedCountry) {
+            } else if (val.experienceField === jobArea) {
               return val;
             }
           })
