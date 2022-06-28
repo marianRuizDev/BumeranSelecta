@@ -1,9 +1,8 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class Search extends Model {
+"use strict";
+const S = require('sequelize');
+const db = require("../../config/db.js");
+
+  class Search extends S.Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,21 +12,22 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
+  
   Search.init({
-    country: DataTypes.STRING,
-    area: DataTypes.STRING,
-    position: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    vacancies: DataTypes.INTEGER,
-    status: DataTypes.STRING,
-    time: DataTypes.DATEONLY,
-    jobSchedules: DataTypes.STRING,
-    salary: DataTypes.INTEGER,
-    title: DataTypes.STRING,
-    category: DataTypes.STRING
+    country: S.STRING,
+    area: S.STRING,
+    position: S.STRING,
+    description: S.TEXT,
+    vacancies: S.INTEGER,
+    status: S.STRING,
+    time: S.DATEONLY,
+    jobSchedules: S.STRING,
+    salary: S.INTEGER,
+    title: S.STRING,
+    category: S.STRING
   }, {
-    sequelize,
+    sequelize: db,
     modelName: 'Search',
   });
-  return Search;
-};
+
+    module.exports = Search;
