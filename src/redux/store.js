@@ -5,6 +5,8 @@ import { combineReducers } from "redux";
 import thunk from "redux-thunk";
 
 import loginReducer from "./login";
+import adminSlice from "./proofAdmin";
+import recruiterReducer from "./recruiters";
 
 const persistConfig = {
   key: "root",
@@ -14,6 +16,8 @@ const persistConfig = {
 
 const reducer = combineReducers({
   login: loginReducer,
+  admin: adminSlice,
+  recruiters: recruiterReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);

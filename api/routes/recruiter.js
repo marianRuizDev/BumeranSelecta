@@ -1,4 +1,5 @@
 const express = require("express");
+const sequelize = require("sequelize");
 const router = express.Router();
 const Recruiter = require("../models/Recruiter");
 const Sequelize = require("sequelize");
@@ -6,8 +7,10 @@ const Op = Sequelize.Op;
 
 //devolver todas los reclutadores
 router.get("/", (req, res) => {
+  
   Recruiter.findAll()
     .then((search) => {
+      console.log(search);
       res.send(search);
     })
     .catch((err) => {

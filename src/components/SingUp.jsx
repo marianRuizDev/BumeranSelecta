@@ -29,7 +29,7 @@ const SingUp = () => {
       <h3 className="title-register-login">Crea una cuenta</h3>
 
       <form className="form" onSubmit={handleSubmit}>
-        <div clasName="row g-3">
+        <div className="row g-3">
           <div className="col">
             <label>
               Nombre(s)<span className="obligatorio">*</span>

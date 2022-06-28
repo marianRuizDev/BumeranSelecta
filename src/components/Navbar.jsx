@@ -1,9 +1,11 @@
 import marca from "../assets/navbar/logo-1.png";
 import { Link } from "react-router-dom";
 import "../style/navbar.scss";
+import { useDispatch, useSelector } from "react-redux";
 
 const Navbar = () => {
 
+  const admin = useSelector((state) => state.admin);
 
 
   return (
@@ -26,38 +28,53 @@ const Navbar = () => {
 
         <div className="collapse navbar-collapse" id="navbarNav">
           <div className="mx-auto"></div>
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className="nav-link text-danger" to={"#"}>
-                Opción
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link text-danger" to={"/admin/searchs"}>
-                Publicaciones
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link text-danger" to={"/admin"}>
-                Reclutadores
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link text-danger" to={"/searchs"}>
-                Búsquedas
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link text-danger" to={"login"}>
-                Iniciar sesión
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link text-danger" to={"sigup"}>
-                Registrase
-              </Link>
-            </li>
-          </ul>
+          {admin.value ? (
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link className="nav-link text-danger" to={"#"}>
+                  Opción
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link text-danger" to={"/admin/searchs"}>
+                  Búsquedas
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link text-danger" to={"/admin"}>
+                  Vista Admin
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link text-danger" to={"/searchs"}>
+                  Busquedas
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link text-danger" to={"login"}>
+                  Iniciar sesión
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link text-danger" to={"sigup"}>
+                  Registrase
+                </Link>
+              </li>
+            </ul>
+          ) : (
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link className="nav-link text-danger" to={"login"}>
+                  Iniciar sesión
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link text-danger" to={"sigup"}>
+                  Registrase
+                </Link>
+              </li>
+            </ul>
+          )}
         </div>
       </div>
     </nav>

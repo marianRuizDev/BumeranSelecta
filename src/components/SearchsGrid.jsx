@@ -33,40 +33,88 @@ function SearchsGrid() {
   ];
   const searchs = [
     {
+      id: 1,
       country: "Argentina",
       area: "Producción",
       time: new Date(2022, 5, 24, 16, 0, 0).getTime(),
       status: "No iniciada",
+      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
+      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
+      odio alias illo dicta adipisci tempore fugit esse Aliquam\
+      earum nesciunt idLorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
+      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
+      odio alias illo dicta adipisci tempore fugit esse Aliquam\
+      earum nesciunt id",
     },
     {
+      id: 2,
       country: "Mexico",
       area: "Salud",
       time: new Date(2022, 5, 26, 15, 0, 0).getTime(),
       status: "No iniciada",
+      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
+      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
+      odio alias illo dicta adipisci tempore fugit esse Aliquam\
+      earum nesciunt idLorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
+      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
+      odio alias illo dicta adipisci tempore fugit esse Aliquam\
+      earum nesciunt id",
     },
     {
+      id: 3,
       country: "Colombia",
       area: "Comercial",
       time: new Date(2022, 5, 23, 16, 0, 0).getTime(),
       status: "No iniciada",
+      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
+      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
+      odio alias illo dicta adipisci tempore fugit esse Aliquam\
+      earum nesciunt idLorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
+      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
+      odio alias illo dicta adipisci tempore fugit esse Aliquam\
+      earum nesciunt id",
     },
     {
+      id: 4,
       country: "Chile",
       area: "Marketing",
       time: new Date(2022, 5, 22, 16, 0, 0).getTime(),
       status: "No iniciada",
+      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
+      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
+      odio alias illo dicta adipisci tempore fugit esse Aliquam\
+      earum nesciunt idLorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
+      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
+      odio alias illo dicta adipisci tempore fugit esse Aliquam\
+      earum nesciunt id",
     },
     {
+      id: 5,
       country: "Argentina",
       area: "Logística",
       time: new Date(2022, 5, 18, 16, 0, 0).getTime(),
       status: "En proceso",
+      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
+      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
+      odio alias illo dicta adipisci tempore fugit esse Aliquam\
+      earum nesciunt idLorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
+      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
+      odio alias illo dicta adipisci tempore fugit esse Aliquam\
+      earum nesciunt id",
     },
     {
+      id: 6,
       country: "Ecuador",
       area: "Marketing",
       time: new Date(2022, 3, 26, 16, 0, 0).getTime(),
       status: "Finalizada",
+      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
+      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
+      odio alias illo dicta adipisci tempore fugit esse Aliquam\
+      earum nesciunt idLorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
+      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
+      odio alias illo dicta adipisci tempore fugit esse Aliquam\
+      earum nesciunt id",
     },
   ];
   const [selectedCountry, setSelectedContry] = useState("");
@@ -201,15 +249,15 @@ function SearchsGrid() {
               }
             })
             .map((search, index) => (
-              <Link key={index} to={`/searchs/${index}`}>
-                <SearchCard
-                  key={index}
-                  country={search.country}
-                  area={search.area}
-                  time={search.time}
-                  status={search.status}
-                />
-              </Link>
+              <SearchCard
+                key={index}
+                country={search.country}
+                area={search.area}
+                time={search.time}
+                status={search.status}
+                id={search.id}
+                text={search.text}
+              />
             ))}
         </div>
       </div>

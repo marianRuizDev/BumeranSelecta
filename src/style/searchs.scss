@@ -85,6 +85,26 @@
   border-radius: 10px;
 }
 
+.modify-btns {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.time-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.card-footer {
+  max-height: 2rem;
+}
+
+.card-texto {
+  text-align: justify;
+}
+
 #info-col {
   margin-left: 50px;
 }
