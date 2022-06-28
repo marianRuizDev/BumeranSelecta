@@ -56,7 +56,7 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <Link className="nav-link text-danger" to={"sigup"}>
-                  Registrase
+                  Registrarse
                 </Link>
               </li>
             </ul>

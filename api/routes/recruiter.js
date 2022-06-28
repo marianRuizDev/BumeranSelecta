@@ -7,8 +7,6 @@ const Op = Sequelize.Op;
 
 //devolver todas los reclutadores
 router.get("/", (req, res) => {
-  console.log("RECRUITER", Recruiter);
-  console.log("LLEGA RECRUITERS");
   Recruiter.findAll()
     .then((search) => {
       console.log(search);
