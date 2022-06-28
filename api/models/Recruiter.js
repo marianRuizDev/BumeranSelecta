@@ -2,7 +2,16 @@
 const s = require("sequelize");
 const db = require("../../config/db");
 
-class Recruiter extends s.Model {}
+class Recruiter extends s.Model {
+  /**
+   * Helper method for defining associations.
+   * This method is not a part of Sequelize lifecycle.
+   * The `models/index` file will call this method automatically.
+   */
+  static associate(models) {
+    // define association here
+  }
+}
 Recruiter.init(
   {
     email: s.STRING,
