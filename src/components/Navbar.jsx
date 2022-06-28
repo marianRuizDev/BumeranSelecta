@@ -1,4 +1,3 @@
-import { BsSearch } from "react-icons/bs";
 import marca from "../assets/navbar/logo-1.png";
 import { Link } from "react-router-dom";
 import "../style/navbar.scss";
