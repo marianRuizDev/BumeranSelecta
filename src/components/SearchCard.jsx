@@ -2,6 +2,9 @@ import React from "react";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaBuilding } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
+import { FaPencilAlt } from "react-icons/fa";
+import { VscTrash } from "react-icons/vsc";
+
 import logo from "../assets/navbar/Group.png";
 import "../style/searchs.scss";
 
@@ -63,8 +66,18 @@ function SearchCard({ country, area, time, status }) {
               </div>
             </div>
           </div>
-          <div class="col col-lg-1">
-            <span class="badge">{status}</span>
+          <div class="col mt-4 col-lg-1">
+            <div className="row">
+              <span class="badge">{status}</span>
+            </div>
+            <div className="row d-flex">
+              <button className="btn">
+                <FaPencilAlt />
+              </button>
+              <button className="btn">
+                <VscTrash />
+              </button>
+            </div>
           </div>
         </div>
         <div class="card-footer d-flex justify-content-center">
