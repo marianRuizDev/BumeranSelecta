@@ -6,11 +6,13 @@ import { postLogoutRequest } from "../redux/login";
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const login = useSelector((state) => state.login.data.name); //No tocar
+  const login = useSelector((state) => state.login) || undefined;
+  console.log("ACA LOGIN", login);
 
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(postLogoutRequest());
+    localStorage.removeItem("persist:root");
     navigate("/");
   };
 
@@ -58,7 +60,7 @@ const Navbar = () => {
               <li>
                 <h5>contacto</h5>
               </li>
-              {login ? (
+              {login.name ? (
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle perfil"
@@ -98,7 +100,7 @@ const Navbar = () => {
                 ""
               )}
 
-              {login ? (
+              {login.name ? (
                 <li>
                   <span
                     type="button"

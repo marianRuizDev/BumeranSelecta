@@ -4,14 +4,13 @@ import { createReducer, createAsyncThunk } from "@reduxjs/toolkit";
 export const sendUserRegister = createAsyncThunk(
   "REGISTER",
 
-  ({ name,lastName,password,email }) => {
-   
+  ({ name, lastName, password, email }) => {
     axios
-      .post("http://localhost:8000/api/recruiter/register",  {
+      .post("http://localhost:8000/api/recruiter/register", {
         name: name.value,
         lastName: lastName.value,
         email: email.value,
-        password: password.value
+        password: password.value,
       })
       .then((res) => res.data)
       .catch((error) => console.log(error));
@@ -21,11 +20,14 @@ export const postLoginRequest = createAsyncThunk(
   "LOGIN",
   async ({ email, password }) => {
     try {
-      const data = await axios.post("http://localhost:8000/api/recruiter/login", {
-        email: email.value,
-        password: password.value,
-      });
-      return data;
+      const data = await axios.post(
+        "http://localhost:8000/api/recruiter/login",
+        {
+          email: email.value,
+          password: password.value,
+        }
+      );
+      return data.data;
     } catch (error) {
       console.log(error);
     }

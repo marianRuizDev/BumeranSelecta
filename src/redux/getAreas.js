@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createReducer, createAsyncThunk } from "@reduxjs/toolkit";
+import { fetchClient } from "../config";
 
 export const getAreasRequest = createAsyncThunk("AREAS", async () => {
   try {

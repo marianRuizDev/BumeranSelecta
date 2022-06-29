@@ -73,9 +73,11 @@ const ViewAdmin = () => {
               onChange={handleCountryChange}
             >
               <option value={""}>Pais</option>
-              {countries.data.map((pais, i) => {
-                return <option key={i}>{pais}</option>;
-              })}
+              {setTimeout(() => {
+                countries.data?.map((pais, i) => {
+                  return <option key={i}>{pais}</option>;
+                });
+              }, 1000)}
             </select>
 
             <select
@@ -85,13 +87,11 @@ const ViewAdmin = () => {
               onChange={handleJobAreaChange}
             >
               <option value={""}>Área</option>
-              {areas.data.map((area, i) => {
-                return (
-                  <option value={area.area} key={i}>
-                    {area}
-                  </option>
-                );
-              })}
+              {setTimeout(() => {
+                areas.data?.map((area, i) => {
+                  return <option key={i}>{area}</option>;
+                });
+              }, 1000)}
             </select>
 
             <button
