@@ -12,6 +12,14 @@ class Recruiter extends S.Model {
 
 Recruiter.init(
   {
+    email: {
+      type: S.STRING,
+      allowNull: false,
+      validate: {
+        isEmail: true,
+      },
+      unique: true,
+    },
     password: {
       type: S.STRING,
       allowNull: false,
@@ -48,6 +56,10 @@ Recruiter.init(
       type: S.BOOLEAN,
       defaultValue: false,
       allowNull: false,
+    },
+    salt: {
+      type: S.STRING,
+      allowNull: true,
     },
   },
   {
