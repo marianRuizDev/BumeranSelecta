@@ -1,22 +1,22 @@
 {
   "development": {
     "username": "root",
-    "password": "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",
+    "password": "password",
     "database": "bumeranSelecta",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "password",
+    "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "password",
-    "database": "bumeranSelecta",
+    "password": null,
+    "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }

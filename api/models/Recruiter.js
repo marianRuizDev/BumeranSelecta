@@ -28,6 +28,7 @@ Recruiter.init(
     experienceField: S.STRING,
     rating: S.INTEGER,
     activeSearchs: S.INTEGER,
+    admin: S.BOOLEAN,
   },
   {
     sequelize: db,
