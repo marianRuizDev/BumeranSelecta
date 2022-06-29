@@ -1,13 +1,21 @@
-.text-danger {
-    color: #EB0064;
-    font-weight: 400;
+.text {
+  color: #eb0064;
+  font-weight: bold;
 }
 
-/* Idea de navbar transparente */
-/* nav.abajo {
-    background-color: rgba(0, 0, 0, 0.644);
-    padding: 20px, 15px;
-    margin-bottom: 5%;
-} */
+.boton-login {
+  margin-right: 7% !important;
+}
 
+.boton-logout {
+  margin-top: 0.9%;
+  margin-right: 0.5%;
+}
 
+.boton-registro {
+  margin-right: 2vmax;
+}
+
+.icon {
+  margin-bottom: 5%;
+}

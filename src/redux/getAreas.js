@@ -5,7 +5,7 @@ import { fetchClient } from "../config";
 export const getAreasRequest = createAsyncThunk("AREAS", async () => {
   try {
     const data = await axios.get("http://localhost:8000/api/recruiter/area");
-    return data;
+    return data.data;
   } catch (error) {
     console.log(error);
   }

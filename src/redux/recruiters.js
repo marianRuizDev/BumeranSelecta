@@ -26,10 +26,7 @@ export const deleteRecruiter = createAsyncThunk(
   "RECRUITERS_DELETE",
   async (id) => {
     try {
-      const data = await axios.delete(
-        `http://localhost:8000/api/recruiter/${id}`
-      );
-      return data;
+      await axios.delete(`http://localhost:8000/api/recruiter/${id}`);
     } catch (error) {
       console.log(error);
     }
