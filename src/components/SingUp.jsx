@@ -24,8 +24,9 @@ const SingUp = () => {
       <h3 className="title-register-login">Crea una cuenta</h3>
 
       <form className="form" onSubmit={handlerRegister}>
-        <div clasName="row g-3">
-          <div clasName="col">
+
+        <div class="row">
+          <div class="col">
             <label>
               Nombre(s)<span className="obligatorio">*</span>
             </label>
@@ -37,7 +38,7 @@ const SingUp = () => {
               {...name}
             />
           </div>
-          <div clasName="col">
+          <div class="col">
             <label>
               Apellido(s)<span className="obligatorio">*</span>
             </label>
@@ -50,7 +51,6 @@ const SingUp = () => {
             />
           </div>
         </div>
-        <label></label>
 
         <div className="mb-3">
           <label>
@@ -78,12 +78,6 @@ const SingUp = () => {
           />
         </div>
         <div clasName="form-check">
-          <input
-            clasName="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckDefault"
-          />
           <label clasName="form-check-label" for="flexCheckDefault">
             <p>
               Al hacer click en Crear cuenta, acepto las{" "}
