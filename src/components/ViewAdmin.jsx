@@ -18,11 +18,11 @@ const ViewAdmin = () => {
   const areas = useSelector((state) => state.area);
   const recruitersCopy = [...recruiters];
 
+  console.log("COUNTRIES,AREAS", countries, areas);
+
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [value, setValue] = useState("");
-
-  console.log(countries);
 
   const handlerClick = (e) => {
     setValue(e.target.value);
@@ -73,11 +73,12 @@ const ViewAdmin = () => {
               onChange={handleCountryChange}
             >
               <option value={""}>Pais</option>
-              {setTimeout(() => {
-                countries.data?.map((pais, i) => {
+
+              {countries
+                ?.filter((pais) => pais !== null)
+                .map((pais, i) => {
                   return <option key={i}>{pais}</option>;
-                });
-              }, 1000)}
+                })}
             </select>
 
             <select
@@ -87,11 +88,12 @@ const ViewAdmin = () => {
               onChange={handleJobAreaChange}
             >
               <option value={""}>Área</option>
-              {setTimeout(() => {
-                areas.data?.map((area, i) => {
+
+              {areas
+                ?.filter((area) => area !== null)
+                .map((area, i) => {
                   return <option key={i}>{area}</option>;
-                });
-              }, 1000)}
+                })}
             </select>
 
             <button

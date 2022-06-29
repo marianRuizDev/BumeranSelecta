@@ -85,7 +85,7 @@ function SearchCard({ id, country, area, time, status, text }) {
             </small>
           </div>
           <div className="col col-lg-5 modify-btns">
-            <Link to={"/admin/searchs/create"}>
+            <Link to={`/admin/searchs/update/${id}`}>
               <button className="btn ">
                 <FaPencilAlt />
               </button>

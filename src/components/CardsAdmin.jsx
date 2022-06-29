@@ -16,7 +16,7 @@ const CardsAdmin = ({ items }) => {
     dispatch(deleteRecruiter(items.id));
     setTimeout(() => {
       window.location.reload();
-    }, 100);
+    }, 500);
   };
 
   return (
