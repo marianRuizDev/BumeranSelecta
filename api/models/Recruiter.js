@@ -1,6 +1,6 @@
 "use strict";
 const S = require("sequelize");
-const db = require("../../config/db");
+const db = require("../config/db");
 const bcrypt = require("bcrypt");
 
 class Recruiter extends S.Model {

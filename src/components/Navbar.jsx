@@ -1,8 +1,10 @@
-import marca from "../assets/navbar/logo-1.png";
 import { Link, useNavigate } from "react-router-dom";
-import "../style/navbar.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { postLogoutRequest } from "../redux/login";
+import marca from "../assets/navbar/logo-1.png";
+import "../style/navbar.scss";
+
+
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -51,14 +53,14 @@ const Navbar = () => {
                 <h5>Home</h5>
               </li>
               <li className="nav-item">
-                <h5>hunting</h5>
+                <h5>Hunting</h5>
               </li>
 
               <li className="nav-item">
-                <h5>¿Quien somos?</h5>
+                <h5>¿Quiénes somos?</h5>
               </li>
               <li>
-                <h5>contacto</h5>
+                <h5>Contacto</h5>
               </li>
               {login.name ? (
                 <li class="nav-item dropdown">
@@ -91,7 +93,7 @@ const Navbar = () => {
                         to={"/admin/searchs"}
                         className="nav-link text-danger"
                       >
-                        ADMINITRACION
+                        Publicaciones
                       </Link>
                     </li>
                   </ul>
@@ -104,7 +106,7 @@ const Navbar = () => {
                 <li>
                   <span
                     type="button"
-                    className="btn btn-outline-danger m-3 buttonLogOut "
+                    className="btn btn-danger m-3 buttonLogOut "
                     onClick={handleLogout}
                   >
                     Logout
@@ -125,7 +127,7 @@ const Navbar = () => {
                       to={"/sigup"}
                       className="btn btn-outline-danger m-3 buttonLogOut buttonSinUp "
                     >
-                      Registrase
+                      Registrarse
                     </Link>
                   </li>
                 </>

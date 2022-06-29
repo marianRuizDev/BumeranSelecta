@@ -1,6 +1,6 @@
 "use strict";
 const S = require("sequelize");
-const db = require("../../config/db.js");
+const db = require("../config/db.js");
 
 class Search extends S.Model {
   /**
