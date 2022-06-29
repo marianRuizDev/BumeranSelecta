@@ -2,8 +2,11 @@ const searchServices = require("../services/searchServices");
 const Search = require("../models/Search");
 
 class RouterSearch {
+
+  /////////// RUTAS ARIEL/////////
   static async allSearch(req, res) {
     const { error, data } = await searchServices.getAll();
+    console.log(data);
     if (error) {
       return res.status(404).send(data);
     }
@@ -11,7 +14,7 @@ class RouterSearch {
   }
 
   static async createSearch(req, res) {
-    const { error, data } = await searchServices.create();
+    const { error, data } = await searchServices.create(req.body);
 
     if (error) {
       return res.status(404).send(data);
@@ -24,10 +27,11 @@ class RouterSearch {
 
     const {
       country,
-      area_search,
+      area,
       position,
       description,
       jobSchedules,
+      status,
       vacancies,
       salary,
       title,
@@ -37,11 +41,12 @@ class RouterSearch {
     Search.update(
       {
         country,
-        area_search,
+        area,
         position,
         description,
         jobSchedules,
         vacancies,
+        status,
         salary,
         title,
         category,
@@ -61,6 +66,7 @@ class RouterSearch {
     }
     res.status(200).send(data);
   }
+  ///////////FIN RUTAS ARIEL/////////
 }
 
 module.exports = RouterSearch;

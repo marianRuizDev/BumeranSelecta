@@ -1,12 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-const search = require('./search');
-const recruiters = require('./recruiter');
-const user = require('./user');
+const search = require('./searchRouter');
+const recruiters = require('./recruiterRouter');
+const admin = require('./admin');
+
+
+
+router.use('/recruiter', recruiters);
+
+router.use('/admin', admin);
 
 router.use('/search', search);
-router.use('/recruiter', recruiters);
-router.use('/user', user);
+
+
 
 module.exports = router;

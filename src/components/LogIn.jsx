@@ -1,20 +1,29 @@
 import React from "react";
 import useInput from "../hooks/useInput";
+
 import "../style/forms.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { postLoginRequest } from "../redux/login";
+import { useDispatch } from "react-redux";
 
 const LogIn = () => {
   const email = useInput();
   const password = useInput();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+
+
+  const handlerLogin = (e) => {
     e.preventDefault();
+    dispatch(postLoginRequest({ email, password }));
+    navigate("/");
   };
 
   return (
     <div>
-      <h3 className="title-login">Iniciar sesión</h3>
-      <form className="form-login" onSubmit={handleSubmit}>
+      <h3 className="title-register-login">Iniciar sesión</h3>
+      <form className="form" onSubmit={handlerLogin}>
         <div className="mb-3">
           <label>Email</label>
           <input

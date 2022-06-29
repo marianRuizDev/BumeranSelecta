@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router";
 
 import Navbar from "./components/Navbar";
@@ -12,6 +12,7 @@ import ViewAdmin from "./components/ViewAdmin";
 import Profile from "./components/Profile";
 import SearchContainer from "./components/searchCrud/SearchContainer";
 import SearchCreate from "./components/searchCrud/SearchCreate";
+import SearchUpdate from "./components/searchCrud/SearchUpdate";
 
 const App = () => {
   return (
@@ -27,6 +28,12 @@ const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/admin/searchs" element={<SearchContainer />} />
         <Route path="/admin/searchs/create" element={<SearchCreate />} />
+
+
+          {/* ADMIN PUBLICACIONES ARIEL */}
+          <Route path="/admin/searchs" element={<SearchContainer/>} />
+        <Route path="/admin/searchs/create" element={<SearchCreate/>} />
+        <Route path="/admin/searchs/update/:id" element={<SearchUpdate/>} />
       </Routes>
       <Footer />
     </>

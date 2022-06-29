@@ -1,6 +1,7 @@
 const Search = require("../models/Search");
 
 class searchServices {
+  /////////// RUTAS ARIEL/////////
   static async getAll() {
     try {
       const allSearch = await Search.findAll();
@@ -10,9 +11,30 @@ class searchServices {
     }
   }
 
-  static async create() {
+  static async create(body) {
+    const {
+      country,
+      area,
+      description,
+      vacancies,
+      status,
+      jobSchedules,
+      salary,
+      title,
+      category,
+    } = body;
     try {
-      const newSearch = Search.create(req.body);
+      const newSearch = Search.create({
+        country,
+        area,
+        description,
+        vacancies,
+        status,
+        jobSchedules,
+        salary,
+        title,
+        category,
+      });
 
       return { error: false, data: newSearch };
     } catch (error) {
@@ -35,6 +57,7 @@ class searchServices {
       };
     }
   }
+  /////////// FIN RUTAS ARIEL/////////
 }
 
 module.exports = searchServices;
