@@ -10,7 +10,6 @@ import SearchsGrid from "./components/SearchsGrid";
 import SearchView from "./components/SearchView";
 import ViewAdmin from "./components/ViewAdmin";
 import Profile from "./components/Profile";
-import SearchContainer from "./components/searchCrud/SearchContainer";
 import SearchCreate from "./components/searchCrud/SearchCreate";
 import SearchUpdate from "./components/searchCrud/SearchUpdate";
 
@@ -18,6 +17,7 @@ const App = () => {
   return (
     <>
       <Navbar />
+
       <Routes>
         <Route path="/" element={<Header />} />
         <Route path="/login" element={<LogIn />} />
@@ -27,11 +27,6 @@ const App = () => {
         <Route path="/admin" element={<ViewAdmin />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/:id" element={<Profile />} />
-        <Route path="/admin/searchs" element={<SearchContainer />} />
-        <Route path="/admin/searchs/create" element={<SearchCreate />} />
-
-        {/* ADMIN PUBLICACIONES ARIEL */}
-        <Route path="/admin/searchs" element={<SearchContainer />} />
         <Route path="/admin/searchs/create" element={<SearchCreate />} />
         <Route path="/admin/searchs/update/:id" element={<SearchUpdate />} />
       </Routes>

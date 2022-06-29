@@ -7,11 +7,4 @@ router.post("/add", searchControllers.createSearch);
 router.get("/:id", searchControllers.getOne);
 router.put("/edit/:id", searchControllers.edit);
 
-
-
-
-
-
-
-
 module.exports = router;
