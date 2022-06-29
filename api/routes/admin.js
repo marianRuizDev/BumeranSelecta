@@ -5,7 +5,7 @@ const passport = require("passport");
 
 
 
-
+//ADMIN A DEFINIR?
 router.post("/register", RoutersUser.register);
 router.post("/login",passport.authenticate("local"), RoutersUser.login);
 router.post("/logout", RoutersUser.logout);

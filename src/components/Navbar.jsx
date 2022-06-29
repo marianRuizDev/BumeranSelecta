@@ -22,15 +22,17 @@ const Navbar = () => {
     navegacion.classList.toggle("fixed", window.scrollY > 236);
   }
 
+  // d-flex justify-content-end
+  // d-flex justify-content-end align-items-center
   return (
     <>
-      <nav class="navbar navbar-expand-lg navbar-dark  fixed-top shadow-lg p-3 mb-5 bg-white  nav2  nav-menu_medium ">
-        <div class="container-fluid align-items-baseline  p-4 ">
+      <nav class="navbar navbar-expand-lg navbar-dark   fixed-top shadow-lg p-3 mb-5 bg-white  nav2  nav-menu_medium ">
+        <div class="container-fluid  align-items-baseline d-flex   p-4 ">
           <Link to={"/"} className="navbar-brand">
             <img src={marca} width={250} />
           </Link>
           <button
-            class="navbar-toggler"
+            class="navbar-toggler navtoggler2"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNavDarkDropdown"
@@ -38,13 +40,13 @@ const Navbar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon" id="navtoggler"></span>
           </button>
           <div
-            class="collapse navbar-collapse d-flex justify-content-end  p-2 nav2"
-            id="navbarNavDarkDropdown "
+            class="collapse navbar-collapse  p-2 nav2  justify-content-end "
+            id="navbarNavDarkDropdown"
           >
-            <ul class="navbar-nav  d-flex justify-content-end align-items-center ">
+            <ul class="navbar-nav  ">
               <li className="nav-item">
                 <h5>Home</h5>
               </li>
