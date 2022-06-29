@@ -8,7 +8,6 @@ body {
   min-height: 100vh;
   margin: 0;
   margin-bottom: 17.6%;
-  margin-top: 110px; 
 }
 html {
   min-height: 100%;
@@ -25,14 +24,14 @@ a:hover {
   color: inherit;
 }
 
-* {
+*{
   box-sizing: border-box !;
   list-style: none;
-}
+} 
 
 /* /////////////ARIEL///////////// */
 
-.nav2 {
+/* .nav2 {
   padding: 0 !important;
   
 }
@@ -82,5 +81,5 @@ li {
   color: black !important;
   background: rgba(221, 8, 54, 0.589);
   font-weight: 500;
-}
+} */
 /* ///////////// FIN  ARIEL///////////// */

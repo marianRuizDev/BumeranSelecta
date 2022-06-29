@@ -1,89 +1,69 @@
 import marca from "../assets/navbar/logo-1.png";
+import { BsPersonCircle, BsPersonXFill, BsPersonSquare, BsFillPersonPlusFill } from 'react-icons/bs'
+import { MdPersonSearch } from 'react-icons/md'
+import { BiNews } from 'react-icons/bi'
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "../style/navbar.scss";
-import { useDispatch, useSelector } from "react-redux";
 
 const Navbar = () => {
   const admin = useSelector((state) => state.admin);
 
   return (
-    <nav className="navbar navbar-toggler navbar-expand-lg navbar-dark p-md-3">
-      <div className="container">
-        <Link to={"/"} className="navbar-brand">
-          <img src={marca} width={250} />
-        </Link>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <div>
 
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <div className="mx-auto"></div>
-          {admin.value ? (
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link className="nav-link text-danger" to={"#"}>
-                  Opción
-                </Link>
+      <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <Link to={"/"} className="navbar-brand">
+            <img src={marca} width={250} />
+          </Link>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <Link to={"/searchs"} class="nav-link active text"><MdPersonSearch class='icon' /> Busquedas</Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link text-danger" to={"/admin/searchs"}>
-                  Búsquedas
-                </Link>
+              <li class="nav-item">
+                <Link to={"/admin"} className="nav-link active text"><BsFillPersonPlusFill /> Reclutadores</Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link text-danger" to={"/admin"}>
-                  Vista Admin
-                </Link>
+              <li class="nav-item dropdown">
+                <a class="nav-link active text" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><BiNews class='icon' />
+                  Publicaciones
+                </a>
+                {/* Si quieren agregar opciones cambiar tag a por tag Link to={'/...'} */}
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item">Action</a></li>
+                  <li><a class="dropdown-item">Another action</a></li>
+                  <li><a class="dropdown-item">Something else here</a></li>
+                </ul>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link text-danger" to={"/searchs"}>
-                  Busquedas
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-danger" to={"login"}>
-                  Iniciar sesión
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-danger" to={"sigup"}>
-                  Registrase
-                </Link>
-              </li>
-            </ul>
-          ) : (
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link className="nav-link text-danger" to={"login"}>
-                  Iniciar sesión
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-danger" to={"sigup"}>
-                  Registrase
-                </Link>
+
+              {/* Si es reclutador solo su perfil */}
+              <li class="nav-item">
+                <Link to={"/profile"} className="nav-link active text"><BsPersonSquare class='icon' />Mi perfil</Link>
               </li>
             </ul>
-          )}
+          </div>
+          <div>
+
+          </div>
+          <span className="boton-logout"><button class="btn btn-dark" type="submit"><BsPersonXFill class='icon' /></button></span>
+
+          {/* Si no está logueado, muetra iniciar sesión y register  */}
+          <Link to={'/login'} className="boton-login"><button class="btn btn-danger" type="submit"><BsPersonCircle /></button></Link>
+
+          <Link to={'/sigup'}><button class="btn btn-danger boton-registro" type="submit">Registrarse</button></Link>
+
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
+
+
   );
 };
 
-/* Navbar transparente */
-/*  window.addEventListener("scroll", function () {
-         let nav = document.querySelector('nav')
-         nav.classList.toggle('abajo', window.scrollY > 0)
-     })
-  */
 
 export default Navbar;
