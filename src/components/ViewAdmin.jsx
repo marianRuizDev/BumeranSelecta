@@ -130,6 +130,7 @@ const ViewAdmin = () => {
 
       <div>
         {recruitersCopy
+          .filter((recruiter) => recruiter.admin !== true)
           .sort((x, y) => {
             if (x.rating < y.rating) {
               return 1;
