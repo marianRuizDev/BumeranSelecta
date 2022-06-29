@@ -8,6 +8,7 @@ body {
   min-height: 100vh;
   margin: 0;
   margin-bottom: 17.6%;
+  margin-top: 110px; 
 }
 html {
   min-height: 100%;
@@ -25,8 +26,65 @@ a:hover {
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box !;
   list-style: none;
 }
+
+/* /////////////ARIEL///////////// */
+
+.nav2 {
+  padding: 0 !important;
+  
+}
+
+.buttonLogOut {
+  margin: 0 !important;
+}
+.buttonSinUp {
+  background: rgb(23, 144, 180) !important;
+  color: white;
+  font-weight: 500;
+  border: none;
+}
+
+.buttonLoging {
+  background: rgb(23, 67, 212) !important;
+  color: white;
+  font-weight: 500;
+  border: none;
+}
+
+li {
+  margin: 10px !important;
+}
+
+.dropdown-menu {
+
+}
+
+.nav-menu_medium {
+  background: #e9e9e9 !important;
+}
+.navtoggler2{
+  color: black !important;
+}
+#navtoggler2{
+  color: black !important;
+}
+
+.nav-link {
+  color: black !important;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.fixed {
+  display: none;
+  
+}
+
+.perfil {
+  color: black !important;
+  background: rgba(221, 8, 54, 0.589);
+  font-weight: 500;
+}
+/* ///////////// FIN  ARIEL///////////// */

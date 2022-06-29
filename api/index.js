@@ -10,7 +10,7 @@ const cookieParser = require("cookie-parser");
 const sessions = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const User = require("./models/Admin");
+const Recruiter = require("./models/Recruiter");
 const db = require("../config/db");
 
 app.use(cors());
@@ -23,7 +23,7 @@ app.use(cookieParser());
 
 app.use(
   sessions({
-    secret: "tmdb",
+    secret: "bumeranSelecta",
     resave: true,
     saveUninitialized: true,
   })
@@ -33,22 +33,23 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(
+  "local",
   new LocalStrategy(
     {
       usernameField: "email",
       passwordField: "password",
     },
     function (email, password, done) {
-      User.findOne({ where: { email } })
-        .then((user) => {
-          if (!user) {
+      Recruiter.findOne({ where: { email } })
+        .then((recruiter) => {
+          if (!recruiter) {
             return done(null, false);
           }
-          user.hash(password, user.salt).then((hash) => {
-            if (hash !== user.password) {
+          recruiter.hash(password, recruiter.salt).then((hash) => {
+            if (hash !== recruiter.password) {
               return done(null, false);
             }
-            return done(null, user);
+            return done(null, recruiter);
           });
         })
         .catch(done);
@@ -56,14 +57,14 @@ passport.use(
   )
 );
 
-passport.serializeUser(function (user, done) {
-  done(null, user.id);
+passport.serializeUser(function (recruiter, done) {
+  done(null, recruiter.id);
 });
 
 passport.deserializeUser(function (id, done) {
-  User.findByPk(id)
-    .then((user) => {
-      done(null, user);
+  Recruiter.findByPk(id)
+    .then((recruiter) => {
+      done(null, recruiter);
     })
     .catch(done);
 });

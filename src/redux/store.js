@@ -9,6 +9,7 @@ import adminSlice from "./proofAdmin";
 import recruiterReducer from "./recruiters";
 import countryReducer from "./getCountries";
 import areaReducer from "./getAreas";
+import searchReducer from "./search";
 
 const persistConfig = {
   key: "root",
@@ -22,12 +23,14 @@ const reducer = combineReducers({
   recruiters: recruiterReducer,
   country: countryReducer,
   area: areaReducer,
+  search: searchReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);
 
 const store = configureStore({
   reducer: persistedReducer,
+
   middleware: [thunk],
 });
 

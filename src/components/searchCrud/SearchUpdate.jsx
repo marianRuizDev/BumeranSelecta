@@ -1,19 +1,16 @@
-import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useInput from "../../hooks/useInput";
-import { getOneSearches } from "../../redux/search";
+import { getOneSearches, getOneUpDate } from "../../redux/search";
 
 export default function SearchUpdate() {
   const { id } = useParams();
 
-  console.log(id);
-
   const navigate = useNavigate();
 
   const country = useInput();
-  const area_search = useInput();
+  const area = useInput();
   const position = useInput();
   const description = useInput();
   const vacancies = useInput();
@@ -22,36 +19,35 @@ export default function SearchUpdate() {
   const title = useInput();
   const category = useInput();
 
-  const editSearch = (e) => {
-    e.preventDefault();
-    axios
-      .put(`http://localhost:8000/api/search2/edit/${id}`, {
-        country: country.value,
-        area_search: area_search.value,
-        position: position.value,
-        description: description.value,
-        vacancies: vacancies.value,
-        jobSchedules: jobSchedules.value,
-        salary: salary.value,
-        title: title.value,
-        category: category.value,
-      })
-      .then((res) => res.data)
-      .catch((error) => console.log(error));
-
-    navigate("/admin/searchs");
-  };
-
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search);
+
+  //console.log(search);
+
+  const editSearch = (e) => {
+    e.preventDefault();
+    dispatch(
+      getOneUpDate(
+        id,
+        country,
+        area,
+        position,
+        description,
+        vacancies,
+        jobSchedules,
+        salary,
+        title,
+        category
+      )
+    );
+    navigate("/admin/searchs");
+  };
 
   useEffect(() => {
     dispatch(getOneSearches(id));
   }, []);
 
-
   console.log();
-
 
   return (
     <div class="container mt-4">
@@ -80,8 +76,8 @@ export default function SearchUpdate() {
                   <input
                     type="text"
                     class="form-control"
-                    placeholder={search[0].area_search}
-                    {...area_search}
+                    placeholder={search[0].area}
+                    {...area}
                   />
                 </div>
 
@@ -173,17 +169,15 @@ export default function SearchUpdate() {
                 placeholder={search[0].description}
                 class="form-control"
                 {...description}
-              >
-
-              </textarea>
+              ></textarea>
             </div>
 
             <div className="box_button">
-              <button type="submit" class="btn btn-dark m-2">
+              <button type="submit" class="btn btn-primary m-2">
                 Guardar
               </button>
 
-              <Link to={"/admin/searchs"} class="btn btn-danger m-2">
+              <Link to={"/admin/searchs"} class="btn btn-outline-warning m-2">
                 Cancelar
               </Link>
             </div>
@@ -193,11 +187,3 @@ export default function SearchUpdate() {
     </div>
   );
 }
-
-
-
-
-
-
-
-

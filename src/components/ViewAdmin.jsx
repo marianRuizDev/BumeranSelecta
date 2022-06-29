@@ -14,13 +14,15 @@ import { getAreasRequest } from "../redux/getAreas";
 const ViewAdmin = () => {
   const dispatch = useDispatch();
   const recruiters = useSelector((state) => state.recruiters);
+  const countries = useSelector((state) => state.country);
+  const areas = useSelector((state) => state.area);
   const recruitersCopy = [...recruiters];
 
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [value, setValue] = useState("");
-  const countries = useSelector((state) => state.country);
-  const areas = useSelector((state) => state.area);
+
+  console.log(countries);
 
   const handlerClick = (e) => {
     setValue(e.target.value);

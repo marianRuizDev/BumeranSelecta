@@ -1,18 +1,21 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
 import { sendAllSearches } from "../../redux/search";
 import SearchItem from "./SearchItem";
 
 export default function CrudSearch() {
   const dispatch = useDispatch();
-  const search = useSelector((state) => state.search) || undefined;
+  const search = useSelector((state) => state.search) 
 
+
+ // console.log(search)
   useEffect(() => {
     dispatch(sendAllSearches());
   }, []);
 
-  console.log(search);
+  
 
   return (
     <>
@@ -33,9 +36,9 @@ export default function CrudSearch() {
           </thead>
 
           <tbody>
-            {search?.map((itemBusqueda, index) => {
+             {search?.map((itemBusqueda, index) => {
               return <SearchItem itemBusqueda={itemBusqueda} index={index} />;
-            })}
+            })} 
           </tbody>
         </table>
       </div>
