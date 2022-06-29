@@ -11,7 +11,7 @@ const sessions = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const Recruiter = require("./models/Recruiter");
-const db = require("../config/db");
+const db = require("./config/db");
 
 app.use(cors());
 
