@@ -1,0 +1,17 @@
+import axios from "axios";
+import { createReducer, createAsyncThunk } from "@reduxjs/toolkit";
+
+export const getAreasRequest = createAsyncThunk("AREAS", async () => {
+  try {
+    const data = await axios.get("http://localhost:8000/api/recruiter/area");
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+const areaReducer = createReducer([], {
+  [getAreasRequest.fulfilled]: (state, action) => action.payload,
+});
+
+export default areaReducer;

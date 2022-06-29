@@ -36,7 +36,6 @@ router.get("/area", (req, res) => {
 router.get("/", (req, res) => {
   Recruiter.findAll()
     .then((search) => {
-      console.log(search);
       res.send(search);
     })
     .catch((err) => {

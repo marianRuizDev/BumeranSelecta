@@ -6,41 +6,21 @@ import CardsAdmin from "./CardsAdmin";
 import "../style/viewAdmin.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { sendAllRecruiters } from "../redux/recruiters";
+import { fetchClient } from "../config/index";
+import axios from "axios";
+import { getCountriesRequest } from "../redux/getCountries";
+import { getAreasRequest } from "../redux/getAreas";
 
 const ViewAdmin = () => {
   const dispatch = useDispatch();
   const recruiters = useSelector((state) => state.recruiters);
   const recruitersCopy = [...recruiters];
 
-  const paises = [
-    "Argentina",
-    "Chile",
-    "Colombia",
-    "Ecuador",
-    "Mexico",
-    "Panama",
-    "Peru",
-    "Uruguay",
-  ];
-  const areas = [
-    "Administración",
-    "Comercial",
-    "Producción",
-    "Tecnología",
-    "Logística",
-    "Gastronomía",
-    "Recursos Humanos",
-    "Salud",
-    "Ingenierías",
-    "Atención al Cliente",
-    "Marketing",
-    "Construcción",
-    "Comercio Exterior",
-  ];
-
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [value, setValue] = useState("");
+  const countries = useSelector((state) => state.country);
+  const areas = useSelector((state) => state.area);
 
   const handlerClick = (e) => {
     setValue(e.target.value);
@@ -62,6 +42,8 @@ const ViewAdmin = () => {
 
   useEffect(() => {
     dispatch(sendAllRecruiters());
+    dispatch(getCountriesRequest());
+    dispatch(getAreasRequest());
   }, []);
 
   return (
@@ -89,7 +71,7 @@ const ViewAdmin = () => {
               onChange={handleCountryChange}
             >
               <option value={""}>Pais</option>
-              {paises.map((pais, i) => {
+              {countries.data.map((pais, i) => {
                 return <option key={i}>{pais}</option>;
               })}
             </select>
@@ -101,7 +83,7 @@ const ViewAdmin = () => {
               onChange={handleJobAreaChange}
             >
               <option value={""}>Área</option>
-              {areas.map((area, i) => {
+              {areas.data.map((area, i) => {
                 return (
                   <option value={area.area} key={i}>
                     {area}

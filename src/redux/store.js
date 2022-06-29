@@ -7,6 +7,8 @@ import thunk from "redux-thunk";
 import loginReducer from "./login";
 import adminSlice from "./proofAdmin";
 import recruiterReducer from "./recruiters";
+import countryReducer from "./getCountries";
+import areaReducer from "./getAreas";
 
 const persistConfig = {
   key: "root",
@@ -18,6 +20,8 @@ const reducer = combineReducers({
   login: loginReducer,
   admin: adminSlice,
   recruiters: recruiterReducer,
+  country: countryReducer,
+  area: areaReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);

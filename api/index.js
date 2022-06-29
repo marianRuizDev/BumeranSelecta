@@ -13,12 +13,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/Admin");
 const db = require("../config/db");
 
-app.use(
-  cors({
-    credentials: true,
-    origin: ["http://localhost:3000"],
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 
