@@ -2,33 +2,53 @@
 const S = require("sequelize");
 const db = require("../config/db");
 const bcrypt = require("bcrypt");
+const Search = require('./Search')
 
 class Recruiter extends S.Model {
   hash(password, salt) {
     return bcrypt.hash(password, salt);
   }
-  /**
-   * Helper method for defining associations.
-   * This method is not a part of Sequelize lifecycle.
-   * The models/index file will call this method automatically.
-   */
-  static associate(models) {
-    // define association here
-  }
 }
 
 Recruiter.init(
   {
-    email: S.STRING,
-    password: S.STRING,
-    name: S.STRING,
-    lastName: S.STRING,
-    country: S.STRING,
-    description: S.TEXT,
-    experienceField: S.STRING,
-    rating: S.INTEGER,
-    activeSearchs: S.INTEGER,
-    admin: S.BOOLEAN,
+    password: {
+      type: S.STRING,
+      allowNull: false,
+    },
+    name: {
+      type: S.STRING,
+      allowNull: false,
+    },
+    lastName: {
+      type: S.STRING,
+      allowNull: false,
+    },
+    country: {
+      type: S.STRING,
+      allowNull: true,
+    },
+    description: {
+      type: S.TEXT,
+      allowNull: true,
+    },
+    experienceField: {
+      type: S.STRING,
+      allowNull: true,
+    },
+    rating: {
+      type:S.INTEGER,
+      allowNull: true,
+    },
+    activeSearchs: {
+      type: S.INTEGER,
+      defaultValue: 0,
+    },
+    admin: {
+      type: S.BOOLEAN,
+      defaultValue: false,
+      allowNull: false,
+    },
   },
   {
     sequelize: db,
@@ -47,5 +67,6 @@ Recruiter.beforeCreate((recruiter) => {
       recruiter.password = hash;
     });
 });
+
 
 module.exports = Recruiter;

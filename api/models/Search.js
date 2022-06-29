@@ -1,36 +1,53 @@
 "use strict";
 const S = require("sequelize");
 const db = require("../config/db");
+const Recruiter = require('./Recruiter');
 
-class Search extends S.Model {
-  /**
-   * Helper method for defining associations.
-   * This method is not a part of Sequelize lifecycle.
-   * The `models/index` file will call this method automatically.
-   */
-  static associate(models) {
-    // define association here
-  }
-}
+class Search extends S.Model {}
 
 Search.init(
   {
-    country: S.STRING,
-    area: S.STRING,
-    position: S.STRING,
-    description: S.TEXT,
-    vacancies: S.INTEGER,
-    status: S.STRING,
-    time: S.DATEONLY,
-    jobSchedules: S.STRING,
-    salary: S.INTEGER,
-    title: S.STRING,
-    category: S.STRING,
+    country: {
+      type: S.STRING
+    },
+    area: {
+      type: S.STRING
+    },
+    position: {
+      type: S.STRING
+    },
+    description: {
+      type: S.TEXT
+    },
+    vacancies: {
+      type: S.INTEGER
+    },
+    status: {
+      type: S.STRING,
+      defaultValue: "Open"
+    },
+    time: {
+      type: S.DATEONLY
+    },
+    jobSchedules: {
+      type: S.STRING
+    },
+    salary: {
+      type: S.INTEGER
+    },
+    title: {
+      type: S.STRING
+    },
+    category: {
+      type: S.STRING
+    },
   },
   {
     sequelize: db,
     modelName: "Search",
   }
 );
+
+Search.Recruiter = Search.belongsTo(Recruiter);
 
 module.exports = Search;
