@@ -4,6 +4,7 @@ class recruiterControllers {
   /////////// RUTAS ARIEL/////////
   static async register(req, res) {
     const { error, data } = await recruiterServices.createRecruiter(req.body);
+    console.log("ACA DATA", data);
     if (data[1]) res.status(201).send(data[0]);
     else res.status(400).send(data[1]);
 
