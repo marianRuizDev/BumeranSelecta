@@ -29,6 +29,7 @@ Recruiter.init(
     rating: S.INTEGER,
     activeSearchs: S.INTEGER,
     admin: S.BOOLEAN,
+    salt: S.STRING,
   },
   {
     sequelize: db,
