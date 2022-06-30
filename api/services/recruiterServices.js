@@ -1,4 +1,4 @@
-const Recruiter = require("../models/Recruiter");
+const { Recruiter } = require('../models');
 
 class recruiterServices {
   static async createRecruiter(body) {
@@ -10,7 +10,7 @@ class recruiterServices {
         defaults: {
           name,
           lastName,
-          password
+          password,
         },
       });
 

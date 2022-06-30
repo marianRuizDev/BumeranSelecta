@@ -1,8 +1,8 @@
-"use strict";
-const S = require("sequelize");
-const db = require("../config/db");
-const bcrypt = require("bcrypt");
-const Search = require('./Search')
+'use strict';
+const S = require('sequelize');
+const db = require('../config/db');
+const bcrypt = require('bcrypt');
+const Search = require('./Search');
 
 class Recruiter extends S.Model {
   hash(password, salt) {
@@ -45,7 +45,7 @@ Recruiter.init(
       allowNull: true,
     },
     rating: {
-      type:S.INTEGER,
+      type: S.INTEGER,
       allowNull: true,
     },
     activeSearchs: {
@@ -64,7 +64,7 @@ Recruiter.init(
   },
   {
     sequelize: db,
-    modelName: "Recruiter",
+    modelName: 'Recruiter',
   }
 );
 
@@ -79,6 +79,5 @@ Recruiter.beforeCreate((recruiter) => {
       recruiter.password = hash;
     });
 });
-
 
 module.exports = Recruiter;

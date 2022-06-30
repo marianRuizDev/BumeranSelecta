@@ -1,5 +1,5 @@
-const searchServices = require("../services/searchServices");
-const Search = require("../models/Search");
+const searchServices = require('../services/searchServices');
+const { Search } = require('../models');
 
 class RouterSearch {
   /////////// RUTAS ARIEL/////////
