@@ -4,6 +4,7 @@ import {
   BsPersonXFill,
   BsPersonSquare,
   BsFillPersonPlusFill,
+  BsBarChart
 } from "react-icons/bs";
 import { MdPersonSearch } from "react-icons/md";
 import { BiNews } from "react-icons/bi";
@@ -53,6 +54,11 @@ const Navbar = () => {
                     <Link to={"/admin"} className="nav-link active text">
                       <BsFillPersonPlusFill /> Reclutadores
                     </Link>
+                  </li>
+                  <li class="nav-item">
+                    <a className="nav-link active text">
+                      <BsBarChart /> Estadisticas
+                    </a>
                   </li>
                   {/*  <li class="nav-item dropdown">
                     <a

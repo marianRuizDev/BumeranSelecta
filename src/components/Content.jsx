@@ -82,7 +82,7 @@ const Content = () => {
             </ul>
           </div>
 
-          <div className="col-lg-1"></div>
+         
         </div>
       </div>
     </div>
