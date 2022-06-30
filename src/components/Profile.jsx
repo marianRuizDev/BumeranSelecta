@@ -11,12 +11,25 @@ import '../style/profile.scss';
 const Profile = () => {
   let userId = useParams().id;
   let [user, setUser] = useState({});
+  let [searchs, setSearchs] = useState([]);
 
   useEffect(() => {
     if (userId) {
       getUserAsync();
+      getSearchsAsync();
     }
   }, []);
+
+  const getSearchsAsync = async () => {
+    try {
+      const { data } = await fetchClient(
+        `http://localhost:8000/api/search/asigned/${userId}`
+      );
+      setSearchs(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getUserAsync = async () => {
     try {
@@ -28,7 +41,6 @@ const Profile = () => {
       console.log(error);
     }
   };
-  console.log(user);
 
   return (
     <div>
@@ -61,7 +73,20 @@ const Profile = () => {
           Busquedas activas
         </h2>
         <div class="col">
-          {/* <SearchCard country={'argentina'} area={'produccion'} /> */}
+          {searchs.map((search, index) => {
+            return (
+              <SearchCard
+                key={index}
+                country={search.country}
+                area={search.area}
+                time={search.time}
+                status={search.status}
+                id={search.id}
+                description={search.description}
+                title={search.title}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
