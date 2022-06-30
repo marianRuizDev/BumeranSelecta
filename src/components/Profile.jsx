@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { IoLocationSharp } from "react-icons/io5";
-import { AiOutlineMail } from "react-icons/ai";
-import { MdWork } from "react-icons/md";
-import { fetchClient } from "../config/index";
-import perfil from "../assets/profiles/perfil2.png";
-import SearchCard from "./SearchCard";
-import "../style/profile.scss";
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { IoLocationSharp } from 'react-icons/io5';
+import { AiOutlineMail } from 'react-icons/ai';
+import { MdWork } from 'react-icons/md';
+import { fetchClient } from '../config/index';
+import perfil from '../assets/profiles/perfil2.png';
+import SearchCard from './SearchCard';
+import '../style/profile.scss';
 
 const Profile = () => {
   let userId = useParams().id;
@@ -28,6 +28,7 @@ const Profile = () => {
       console.log(error);
     }
   };
+  console.log(user);
 
   return (
     <div>

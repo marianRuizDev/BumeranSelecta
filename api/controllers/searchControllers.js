@@ -1,8 +1,7 @@
-const searchServices = require("../services/searchServices");
-const Search = require("../models/Search");
+const searchServices = require('../services/searchServices');
+const { Search } = require('../models');
 
 class RouterSearch {
-
   /////////// RUTAS ARIEL/////////
   static async allSearch(req, res) {
     const { error, data } = await searchServices.getAll();

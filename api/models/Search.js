@@ -1,6 +1,6 @@
-"use strict";
-const S = require("sequelize");
-const db = require("../config/db");
+'use strict';
+const S = require('sequelize');
+const db = require('../config/db');
 const Recruiter = require('./Recruiter');
 
 class Search extends S.Model {}
@@ -8,46 +8,44 @@ class Search extends S.Model {}
 Search.init(
   {
     country: {
-      type: S.STRING
+      type: S.STRING,
     },
     area: {
-      type: S.STRING
+      type: S.STRING,
     },
     position: {
-      type: S.STRING
+      type: S.STRING,
     },
     description: {
-      type: S.TEXT
+      type: S.TEXT,
     },
     vacancies: {
-      type: S.INTEGER
+      type: S.INTEGER,
     },
     status: {
       type: S.STRING,
-      defaultValue: "Open"
+      defaultValue: 'Open',
     },
     time: {
-      type: S.DATEONLY
+      type: S.DATEONLY,
     },
     jobSchedules: {
-      type: S.STRING
+      type: S.STRING,
     },
     salary: {
-      type: S.INTEGER
+      type: S.INTEGER,
     },
     title: {
-      type: S.STRING
+      type: S.STRING,
     },
     category: {
-      type: S.STRING
+      type: S.STRING,
     },
   },
   {
     sequelize: db,
-    modelName: "Search",
+    modelName: 'Search',
   }
 );
-
-Search.Recruiter = Search.belongsTo(Recruiter);
 
 module.exports = Search;
