@@ -2,11 +2,9 @@ const searchServices = require("../services/searchServices");
 const Search = require("../models/Search");
 
 class RouterSearch {
-
   /////////// RUTAS ARIEL/////////
   static async allSearch(req, res) {
     const { error, data } = await searchServices.getAll();
-    console.log(data);
     if (error) {
       return res.status(404).send(data);
     }
@@ -65,6 +63,12 @@ class RouterSearch {
       return res.status(404).send(data);
     }
     res.status(200).send(data);
+  }
+
+  static async delete(req, res) {
+    await searchServices.delete({
+      where: { id: req.params.id },
+    });
   }
   ///////////FIN RUTAS ARIEL/////////
 }

@@ -6,5 +6,6 @@ router.get("/all", searchControllers.allSearch);
 router.post("/add", searchControllers.createSearch);
 router.get("/:id", searchControllers.getOne);
 router.put("/edit/:id", searchControllers.edit);
+router.delete("/:id", searchControllers.delete);
 
 module.exports = router;
