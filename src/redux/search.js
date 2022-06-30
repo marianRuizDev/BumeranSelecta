@@ -42,7 +42,6 @@ export const getOneUpDate = createAsyncThunk(
     category,
   }) => {
     try {
-      console.log("TITLE", vacancies);
       const data = await axios.put(
         `http://localhost:8000/api/search/edit/${id}`,
         {

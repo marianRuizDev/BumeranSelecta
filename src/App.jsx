@@ -33,7 +33,7 @@ const App = () => {
 
         {/* Nuevas rutas */}
 
-        <Route path="/admin/profiles" element={<FormProfile />} />
+        <Route path="/admin/profiles/:id" element={<FormProfile />} />
         <Route path="/mod" element={<ProfileMod />} />
       </Routes>
       <Footer />
