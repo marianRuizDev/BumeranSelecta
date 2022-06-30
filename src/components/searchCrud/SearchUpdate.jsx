@@ -22,12 +22,10 @@ export default function SearchUpdate() {
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search);
 
-  //console.log(search);
-
   const editSearch = (e) => {
     e.preventDefault();
     dispatch(
-      getOneUpDate(
+      getOneUpDate({
         id,
         country,
         area,
@@ -37,10 +35,12 @@ export default function SearchUpdate() {
         jobSchedules,
         salary,
         title,
-        category
-      )
+        category,
+      })
     );
-    navigate("/admin/searchs");
+    setTimeout(() => {
+      navigate("/searchs");
+    }, 500);
   };
 
   useEffect(() => {

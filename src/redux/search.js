@@ -19,9 +19,17 @@ export const getOneSearches = createAsyncThunk("ONE_SEARCH", async (id) => {
   }
 });
 
+export const deleteSearch = createAsyncThunk("DELETE_SEARCH", async (id) => {
+  try {
+    await axios.delete(`http://localhost:8000/api/search/${id}`);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 export const getOneUpDate = createAsyncThunk(
   "ONE_UPDATE",
-  async (
+  async ({
     id,
     country,
     area,
@@ -31,11 +39,10 @@ export const getOneUpDate = createAsyncThunk(
     jobSchedules,
     salary,
     title,
-    category
-  ) => {
-    console.log(id);
-
+    category,
+  }) => {
     try {
+      console.log("TITLE", vacancies);
       const data = await axios.put(
         `http://localhost:8000/api/search/edit/${id}`,
         {

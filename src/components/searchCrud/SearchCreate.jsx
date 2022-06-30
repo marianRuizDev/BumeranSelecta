@@ -8,7 +8,7 @@ export default function SearchCreate() {
   const navigate = useNavigate();
 
   const country = useInput();
-  const area_search = useInput();
+  const area = useInput();
   const position = useInput();
   const description = useInput();
   const vacancies = useInput();
@@ -22,7 +22,7 @@ export default function SearchCreate() {
     axios
       .post("http://localhost:8000/api/search/add", {
         country: country.value,
-        area_search: area_search.value,
+        area: area.value,
         position: position.value,
         description: description.value,
         vacancies: vacancies.value,
@@ -33,8 +33,10 @@ export default function SearchCreate() {
       })
       .then((res) => res.data)
       .catch((error) => console.log(error));
-
-    navigate("/admin/searchs");
+    navigate("/searchs");
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   };
 
   return (
@@ -65,7 +67,7 @@ export default function SearchCreate() {
                     type="text"
                     class="form-control"
                     placeholder="Area de trabajo"
-                    {...area_search}
+                    {...area}
                   />
                 </div>
 

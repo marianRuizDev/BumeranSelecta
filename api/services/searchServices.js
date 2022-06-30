@@ -57,6 +57,20 @@ class searchServices {
       };
     }
   }
+
+  static async delete(id) {
+    try {
+      const data = await Search.destroy(id);
+      return data;
+    } catch (error) {
+      console.error(error);
+      return {
+        error: true,
+        data: "error 404: product not found",
+      };
+    }
+  }
+
   /////////// FIN RUTAS ARIEL/////////
 }
 

@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { FaUserAlt } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
@@ -13,59 +13,48 @@ import { FaUsers } from "react-icons/fa";
 
 import perfil from "../assets/profiles/perfil2.png";
 import "../style/searchs.scss";
+import { getOneSearches } from "../redux/search";
+import { sendAllRecruiters } from "../redux/recruiters";
 
 function SearchView() {
+  const dispatch = useDispatch();
   const params = useParams();
   const id = params.id;
   const date = new Date().getTime();
+  const diff =
+    "hola"; /* (date - selectedSearch.time) / (1000 * 60 * 60 * 24); */
 
-  const selectedSearch = {
-    country: "Colombia",
-    area_search: "Construcción",
-    position: "Supervisor",
-    vacancies: 1,
-    status: "No iniciada",
-    jobSchedules: "Full Time",
-    salary: "$3000",
-    title: "Supervisor Alto Horno y Laminación - Ternium",
-    time: new Date(2022, 5, 26, 14, 0, 0).getTime(),
-  };
-  const diff = (date - selectedSearch.time) / (1000 * 60 * 60 * 24);
+  const selectedSearch = useSelector((state) => state.search);
+  console.log("SELECTED", selectedSearch);
 
   const recruiters = useSelector((state) => state.recruiters);
   const recruitersCopy = [...recruiters];
+  console.log("ACA RECRUITER", recruitersCopy);
+
+  useEffect(() => {
+    dispatch(getOneSearches(id));
+    dispatch(sendAllRecruiters());
+  }, []);
 
   return (
     <div class="container ">
       <div class="row">
         <div class="card  mb-5">
           <div className="badge-pos">
-            <span className="badge ">{selectedSearch.status}</span>
+            <span className="badge ">{selectedSearch[0].status}</span>
           </div>
           <h1 class="d-flex justify-content-center margin-top">
-            {selectedSearch.title}
+            {selectedSearch[0].title}
           </h1>
 
           <div class="d-flex justify-content-center mb-3">
             <FaUsers size={20} style={{ alignSelf: "center" }} />
             <h5 style={{ paddingTop: "0.5rem", marginLeft: "0.3rem" }}>
-              Puestos vacantes:{selectedSearch.vacancies}
+              Puestos vacantes:{selectedSearch[0].vacancies}
             </h5>
           </div>
           <div class="col  d-flex justify-content-center">
-            <h5 class="info-text">
-              <ul>
-                Importante empresa siderurgica en busca de persona capacitada y
-                experimentada en el sector.
-              </ul>
-              <ul class="mt-4">Funciones Principales:</ul>
-              <ul>* Conocer flujo del funcionamiento del alto Horno.</ul>
-              <ul>
-                * Tener conocimiento previo de mantenimiento durante el proceso
-                de colada.
-              </ul>
-              <ul>* Implementar adecuadamente las tecnoñogías pedidas.</ul>
-            </h5>
+            <h5 class="info-text">{selectedSearch[0].description}</h5>
           </div>
           <div class="row mt-4">
             <div class="col d-flex justify-content-center">
@@ -76,7 +65,7 @@ function SearchView() {
                       class="local"
                       style={{ alignSelf: "center" }}
                     />
-                    {selectedSearch.country}
+                    {selectedSearch[0].country}
                   </div>
                   <div
                     class="vr bg-secondary"
@@ -84,7 +73,7 @@ function SearchView() {
                   ></div>
                   <div class="col d-flex justify-content-left">
                     <MdWork class="work" style={{ alignSelf: "center" }} />
-                    {selectedSearch.area_search}
+                    {selectedSearch[0].area}
                   </div>
                   <div
                     class="vr bg-secondary"
@@ -95,7 +84,7 @@ function SearchView() {
                       class="clock"
                       style={{ alignSelf: "center" }}
                     />
-                    {selectedSearch.jobSchedules}
+                    {selectedSearch[0].jobSchedules}
                   </div>
                 </div>
               </div>
@@ -118,7 +107,7 @@ function SearchView() {
                       class="work"
                       style={{ alignSelf: "center" }}
                     />
-                    {selectedSearch.salary}
+                    {selectedSearch[0].salary}
                   </div>
                   <div
                     class="vr bg-secondary"
@@ -141,7 +130,7 @@ function SearchView() {
           </div>
         </div>
       </div>
-      {selectedSearch.status !== "Finalizada" ? (
+      {selectedSearch[0].status !== "Finalizada" ? (
         <div>
           <h3 className="mb-4">Reclutadores recomendados</h3>
         </div>
@@ -149,7 +138,7 @@ function SearchView() {
         ""
       )}
 
-      {selectedSearch.status !== "Finalizada"
+      {selectedSearch[0].status !== "Finalizada"
         ? recruitersCopy
             .sort((x, y) => {
               if (x.rating < y.rating) {
