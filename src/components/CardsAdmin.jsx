@@ -50,9 +50,11 @@ const CardsAdmin = ({ items }) => {
             </div>
             <div class="col-lg-2">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-danger">
-                  Modificar
-                </button>
+                <link to={'/admin/profiles'}>
+                  <button type="button" class="btn btn-danger">
+                    Modificar
+                  </button>
+                </link>
                 <button
                   onClick={handleDelete}
                   type="button"

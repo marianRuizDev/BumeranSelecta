@@ -1,4 +1,4 @@
-.titulo {
+/* .titulo {
     margin: 3%;
     font-weight: large;
 }
@@ -22,19 +22,19 @@
     padding: 10px;
     text-align: center;
     transition: 0.5s;
-    transform: translate(100px);
+    transform: translateY(100px);
     opacity: 0;
 }
 
 .contenido .cards:hover .card-tarjetas {
-    transform: translate(100px);
+    transform: translateY(0px);
     opacity: 1;
 
 }
 
 .contenido .cards .card-tarjetas h1 {
     position: absolute;
-    top: -20px;
+    top: 5px;
     right: 30px;
     font-size: 8em;
     color: rgba(27, 25, 25, 0.425);
@@ -43,7 +43,7 @@
 
 .contenido .cards .card-tarjetas h5 {
     font-size: 1.0em;
-    color: rgb(14, 13, 13);
+    color: rgba(14, 13, 13, 0.644);
     z-index: 1;
 }
 
@@ -66,4 +66,64 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
 
+} */
+
+
+
+.cards {
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    border-radius: 10%;
+    transition: all 300ms;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+}
+
+.card:hover {
+    width: 350px;
+}
+
+.cards .cover img {
+    margin-left: 43%;
+    margin-top: 3%;
+}
+
+.container__cards h3 {
+    margin-top: 3%;
+}
+
+.container__cards p {
+    margin-top: 2%;
+}
+
+.cards__home {
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.cards__home h3 {
+    margin-bottom: 2%;
+}
+
+.cards__home h4 {
+    margin-top: 3%;
+    margin-left: 37%;
+}
+
+
+.row__cards {
+    margin-left: 3%;
+}
+
+.btn-danger-cards {
+    /*  margin-top: 10%; */
+    margin-left: 30%;
+    border-radius: 5rem;
+    background-color: #eb0064;
+    color: white;
+}
+
+
+.text-light {
+    background-color: #eb0064;
 }

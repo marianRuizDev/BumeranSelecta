@@ -1,15 +1,17 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { VscTrash } from "react-icons/vsc";
-import { BsSearch } from "react-icons/bs";
+import { BsSearch, BsPlus } from "react-icons/bs";
+import { GrEdit } from 'react-icons/gr'
 import { useEffect } from "react";
-import CardsAdmin from "./CardsAdmin";
-import "../style/viewAdmin.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { sendAllRecruiters } from "../redux/recruiters";
-import { fetchClient } from "../config/index";
-import axios from "axios";
 import { getCountriesRequest } from "../redux/getCountries";
 import { getAreasRequest } from "../redux/getAreas";
+import { fetchClient } from "../config/index";
+import CardsAdmin from "./CardsAdmin";
+import "../style/viewAdmin.scss";
+import { Link } from "react-router-dom";
 
 const ViewAdmin = () => {
   const dispatch = useDispatch();
@@ -102,6 +104,10 @@ const ViewAdmin = () => {
             >
               <VscTrash />
             </button>
+
+            <div><Link to={'/admin/profiles'}><button className='btn btn-dark btn-plus'><GrEdit /></button></Link></div>
+            <div><Link to={'/mod'}><button className='btn btn-dark btn-plus'>Modificar</button></Link></div>
+
           </div>
         </div>
       </div>
@@ -169,7 +175,7 @@ const ViewAdmin = () => {
             );
           })}
       </div>
-    </div>
+    </div >
   );
 };
 
