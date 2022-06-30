@@ -9,19 +9,19 @@ import { VscTrash } from "react-icons/vsc";
 
 import logo from "../assets/navbar/Group.png";
 import "../style/searchs.scss";
+import { deleteSearch } from "../redux/search";
 
-function SearchCard({ id, country, area, time, status, text }) {
+function SearchCard({ id, country, area, time, status, description, title }) {
   const dispatch = useDispatch();
   const date = new Date().getTime();
-  const diff = (date - time) / (1000 * 60 * 60 * 24);
+  const searchTime = new Date(time).getTime();
+  const diff = (date - searchTime) / (1000 * 60 * 60 * 24);
 
   const handleDeleteSearch = () => {
-    console.log("hola");
+    dispatch(deleteSearch(id));
   };
 
-  const textSplit = text.split(" ").slice(0, 50).join(" ");
-
-  console.log(textSplit);
+  // const desc = description.slice(0, 400);
 
   return (
     <div class="container mb-4">
@@ -36,10 +36,8 @@ function SearchCard({ id, country, area, time, status, text }) {
                 class="card-body "
                 style={{ maxHeight: "190px", overflow: "hidden" }}
               >
-                <h5 class="card-title">
-                  Supervisor Alto Horno y Laminación - Ternium
-                </h5>
-                <p class="card-text card-texto">{textSplit + "..."}</p>
+                <h5 class="card-title">{title}</h5>
+                <p class="card-text card-texto">{description}</p>
               </div>
             </Link>
           </div>

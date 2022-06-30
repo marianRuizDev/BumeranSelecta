@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { VscTrash } from "react-icons/vsc";
+import { AiOutlineFileAdd } from "react-icons/ai";
 import SearchCard from "./SearchCard";
 import "../style/searchs.scss";
+import { sendAllSearches } from "../redux/search";
 
 function SearchsGrid() {
   const date = new Date().getTime();
@@ -31,92 +34,10 @@ function SearchsGrid() {
     "Construcción",
     "Comercio Exterior",
   ];
-  const searchs = [
-    {
-      id: 1,
-      country: "Argentina",
-      area: "Producción",
-      time: new Date(2022, 5, 24, 16, 0, 0).getTime(),
-      status: "No iniciada",
-      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
-      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
-      odio alias illo dicta adipisci tempore fugit esse Aliquam\
-      earum nesciunt idLorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
-      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
-      odio alias illo dicta adipisci tempore fugit esse Aliquam\
-      earum nesciunt id",
-    },
-    {
-      id: 2,
-      country: "Mexico",
-      area: "Salud",
-      time: new Date(2022, 5, 26, 15, 0, 0).getTime(),
-      status: "No iniciada",
-      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
-      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
-      odio alias illo dicta adipisci tempore fugit esse Aliquam\
-      earum nesciunt idLorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
-      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
-      odio alias illo dicta adipisci tempore fugit esse Aliquam\
-      earum nesciunt id",
-    },
-    {
-      id: 3,
-      country: "Colombia",
-      area: "Comercial",
-      time: new Date(2022, 5, 23, 16, 0, 0).getTime(),
-      status: "No iniciada",
-      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
-      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
-      odio alias illo dicta adipisci tempore fugit esse Aliquam\
-      earum nesciunt idLorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
-      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
-      odio alias illo dicta adipisci tempore fugit esse Aliquam\
-      earum nesciunt id",
-    },
-    {
-      id: 4,
-      country: "Chile",
-      area: "Marketing",
-      time: new Date(2022, 5, 22, 16, 0, 0).getTime(),
-      status: "No iniciada",
-      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
-      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
-      odio alias illo dicta adipisci tempore fugit esse Aliquam\
-      earum nesciunt idLorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
-      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
-      odio alias illo dicta adipisci tempore fugit esse Aliquam\
-      earum nesciunt id",
-    },
-    {
-      id: 5,
-      country: "Argentina",
-      area: "Logística",
-      time: new Date(2022, 5, 18, 16, 0, 0).getTime(),
-      status: "En proceso",
-      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
-      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
-      odio alias illo dicta adipisci tempore fugit esse Aliquam\
-      earum nesciunt idLorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
-      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
-      odio alias illo dicta adipisci tempore fugit esse Aliquam\
-      earum nesciunt id",
-    },
-    {
-      id: 6,
-      country: "Ecuador",
-      area: "Marketing",
-      time: new Date(2022, 3, 26, 16, 0, 0).getTime(),
-      status: "Finalizada",
-      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
-      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
-      odio alias illo dicta adipisci tempore fugit esse Aliquam\
-      earum nesciunt idLorem ipsum dolor, sit amet consectetur adipisicing elit. Ea,\
-      eum ,in facere consequuntur, animi modi aliquid quo. Impedit\
-      odio alias illo dicta adipisci tempore fugit esse Aliquam\
-      earum nesciunt id",
-    },
-  ];
+  const dispatch = useDispatch();
+
+  const searchs = useSelector((state) => state.search);
+
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [searchTime, setSearchTime] = useState("");
@@ -145,10 +66,21 @@ function SearchsGrid() {
     setSearchStatus("");
   };
 
+  useEffect(() => {
+    dispatch(sendAllSearches());
+  }, []);
+
   return (
     <div class="container">
       <div class="card card-search">
         <div class="row  d-flex justify-content-center mt-3">
+          <div class="col col-lg-1">
+            <Link to={"/admin/searchs/create"}>
+              <button type="button" class="btn btn-add">
+                <AiOutlineFileAdd />
+              </button>
+            </Link>
+          </div>
           <div class="col select-container col-lg-2 ">
             <select
               class="form-select"
@@ -256,7 +188,8 @@ function SearchsGrid() {
                 time={search.time}
                 status={search.status}
                 id={search.id}
-                text={search.text}
+                description={search.description}
+                title={search.title}
               />
             ))}
         </div>

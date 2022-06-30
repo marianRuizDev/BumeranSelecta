@@ -18,8 +18,6 @@ const ViewAdmin = () => {
   const areas = useSelector((state) => state.area);
   const recruitersCopy = [...recruiters];
 
-  console.log("COUNTRIES,AREAS", countries, areas);
-
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [value, setValue] = useState("");
