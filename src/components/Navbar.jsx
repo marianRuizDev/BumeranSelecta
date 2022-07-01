@@ -13,6 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { postLogoutRequest } from "../redux/login";
 import "../style/navbar.scss";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const navigate = useNavigate();

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router";
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -13,8 +14,16 @@ import SearchCreate from "./components/searchCrud/SearchCreate";
 import SearchUpdate from "./components/searchCrud/SearchUpdate";
 import FormProfile from "./commons/FormProfile";
 import ProfileMod from "./commons/ProfileMod.jsx";
+import { sendAllSearches } from "./redux/search";
+import { useDispatch } from "react-redux";
+import { sendAllRecruiters } from "./redux/recruiters";
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(sendAllSearches());
+    dispatch(sendAllRecruiters());
+  }, []);
   return (
     <>
       <Navbar />

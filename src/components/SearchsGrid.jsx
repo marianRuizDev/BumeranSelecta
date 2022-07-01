@@ -8,7 +8,6 @@ import { MdOutlineCreateNewFolder } from "react-icons/md";
 
 import "../style/searchs.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { sendAllRecruiters } from "../redux/recruiters";
 import { sendAllSearches } from "../redux/search";
 
 function SearchsGrid() {
@@ -41,7 +40,6 @@ function SearchsGrid() {
   ];
 
   const searchs = useSelector((state) => state.search);
-  console.log(searchs);
 
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
