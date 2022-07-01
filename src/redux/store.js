@@ -9,6 +9,7 @@ import recruiterReducer from "./recruiters";
 import countryReducer from "./getCountries";
 import areaReducer from "./getAreas";
 import searchReducer from "./search";
+import assignedSearchReducer from "./assignedSearch";
 
 const persistConfig = {
   key: "root",
@@ -22,6 +23,7 @@ const reducer = combineReducers({
   country: countryReducer,
   area: areaReducer,
   search: searchReducer,
+  assigned: assignedSearchReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);

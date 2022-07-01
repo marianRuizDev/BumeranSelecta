@@ -9,18 +9,20 @@ import SearchCard from "./SearchCard";
 import "../style/profile.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneRecruiter } from "../redux/recruiters";
+import { getAssignedSearchRequest } from "../redux/assignedSearch";
 
 const Profile = () => {
   const dispatch = useDispatch();
   let userId = useParams().id;
   /* let [user, setUser] = useState({}); */
-  let [searchs, setSearchs] = useState([]);
+  /* let [searchs, setSearchs] = useState([]); */
 
   const userRedux = useSelector((state) => state.recruiters);
+  const searchs = useSelector((state) => state.assigned);
   const user = userRedux[0];
-  console.log(user);
+  console.log(searchs);
 
-  const getSearchsAsync = async () => {
+  /*  const getSearchsAsync = async () => {
     try {
       const { data } = await fetchClient(
         `http://localhost:8000/api/search/asigned/${userId}`
@@ -29,7 +31,7 @@ const Profile = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }; */
 
   /*  const getUserAsync = async () => {
     try {
@@ -46,7 +48,7 @@ const Profile = () => {
     if (userRedux) {
       dispatch(getOneRecruiter(userId));
       /* getUserAsync(); */
-      getSearchsAsync();
+      dispatch(getAssignedSearchRequest(userId));
     }
   }, []);
 
