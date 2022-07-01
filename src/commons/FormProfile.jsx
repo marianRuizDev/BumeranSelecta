@@ -19,8 +19,8 @@ const FormProfile = () => {
   const password = useInput();
   const rating = useInput();
   const description = useInput();
-  const [selectedCountry, setSelectedContry] = useState(user[0].country);
-  const [selectedJob, setSelectedJob] = useState(user[0].experienceField);
+  const country = useInput();
+  const experienceField = useInput();
 
   const countries = useSelector((state) => state.country);
   const areas = useSelector((state) => state.area);
@@ -42,8 +42,8 @@ const FormProfile = () => {
         email,
         rating,
         description,
-        selectedCountry,
-        selectedJob,
+        country,
+        experienceField,
       })
     );
   };
@@ -111,48 +111,29 @@ const FormProfile = () => {
         </div>
 
         <div class="col-md-6">
-          <label for="inputCity" class="form-label">
-            País de residencia
+          <label for="inputEmail4" class="form-label">
+            País
           </label>
-          <select
-            className="form-select"
-            aria-label="Default select example"
-            onChange={handleCountryChange}
-            required
-          >
-            <option selected value={user[0].country}>
-              {user[0].country}
-            </option>
-
-            {countries
-              ?.filter((pais) => pais !== null)
-              .map((pais, i) => {
-                return <option key={i}>{pais}</option>;
-              })}
-          </select>
+          <input
+            type="text"
+            class="form-control"
+            placeholder={user[0].country}
+            aria-label=""
+            {...country}
+          />
         </div>
 
-        <div class="col-md-4">
-          <label for="inputState" class="form-label">
-            Área de experiencia
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">
+            Área
           </label>
-          <select
-            className="form-select"
-            aria-label="Default select example"
-            placeholder="Área"
-            onChange={handleJobAreaChange}
-            required
-          >
-            <option selected value={user[0].experienceField}>
-              {user[0].experienceField}
-            </option>
-
-            {areas
-              ?.filter((area) => area !== null)
-              .map((area, i) => {
-                return <option key={i}>{area}</option>;
-              })}
-          </select>
+          <input
+            type="text"
+            class="form-control"
+            placeholder={user[0].experienceField}
+            aria-label=""
+            {...experienceField}
+          />
         </div>
 
         <div class="col-md-2">

@@ -42,8 +42,8 @@ export const modifyRecruiter = createAsyncThunk(
     email,
     rating,
     description,
-    selectedCountry,
-    selectedJob,
+    country,
+    experienceField,
   }) => {
     try {
       const data = await axios.put(
@@ -54,8 +54,8 @@ export const modifyRecruiter = createAsyncThunk(
           email: email.value,
           rating: rating.value,
           description: description.value,
-          country: selectedCountry,
-          experienceField: selectedJob,
+          country: country.value,
+          experienceField: experienceField.value,
         }
       );
       return data.data;

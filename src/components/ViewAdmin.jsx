@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { VscTrash } from "react-icons/vsc";
 import { BsSearch, BsPlus } from "react-icons/bs";
-import { GrEdit } from 'react-icons/gr'
+import { GrEdit } from "react-icons/gr";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sendAllRecruiters } from "../redux/recruiters";
@@ -105,9 +105,11 @@ const ViewAdmin = () => {
               <VscTrash />
             </button>
 
-            <div><Link to={'/admin/profiles'}><button className='btn btn-dark btn-plus'><GrEdit /></button></Link></div>
-            <div><Link to={'/mod'}><button className='btn btn-dark btn-plus'>Modificar</button></Link></div>
-
+            <div>
+              <Link to={"/mod"}>
+                <button className="btn btn-dark btn-plus">Modificar</button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -175,7 +177,7 @@ const ViewAdmin = () => {
             );
           })}
       </div>
-    </div >
+    </div>
   );
 };
 
