@@ -26,7 +26,6 @@ const App = () => {
         <Route path="/searchs" element={<SearchsGrid />} />
         <Route path="/searchs/:id" element={<SearchView />} />
         <Route path="/admin" element={<ViewAdmin />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="/admin/searchs/create" element={<SearchCreate />} />
         <Route path="/admin/searchs/update/:id" element={<SearchUpdate />} />
@@ -42,6 +41,3 @@ const App = () => {
 };
 
 export default App;
-
-
-

@@ -14,6 +14,7 @@ export const sendAllRecruiters = createAsyncThunk(
 );
 
 export const getOneRecruiter = createAsyncThunk("ONE_SEARCH", async (id) => {
+  console.log("JFJLKASJDLFÑA");
   try {
     const data = await axios.get(`http://localhost:8000/api/recruiter/${id}`);
     return data.data;

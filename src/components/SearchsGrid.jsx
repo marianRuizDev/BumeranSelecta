@@ -7,9 +7,12 @@ import { VscTrash } from "react-icons/vsc";
 import { MdOutlineCreateNewFolder } from "react-icons/md";
 
 import "../style/searchs.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { sendAllRecruiters } from "../redux/recruiters";
+import { sendAllSearches } from "../redux/search";
 
 function SearchsGrid() {
+  const dispatch = useDispatch();
   const date = new Date().getTime();
   const paises = [
     "Argentina",
@@ -67,7 +70,9 @@ function SearchsGrid() {
     setSearchTime("");
     setSearchStatus("");
   };
-
+  useEffect(() => {
+    dispatch(sendAllSearches());
+  }, []);
   return (
     <>
       <div class="container">
@@ -186,7 +191,6 @@ function SearchsGrid() {
                 }
               })
               .map((search, index) => {
-                console.log(search.description);
                 return (
                   <SearchCard
                     key={index}

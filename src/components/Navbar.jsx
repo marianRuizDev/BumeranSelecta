@@ -4,22 +4,26 @@ import {
   BsPersonXFill,
   BsPersonSquare,
   BsFillPersonPlusFill,
-  BsBarChart
+  BsBarChart,
 } from "react-icons/bs";
 import { MdPersonSearch } from "react-icons/md";
 import { BiNews } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { postLogoutRequest } from "../redux/login";
 import "../style/navbar.scss";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.login);
 
   const handleLogout = () => {
     dispatch(postLogoutRequest());
+    setTimeout(() => {
+      navigate("/");
+    }, 500);
   };
 
   return (
@@ -43,65 +47,48 @@ const Navbar = () => {
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-              {user.admin ? (
-                <div className="d-flex">
-                  <li class="nav-item">
-                    <Link to={"/searchs"} class="nav-link active text">
-                      <MdPersonSearch class="icon" /> Busquedas
-                    </Link>
-                  </li>
-                  <li class="nav-item">
-                    <Link to={"/admin"} className="nav-link active text">
-                      <BsFillPersonPlusFill /> Reclutadores
-                    </Link>
-                  </li>
-                  <li class="nav-item">
-                    <a className="nav-link active text">
-                      <BsBarChart /> Estadisticas
-                    </a>
-                  </li>
-                  {/*  <li class="nav-item dropdown">
-                    <a
-                      class="nav-link active text"
-                      id="navbarDropdownMenuLink"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      <BiNews class="icon" />
-                      Publicaciones
-                    </a>
-                    
-                    <ul
-                      class="dropdown-menu"
-                      aria-labelledby="navbarDropdownMenuLink"
-                    >
-                      <li>
-                        <a class="dropdown-item">Action</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item">Another action</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item">Something else here</a>
-                      </li>
-                    </ul>
-                  </li> */}
+              {user.name ? (
+                user.admin ? (
+                  <div className="d-flex">
+                    <li class="nav-item">
+                      <Link to={"/searchs"} class="nav-link active text">
+                        <MdPersonSearch class="icon" /> Busquedas
+                      </Link>
+                    </li>
+                    <li class="nav-item">
+                      <Link to={"/admin"} className="nav-link active text">
+                        <BsFillPersonPlusFill /> Reclutadores
+                      </Link>
+                    </li>
+                    <li class="nav-item">
+                      <a className="nav-link active text">
+                        <BsBarChart /> Estadisticas
+                      </a>
+                    </li>
 
+                    <li class="nav-item">
+                      <Link
+                        to={`/profile/${user.id}`}
+                        className="nav-link active text"
+                      >
+                        <BsPersonSquare class="icon" />
+                        Mi perfil
+                      </Link>
+                    </li>
+                  </div>
+                ) : (
                   <li class="nav-item">
-                    <Link to={"/profile"} className="nav-link active text">
+                    <Link
+                      to={`/profile/${user.id}`}
+                      className="nav-link active text"
+                    >
                       <BsPersonSquare class="icon" />
                       Mi perfil
                     </Link>
                   </li>
-                </div>
+                )
               ) : (
-                <li class="nav-item">
-                  <Link to={"/profile"} className="nav-link active text">
-                    <BsPersonSquare class="icon" />
-                    Mi perfil
-                  </Link>
-                </li>
+                ""
               )}
             </ul>
           </div>

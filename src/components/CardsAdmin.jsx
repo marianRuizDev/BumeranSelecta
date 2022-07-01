@@ -26,13 +26,13 @@ const CardsAdmin = ({ items }) => {
           <div class="row">
             <div class="col-lg-1">
               {/* Hacer un link to al profile */}
-              <Link to={"/profile"}>
+              <Link to={`/profile/${items.id}`}>
                 <img src={perfil} height={75} />
               </Link>
             </div>
 
             <div class="col-lg-4 nombre-container">
-              <Link to={"/profile"}>
+              <Link to={`/profile/${items.id}`}>
                 <h6 className="nombre">{items.name + " " + items.lastName} </h6>
               </Link>
             </div>

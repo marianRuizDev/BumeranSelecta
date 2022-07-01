@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { IoLocationSharp } from 'react-icons/io5';
-import { AiOutlineMail } from 'react-icons/ai';
-import { MdWork } from 'react-icons/md';
-import { fetchClient } from '../config/index';
-import perfil from '../assets/profiles/perfil2.png';
-import SearchCard from './SearchCard';
-import '../style/profile.scss';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { IoLocationSharp } from "react-icons/io5";
+import { AiOutlineMail } from "react-icons/ai";
+import { MdWork } from "react-icons/md";
+import { fetchClient } from "../config/index";
+import perfil from "../assets/profiles/perfil2.png";
+import SearchCard from "./SearchCard";
+import "../style/profile.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { getOneRecruiter } from "../redux/recruiters";
 
 const Profile = () => {
+  const dispatch = useDispatch();
   let userId = useParams().id;
-  let [user, setUser] = useState({});
+  /* let [user, setUser] = useState({}); */
   let [searchs, setSearchs] = useState([]);
 
-  useEffect(() => {
-    if (userId) {
-      getUserAsync();
-      getSearchsAsync();
-    }
-  }, []);
+  const userRedux = useSelector((state) => state.recruiters);
+  const user = userRedux[0];
+  console.log(user);
 
   const getSearchsAsync = async () => {
     try {
@@ -31,7 +31,7 @@ const Profile = () => {
     }
   };
 
-  const getUserAsync = async () => {
+  /*  const getUserAsync = async () => {
     try {
       const { data } = await fetchClient(
         `http://localhost:8000/api/recruiter/${userId}`
@@ -40,7 +40,15 @@ const Profile = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }; */
+
+  useEffect(() => {
+    if (userRedux) {
+      dispatch(getOneRecruiter(userId));
+      /* getUserAsync(); */
+      getSearchsAsync();
+    }
+  }, []);
 
   return (
     <div>

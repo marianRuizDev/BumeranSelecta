@@ -13,13 +13,15 @@ import { deleteSearch } from "../redux/search";
 
 function SearchCard({ id, country, area, time, status, description, title }) {
   const dispatch = useDispatch();
-  console.log(description);
   const date = new Date().getTime();
   const searchTime = new Date(time).getTime();
   const diff = (date - searchTime) / (1000 * 60 * 60 * 24);
 
   const handleDeleteSearch = () => {
     dispatch(deleteSearch(id));
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   };
 
   // const desc = description.slice(0, 400);
