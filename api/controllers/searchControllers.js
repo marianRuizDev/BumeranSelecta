@@ -6,7 +6,6 @@ class RouterSearch {
   /////////// RUTAS ARIEL/////////
   static async allSearch(req, res) {
     const { error, data } = await searchServices.getAll();
-    console.log(data);
     if (error) {
       return res.status(404).send(data);
     }

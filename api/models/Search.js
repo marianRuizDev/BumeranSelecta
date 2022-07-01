@@ -48,6 +48,6 @@ Search.init(
   }
 );
 
-Search.Recruiter = Search.belongsTo(Recruiter);
+//Search.Recruiter = Search.belongsTo(Recruiter);
 
 module.exports = Search;

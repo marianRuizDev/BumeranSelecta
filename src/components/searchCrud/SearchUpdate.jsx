@@ -2,10 +2,16 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useInput from "../../hooks/useInput";
-import { getOneSearches, getOneUpDate } from "../../redux/search";
+import {
+  getOneSearches,
+  getOneUpDate,
+ 
+} from "../../redux/search";
 
 export default function SearchUpdate() {
   const { id } = useParams();
+
+ 
 
   const navigate = useNavigate();
 
@@ -22,12 +28,12 @@ export default function SearchUpdate() {
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search);
 
-  //console.log(search);
+  console.log(search);
 
   const editSearch = (e) => {
     e.preventDefault();
     dispatch(
-      getOneUpDate(
+      getOneUpDate({
         id,
         country,
         area,
@@ -37,8 +43,8 @@ export default function SearchUpdate() {
         jobSchedules,
         salary,
         title,
-        category
-      )
+        category,
+      })
     );
     navigate("/admin/searchs");
   };
@@ -47,14 +53,12 @@ export default function SearchUpdate() {
     dispatch(getOneSearches(id));
   }, []);
 
-  console.log();
-
   return (
     <div class="container mt-4">
       <div class="card border-secondary ">
         <div class=" card-header">NUEVO REGISTRO</div>
         <div class="card-body">
-          <form onSubmit={editSearch} className="">
+           <form onSubmit={editSearch} className="">
             <div className="flex">
               <div className="box_01">
                 <div class="mb-3">
@@ -177,11 +181,11 @@ export default function SearchUpdate() {
                 Guardar
               </button>
 
-              <Link to={"/admin/searchs"} class="btn btn-outline-warning m-2">
+              <Link to={"/searchs"} class="btn btn-outline-warning m-2">
                 Cancelar
               </Link>
             </div>
-          </form>
+          </form> 
         </div>
       </div>
     </div>
