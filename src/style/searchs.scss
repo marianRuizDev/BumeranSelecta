@@ -1,12 +1,103 @@
+// .local {
+//   color: #eb002bee;
+// }
+
+// .build {
+//   color: #000000;
+// }
+
+// .work {
+//   color: #000cf1;
+// }
+
+// .clock {
+//   color: #00dcd4;
+// }
+
+// .rounded-circle {
+//   width: 100px;
+//   height: 100px;
+//   margin: 5%;
+//   margin-left: 20px;
+// }
+// .card-header {
+//   width: 100%;
+//   background-color: #000cf1;
+//   border-top-left-radius: 30px;
+// }
+
+// .card-img {
+//   width: 60%;
+//   margin: auto;
+//   display: block;
+// }
+
+// .img-container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .info-text {
+//   line-height: 1rem;
+//   text-align: justify;
+//   font-weight: 100;
+//   font-family: "Hind Vadodara", sans-serif;
+// }
+
+// .badge {
+//   background-color: #eb0064;
+//   width: 5rem;
+// }
+
+// .badge-pos {
+//   margin-top: 1rem;
+//   display: flex;
+//   align-items: flex-end;
+//   margin-left: 75rem;
+// }
+
+// .select-container {
+//   align-content: center;
+// }
+
+// .margin-bot {
+//   margin-bottom: 10%;
+// }
+
+// .margin-top {
+//   margin-top: 10%;
+//   color: #000cf1;
+// }
+
+// .card-border-radius {
+//   border-radius: 10px;
+// }
+
+// .modify-btns {
+//   display: flex;
+//   justify-content: flex-end;
+//   align-items: center;
+// }
+
+// .card-footer {
+//   max-height: 2rem;
+// }
+
+// .card-texto {
+//   text-align: justify;
+// }
 .btn-search {
   background-color: #545561ce;
   color: white;
 }
 
-.btn-add {
-  background-color: #545561ce;
-  color: white;
-  margin-left: 2.5rem;
+#info-col {
+  margin-left: 50px;
+}
+
+#search-card {
+  width: 50%;
 }
 
 .local {
@@ -20,101 +111,273 @@
 .work {
   color: #000cf1;
 }
-
-.clock {
-  color: #00dcd4;
-}
-
-.rounded-circle {
-  width: 100px;
-  height: 100px;
-  margin: 5%;
-  margin-left: 20px;
-}
-.card-header {
-  width: 100%;
-  background-color: #000cf1;
-  border-top-left-radius: 30px;
-}
-
-.card-img {
-  width: 60%;
-  margin: auto;
-  display: block;
-}
-
-.img-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.info-text {
-  line-height: 1rem;
-  text-align: justify;
-  font-weight: 100;
-  font-family: "Hind Vadodara", sans-serif;
-}
-
 .badge {
   background-color: #eb0064;
-  width: 5rem;
+  margin: 0 auto;
+
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
 }
 
-.badge-pos {
-  margin-top: 1rem;
-  display: flex;
-  align-items: flex-end;
-  margin-left: 75rem;
+//////////////////////////////////////// Estilos Ariel ////////////////////////////////////////////////
+
+//CELULAR
+.ContainerSearch {
+  .flex {
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .card {
+    margin: 15px;
+    padding: 15px;
+    border: rgba(203, 209, 228, 0.3) !important;
+
+    display: flex !important;
+    flex-direction: column;
+
+    .box {
+      display: flex;
+      flex-direction: column;
+    }
+    h5 {
+      text-align: left;
+      font-size: 2.3vmax;
+    }
+    p {
+      text-align: left;
+
+      padding: 5px;
+    }
+
+    .card-img {
+      width: 20%;
+      margin: 0 auto;
+      display: block;
+    }
+    .boxLine {
+      display: flex;
+      flex-direction: column;
+      .lineaDivisora {
+        background: rgb(0, 0, 0) !important;
+        height: 2px;
+      }
+    }
+
+    .infoCard {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(87, 85, 85, 0.027);
+
+      .flexHorizontal {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .time-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top: black solid 1px;
+      background: rgba(49, 49, 49, 0.274);
+      small {
+        font-size: 13px;
+      }
+    }
+  }
 }
+
+// TABLET
+@media screen and (min-width: 810px) {
+  .ContainerSearch {
+    .flex {
+      display: flex !important;
+    }
+
+    .card {
+      margin: 10px;
+      padding: 10px;
+
+      display: flex !important;
+      flex-direction: column;
+      .boxLine {
+        display: flex;
+        flex-direction: row;
+        .lineaDivisora {
+          background: #000000;
+
+          height: 150px;
+          width: 2px;
+        }
+      }
+
+      .box {
+        display: flex;
+        flex-direction: row;
+      }
+      .infoCard {
+        width: 35% !important;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px;
+      }
+      .time-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        small {
+          font-size: 13px;
+          padding-right: 20px;
+          color: rgb(54, 47, 47);
+          font-weight: 500px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .ContainerSearch {
+    .flex {
+      display: flex !important;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      display: flex !important;
+      flex-direction: column;
+      padding: 0;
+
+      .infoCard {
+        width: 35% !important;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .card-img {
+        width: 80%;
+        margin: 0 auto;
+        display: block;
+      }
+
+      .time-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        background: rgba(49, 49, 49, 0.274);
+      }
+    }
+  }
+}
+
+////////////// barra busqueda /////////////////
 
 .card-search {
   background-image: linear-gradient(90deg, #000cf1b2, #eb0066d2);
   bleed: normal;
-  height: 70px;
-}
 
-.select-container {
-  align-content: center;
-}
-
-.margin-bot {
-  margin-bottom: 10%;
-}
-
-.margin-top {
-  margin-top: 10%;
-  color: #000cf1;
-}
-
-.card-border-radius {
-  border-radius: 10px;
-}
-
-.modify-btns {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center !important;
   align-items: center;
 }
 
-.time-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+.create {
+  display: none;
+}
+.create2 {
+  display: block;
 }
 
-.card-footer {
-  max-height: 2rem;
+.boxBusqueda {
+  display: flex !important;
+  flex-direction: column;
+
+  width: 90%;
+
+  select {
+    cursor: pointer;
+
+    width: 100%;
+    background: rgba(235, 13, 13, 0.096);
+    border: rgb(197, 190, 190) solid;
+    border-radius: 20px;
+    padding-left: 8px;
+    color: #1d1c1c;
+    font-weight: 500;
+    margin: 5px;
+  }
 }
 
-.card-texto {
-  text-align: justify;
+@media screen and (min-width: 810px) {
+  .card-search {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .create {
+    display: block;
+  }
+  .create2 {
+    display: none;
+  }
+
+  .boxBusqueda {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between !important;
+    width: 90%;
+
+    select {
+      cursor: pointer;
+
+      width: 80%;
+      background: rgba(235, 13, 13, 0.096);
+      border: rgb(197, 190, 190) solid;
+      border-radius: 20px;
+      padding-left: 8px;
+      color: #1d1c1c;
+      font-weight: 500;
+      margin: 5px;
+    }
+  }
 }
 
-#info-col {
-  margin-left: 50px;
-}
+@media screen and (min-width: 1280px) {
+  .card-search {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center !important;
+    align-items: center !important;
+  }
 
-#search-card {
-  width: 50%;
+  .boxBusqueda {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-evenly !important;
+    width: 90%;
+
+    select {
+      cursor: pointer;
+
+      width: 90%;
+
+      border: rgb(197, 190, 190) solid;
+      border-radius: 20px;
+      padding-left: 8px;
+      color: #1d1c1c;
+      font-weight: 500;
+      margin: 5px;
+    }
+  }
 }

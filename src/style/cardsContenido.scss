@@ -68,62 +68,58 @@
 
 } */
 
-
-
 .cards {
-    width: 300px;
-    height: 300px;
-    background-color: white;
-    border-radius: 10%;
-    transition: all 300ms;
-    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  border-radius: 10%;
+  transition: all 300ms;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
 }
 
-.card:hover {
+/* .card:hover {
     width: 350px;
-}
+} */
 
 .cards .cover img {
-    margin-left: 43%;
-    margin-top: 3%;
+  margin-left: 43%;
+  margin-top: 3%;
 }
 
 .container__cards h3 {
-    margin-top: 3%;
+  margin-top: 3%;
 }
 
 .container__cards p {
-    margin-top: 2%;
+  margin-top: 2%;
 }
 
 .cards__home {
-    margin-top: 3%;
-    margin-bottom: 3%;
+  margin-top: 3%;
+  margin-bottom: 3%;
 }
 
 .cards__home h3 {
-    margin-bottom: 2%;
+  margin-bottom: 2%;
 }
 
 .cards__home h4 {
-    margin-top: 3%;
-    margin-left: 37%;
+  margin-top: 3%;
+  margin-left: 37%;
 }
 
-
 .row__cards {
-    margin-left: 3%;
+  margin-left: 3%;
 }
 
 .btn-danger-cards {
-    /*  margin-top: 10%; */
-    margin-left: 30%;
-    border-radius: 5rem;
-    background-color: #eb0064;
-    color: white;
+  /*  margin-top: 10%; */
+  margin-left: 30%;
+  border-radius: 5rem;
+  background-color: #eb0064;
+  color: white;
 }
 
-
 .text-light {
-    background-color: #eb0064;
+  background-color: #eb0064;
 }

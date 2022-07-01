@@ -1,7 +1,7 @@
-'use strict';
-const S = require('sequelize');
-const db = require('../config/db');
-const Recruiter = require('./Recruiter');
+"use strict";
+const S = require("sequelize");
+const db = require("../config/db");
+const Recruiter = require("./Recruiter");
 
 class Search extends S.Model {}
 
@@ -24,7 +24,7 @@ Search.init(
     },
     status: {
       type: S.STRING,
-      defaultValue: 'Open',
+      defaultValue: "Open",
     },
     time: {
       type: S.DATEONLY,
@@ -44,7 +44,7 @@ Search.init(
   },
   {
     sequelize: db,
-    modelName: 'Search',
+    modelName: "Search",
   }
 );
 

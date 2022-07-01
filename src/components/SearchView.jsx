@@ -37,7 +37,8 @@ function SearchView() {
   }, []);
 
   return (
-    <div class="container ">
+    <div class="container">
+      
       <div class="row">
         <div class="card  mb-5">
           <div className="badge-pos">

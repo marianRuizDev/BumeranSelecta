@@ -47,8 +47,6 @@ export default function SearchUpdate() {
     dispatch(getOneSearches(id));
   }, []);
 
-  console.log();
-
   return (
     <div class="container mt-4">
       <div class="card border-secondary ">
@@ -177,7 +175,7 @@ export default function SearchUpdate() {
                 Guardar
               </button>
 
-              <Link to={"/admin/searchs"} class="btn btn-outline-warning m-2">
+              <Link to={"/searchs"} class="btn btn-outline-warning m-2">
                 Cancelar
               </Link>
             </div>
