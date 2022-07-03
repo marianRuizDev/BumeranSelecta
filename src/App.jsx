@@ -31,7 +31,6 @@ const App = () => {
         <Route path="/admin/searchs/update/:id" element={<SearchUpdate />} />
 
         {/* Nuevas rutas */}
-
         <Route path="/admin/profiles/:id" element={<FormProfile />} />
         <Route path="/mod" element={<ProfileMod />} />
       </Routes>

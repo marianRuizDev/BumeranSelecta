@@ -3,17 +3,39 @@
   font-weight: bold;
 }
 
-.boton-login {
-  margin-right: 7% !important;
-}
-
 .boton-logout {
   margin-top: 0.9%;
   margin-right: 0.5%;
 }
 
-.boton-registro {
-  margin-right: 2vmax;
+.registro {
+  border-radius: 0.5rem;
+  width: 160px;
+  height: 36px;
+  color: #FFFFFF;
+  background-color: #eb0064;
+  margin-top: 15%;
+}
+
+.registro:hover {
+  background-color: #eb0066b2;
+}
+
+
+.login {
+  border-radius: 0.5rem;
+  width: 160px;
+  height: 36px;
+  margin-top: 7%;
+  border-color: #eb0064;
+  background-color: #FFFFFF;
+  color: #eb0064;
+}
+
+.login:hover {
+  background-color: #eb0066d3;
+  color: #FFFFFF;
+  box-shadow: none;
 }
 
 .icon {

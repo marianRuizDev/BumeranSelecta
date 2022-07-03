@@ -6,12 +6,6 @@
   border-radius: 0.3rem;
 }
 
-.btn-dark {
-  border-color: none;
-  background-color: #29293d;
-  color: white
-}
-
 .form-select {
   color: #29293d;
   background-color: #FFFFFF;
@@ -21,9 +15,10 @@
 .form-select:focus {
   color: #000cf1;
   border-color: #000cf1;
-  border-radius: 0.5rem;
   outline: 0;
   box-shadow: none;
+  border-radius: 0.5rem;
+  background-color: #FFFFFF;
 }
 
 option {
@@ -32,7 +27,7 @@ option {
 }
 
 .form-admin {
-  background-color: #FFFFFF;
+  background-color: #ffffff !important;
   border-radius: 0.5rem;
 }
 
@@ -41,6 +36,7 @@ option {
   border-color: #000cf1;
   outline: 0;
   box-shadow: none;
+  background-color: #FFFFFF;
 }
 
 .title-admin {

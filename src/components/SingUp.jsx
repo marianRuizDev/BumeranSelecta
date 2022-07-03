@@ -21,10 +21,8 @@ const SingUp = () => {
 
   return (
     <div>
-      <h3 className="title-register-login">Crea una cuenta</h3>
-
       <form className="form" onSubmit={handlerRegister}>
-
+        <h3 className="title-register-login">Crea una cuenta</h3>
         <div class="row">
           <div class="col">
             <label>

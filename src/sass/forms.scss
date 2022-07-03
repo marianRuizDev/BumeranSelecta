@@ -1,11 +1,27 @@
 .form {
-  max-width: 40%;
-  margin: 3% 30% 2% 30%;
+  padding: 4%;
+  position: relative;
+  width: 50%;
+  height: 40%;
+  left: 25%;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 16px;
 }
 
 .form-login {
-  max-width: 40%;
-  margin: 5% 25% 2% 30%;
+  padding: 4%;
+  position: relative;
+  width: 50%;
+  height: 40%;
+  left: 25%;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 16px;
 }
 
 .title-login {
@@ -18,31 +34,28 @@
 
 .btn-form {
   width: 50%;
-  margin-left: 20%;
-  color: grey;
+  margin-left: 25%;
+  color: #FFFFFF;
   cursor: pointer;
   transition: 0.3s ease all;
   background-color: #eb0064;
   border-color: none;
   margin-top: 2%;
+  border-radius: 0.5rem;
 }
 
-.btn-register {
-  color: #fff;
-  cursor: pointer;
-  transition: 0.3s ease all;
+.btn-form:focus{
+  
 }
 
 .title-register-login {
   margin-top: 2%;
+  margin-bottom: 6%;
   text-align: center;
   color: #eb0064;
   font-weight: 400;
 }
 
-.input {
-  border-radius: 5em;
-}
 
 .detalles {
   color: #eb0064;

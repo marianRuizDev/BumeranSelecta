@@ -9,9 +9,9 @@ import "../sass/formProfile.scss"
 
 /* El administrador puede modificar al recluter */
 const FormProfile = () => {
-  const { id } = useParams();
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.recruiters);
+   const { id } = useParams();
+   const dispatch = useDispatch();
+   const user = useSelector((state) => state.recruiters);
 
   const name = useInput();
   const lastName = useInput();
@@ -54,13 +54,8 @@ const FormProfile = () => {
 
   return (
     <div>
-      <div>
-        <div className="title-recruiters">
-          <h1>Admin - Edit Recruiters</h1>
-        </div>
-      </div>
-
       <form class="row g-3 from-edit-1" onSubmit={handlerSubmit}>
+        <h4 className="title-recruiters">Editar reclutadores</h4>
         <div class="col-md-6">
           <label for="inputPassword4" class="form-label">
             Nombre
@@ -68,9 +63,9 @@ const FormProfile = () => {
           <input
             type="text"
             class="form-control"
-            placeholder={user[0].name}
+             placeholder={user[0].name}
             aria-label=""
-            {...name}
+           {...name}
           />
         </div>
         <div class="col-md-6">
@@ -80,9 +75,9 @@ const FormProfile = () => {
           <input
             type="text"
             class="form-control"
-            placeholder={user[0].lastName}
+              placeholder={user[0].lastName}
             aria-label=""
-            {...lastName}
+          {...lastName}
           />
         </div>
 
@@ -93,9 +88,9 @@ const FormProfile = () => {
           <input
             type="text"
             class="form-control"
-            placeholder={user[0].email}
+             placeholder={user[0].email}
             aria-label=""
-            {...email}
+             {...email}
           />
         </div>
         <div class="col-md-6">
@@ -106,11 +101,11 @@ const FormProfile = () => {
             type="password"
             class="form-control"
             id="inputPassword4"
-            {...password}
+           {...password}
           />
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-5">
           <label for="inputEmail4" class="form-label">
             País
           </label>
@@ -119,11 +114,11 @@ const FormProfile = () => {
             class="form-control"
             placeholder={user[0].country}
             aria-label=""
-            {...country}
+           {...country}
           />
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-5">
           <label for="inputEmail4" class="form-label">
             Área
           </label>
@@ -144,8 +139,8 @@ const FormProfile = () => {
             type="text"
             class="form-control"
             id="inputZip"
-            placeholder={user[0].rating}
-            {...rating}
+           placeholder={user[0].rating}
+           {...rating}
           />
         </div>
 
@@ -154,13 +149,16 @@ const FormProfile = () => {
             name="textarea"
             rows="10"
             cols="50"
-            placeholder={user[0].description}
-            {...description}
+           placeholder={user[0].description}
+           {...description}
           ></textarea>
         </div>
         <div>
-          <button type="submit" class="btn btn-dark">
-            Guardar cambios
+          <button type="submit" class="btn btn-danger cancelar">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-danger cambios">
+            Guardar
           </button>
         </div>
       </form>

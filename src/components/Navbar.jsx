@@ -96,16 +96,16 @@ const Navbar = () => {
               </button>
             </span>
           ) : (
-            <div className="d-flex">
-              <Link to={"/login"} className="boton-login">
-                <button class="btn btn-danger" type="submit">
-                  Ingresar
+            <div className="d-flex" >
+              <Link to={"/sigup"}>
+                <button class="btn login" type="submit">
+                  Crear cuenta
                 </button>
               </Link>
 
-              <Link to={"/sigup"}>
-                <button class="btn btn-danger boton-registro" type="submit">
-                  Registrarse
+              <Link to={"/login"}>
+                <button class="btn btn-danger registro" type="submit">
+                  Ingresar
                 </button>
               </Link>
             </div>
