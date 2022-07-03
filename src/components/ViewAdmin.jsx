@@ -54,7 +54,7 @@ const ViewAdmin = () => {
               <div class="col-3">
                 <form>
                   <input
-                    className="form-control me-2"
+                    className="form-control form-admin me-2"
                     type="search"
                     placeholder="Nombre o Apellido"
                     aria-label="Search"
@@ -96,18 +96,14 @@ const ViewAdmin = () => {
                 </select>
               </div>
               <div class="col-1">
-                <button
-                  className="btn btn-dark"
+                <BiTrash className="borrar"
                   type="button"
                   id="button-addon2"
-                  onClick={handleReset}
-                >
-                  <BiTrash />
-                </button>
+                  onClick={handleReset} />
               </div>
 
               <div class="col-1"> <Link to={"/mod"}>
-                <button className="btn btn-dark"><FaUserEdit /></button>
+                <FaUserEdit className="editar" />
               </Link>
               </div>
             </div>

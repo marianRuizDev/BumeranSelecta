@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import { useEffect } from "react";
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import useInput from "../hooks/useInput";
 import { getCountriesRequest } from "../redux/getCountries";
@@ -46,13 +47,9 @@ const ProfileMod = () => {
   }, []); */
 
   return (
-    <div>
-      <div>
-        <div className="title-recruiters">
-          <h1>Recruiters - Editar perfil</h1>
-        </div>
-      </div>
+    <div className="edit-recruiters">
 
+      <h4 className="title-recruiters">Editar perfil</h4>
       <form class="row g-3 form-edit" onSubmit={handlerSubmit}>
         <div class="col-md-6">
           <label for="inputPassword4" class="form-label">
@@ -108,7 +105,7 @@ const ProfileMod = () => {
 
           /*  onChange={handleCountryChange} */
           >
-            <option value={""}>Selecciona una opción</option>
+            <option value={""}>Seleccione una opción</option>
 
             {/* {countries
                             ?.filter((pais) => pais !== null)
@@ -128,7 +125,7 @@ const ProfileMod = () => {
             placeholder="Área"
           /*  onChange={handleJobAreaChange} */
           >
-            <option value={""}>Selecciona una opción</option>
+            <option value={""}>Seleccione una opción</option>
 
             {/* {areas
                                 ?.filter((area) => area !== null)
@@ -147,12 +144,14 @@ const ProfileMod = () => {
             {...description}
           ></textarea>
         </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-danger">
-            Cancelar
-          </button>
-          <button type="submit" class="btn btn-danger">
-            Guardar cambios
+        <div>
+          <Link to='/admin'>
+            <button type="submit" class="btn btn-danger cancelar">
+              Cancelar
+            </button>
+          </Link>
+          <button type="submit" class="btn btn-danger cambios">
+            Guardar
           </button>
         </div>
       </form>
