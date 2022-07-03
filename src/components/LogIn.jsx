@@ -1,7 +1,7 @@
 import React from "react";
 import useInput from "../hooks/useInput";
 
-import "../style/forms.scss";
+import "../sass/forms.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { postLoginRequest } from "../redux/login";
 import { useDispatch } from "react-redux";

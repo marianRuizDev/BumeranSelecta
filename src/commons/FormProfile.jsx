@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "../style/formProfile.scss";
 import useInput from "../hooks/useInput";
 import { getCountriesRequest } from "../redux/getCountries";
 import { getAreasRequest } from "../redux/getAreas";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneRecruiter, modifyRecruiter } from "../redux/recruiters";
+import "../sass/formProfile.scss"
 
 /* El administrador puede modificar al recluter */
 const FormProfile = () => {

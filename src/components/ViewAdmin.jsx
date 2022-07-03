@@ -1,17 +1,14 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { VscTrash } from "react-icons/vsc";
-import { BsSearch, BsPlus } from "react-icons/bs";
-import { GrEdit } from "react-icons/gr";
+import { BiTrash } from 'react-icons/bi'
+import { FaUserEdit } from 'react-icons/fa'
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sendAllRecruiters } from "../redux/recruiters";
 import { getCountriesRequest } from "../redux/getCountries";
 import { getAreasRequest } from "../redux/getAreas";
-import { fetchClient } from "../config/index";
 import CardsAdmin from "./CardsAdmin";
-import "../style/viewAdmin.scss";
 import { Link } from "react-router-dom";
+import "../sass/viewAdmin.scss"
 
 const ViewAdmin = () => {
   const dispatch = useDispatch();
@@ -49,66 +46,70 @@ const ViewAdmin = () => {
   }, []);
 
   return (
-    <div className="container-xxl">
-      <div className="card-busqueda">
-        <div className="card-body">
-          <div className="input-group mb-3">
-            <button className="btn btn-dark" type="button" id="button-addon1">
-              <BsSearch />
-            </button>
-            <form>
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Nombre o Apellido"
-                aria-label="Search"
-                onChange={handlerClick}
-              />
-            </form>
+    <div>
+      <div className="container-xxl">
+        <div className="card-busqueda">
+          <div class="container">
+            <div class="row row-admin">
+              <div class="col-3">
+                <form>
+                  <input
+                    className="form-control me-2"
+                    type="search"
+                    placeholder="Nombre o Apellido"
+                    aria-label="Search"
+                    onChange={handlerClick}
+                  />
+                </form>
+              </div>
 
-            <select
-              className="form-select"
-              aria-label="Default select example"
-              placeholder="Pais"
-              onChange={handleCountryChange}
-            >
-              <option value={""}>Pais</option>
+              <div class="col-3">
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
+                  placeholder="Pais"
+                  onChange={handleCountryChange}
+                >
+                  <option value={""}>Pais</option>
 
-              {countries
-                ?.filter((pais) => pais !== null)
-                .map((pais, i) => {
-                  return <option key={i}>{pais}</option>;
-                })}
-            </select>
+                  {countries
+                    ?.filter((pais) => pais !== null)
+                    .map((pais, i) => {
+                      return <option key={i}>{pais}</option>;
+                    })}
+                </select>
+              </div>
+              <div class="col-3">
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
+                  placeholder="Área"
+                  onChange={handleJobAreaChange}
+                >
+                  <option value={""}>Área</option>
 
-            <select
-              className="form-select"
-              aria-label="Default select example"
-              placeholder="Área"
-              onChange={handleJobAreaChange}
-            >
-              <option value={""}>Área</option>
+                  {areas
+                    ?.filter((area) => area !== null)
+                    .map((area, i) => {
+                      return <option key={i}>{area}</option>;
+                    })}
+                </select>
+              </div>
+              <div class="col-1">
+                <button
+                  className="btn btn-dark"
+                  type="button"
+                  id="button-addon2"
+                  onClick={handleReset}
+                >
+                  <BiTrash />
+                </button>
+              </div>
 
-              {areas
-                ?.filter((area) => area !== null)
-                .map((area, i) => {
-                  return <option key={i}>{area}</option>;
-                })}
-            </select>
-
-            <button
-              className="btn btn-dark"
-              type="button"
-              id="button-addon2"
-              onClick={handleReset}
-            >
-              <VscTrash />
-            </button>
-
-            <div>
-              <Link to={"/mod"}>
-                <button className="btn btn-dark btn-plus">Modificar</button>
+              <div class="col-1"> <Link to={"/mod"}>
+                <button className="btn btn-dark"><FaUserEdit /></button>
               </Link>
+              </div>
             </div>
           </div>
         </div>

@@ -1,18 +1,15 @@
 import marca from "../assets/navbar/logo-1.png";
 import {
-  BsPersonCircle,
   BsPersonXFill,
   BsPersonSquare,
   BsFillPersonPlusFill,
   BsBarChart,
 } from "react-icons/bs";
 import { MdPersonSearch } from "react-icons/md";
-import { BiNews } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-
 import { postLogoutRequest } from "../redux/login";
-import "../style/navbar.scss";
+import "../sass/navbar.scss";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -102,7 +99,7 @@ const Navbar = () => {
             <div className="d-flex">
               <Link to={"/login"} className="boton-login">
                 <button class="btn btn-danger" type="submit">
-                  <BsPersonCircle />
+                  Ingresar
                 </button>
               </Link>
 

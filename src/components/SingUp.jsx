@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import useInput from "../hooks/useInput";
 import { sendUserRegister } from "../redux/login";
-import "../style/forms.scss";
+import "../sass/forms.scss"
 
 const SingUp = () => {
   const name = useInput();

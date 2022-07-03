@@ -1,11 +1,11 @@
 import React, { useReducer } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../style/formProfile.scss";
 import useInput from "../hooks/useInput";
 import { getCountriesRequest } from "../redux/getCountries";
 import { getAreasRequest } from "../redux/getAreas";
 import { getOneRecruiter, modifyRecruiter } from "../redux/recruiters";
+import "../sass/formProfile.scss"
 
 /* El rucluter puede modificar su perfil */
 const ProfileMod = () => {
@@ -60,7 +60,7 @@ const ProfileMod = () => {
           </label>
           <input
             type="text"
-            class="form-control"
+            class="form-control form-1"
             placeholder={me.name}
             aria-label=""
             {...name}
@@ -106,9 +106,9 @@ const ProfileMod = () => {
             aria-label="Default select example"
             placeholder="Pais"
 
-            /*  onChange={handleCountryChange} */
+          /*  onChange={handleCountryChange} */
           >
-            <option value={""}>País</option>
+            <option value={""}>Selecciona una opción</option>
 
             {/* {countries
                             ?.filter((pais) => pais !== null)
@@ -126,9 +126,9 @@ const ProfileMod = () => {
             className="form-select"
             aria-label="Default select example"
             placeholder="Área"
-            /*  onChange={handleJobAreaChange} */
+          /*  onChange={handleJobAreaChange} */
           >
-            <option value={""}>Área</option>
+            <option value={""}>Selecciona una opción</option>
 
             {/* {areas
                                 ?.filter((area) => area !== null)
@@ -148,7 +148,10 @@ const ProfileMod = () => {
           ></textarea>
         </div>
         <div class="col-12">
-          <button type="submit" class="btn btn-dark">
+          <button type="submit" class="btn btn-danger">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-danger">
             Guardar cambios
           </button>
         </div>

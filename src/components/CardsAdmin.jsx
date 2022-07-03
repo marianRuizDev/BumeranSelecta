@@ -3,11 +3,10 @@ import React, { useState, useReducer } from "react";
 import { useDispatch } from "react-redux";
 import { VscTrash } from "react-icons/vsc";
 import { Link } from "react-router-dom";
-
 import { deleteRecruiter } from "../redux/recruiters";
 import perfil from "../assets/profiles/perfil2.png";
-import "../style/cardsAdmin.scss";
-import "../style/ranking.scss";
+import "../sass/cardsAdmin.scss";
+import "../sass/ranking.scss";
 
 const CardsAdmin = ({ items }) => {
   const dispatch = useDispatch();

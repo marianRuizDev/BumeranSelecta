@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import SearchCard from "./SearchCard";
 import { VscTrash } from "react-icons/vsc";
-
 import { MdOutlineCreateNewFolder } from "react-icons/md";
-
-import "../style/searchs.scss";
+import "../sass/searchs.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { sendAllRecruiters } from "../redux/recruiters";
 import { sendAllSearches } from "../redux/search";

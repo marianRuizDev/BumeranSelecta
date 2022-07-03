@@ -1,5 +1,5 @@
 import React from 'react'
-import '../style/cardsContenido.scss'
+import '../sass/cardsContenido.scss'
 import img1 from '../assets/contenido/descarga16.png'
 import img2 from '../assets/contenido/descarga17.png'
 import img3 from '../assets/contenido/descarga18.png'

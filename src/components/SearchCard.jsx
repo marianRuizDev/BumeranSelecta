@@ -8,7 +8,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import { VscTrash } from "react-icons/vsc";
 
 import logo from "../assets/navbar/Group.png";
-import "../style/searchs.scss";
+import "../sass/searchs.scss";
 import { deleteSearch } from "../redux/search";
 
 function SearchCard({ id, country, area, time, status, description, title }) {

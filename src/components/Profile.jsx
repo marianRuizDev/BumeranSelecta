@@ -6,7 +6,7 @@ import { MdWork } from "react-icons/md";
 import { fetchClient } from "../config/index";
 import perfil from "../assets/profiles/perfil2.png";
 import SearchCard from "./SearchCard";
-import "../style/profile.scss";
+import "../sass/profile.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneRecruiter } from "../redux/recruiters";
 import { getAssignedSearchRequest } from "../redux/assignedSearch";

@@ -12,7 +12,6 @@ import { RiMoneyDollarCircleFill } from 'react-icons/ri';
 import { FaUsers } from 'react-icons/fa';
 import { fetchClient } from '../config';
 import perfil from '../assets/profiles/perfil2.png';
-import '../style/searchs.scss';
 import { getOneSearches } from '../redux/search';
 import { sendAllRecruiters } from '../redux/recruiters';
 

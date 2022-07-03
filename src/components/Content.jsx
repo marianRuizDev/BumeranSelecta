@@ -1,5 +1,5 @@
 import React from "react";
-import "../style/contenido.scss";
+import "../sass/contenido.scss";
 import { BsNewspaper } from "react-icons/bs";
 import {
   FaCodeBranch,
@@ -82,7 +82,7 @@ const Content = () => {
             </ul>
           </div>
 
-         
+
         </div>
       </div>
     </div>

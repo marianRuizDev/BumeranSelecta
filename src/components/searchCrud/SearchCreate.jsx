@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useInput from "../../hooks/useInput";
-import "../../style/searchCrud.scss";
+import "../../sass/searchCrud.scss";
 
 export default function SearchCreate() {
   const navigate = useNavigate();

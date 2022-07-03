@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "server": "nodemon api/index.js"
+    "server": "nodemon api/index.js",
+    "compile": "node-sass -w src/sass/index.scss -o src/css/"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.5",

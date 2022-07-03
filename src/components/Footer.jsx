@@ -5,7 +5,7 @@ import { FaInstagramSquare } from 'react-icons/fa'
 import { BsLinkedin } from 'react-icons/bs'
 import { IoLogoYoutube } from 'react-icons/io'
 import logo from '../assets/footer/descarga.png'
-import '../style/footer.scss'
+import '../sass/footer.scss'
 
 
 
@@ -13,7 +13,7 @@ const Footer = () => {
     return (
         <footer>
 
-            
+
             <div className='container-footer'>
                 <div className='box-footer nav justify-content-end'>
                     <img src={logo} width={200} alt="" />
