@@ -1,21 +1,177 @@
-.profileImg {
-  border-radius: 1500px;
-  width: 200px;
-  margin-top: 2%;
-  margin-bottom: 2%;
+.background {
+  //position: absolute;
 }
 
-.titleProfile {
-  margin-top: 2%;
+.card-container {
+  margin-top: -8%;
+  //border: 2px solid blue;
 }
-
-.description ul {
-  margin: 3%;
-  text-decoration: none;
+.glass-card {
+  //border: 2px solid red;
+  overflow: hidden;
   display: flex;
-  justify-content: space-around;
+  padding-left: 1%;
+  background: linear-gradient(
+    to right bottom,
+    rgb(0, 12, 240, 0.2),
+    rgb(0, 220, 212, 0.2)
+  );
+  backdrop-filter: blur(200px);
 }
 
-.h2profile {
-  margin: 3%;
+.sidebar {
+  //border: 2px solid rgb(0, 255, 0);
+  background-color: rgba(0, 0, 0, 0.14);
+  margin: 0;
+  padding-top: 1%;
+  width: 25%;
+}
+
+.sidebar ul {
+  padding: 0;
+  margin: 10% 0;
+  text-align: left;
+}
+
+.sidebar ul li {
+  color: rgba(255, 255, 255, 1);
+  display: block;
+  padding: 10% 15%;
+}
+
+.profile-card {
+  color: white;
+  text-align: center;
+}
+.profile-img {
+  width: 40%;
+}
+.profile-card ul li {
+  font-size: 140%;
+}
+
+.main {
+  padding: 2%;
+  width: 70%;
+  min-width: 10%;
+}
+
+.main .header h2 {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 48px;
+  margin: 10px 0;
+}
+
+.main .header span {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  margin: 10px 0;
+  font-weight: bolder;
+  display: block;
+}
+
+.search-card {
+  border-radius: 1vmax;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 10px 0 20px 0;
+  overflow: hidden;
+  border: solid 1px rgb(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.15);
+}
+
+.search-card .content {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+}
+
+.search-card .left {
+  padding-right: 15px;
+}
+
+.search-card .right {
+  width: 100%;
+}
+
+.search-card .right .task {
+  font-size: 22px;
+}
+
+.search-card .buttons {
+  backdrop-filter: blur(5px);
+  text-align: right;
+  padding: 15px;
+}
+
+.botn {
+  background: #eb0064;
+  //background: #0084ff;
+  border: none;
+  font-weight: bolder;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 1vmax;
+}
+
+.botn:hover {
+  box-shadow: 0 5px 10px 2px rgba(10, 137, 255, 0.5);
+}
+
+.phone {
+  margin-top: 10rem;
+  margin-left: 100%;
+}
+
+//TABLET
+@media (max-width: 1024px) {
+  .card-container {
+    margin-top: -8%;
+    margin-bottom: 25%;
+  }
+
+  .phone {
+    margin-top: 10rem;
+    margin-left: -1rem;
+  }
+}
+
+//MOBILE
+@media (max-width: 767px) {
+  .card-container {
+    //border: 2px solid blue;
+    margin-top: -8%;
+    margin-bottom: 100%;
+  }
+  .sidebar {
+    //border: 2px solid rgb(0, 255, 0);
+    background-color: rgba(0, 0, 0, 0.14);
+    margin: 0;
+    padding-top: 1%;
+    width: 100%;
+  }
+  .search-card {
+    border-radius: 1vmax;
+    box-sizing: border-box;
+    width: 140%;
+    margin: 10px 0 20px 0;
+    overflow: hidden;
+    border: solid 1px rgb(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.15);
+  }
+  .sidebar ul {
+    padding: 0;
+    margin: 0 0;
+    text-align: left;
+  }
+  .sidebar ul li {
+    color: rgba(255, 255, 255, 1);
+    display: block;
+    padding: 1% 25%;
+  }
+  .phone {
+    margin-top: 0;
+    margin-left: 0;
+  }
 }

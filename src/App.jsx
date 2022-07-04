@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -15,15 +16,20 @@ import SearchUpdate from "./components/SearchUpdate";
 import FormProfile from "./commons/FormProfile";
 import ProfileMod from "./commons/ProfileMod.jsx";
 import { sendAllSearches } from "./redux/search";
-import { useDispatch } from "react-redux";
 import { sendAllRecruiters } from "./redux/recruiters";
+import { increment } from "./redux/contSlice";
 
 const App = () => {
   const dispatch = useDispatch();
+  const condition = useSelector((state) => state.cont);
   useEffect(() => {
-    dispatch(sendAllSearches());
-    dispatch(sendAllRecruiters());
+    if (condition.value === 0) {
+      dispatch(sendAllSearches());
+      dispatch(sendAllRecruiters());
+      dispatch(increment());
+    }
   }, []);
+
   return (
     <>
       <Navbar />

@@ -29,7 +29,6 @@ function SearchView() {
 
   const recruiters = useSelector((state) => state.recruiters);
   const recruitersCopy = [...recruiters];
-  console.log("ACA SEARCH", selectedSearch);
 
   useEffect(() => {
     dispatch(getOneSearches(id));
