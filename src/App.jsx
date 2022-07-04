@@ -10,9 +10,9 @@ import SearchView from "./components/SearchView";
 import ViewAdmin from "./components/ViewAdmin";
 import Profile from "./components/Profile";
 import SearchCreate from "./components/SearchCreate"
-import SearchUpdate from "./components/SearchUpdate";
-import FormProfile from "../components/SearchUpdate";
-import ProfileMod from "./commons/ProfileMod.jsx";
+import SearchUpdate from "./components/SearchUpdate"
+import FormProfile from "./commons/FormProfile";
+import ProfileMod from "./commons/ProfileMod";
 
 const App = () => {
   return (
