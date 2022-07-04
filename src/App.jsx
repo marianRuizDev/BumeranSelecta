@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router";
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -9,12 +10,20 @@ import SearchsGrid from "./components/SearchsGrid";
 import SearchView from "./components/SearchView";
 import ViewAdmin from "./components/ViewAdmin";
 import Profile from "./components/Profile";
-import SearchCreate from "./components/SearchCreate"
-import SearchUpdate from "./components/SearchUpdate"
+import SearchCreate from "./components/SearchCreate";
+import SearchUpdate from "./components/SearchUpdate";
 import FormProfile from "./commons/FormProfile";
-import ProfileMod from "./commons/ProfileMod";
+import ProfileMod from "./commons/ProfileMod.jsx";
+import { sendAllSearches } from "./redux/search";
+import { useDispatch } from "react-redux";
+import { sendAllRecruiters } from "./redux/recruiters";
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(sendAllSearches());
+    dispatch(sendAllRecruiters());
+  }, []);
   return (
     <>
       <Navbar />
@@ -29,7 +38,6 @@ const App = () => {
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="/admin/searchs/create" element={<SearchCreate />} />
         <Route path="/admin/searchs/update/:id" element={<SearchUpdate />} />
-
 
         {/* Nuevas rutas */}
         <Route path="/admin/profiles/:id" element={<FormProfile />} />

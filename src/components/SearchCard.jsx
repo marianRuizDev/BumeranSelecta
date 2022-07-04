@@ -7,6 +7,8 @@ import { MdWork } from "react-icons/md";
 import { FaPencilAlt } from "react-icons/fa";
 import { VscTrash } from "react-icons/vsc";
 
+import bu from "../assets/navbar/bu.png";
+
 import logo from "../assets/navbar/Group.png";
 import "../sass/searchs.scss";
 import { deleteSearch } from "../redux/search";
@@ -28,44 +30,60 @@ function SearchCard({ id, country, area, time, status, description, title }) {
 
   return (
     <div className="card">
+      <div className="boxTime">
+        <small>
+          {diff >= 1
+            ? parseInt(diff) === 1
+              ? "Publicado hace 1 día"
+              : `Publicado hace ${parseInt(diff)} días`
+            : `Publicado hace ${parseInt(diff * 24)} horas`}
+        </small>
+      </div>
+
       <div className="box">
         <div className="flex">
-          <div class="col img-container col-lg-2">
-            <img src={logo} alt="logo" class="card-img" />
-          </div>
-
           <div class="col ">
             <Link to={`/searchs/${id}`}>
               <div>
                 <h5>{title}</h5>
-
                 <p class="card-text card-texto">{description}</p>
               </div>
             </Link>
           </div>
         </div>
 
+        {/*
+        
+        
+     /////////   LINEA DIVISORA
+        
         <div class="col p-3 boxLine">
           <div class="vr mt-4 lineaDivisora"></div>
-        </div>
+        </div> */}
 
         <div className="infoCard">
           <div className="flexHorizontal">
-            <div class=" d-flex justify-content-left">
+            <div class=" d-flex justify-content-left p-2">
               <span class="badge">{status}</span>
             </div>
-            <div class="col d-flex justify-content-left">
+            <div class="col d-flex justify-content-center aline-items-baseline">
               <IoLocationSharp class="local" size={30} />
               <p>{country}</p>
             </div>
-            <div class="col d-flex justify-content-left">
+            
+            {/* <div class="col d-flex justify-content-left">
               <FaBuilding class="build" size={30} />
               <p>Presencial</p>
             </div>
             <div class="col d-flex justify-content-left">
               <MdWork class="work" size={30} />
               <p>{area}</p>
-            </div>
+            </div> */}
+
+            {/*
+            
+///////////BOTONES DE EDITAR Y BORRAR///////////
+            
             <div class=" d-flex justify-content-left">
               <Link to={`/admin/searchs/update/${id}`}>
                 <button className="btn ">
@@ -75,19 +93,13 @@ function SearchCard({ id, country, area, time, status, description, title }) {
               <button onClick={handleDeleteSearch} className="btn ">
                 <VscTrash />
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
 
-      <div className="col time-container">
-        <small>
-          {diff >= 1
-            ? parseInt(diff) === 1
-              ? "Publicado hace 1 día"
-              : `Publicado hace ${parseInt(diff)} días`
-            : `Publicado hace ${parseInt(diff * 24)} horas`}
-        </small>
+      <div className="col bumeran-container">
+        <img src={bu} className="bumeran" />
       </div>
     </div>
   );

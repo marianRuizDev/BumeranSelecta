@@ -96,7 +96,7 @@ const Navbar = () => {
               </button>
             </span>
           ) : (
-            <div className="d-flex" >
+            <div className="d-flex">
               <Link to={"/sigup"}>
                 <button class="btn login" type="submit">
                   Crear cuenta
