@@ -15,7 +15,6 @@ import SearchCreate from "./components/searchCrud/SearchCreate";
 import SearchUpdate from "./components/searchCrud/SearchUpdate";
 import FormProfile from "./commons/FormProfile";
 import ProfileMod from "./commons/ProfileMod.jsx";
-import ProfileTest from "./components/Profile";
 import { sendAllSearches } from "./redux/search";
 import { sendAllRecruiters } from "./redux/recruiters";
 import { increment } from "./redux/contSlice";
