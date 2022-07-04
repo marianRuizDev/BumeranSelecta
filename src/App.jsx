@@ -9,8 +9,10 @@ import SearchsGrid from "./components/SearchsGrid";
 import SearchView from "./components/SearchView";
 import ViewAdmin from "./components/ViewAdmin";
 import Profile from "./components/Profile";
-import SearchCreate from "./components/searchCrud/SearchCreate";
-import SearchUpdate from "./components/searchCrud/SearchUpdate";
+/* import SearchCreate from "./components/searchCrud/SearchCreate"; */
+import SearchCreate from "./components/SearchCreateCopia"
+/* import SearchUpdate from "./components/searchCrud/SearchUpdate"; */
+import SearchUpdate from "./components/SearchUpdateCopia";
 import FormProfile from "./commons/FormProfile";
 import ProfileMod from "./commons/ProfileMod.jsx";
 
@@ -28,7 +30,8 @@ const App = () => {
         <Route path="/admin" element={<ViewAdmin />} />
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="/admin/searchs/create" element={<SearchCreate />} />
-        <Route path="/admin/searchs/update/:id" element={<SearchUpdate />} />
+        <Route path="/admin/searchs/update/:id" element={<SearchUpdate />} /> 
+        
 
         {/* Nuevas rutas */}
         <Route path="/admin/profiles/:id" element={<FormProfile />} />
