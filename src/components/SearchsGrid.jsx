@@ -191,7 +191,7 @@ function SearchsGrid() {
                     key={index}
                     country={search.country}
                     area={search.area}
-                    time={search.time}
+                    time={search.createdAt}
                     status={search.status}
                     id={search.id}
                     description={search.description}

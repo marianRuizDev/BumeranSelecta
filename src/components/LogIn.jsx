@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useInput from "../hooks/useInput";
 import "../sass/forms.scss";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,11 +10,14 @@ const LogIn = () => {
   const password = useInput();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handlerLogin = (e) => {
     e.preventDefault();
     dispatch(postLoginRequest({ email, password }));
-    navigate("/");
+    setTimeout(() => {
+      navigate("/");
+    }, 3000);
   };
 
   return (
@@ -52,12 +55,32 @@ const LogIn = () => {
             </strong>
           </span>
         </p>
-        <button
-          type="submit"
-          className="btn btn-danger input btn-form btn-register"
-        >
-          Ingresar
-        </button>
+        {isLoading ? (
+          <button
+            class="btn btn-danger input btn-form btn-register"
+            type="button"
+            disabled
+          >
+            <span
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            ></span>
+            Cargando...
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className="btn btn-danger input btn-form btn-register"
+            onClick={() =>
+              setTimeout(() => {
+                setIsLoading(true);
+              }, 100)
+            }
+          >
+            Ingresar
+          </button>
+        )}
       </form>
     </div>
   );

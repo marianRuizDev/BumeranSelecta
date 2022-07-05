@@ -8,7 +8,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import { VscTrash } from "react-icons/vsc";
 
 import bu from "../assets/navbar/bu.png";
-
+import useTime from "../hooks/useTime";
 import logo from "../assets/navbar/Group.png";
 import "../sass/searchs.scss";
 import { deleteSearch } from "../redux/search";
@@ -16,8 +16,21 @@ import { deleteSearch } from "../redux/search";
 function SearchCard({ id, country, area, time, status, description, title }) {
   const dispatch = useDispatch();
   const date = new Date().getTime();
-  const searchTime = new Date(time).getTime();
+  const searchTime = new Date(time);
   const diff = (date - searchTime) / (1000 * 60 * 60 * 24);
+  console.log(diff * 60 * 24);
+
+  let timeStamp = "";
+
+  if (diff > 1) {
+    timeStamp = `Publicado hace ${parseInt(diff)} días`;
+  } else if (parseInt(diff) === 1) {
+    timeStamp = "Publicado hace 1 día";
+  } else if (diff * 24 < 24 && diff * 24 * 60 >= 120) {
+    timeStamp = `Publicado hace ${parseInt(diff * 24)} horas`;
+  } else if (diff * 24 * 60 < 120) {
+    timeStamp = "Nuevo";
+  }
 
   const handleDeleteSearch = () => {
     dispatch(deleteSearch(id));
@@ -32,11 +45,15 @@ function SearchCard({ id, country, area, time, status, description, title }) {
     <div className="card">
       <div className="boxTime">
         <small>
-          {diff >= 1
-            ? parseInt(diff) === 1
-              ? "Publicado hace 1 día"
+          {/*     {diff > 1
+            ? diff * 24 * 60 < 60
+              ? parseInt(diff) === 1
+                ? "Nuevo"
+                : "Publicado hace 1 día"
               : `Publicado hace ${parseInt(diff)} días`
-            : `Publicado hace ${parseInt(diff * 24)} horas`}
+            : `Publicado hace ${parseInt(diff * 24)} horas`} */}
+
+          {timeStamp}
         </small>
       </div>
 
@@ -70,7 +87,7 @@ function SearchCard({ id, country, area, time, status, description, title }) {
               <IoLocationSharp class="local" size={30} />
               <p>{country}</p>
             </div>
-            
+
             {/* <div class="col d-flex justify-content-left">
               <FaBuilding class="build" size={30} />
               <p>Presencial</p>
