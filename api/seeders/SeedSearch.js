@@ -1,7 +1,5 @@
 const seedSearch = [
   {
-    country: 'Mexico',
-    area: 'Tecnologia',
     position: 'Developer',
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
@@ -11,13 +9,10 @@ const seedSearch = [
     jobSchedules: 'Full Time',
     salary: '1000',
     title: 'Searching for a developer',
-    category: 'unknwon',
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
-    country: 'Pakistan',
-    area: 'Gastronomía',
     position: 'Chef',
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
@@ -27,13 +22,10 @@ const seedSearch = [
     jobSchedules: 'Full Time',
     salary: '800',
     title: 'Chef vacancy',
-    category: 'unknwon',
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
-    country: 'Swaziland',
-    area: 'Marketing',
     position: 'CM',
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
@@ -43,13 +35,10 @@ const seedSearch = [
     jobSchedules: 'Full Time',
     salary: '1500',
     title: 'Big company looking for a new team of Marketing',
-    category: 'unknwon',
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
-    country: 'Iran',
-    area: 'Administración',
     position: 'Administrador',
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
@@ -59,13 +48,10 @@ const seedSearch = [
     jobSchedules: 'Full Time',
     salary: '700',
     title: 'We are hiring',
-    category: 'unknwon',
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
-    country: 'Austria',
-    area: 'Comercial',
     position: 'Seller',
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
@@ -75,13 +61,10 @@ const seedSearch = [
     jobSchedules: 'Full Time',
     salary: '1000',
     title: 'Searching for a developer',
-    category: 'unknwon',
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
-    country: 'Switzerland',
-    area: 'Producción',
     position: 'Productor',
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
@@ -91,13 +74,10 @@ const seedSearch = [
     jobSchedules: 'Part Time',
     salary: '500',
     title: 'Estamos buscándote',
-    category: 'unknwon',
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
-    country: 'Canada',
-    area: 'Tecnologia',
     position: 'Project Manager',
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
@@ -107,13 +87,10 @@ const seedSearch = [
     jobSchedules: 'Full Time',
     salary: '2500',
     title: 'Búsqueda de Project Manager tiempo completo',
-    category: 'unknwon',
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
-    country: 'Finland',
-    area: 'Logística',
     position: 'Mensajero',
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
@@ -123,13 +100,10 @@ const seedSearch = [
     jobSchedules: 'Full Time',
     salary: '1000',
     title: 'Mensajero en zona céntrica',
-    category: 'unknwon',
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
-    country: 'Ethiopia',
-    area: 'Gastronomía',
     position: 'Sous Chef',
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
@@ -139,13 +113,10 @@ const seedSearch = [
     jobSchedules: 'Full Time',
     salary: '2000',
     title: 'Restaurante por inaugurar busca Sous Chef',
-    category: 'unknwon',
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
-    country: 'France',
-    area: 'Recursos Humanos',
     position: 'Director de Recursos Humanos',
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
@@ -155,13 +126,10 @@ const seedSearch = [
     jobSchedules: 'Full Time',
     salary: '1000',
     title: 'Empresa grande busca director de RRHH',
-    category: 'unknwon',
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
-    country: 'Honduras',
-    area: 'Salud',
     position: 'Enfermero',
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
@@ -171,13 +139,10 @@ const seedSearch = [
     jobSchedules: 'Full Time',
     salary: '500',
     title: 'Enfermeros para Hospital Central',
-    category: 'unknwon',
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
-    country: 'Perú',
-    area: 'Ingenierías',
     position: 'Ingeniero Biomédico',
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
@@ -187,13 +152,10 @@ const seedSearch = [
     jobSchedules: 'Full Time',
     salary: '2000',
     title: 'Ingeniero Biomédico',
-    category: 'unknwon',
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
-    country: 'Colombia',
-    area: 'Atención al Cliente',
     position: 'Vendedor',
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
@@ -203,13 +165,10 @@ const seedSearch = [
     jobSchedules: 'Part Time',
     salary: '800',
     title: 'Vendedor para call center',
-    category: 'unknwon',
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
-    country: 'Mexico',
-    area: 'Marketing',
     position: 'Growth Manager',
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
@@ -219,7 +178,6 @@ const seedSearch = [
     jobSchedules: 'Full Time',
     salary: '1000',
     title: 'Equipo de Marketing en crecimiento',
-    category: 'unknwon',
     createdAt: new Date(),
     updatedAt: new Date(),
   },
