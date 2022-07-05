@@ -1,47 +1,47 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import SearchCard from "./SearchCard";
-import { VscTrash } from "react-icons/vsc";
-import { MdOutlineCreateNewFolder } from "react-icons/md";
-import "../sass/searchs.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { sendAllSearches } from "../redux/search";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import SearchCard from './SearchCard';
+import { VscTrash } from 'react-icons/vsc';
+import { MdOutlineCreateNewFolder } from 'react-icons/md';
+import '../sass/searchs.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { sendAllSearches } from '../redux/search';
 
 function SearchsGrid() {
   const dispatch = useDispatch();
   const date = new Date().getTime();
   const paises = [
-    "Argentina",
-    "Chile",
-    "Colombia",
-    "Ecuador",
-    "Mexico",
-    "Panama",
-    "Peru",
-    "Uruguay",
+    'Argentina',
+    'Chile',
+    'Colombia',
+    'Ecuador',
+    'Mexico',
+    'Panama',
+    'Peru',
+    'Uruguay',
   ];
   const areas = [
-    "Administración",
-    "Comercial",
-    "Producción",
-    "Tecnología",
-    "Logística",
-    "Gastronomía",
-    "Recursos Humanos",
-    "Salud",
-    "Ingenierías",
-    "Atención al Cliente",
-    "Marketing",
-    "Construcción",
-    "Comercio Exterior",
+    'Administración',
+    'Comercial',
+    'Producción',
+    'Tecnología',
+    'Logística',
+    'Gastronomía',
+    'Recursos Humanos',
+    'Salud',
+    'Ingenierías',
+    'Atención al Cliente',
+    'Marketing',
+    'Construcción',
+    'Comercio Exterior',
   ];
 
   const searchs = useSelector((state) => state.search);
 
-  const [selectedCountry, setSelectedContry] = useState("");
-  const [jobArea, setJobArea] = useState("");
-  const [searchTime, setSearchTime] = useState("");
-  const [searchStatus, setSearchStatus] = useState("");
+  const [selectedCountry, setSelectedContry] = useState('');
+  const [jobArea, setJobArea] = useState('');
+  const [searchTime, setSearchTime] = useState('');
+  const [searchStatus, setSearchStatus] = useState('');
 
   const handleCountryChange = (e) => {
     setSelectedContry(e.target.value);
@@ -60,10 +60,10 @@ function SearchsGrid() {
   };
 
   const handleReset = () => {
-    setSelectedContry("");
-    setJobArea("");
-    setSearchTime("");
-    setSearchStatus("");
+    setSelectedContry('');
+    setJobArea('');
+    setSearchTime('');
+    setSearchStatus('');
   };
   useEffect(() => {
     dispatch(sendAllSearches());
@@ -74,7 +74,7 @@ function SearchsGrid() {
         <div class="card card-search p-3">
           <div class="col col-lg-1  justify-content-center create ">
             <Link
-              to={"/admin/searchs/create"}
+              to={'/admin/searchs/create'}
               className="navbar-brand btn btn-search "
             >
               <MdOutlineCreateNewFolder />
@@ -86,7 +86,7 @@ function SearchsGrid() {
                 aria-label="Default select example"
                 onChange={handleCountryChange}
               >
-                <option value={""}>País</option>
+                <option value={''}>País</option>
                 {paises.map((pais, index) => (
                   <option key={index} value={pais}>
                     {pais}
@@ -99,7 +99,7 @@ function SearchsGrid() {
                 onChange={handleJobAreaChange}
                 aria-label="Default select example"
               >
-                <option value={""}>Área</option>
+                <option value={''}>Área</option>
                 {areas.map((area, index) => (
                   <option key={index} value={area}>
                     {area}
@@ -112,7 +112,7 @@ function SearchsGrid() {
                 onChange={handleSearchTimeChange}
                 aria-label="Default select example"
               >
-                <option value={""}>Fecha</option>
+                <option value={''}>Fecha</option>
                 <option value={1}>Hoy</option>
                 <option value={7}>Esta semana</option>
                 <option value={30}>Este mes</option>
@@ -124,16 +124,16 @@ function SearchsGrid() {
                 onChange={handlSearchStatusChange}
                 aria-label="Default select example"
               >
-                <option value={""}>Status</option>
-                <option value={"No iniciada"}>No iniciada</option>
-                <option value={"En proceso"}>En proceso</option>
-                <option value={"Finalizada"}>Finalizada</option>
+                <option value={''}>Status</option>
+                <option value={'No iniciada'}>No iniciada</option>
+                <option value={'En proceso'}>En proceso</option>
+                <option value={'Finalizada'}>Finalizada</option>
               </select>
             </div>
           </div>
           <div class="d-flex align-items-center">
             <div class="col col-lg-1 create2">
-              <Link to={"/admin/searchs/create"} className="navbar-brand">
+              <Link to={'/admin/searchs/create'} className="navbar-brand">
                 <MdOutlineCreateNewFolder />
               </Link>
             </div>
@@ -155,14 +155,14 @@ function SearchsGrid() {
           <div class="col ContainerSearch">
             {searchs
               .filter((val) => {
-                if (searchStatus === "") {
+                if (searchStatus === '') {
                   return val;
                 } else if (val.status === searchStatus) {
                   return val;
                 }
               })
               .filter((val) => {
-                if (searchTime === "") {
+                if (searchTime === '') {
                   return val;
                 } else if (
                   (date - val.time) / (1000 * 60 * 60 * 24) <=
@@ -172,14 +172,14 @@ function SearchsGrid() {
                 }
               })
               .filter((val) => {
-                if (jobArea === "") {
+                if (jobArea === '') {
                   return val;
                 } else if (val.area === jobArea) {
                   return val;
                 }
               })
               .filter((val) => {
-                if (selectedCountry === "") {
+                if (selectedCountry === '') {
                   return val;
                 } else if (val.country === selectedCountry) {
                   return val;
@@ -192,7 +192,7 @@ function SearchsGrid() {
                     country={search.country}
                     area={search.area}
                     time={search.time}
-                    status={search.status}
+                    status={search.StatusId}
                     id={search.id}
                     description={search.description}
                     title={search.title}

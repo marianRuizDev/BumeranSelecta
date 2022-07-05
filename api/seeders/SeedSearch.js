@@ -6,7 +6,6 @@ const seedSearch = [
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
     vacancies: 2,
-    status: 'Open',
     time: '2022-07-06',
     jobSchedules: 'Full Time',
     salary: '1000',
@@ -22,7 +21,6 @@ const seedSearch = [
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
     vacancies: 1,
-    status: 'Open',
     time: '2022-07-06',
     jobSchedules: 'Full Time',
     salary: '800',
@@ -38,7 +36,6 @@ const seedSearch = [
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
     vacancies: 3,
-    status: 'Open',
     time: '2022-07-06',
     jobSchedules: 'Full Time',
     salary: '1500',
@@ -54,7 +51,6 @@ const seedSearch = [
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
     vacancies: 1,
-    status: 'Open',
     time: '2022-07-06',
     jobSchedules: 'Full Time',
     salary: '700',
@@ -70,7 +66,6 @@ const seedSearch = [
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
     vacancies: 2,
-    status: 'Open',
     time: '2022-07-06',
     jobSchedules: 'Full Time',
     salary: '1000',
@@ -86,7 +81,6 @@ const seedSearch = [
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
     vacancies: 1,
-    status: 'Cerrada',
     time: '2022-07-06',
     jobSchedules: 'Part Time',
     salary: '500',
@@ -102,7 +96,6 @@ const seedSearch = [
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
     vacancies: 1,
-    status: 'Open',
     time: '2022-07-06',
     jobSchedules: 'Full Time',
     salary: '2500',
@@ -118,7 +111,6 @@ const seedSearch = [
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
     vacancies: 5,
-    status: 'Open',
     time: '2022-07-06',
     jobSchedules: 'Full Time',
     salary: '1000',
@@ -134,7 +126,6 @@ const seedSearch = [
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
     vacancies: 2,
-    status: 'Open',
     time: '2022-07-06',
     jobSchedules: 'Full Time',
     salary: '2000',
@@ -150,7 +141,6 @@ const seedSearch = [
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
     vacancies: 1,
-    status: 'Open',
     time: '2022-07-06',
     jobSchedules: 'Full Time',
     salary: '1000',
@@ -166,7 +156,6 @@ const seedSearch = [
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
     vacancies: 2,
-    status: 'Open',
     time: '2022-07-06',
     jobSchedules: 'Full Time',
     salary: '500',
@@ -182,7 +171,6 @@ const seedSearch = [
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
     vacancies: 2,
-    status: 'Open',
     time: '2022-07-06',
     jobSchedules: 'Full Time',
     salary: '2000',
@@ -198,7 +186,6 @@ const seedSearch = [
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
     vacancies: 2,
-    status: 'Open',
     time: '2022-07-06',
     jobSchedules: 'Part Time',
     salary: '800',
@@ -214,7 +201,6 @@ const seedSearch = [
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
     vacancies: 2,
-    status: 'Open',
     time: '2022-07-06',
     jobSchedules: 'Full Time',
     salary: '1000',
