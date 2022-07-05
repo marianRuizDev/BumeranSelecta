@@ -30,8 +30,8 @@ const seedSearch = [
     updatedAt: new Date(),
   },
   {
-    country: 'Swaziland',
-    area: 'Marketing',
+    country: 'Pakistan',
+    area: 'Gastronomía',
     position: 'CM',
     description:
       'Cake carrot cake soufflé powder tiramisu ice cream lollipop chocolate bar I love. Pastry pie topping I love cupcake. Marzipan I love tiramisu I love cotton candy carrot cake. Chocolate cake cake pudding halvah ice cream I love cupcake soufflé danish. Bear claw soufflé topping I love pudding. Donut I love macaroon dessert liquorice apple pie. Carrot cake fruitcake I love carrot cake sugar plum tiramisu chocolate gummi bears. Candy canes cupcake cake pie cake dragée pie chocolate chocolate cake.',
