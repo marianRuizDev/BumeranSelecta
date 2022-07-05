@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { VscTrash } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 import { deleteRecruiter } from "../redux/recruiters";
+import { BiTrash } from 'react-icons/bi'
 import perfil from "../assets/profiles/perfil2.png";
 import "../sass/cardsAdmin.scss";
 import "../sass/ranking.scss";
@@ -57,9 +58,9 @@ const CardsAdmin = ({ items }) => {
                 <button
                   onClick={handleDelete}
                   type="button"
-                  class="btn btn-dark trash-btn"
+                  class="btn btn-dander trash-btn"
                 >
-                  <VscTrash />
+                  <BiTrash />
                 </button>
               </div>
             </div>

@@ -18,7 +18,7 @@ const LogIn = () => {
   };
 
   return (
-    <div>
+    <div className="prueba-1">
       <form className="form" onSubmit={handlerLogin}>
         <h3 className="title-register-login">Iniciar sesión</h3>
         <div className="mb-3">
