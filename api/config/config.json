@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
+    "password": "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",
     "database": "bumeranSelecta",
     "host": "localhost",
     "dialect": "mysql"
@@ -21,3 +21,6 @@
     "dialect": "mysql"
   }
 }
+
+
+

@@ -2,10 +2,9 @@ import axios from "axios";
 import { createReducer, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const sendAllRecruiters = createAsyncThunk(
-  "RECRUITERS_ALL",
-  async () => {
+  "RECRUITERS_ALL", async () => {
     try {
-      const data = await axios.get("http://localhost:8000/api/recruiter");
+      const data = await axios.get("http://localhost:8000/api/recruiter/all");
       return data.data;
     } catch (error) {
       console.log(error);
@@ -13,7 +12,8 @@ export const sendAllRecruiters = createAsyncThunk(
   }
 );
 
-export const getOneRecruiter = createAsyncThunk("ONE_SEARCH", async (id) => {
+export const getOneRecruiter = createAsyncThunk(
+  "ONE_RECUITER", async (id) => {
   try {
     const data = await axios.get(`http://localhost:8000/api/recruiter/${id}`);
     return data.data;
@@ -26,7 +26,7 @@ export const deleteRecruiter = createAsyncThunk(
   "RECRUITERS_DELETE",
   async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/api/recruiter/${id}`);
+      await axios.delete(`http://localhost:8000/api/recruiter/delete/${id}`);
     } catch (error) {
       console.log(error);
     }
@@ -47,7 +47,7 @@ export const modifyRecruiter = createAsyncThunk(
   }) => {
     try {
       const data = await axios.put(
-        `http://localhost:8000/api/recruiter/${id}`,
+        `http://localhost:8000/api/recruiter/edit/${id}`,
         {
           name: name.value,
           lastName: lastName.value,

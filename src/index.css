@@ -8,6 +8,8 @@ body {
   min-height: 100vh;
   margin: 0;
   margin-bottom: 17.6%;
+
+  background: #edf1f7;;
 }
 html {
   min-height: 100%;

@@ -32,75 +32,6 @@ router.get("/area", (req, res) => {
     .then(() => res.send(areas));
 });
 
-//devolver todas los reclutadores
-router.get("/", (req, res) => {
-  Recruiter.findAll()
-    .then((search) => {
-      res.send(search);
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
-});
-
-router.get("/:id", (req, res) => {
-  Recruiter.findAll({ where: { id: req.params.id } })
-    .then((search) => {
-      res.send(search);
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
-});
-
-//Crea un reclutador
-router.post("/", (req, res) => {
-  const { name, lastName, country } = req.body;
-  Recruiter.findOne({ where: { name, lastName, country } }).then((result) => {
-    if (result === null) {
-      Recruiter.create(req.body).then((user) => res.status(201).send(user));
-    } else {
-      res.status(401).send();
-    }
-  });
-});
-
-router.put("/:id", function (req, res, next) {
-  const { id } = req.params;
-
-  const {
-    name,
-    lastName,
-    country,
-    email,
-    description,
-    experienceField,
-    rating,
-  } = req.body;
-
-  Recruiter.update(
-    {
-      name,
-      lastName,
-      country,
-      email,
-      description,
-      experienceField,
-      rating,
-    },
-    { where: { id } }
-  )
-    .then((result) => res.status(201).send(result))
-    .catch((err) => res.status(404).send(err));
-});
-
-//Elimina un reclutador
-router.delete("/:id", (req, res) => {
-  Recruiter.destroy({ where: { id: req.params.id } }).then(() =>
-    res.sendStatus(202)
-  );
-});
-
 //Pagination simple
 router.get("/list", (req, res) => {
   let { page } = req.query;
@@ -119,5 +50,79 @@ router.post("/search", (req, res) => {
     where: { name: { [Op.like]: `%${req.body.search}%` } },
   }).then((users) => res.send(users));
 });
+
+
+//devolver todas los reclutadores
+// router.get("/", (req, res) => {
+//   Recruiter.findAll()
+//     .then((search) => {
+//       res.send(search);
+//     })
+//     .catch((err) => {
+//       res.status(400).send(err);
+//     });
+// });
+
+// router.get("/:id", (req, res) => {
+//   Recruiter.findAll({ where: { id: req.params.id } })
+//     .then((search) => {
+//       res.send(search);
+//     })
+//     .catch((err) => {
+//       res.status(400).send(err);
+//     });
+// });
+
+//Crea un reclutador
+// router.post("/", (req, res) => {
+//   const { name, lastName, country } = req.body;
+//   Recruiter.findOne({ where: { name, lastName, country } }).then((result) => {
+//     if (result === null) {
+//       Recruiter.create(req.body).then((user) => res.status(201).send(user));
+//     } else {
+//       res.status(401).send();
+//     }
+//   });
+// });
+
+// router.put("/:id", function (req, res, next) {
+//   const { id } = req.params;
+
+//   const {
+//     name,
+//     lastName,
+//     country,
+//     email,
+//     description,
+//     experienceField,
+//     rating,
+//   } = req.body;
+
+//   Recruiter.update(
+//     {
+//       name,
+//       lastName,
+//       country,
+//       email,
+//       description,
+//       experienceField,
+//       rating,
+//     },
+//     { where: { id } }
+//   )
+//     .then((result) => res.status(201).send(result))
+//     .catch((err) => res.status(404).send(err));
+// });
+
+//Elimina un reclutador
+// router.delete("/:id", (req, res) => {
+//   Recruiter.destroy({ where: { id: req.params.id } }).then(() =>
+//     res.sendStatus(202)
+//   );
+// });
+
+
+
+
 
 module.exports = router;

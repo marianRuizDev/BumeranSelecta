@@ -2,29 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { IoLocationSharp } from "react-icons/io5";
-import { FaBuilding } from "react-icons/fa";
-import { MdWork } from "react-icons/md";
-import { FaPencilAlt } from "react-icons/fa";
-import { VscTrash } from "react-icons/vsc";
-
 import bu from "../assets/navbar/bu.png";
-
-import logo from "../assets/navbar/Group.png";
 import "../sass/searchs.scss";
-import { deleteSearch } from "../redux/search";
+
 
 function SearchCard({ id, country, area, time, status, description, title }) {
-  const dispatch = useDispatch();
+
+  
+ 
+ // tiempo
   const date = new Date().getTime();
   const searchTime = new Date(time).getTime();
   const diff = (date - searchTime) / (1000 * 60 * 60 * 24);
 
-  const handleDeleteSearch = () => {
-    dispatch(deleteSearch(id));
-    setTimeout(() => {
-      window.location.reload();
-    }, 500);
-  };
+ 
 
   // const desc = description.slice(0, 400);
 
@@ -46,6 +37,7 @@ function SearchCard({ id, country, area, time, status, description, title }) {
             <Link to={`/searchs/${id}`}>
               <div>
                 <h5>{title}</h5>
+                <p>{area}</p>
                 <p class="card-text card-texto">{description}</p>
               </div>
             </Link>
@@ -62,25 +54,40 @@ function SearchCard({ id, country, area, time, status, description, title }) {
         </div> */}
 
         <div className="infoCard">
-          <div className="flexHorizontal">
+          
             <div class=" d-flex justify-content-left p-2">
               <span class="badge">{status}</span>
             </div>
-            <div class="col d-flex justify-content-center aline-items-baseline">
+            <div class="boxLocation">
               <IoLocationSharp class="local" size={30} />
               <p>{country}</p>
             </div>
-            
-            {/* <div class="col d-flex justify-content-left">
+         
+        </div>
+      </div>
+
+      <div className="col bumeran-container">
+        <img src={bu} className="bumeran" />
+      </div>
+    </div>
+  );
+}
+
+export default SearchCard;
+
+
+//////////////////////////// COSAS ANTERIORES //////////////////////
+
+{
+  /* <div class="col d-flex justify-content-left">
               <FaBuilding class="build" size={30} />
               <p>Presencial</p>
             </div>
-            <div class="col d-flex justify-content-left">
-              <MdWork class="work" size={30} />
-              <p>{area}</p>
-            </div> */}
+            */
+}
 
-            {/*
+{
+  /*
             
 ///////////BOTONES DE EDITAR Y BORRAR///////////
             
@@ -93,19 +100,8 @@ function SearchCard({ id, country, area, time, status, description, title }) {
               <button onClick={handleDeleteSearch} className="btn ">
                 <VscTrash />
               </button>
-            </div> */}
-          </div>
-        </div>
-      </div>
-
-      <div className="col bumeran-container">
-        <img src={bu} className="bumeran" />
-      </div>
-    </div>
-  );
+            </div> */
 }
-
-export default SearchCard;
 
 /* <div class="container mb-4 ">
 <div class="card">

@@ -1,3 +1,6 @@
+
+
+
 const seedRecruiter = [
   {
     email: 'mari@mail.com',

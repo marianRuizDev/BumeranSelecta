@@ -19,6 +19,39 @@ export const getOneSearches = createAsyncThunk("ONE_SEARCH", async (id) => {
   }
 });
 
+export const createSearches = createAsyncThunk("CREATE_SEARCH", async ( 
+ {
+  country,
+  area,
+  position,
+  description,
+  vacancies,
+  jobSchedules,
+  salary,
+  title,
+  category,
+ }
+) => {
+
+  
+  try {
+    const data = await axios.post("http://localhost:8000/api/search/add", {
+          country: country.value,
+          area: area.value,
+          position: position.value,
+          description: description.value,
+          vacancies: vacancies.value,
+          jobSchedules: jobSchedules.value,
+          salary: salary.value,
+          title: title.value,
+          category: category.value,
+        })
+    return data.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 export const deleteSearch = createAsyncThunk("DELETE_SEARCH", async (id) => {
   try {
     await axios.delete(`http://localhost:8000/api/search/${id}`);
@@ -67,6 +100,7 @@ const searchReducer = createReducer(
   {},
   {
     [sendAllSearches.fulfilled]: (state, action) => action.payload,
+    [createSearches.fulfilled]: (state, action) => action.payload,
     [getOneSearches.fulfilled]: (state, action) => action.payload,
     [getOneUpDate.fulfilled]: (state, action) => action.payload,
   }
