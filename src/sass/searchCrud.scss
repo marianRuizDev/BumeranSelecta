@@ -1,25 +1,14 @@
 .flex {
   display: flex;
   justify-content: center;
-
-  /* .box_01 {
-    min-width: 50%;
-    margin-right: 1rem;
-  }
-
-  .box_02 {
-    min-width: 50%;
-  } */
 }
 
 .box_button {
   display: flex;
   justify-content: center;
-
 }
 
 
-/* Sabri: Modificaciones */
 .form-title {
   font-weight: bold;
   color: rgba(0, 0, 0, 0.836);
@@ -34,17 +23,23 @@
   left: 15%;
   margin-top: 4%;
   margin-bottom: 4%;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
   border-radius: 16px;
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 
 .cancelar {
   background-color: white;
   border-color: #eb0064;
   color: #eb0064;
-  width: 160px;
-  height: 36px;
+  width: 120px !important;
+  height: 40px;
   margin-left: 25%;
   border-radius: 0.5rem;
 }
@@ -57,8 +52,8 @@
   background-color: #eb0064;
   border-color: #eb0064;
   color: white;
-  width: 160px;
-  height: 36px;
+  width: 120px !important;
+  height: 40px;
   margin-left: 3%;
   border-radius: 0.5rem;
 }
@@ -71,13 +66,34 @@
 
 .form-searchs-1 {
   padding: 4%;
-  position: relative;
+
   width: 70%;
   height: 40%;
-  left: 15%;
+
   margin-top: 4%;
   margin-bottom: 4%;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
   border-radius: 16px;
+}
+
+@media screen and (min-width: 810px) {
+  .containerr {
+    width: 80%;
+    margin: 0 auto;
+
+    .form-searchs {
+      .box {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+
+        .box1,
+        .box2 {
+          margin: 0 auto;
+          width: 50%;
+        }
+      }
+    }
+  }
 }

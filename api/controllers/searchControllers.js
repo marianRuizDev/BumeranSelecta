@@ -24,8 +24,8 @@ class RouterSearch {
     const { id } = req.params;
 
     const {
-      country,
-      area,
+      // country,
+      // area,
       position,
       description,
       jobSchedules,
