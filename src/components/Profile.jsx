@@ -14,7 +14,7 @@ import phone from "../assets/fomrs/descarga3.png";
 import useInput from "../hooks/useInput";
 import { getOneRecruiter } from "../redux/recruiters";
 import { getAssignedSearchRequest } from "../redux/assignedSearch";
-import { getStatusUpDate } from "../redux/search";
+import { getOneUpDate } from "../redux/search";
 import "../sass/profile.scss";
 
 const Profile = () => {
@@ -34,11 +34,11 @@ const Profile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (workersNum.value !== undefined && workersNum.value !== "0") {
-      dispatch(getStatusUpDate({ id: selectedSearch, StatusId: 3 }));
+      dispatch(getOneUpDate({ id: selectedSearch, StatusId: 3 }));
       setValidate(true);
       setTimeout(() => {
         document.getElementById("closeBtn").click();
-        window.location.reload();
+        //window.location.reload();
       }, 1000);
     }
 
@@ -171,7 +171,7 @@ const Profile = () => {
                     </div>
                     {searchs.length !== 0 ? (
                       searchs
-                        .filter((search) => search.StatusId !== 2)
+                        .filter((search) => search.StatusId !== 3)
                         .map((search, i) => (
                           <div key={i} className="tasks">
                             <div className="search-card">

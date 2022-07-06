@@ -47,34 +47,16 @@ export const getOneUpDate = createAsyncThunk(
       const data = await axios.put(
         `http://localhost:8000/api/search/edit/${id}`,
         {
-          country: country.value,
-          area: area.value,
-          position: position.value,
-          description: description.value,
-          vacancies: vacancies.value,
+          country: country?.value,
+          area: area?.value,
+          position: position?.value,
+          description: description?.value,
+          vacancies: vacancies?.value,
           StatusId,
-          jobSchedules: jobSchedules.value,
-          salary: salary.value,
-          title: title.value,
-          category: category.value,
-        }
-      );
-      return data.data;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-);
-
-export const getStatusUpDate = createAsyncThunk(
-  "STATUS_UPDATE",
-  async ({ id, StatusId }) => {
-    console.log("STATUS", StatusId);
-    try {
-      const data = await axios.put(
-        `http://localhost:8000/api/search/edit/${id}`,
-        {
-          StatusId,
+          jobSchedules: jobSchedules?.value,
+          salary: salary?.value,
+          title: title?.value,
+          category: category?.value,
         }
       );
       return data.data;
@@ -90,7 +72,6 @@ const searchReducer = createReducer(
     [sendAllSearches.fulfilled]: (state, action) => action.payload,
     [getOneSearches.fulfilled]: (state, action) => action.payload,
     [getOneUpDate.fulfilled]: (state, action) => action.payload,
-    [getStatusUpDate.fulfilled]: (state, action) => action.payload,
   }
 );
 
