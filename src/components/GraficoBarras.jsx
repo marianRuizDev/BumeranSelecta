@@ -12,10 +12,27 @@ import {
 } from "recharts";
 import "../sass/stadistics.scss";
 
-const GraficosBarras = () => {
-  const data = [
+const GraficosBarras = ({ data }) => {
+  /* Data ya llega desestructurado */
+  /* console.log(data) */
+
+
+
+  const data1 = [
+    {
+      country: "Alemania",
+      started: 20, //barra celeste
+      "in process": 19, //barra rosa
+      finished: 1, //barra violeta
+    },
     {
       country: "Argentina",
+      started: 20, //barra celeste
+      "in process": 19, //barra rosa
+      finished: 1, //barra violeta
+    },
+    {
+      country: "Austria",
       started: 20, //barra celeste
       "in process": 19, //barra rosa
       finished: 1, //barra violeta
@@ -33,13 +50,37 @@ const GraficosBarras = () => {
       finished: 5,
     },
     {
-      country: "Chile",
-      started: 7,
-      "in process": 3,
-      finished: 4,
+      country: "Finlandia",
+      started: 30,
+      "in process": 15,
+      finished: 15,
     },
     {
-      country: "México",
+      country: "Francia",
+      started: 30,
+      "in process": 15,
+      finished: 15,
+    },
+    {
+      country: "Honduras",
+      started: 30,
+      "in process": 15,
+      finished: 15,
+    },
+    {
+      country: "Iran",
+      started: 30,
+      "in process": 15,
+      finished: 15,
+    },
+    {
+      country: "Suiza",
+      started: 30,
+      "in process": 15,
+      finished: 15,
+    },
+    {
+      country: "Perú",
       started: 30,
       "in process": 15,
       finished: 15,
@@ -53,10 +94,10 @@ const GraficosBarras = () => {
         <BarChart
           width={300}
           height={100}
-          data={data}
+          data={data1}
           margin={{
             top: 100,
-            right: 500,
+            right: 50,
             left: 50,
             bottom: 5,
           }}
