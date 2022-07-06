@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from 'recharts';
 import "../sass/stadistics.scss"
 
 
@@ -26,6 +26,18 @@ const GraficosBarras = () => {
             "in process": 15,
             finished: 5,
         },
+        {
+            country: 'Chile',
+            started: 7,
+            "in process": 3,
+            finished: 4,
+        },
+        {
+            country: 'México',
+            started: 30,
+            "in process": 15,
+            finished: 15,
+        },
 
     ];
 
@@ -33,55 +45,40 @@ const GraficosBarras = () => {
     return (
         <div>
 
-            <ResponsiveContainer width="100%" aspect={3}>
+            {/*   <p className='titulo-y-avisos'>Cantidad de avisos</p> */}
+            <ResponsiveContainer width="100%" aspect={3} >
+
                 <BarChart
                     width={300}
                     height={100}
                     data={data}
-                    /* className="grafico-barras" */
                     margin={{
-                        top: 20,
+                        top: 100,
                         right: 500,
                         left: 50,
                         bottom: 5,
                     }}
                 >
-                    <CartesianGrid strokeDasharray="1 1" />
-                    <XAxis dataKey="country" />
-                    <YAxis />
+                    <CartesianGrid strokeDasharray="2 2" />
+                    <XAxis dataKey="country" >
+                        <Label value="Evolución de las busquedas por país" position="bottom" />
+                    </XAxis>
+                    <YAxis>
+                        <Label value="Cantidad de busquedas" angle="-90" offset={0} position="center" /* className='cantidad' */ />
+                    </YAxis>
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="started" stackId="a" fill="#eb0064" />
-                    <Bar dataKey="in process" stackId="a" fill="#00DCD4" />
+                    <Bar dataKey="started"  fill="#eb0064" />
+                    <Bar dataKey="in process" fill="#00DCD4" />
                     <Bar dataKey="finished" fill="#000cf1" />
+                    {/* barSize={20} */} 
                 </BarChart>
             </ResponsiveContainer>
-
+            {/* <h5 className='titulo-'>Evolución de las búsquedas por país</h5>
+ */}
         </div>
     )
 }
 
 export default GraficosBarras
 
-{/* <ResponsiveContainer width="100%" aspect={3} className='grafico-barras'>
-                <BarChart
-                    width={500}
-                    height={300}
-                    data={data}
-                    margin={{
-                        top: 10,
-                        right: 500,
-                        left: 20,
-                        bottom: 5,
-                    }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="Paises" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="searchStarted" fill="#00DCD4" />
-                    <Bar dataKey="searchInProcess" fill="#eb0064" />
-                    <Bar dataKey="searchsFinished" fill="#000cf1" />
-                </BarChart>
-            </ResponsiveContainer> */}

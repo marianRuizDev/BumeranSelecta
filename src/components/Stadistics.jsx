@@ -4,6 +4,7 @@ import { AiOutlineDownload } from 'react-icons/ai'
 import { useSelector } from 'react-redux'
 import Tables from '../components/Tables'
 import GraficoBarras from "./GraficoBarras"
+import GraficoBarras2 from './GraficoBarras2'
 import "../sass/viewAdmin.scss"
 import "../sass/stadistics.scss"
 import { CSVLink } from "react-csv"
@@ -50,6 +51,7 @@ const Stadistics = () => {
             vacancies: "10",
             status: "En proceso",
             updatedAt: "2022-07-05",
+         
         },
 
         {
@@ -198,7 +200,8 @@ const Stadistics = () => {
                         )
                     })
             }
-            <GraficoBarras className='grafico-barras' />
+            <GraficoBarras />
+            <GraficoBarras2 />
         </div >
 
     )
