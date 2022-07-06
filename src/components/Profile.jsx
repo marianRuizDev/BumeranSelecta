@@ -14,6 +14,7 @@ import phone from "../assets/fomrs/descarga3.png";
 import useInput from "../hooks/useInput";
 import { getOneRecruiter } from "../redux/recruiters";
 import { getAssignedSearchRequest } from "../redux/assignedSearch";
+import { getStatusUpDate } from "../redux/search";
 import "../sass/profile.scss";
 
 const Profile = () => {
@@ -21,21 +22,26 @@ const Profile = () => {
   const dispatch = useDispatch();
   let userId = useParams().id;
   const [validate, setValidate] = useState(false);
+  const [selectedSearch, setSelectedSearch] = useState(0);
 
   const userRedux = useSelector((state) => state.recruiters);
   const searchs = useSelector((state) => state.assigned);
   const user = userRedux[0];
+  console.log(searchs);
 
   const workersNum = useInput();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (workersNum.value !== undefined && workersNum.value !== "0") {
+      dispatch(getStatusUpDate({ id: selectedSearch, StatusId: 3 }));
       setValidate(true);
+      setTimeout(() => {
+        document.getElementById("closeBtn").click();
+        window.location.reload();
+      }, 1000);
     }
-    setTimeout(() => {
-      document.getElementById("closeBtn").click();
-    }, 1000);
+
     e.target.reset();
   };
 
@@ -164,31 +170,34 @@ const Profile = () => {
                       <span>{date.toLocaleDateString("es")}</span>
                     </div>
                     {searchs.length !== 0 ? (
-                      searchs.map((search, i) => (
-                        <div key={i} className="tasks">
-                          <div className="search-card">
-                            <Link to={`/searchs/${search.id}`}>
-                              <div className="content">
-                                <div className="left">
-                                  <img src={logo} width="50" alt="" />
+                      searchs
+                        .filter((search) => search.StatusId !== 2)
+                        .map((search, i) => (
+                          <div key={i} className="tasks">
+                            <div className="search-card">
+                              <Link to={`/searchs/${search.id}`}>
+                                <div className="content">
+                                  <div className="left">
+                                    <img src={logo} width="50" alt="" />
+                                  </div>
+                                  <div className="right">
+                                    <div className="task">{search.title}</div>
+                                  </div>
                                 </div>
-                                <div className="right">
-                                  <div className="task">{search.title}</div>
-                                </div>
+                              </Link>
+                              <div className="buttons">
+                                <button
+                                  className="botn "
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#exampleModal"
+                                  onClick={() => setSelectedSearch(search.id)}
+                                >
+                                  Completar
+                                </button>
                               </div>
-                            </Link>
-                            <div className="buttons">
-                              <button
-                                className="botn "
-                                data-bs-toggle="modal"
-                                data-bs-target="#exampleModal"
-                              >
-                                Completar
-                              </button>
                             </div>
                           </div>
-                        </div>
-                      ))
+                        ))
                     ) : (
                       <h2>NO HAY BÚSQUEDAS ASIGNADAS</h2>
                     )}

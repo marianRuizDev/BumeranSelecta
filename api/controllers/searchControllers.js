@@ -1,5 +1,5 @@
-const searchServices = require('../services/searchServices');
-const { Search } = require('../models');
+const searchServices = require("../services/searchServices");
+const { Search } = require("../models");
 
 class RouterSearch {
   /////////// RUTAS ARIEL/////////
@@ -29,8 +29,8 @@ class RouterSearch {
       position,
       description,
       jobSchedules,
-      status,
       vacancies,
+      StatusId,
       salary,
       title,
       category,
@@ -44,7 +44,7 @@ class RouterSearch {
         description,
         jobSchedules,
         vacancies,
-        status,
+        StatusId,
         salary,
         title,
         category,

@@ -37,7 +37,7 @@ function SearchsGrid() {
   ];
 
   const searchs = useSelector((state) => state.search);
-
+  console.log(searchs);
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [searchTime, setSearchTime] = useState("");
@@ -192,7 +192,7 @@ function SearchsGrid() {
                     country={search.country}
                     area={search.area}
                     time={search.createdAt}
-                    status={search.status}
+                    status={search.StatusId}
                     id={search.id}
                     description={search.description}
                     title={search.title}
