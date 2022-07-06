@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { BiTrash } from 'react-icons/bi'
-import { FaUserEdit } from 'react-icons/fa'
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sendAllRecruiters } from "../redux/recruiters";
 import { getCountriesRequest } from "../redux/getCountries";
 import { getAreasRequest } from "../redux/getAreas";
 import CardsAdmin from "./CardsAdmin";
-import { Link } from "react-router-dom";
 import "../sass/viewAdmin.scss"
 
 const ViewAdmin = () => {
@@ -102,10 +100,6 @@ const ViewAdmin = () => {
                   onClick={handleReset} />
               </div>
 
-              <div class="col-1"> <Link to={"/mod"}>
-                <FaUserEdit className="editar" />
-              </Link>
-              </div>
             </div>
           </div>
         </div>

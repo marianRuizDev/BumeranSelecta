@@ -15,6 +15,7 @@ import SearchCreate from "./components/SearchCreate";
 import SearchUpdate from "./components/SearchUpdate";
 import FormProfile from "./commons/FormProfile";
 import ProfileMod from "./commons/ProfileMod.jsx";
+import Stadistics from "./components/Stadistics";
 import { sendAllSearches } from "./redux/search";
 import { sendAllRecruiters } from "./redux/recruiters";
 import { increment } from "./redux/contSlice";
@@ -44,10 +45,9 @@ const App = () => {
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="/admin/searchs/create" element={<SearchCreate />} />
         <Route path="/admin/searchs/update/:id" element={<SearchUpdate />} />
-
-        {/* Nuevas rutas */}
         <Route path="/admin/profiles/:id" element={<FormProfile />} />
         <Route path="/mod" element={<ProfileMod />} />
+        <Route path="/info" element={<Stadistics />} />
       </Routes>
       <Footer />
     </>
@@ -55,3 +55,11 @@ const App = () => {
 };
 
 export default App;
+
+
+
+
+
+
+
+

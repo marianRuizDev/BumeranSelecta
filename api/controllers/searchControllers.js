@@ -1,5 +1,5 @@
-const searchServices = require('../services/searchServices');
-const { Search } = require('../models');
+const searchServices = require("../services/searchServices");
+const { Search } = require("../models");
 
 class RouterSearch {
   /////////// RUTAS ARIEL/////////
@@ -24,13 +24,13 @@ class RouterSearch {
     const { id } = req.params;
 
     const {
-      country,
-      area,
+      // country,
+      // area,
       position,
       description,
       jobSchedules,
-      status,
       vacancies,
+      StatusId,
       salary,
       title,
       category,
@@ -38,16 +38,7 @@ class RouterSearch {
 
     Search.update(
       {
-        country,
-        area,
-        position,
-        description,
-        jobSchedules,
-        vacancies,
-        status,
-        salary,
-        title,
-        category,
+        ...req.body,
       },
       { where: { id } }
     )

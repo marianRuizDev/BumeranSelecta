@@ -1,4 +1,5 @@
 const Sequelize = require("sequelize");
+// para seedear la db tirar comando desde api/config //
 
 const { DB_USER, DB_HOST, DB_PASSWORD } = process.env;
 

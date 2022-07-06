@@ -16,7 +16,7 @@ router.put('/:id', async function (req, res, next) {
   try {
     const searcher = await Search.findOne({ where: { id: req.params.id } });
     searcher.setRecruiter(req.body.RecruiterId);
-    console.log(searcher);
+    searcher.setStatus(1);
     res.status(200).json(searcher);
   } catch (error) {
     console.log(error);

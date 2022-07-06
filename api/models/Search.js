@@ -1,18 +1,12 @@
-"use strict";
-const S = require("sequelize");
-const db = require("../config/db");
-const Recruiter = require("./Recruiter");
+'use strict';
+const S = require('sequelize');
+const db = require('../config/db');
+const Recruiter = require('./Recruiter');
 
 class Search extends S.Model {}
 
 Search.init(
   {
-    country: {
-      type: S.STRING,
-    },
-    area: {
-      type: S.STRING,
-    },
     position: {
       type: S.STRING,
     },
@@ -21,10 +15,6 @@ Search.init(
     },
     vacancies: {
       type: S.INTEGER,
-    },
-    status: {
-      type: S.STRING,
-      defaultValue: "Open",
     },
     time: {
       type: S.DATEONLY,
@@ -38,13 +28,10 @@ Search.init(
     title: {
       type: S.STRING,
     },
-    category: {
-      type: S.STRING,
-    },
   },
   {
     sequelize: db,
-    modelName: "Search",
+    modelName: 'Search',
   }
 );
 

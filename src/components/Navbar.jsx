@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav class="navbar navbar-expand-lg bg-light">
+      <nav class="navbar navbar-expand-lg bg-">
         <div class="container-fluid">
           <Link to={"/"} className="navbar-brand">
             <img src={marca} width={250} />
@@ -58,9 +58,9 @@ const Navbar = () => {
                       </Link>
                     </li>
                     <li class="nav-item">
-                      <a className="nav-link active text">
+                      <Link to={'/info'} className="nav-link active text">
                         <BsBarChart /> Estadisticas
-                      </a>
+                      </Link>
                     </li>
 
                     <li class="nav-item">

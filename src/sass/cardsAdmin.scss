@@ -5,6 +5,7 @@
   color: rgb(78, 74, 74);
   font-weight: 600;
 }
+
 .nombre-container {
   display: flex;
   align-items: center;
@@ -25,8 +26,20 @@
   margin-top: 0.7rem;
 }
 
+.btn-danger:focus {
+  background-color: #eb0066b2;
+  color: white;
+}
+
 .trash-btn {
   margin-top: 0.7rem;
+  background-color: #FFFFFF;
+  color: #eb0066d5;
+  border-color: #eb0066d5;
+}
+
+.trash-btn:focus {
+  background-color: #eb0066d5;
 }
 
 .card-recluter {
