@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useInput from "../hooks/useInput";
+import { Link } from 'react-router-dom'
 import { getCountriesRequest } from "../redux/getCountries";
 import { getAreasRequest } from "../redux/getAreas";
 import { useParams } from "react-router";
@@ -9,9 +10,9 @@ import "../sass/formProfile.scss"
 
 /* El administrador puede modificar al recluter */
 const FormProfile = () => {
-   const { id } = useParams();
-   const dispatch = useDispatch();
-   const user = useSelector((state) => state.recruiters);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.recruiters);
 
   const name = useInput();
   const lastName = useInput();
@@ -63,9 +64,9 @@ const FormProfile = () => {
           <input
             type="text"
             class="form-control"
-             placeholder={user[0].name}
+            placeholder={user[0].name}
             aria-label=""
-           {...name}
+            {...name}
           />
         </div>
         <div class="col-md-6">
@@ -75,9 +76,9 @@ const FormProfile = () => {
           <input
             type="text"
             class="form-control"
-              placeholder={user[0].lastName}
+            placeholder={user[0].lastName}
             aria-label=""
-          {...lastName}
+            {...lastName}
           />
         </div>
 
@@ -88,9 +89,9 @@ const FormProfile = () => {
           <input
             type="text"
             class="form-control"
-             placeholder={user[0].email}
+            placeholder={user[0].email}
             aria-label=""
-             {...email}
+            {...email}
           />
         </div>
         <div class="col-md-6">
@@ -101,7 +102,7 @@ const FormProfile = () => {
             type="password"
             class="form-control"
             id="inputPassword4"
-           {...password}
+            {...password}
           />
         </div>
 
@@ -114,7 +115,7 @@ const FormProfile = () => {
             class="form-control"
             placeholder={user[0].country}
             aria-label=""
-           {...country}
+            {...country}
           />
         </div>
 
@@ -139,8 +140,8 @@ const FormProfile = () => {
             type="text"
             class="form-control"
             id="inputZip"
-           placeholder={user[0].rating}
-           {...rating}
+            placeholder={user[0].rating}
+            {...rating}
           />
         </div>
 
@@ -149,20 +150,22 @@ const FormProfile = () => {
             name="textarea"
             rows="10"
             cols="50"
-           placeholder={user[0].description}
-           {...description}
+            placeholder={user[0].description}
+            {...description}
           ></textarea>
         </div>
         <div>
-          <button type="submit" class="btn btn-danger cancelar">
-            Cancelar
-          </button>
+          <Link to={`/profile/${user[0].id}`}>
+            <button type="submit" class="btn btn-danger cancelar">
+              Cancelar
+            </button>
+          </Link>
           <button type="submit" class="btn btn-danger cambios">
             Guardar
           </button>
         </div>
-      </form>
-    </div>
+      </form >
+    </div >
   );
 };
 

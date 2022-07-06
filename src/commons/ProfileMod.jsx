@@ -145,7 +145,7 @@ const ProfileMod = () => {
           ></textarea>
         </div>
         <div>
-          <Link to='/admin'>
+          <Link to={`/`}>
             <button type="submit" class="btn btn-danger cancelar">
               Cancelar
             </button>
