@@ -7,12 +7,6 @@ class Search extends S.Model {}
 
 Search.init(
   {
-    country: {
-      type: S.STRING,
-    },
-    area: {
-      type: S.STRING,
-    },
     position: {
       type: S.STRING,
     },
@@ -32,9 +26,6 @@ Search.init(
       type: S.INTEGER,
     },
     title: {
-      type: S.STRING,
-    },
-    category: {
       type: S.STRING,
     },
   },

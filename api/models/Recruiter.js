@@ -32,16 +32,8 @@ Recruiter.init(
       type: S.STRING,
       allowNull: false,
     },
-    country: {
-      type: S.STRING,
-      allowNull: true,
-    },
     description: {
       type: S.TEXT,
-      allowNull: true,
-    },
-    experienceField: {
-      type: S.STRING,
       allowNull: true,
     },
     rating: {
