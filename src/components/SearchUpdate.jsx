@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getOneSearches, getOneUpDate } from "../redux/search";
 import useInput from "../hooks/useInput";
-import "../sass/searchCrud.scss";
+import "../sass/createSearch.scss";
 
 export default function SearchCreate() {
   const params = useParams();

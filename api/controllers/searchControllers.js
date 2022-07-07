@@ -23,18 +23,6 @@ class RouterSearch {
   static async edit(req, res) {
     const { id } = req.params;
 
-    const {
-      // country,
-      // area,
-      position,
-      description,
-      jobSchedules,
-      vacancies,
-      StatusId,
-      salary,
-      title,
-      category,
-    } = req.body;
 
     Search.update(
       {

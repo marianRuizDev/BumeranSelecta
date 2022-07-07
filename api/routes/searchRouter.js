@@ -55,6 +55,8 @@ router.get('/chart', (req, res) => {
 router.put('/:id', async function (req, res, next) {
   try {
     const searcher = await Search.findOne({ where: { id: req.params.id } });
+
+
     searcher.setRecruiter(req.body.RecruiterId);
     searcher.setStatus(1);
     res.status(200).json(searcher);
@@ -62,6 +64,24 @@ router.put('/:id', async function (req, res, next) {
     console.log(error);
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Trae las busquedas asignadas a X reclutador
 router.get('/asigned/:id', (req, res) => {

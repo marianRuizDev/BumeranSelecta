@@ -55,6 +55,8 @@ router.post("/search", (req, res) => {
 
 router.put("/:id/activeSearchs", async function (req, res, next) {
   const { id } = req.params;
+
+
   const recruiter = await Recruiter.findOne({ where: { id } });
 
   const { count } = req.query;
