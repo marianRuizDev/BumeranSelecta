@@ -78,7 +78,7 @@ const Stadistics = () => {
             area: "Gastronomía",
             vacancies: "5",
             status: "Finalizada",
-            updatedAt: "2022-07-05",
+            updatedAt: "2022-30-05",
 
         },
         {
@@ -87,7 +87,7 @@ const Stadistics = () => {
             area: "Comercial",
             vacancies: "20",
             status: "No iniciada",
-            updatedAt: "2022-07-05",
+            updatedAt: "2022-04-06",
         },
         {
             title: "Preventista Zona SUR - CABA...",
@@ -95,7 +95,7 @@ const Stadistics = () => {
             area: "Comercial",
             vacancies: "20",
             status: "En proceso",
-            updatedAt: "2022-07-05",
+            updatedAt: "2022-02-08",
         },
     ]
 
