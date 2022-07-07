@@ -19,15 +19,19 @@ import Stadistics from "./components/Stadistics";
 import { sendAllSearches } from "./redux/search";
 import { sendAllRecruiters } from "./redux/recruiters";
 import { increment } from "./redux/contSlice";
+import { getAlldata } from "./redux/stadistics";
 
 const App = () => {
   const dispatch = useDispatch();
   const condition = useSelector((state) => state.cont);
+  const data = useSelector((state)=> state.stadistics)
   useEffect(() => {
-    if (condition.value === 0) {
+    if (condition.value === 0 && data.value === 0) {
       dispatch(sendAllSearches());
       dispatch(sendAllRecruiters());
       dispatch(increment());
+
+      dispatch(getAlldata());
     }
   }, []);
 
