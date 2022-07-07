@@ -15,10 +15,10 @@ function SearchCard({ id, country, area, time, status, description, title }) {
 
   let timeStamp = "";
 
-  if (diff > 1) {
-    timeStamp = `Publicado hace ${parseInt(diff)} días`;
-  } else if (parseInt(diff) === 1) {
+  if (parseInt(diff) === 1) {
     timeStamp = "Publicado hace 1 día";
+  } else if (diff > 1) {
+    timeStamp = `Publicado hace ${parseInt(diff)} días`;
   } else if (diff * 24 < 24 && diff * 24 * 60 >= 120) {
     timeStamp = `Publicado hace ${parseInt(diff * 24)} horas`;
   } else if (diff * 24 * 60 < 120) {

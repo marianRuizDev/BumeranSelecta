@@ -1,5 +1,6 @@
 import React from 'react'
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Label } from 'recharts';
+
 
 
 const GraficoBarras2 = () => {
@@ -8,7 +9,22 @@ const GraficoBarras2 = () => {
 
     const data = [
         {
+            country: 'Alemania',
+            "promedio": 60,
+
+        },
+        {
             country: 'Argentina',
+            "promedio": 60,
+
+        },
+        {
+            country: 'Austria',
+            "promedio": 60,
+
+        },
+        {
+            country: 'Canada',
             "promedio": 60,
 
         },
@@ -17,39 +33,54 @@ const GraficoBarras2 = () => {
             "promedio": 30,
         },
         {
-            country: 'Peru',
+            country: 'Filandia',
+            "promedio": 30,
+        },
+        {
+            country: 'Francia',
+            "promedio": 30,
+        },
+        {
+            country: 'Honduras',
             "promedio": 15,
         },
         {
-            country: 'Chile',
-            "promedio": 20,
+            country: 'México',
+            "promedio": 15,
         },
         {
-            country: 'México',
+            country: 'Iran',
             "promedio": 28,
         },
-
+        {
+            country: 'Suiza',
+            "promedio": 28,
+        },
+        {
+            country: 'Peru',
+            "promedio": 15,
+        },
     ];
 
     return (
 
         <div>
             <ResponsiveContainer width="100%" aspect={3} >
-                <BarChart width={300}
+                <BarChart width={500}
                     height={100}
                     data={data}
                     margin={{
-                        top: 150,
-                        right: 500,
+                        top: 170,
+                        right: 70,
                         left: 50,
-                        bottom: 5,
+                        bottom: 30,
                     }}>
                     <XAxis dataKey="country" stroke="#8884d8" >
-                        <XAxis dataKey="country" >
-                            {/* <Label value="Evolución de las busquedas por país" angle="-90" offset={0} position="center" /> */} 
-                        </XAxis>
+                        <Label value="Tiempo promedio de las búsquedas por país" offset={0} position="bottom" />
                     </XAxis>
-                    <YAxis />
+                    <YAxis >
+                        <Label value="Días promedio" angle="-90" offset={0} position="center" />
+                    </YAxis>
                     <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} />
                     <CartesianGrid stroke="#ccc" strokeDasharray="1 1" />
                     <Bar dataKey="promedio" fill="#434bf0" barSize={37}>
@@ -57,7 +88,7 @@ const GraficoBarras2 = () => {
                     </Bar>
                 </BarChart>
             </ResponsiveContainer>
-            <p>Tiempo promedio de las búsquedas por país</p>
+            {/*  <p>Tiempo promedio de las búsquedas por país</p> */}
         </div >
 
 

@@ -5,26 +5,44 @@ import { useSelector } from 'react-redux'
 import Tables from '../components/Tables'
 import GraficoBarras from "./GraficoBarras"
 import GraficoBarras2 from './GraficoBarras2'
+import GraficoPie from './GraficoPie'
 import "../sass/viewAdmin.scss"
 import "../sass/stadistics.scss"
 import { CSVLink } from "react-csv"
 
 
 
+
 const Stadistics = () => {
     /* Cambiar por state de area countries y status */
     const estados = ["No iniciada", "En proceso", "Finalizada"]
-    const countries = ["Argentina", "Chile", "Colombia", "Ecuador", "Mexico", "Panama", "Perú", "Uruguay"
+    const countries = ['Alemania', 'Argentina', 'Austria', 'Canada', 'Colombia', 'Finlandia', 'Francia', 'Honduras', 'México', 'Iran', 'Suiza', 'Perú'
     ]
-    const areas = useSelector((state) => state.area)
+
+    const areas = [
+        'Administración',
+        'Atención al Cliente',
+        'Comercial',
+        'Gastronomía',
+        'Ingenierías',
+        'Logística',
+        'Marketing',
+        'Producción',
+        'Recursos Humanos',
+        'Salud',
+        'Tecnologia',
+
+    ]
 
 
-    /*  const info = useSelector((state) => state)
-     const infoCopy = [...info] */
+    const datos = useSelector((state) => state.stadistics)
+   /*  console.log(datos) */
+    /*  const infoCopy = [...info]  */
 
     const [selectedCountry, setSelectedContry] = useState("");
     const [jobArea, setJobArea] = useState("");
     const [searchStatus, setSearchStatus] = useState("");
+    const [data, setData] = useState([])
 
 
     const handleCountryChange = (e) => {
@@ -51,7 +69,7 @@ const Stadistics = () => {
             vacancies: "10",
             status: "En proceso",
             updatedAt: "2022-07-05",
-         
+
         },
 
         {
@@ -60,7 +78,7 @@ const Stadistics = () => {
             area: "Gastronomía",
             vacancies: "5",
             status: "Finalizada",
-            updatedAt: "2022-07-05",
+            updatedAt: "2022-30-05",
 
         },
         {
@@ -69,7 +87,7 @@ const Stadistics = () => {
             area: "Comercial",
             vacancies: "20",
             status: "No iniciada",
-            updatedAt: "2022-07-05",
+            updatedAt: "2022-04-06",
         },
         {
             title: "Preventista Zona SUR - CABA...",
@@ -77,7 +95,7 @@ const Stadistics = () => {
             area: "Comercial",
             vacancies: "20",
             status: "En proceso",
-            updatedAt: "2022-07-05",
+            updatedAt: "2022-02-08",
         },
     ]
 
@@ -89,7 +107,7 @@ const Stadistics = () => {
                     <div class="container">
                         <div class="row ">
                             <div class="col-3">
-                                Calendar
+
                             </div>
 
                             <div class="col-2">
@@ -200,8 +218,9 @@ const Stadistics = () => {
                         )
                     })
             }
-            <GraficoBarras />
-            <GraficoBarras2 />
+            <GraficoBarras data={[...info]} />
+            <GraficoBarras2 data={info} />
+            <GraficoPie data={info} />
         </div >
 
     )

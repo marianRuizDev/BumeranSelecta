@@ -1,4 +1,5 @@
 const express = require('express');
+const sequelize = require('sequelize');
 const router = express.Router();
 const searchControllers = require('../controllers/searchControllers');
 //no va aca
@@ -7,14 +8,55 @@ const { search } = require('./recruiter');
 ///
 router.get('/all', searchControllers.allSearch);
 router.post('/add', searchControllers.createSearch);
-router.get('/:id', searchControllers.getOne);
-router.put('/edit/:id', searchControllers.edit);
-router.delete('/:id', searchControllers.delete);
+
+//getall
+router.get('/chart', (req, res) => {
+  let one = [];
+  let two = [];
+  let three = [];
+  Search.findAll({
+    where: { StatusId: 1 },
+    attributes: [
+      'CountryId',
+      [sequelize.fn('COUNT', sequelize.col('StatusId')), 'En proceso'],
+    ],
+    group: ['CountryId'],
+  }).then((search1) => {
+    one.push(search1);
+  });
+
+  Search.findAll({
+    where: { StatusId: 2 },
+    attributes: [
+      'CountryId',
+      [sequelize.fn('COUNT', sequelize.col('StatusId')), 'No iniciada'],
+    ],
+    group: ['CountryId'],
+  }).then((search2) => {
+    two.push(search2);
+  });
+
+  Search.findAll({
+    where: { StatusId: 3 },
+    attributes: [
+      'CountryId',
+      [sequelize.fn('COUNT', sequelize.col('StatusId')), 'Finalizada'],
+    ],
+    group: ['CountryId'],
+  }).then((search3) => {
+    three.push(search3);
+    one.push(two);
+    one.push(three);
+    res.send(one);
+  });
+});
 
 //Asigna a un recruiter -TAMPOCO VA ACA
 router.put('/:id', async function (req, res, next) {
   try {
     const searcher = await Search.findOne({ where: { id: req.params.id } });
+
+
     searcher.setRecruiter(req.body.RecruiterId);
     searcher.setStatus(1);
     res.status(200).json(searcher);
@@ -22,6 +64,24 @@ router.put('/:id', async function (req, res, next) {
     console.log(error);
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Trae las busquedas asignadas a X reclutador
 router.get('/asigned/:id', (req, res) => {
@@ -34,4 +94,7 @@ router.get('/asigned/:id', (req, res) => {
     });
 });
 
+router.get('/:id', searchControllers.getOne);
+router.put('/edit/:id', searchControllers.edit);
+router.delete('/:id', searchControllers.delete);
 module.exports = router;

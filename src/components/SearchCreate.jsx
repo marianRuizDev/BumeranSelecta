@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import useInput from "../hooks/useInput";
 import { createSearches } from "../redux/search";
-import "../sass/searchCrud.scss";
+import "../sass/createSearch.scss";
 
 export default function SearchCreate() {
   const navigate = useNavigate();
