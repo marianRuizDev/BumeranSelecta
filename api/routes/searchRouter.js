@@ -12,8 +12,8 @@ router.post('/add', searchControllers.createSearch);
 //getall
 router.get('/chart', (req, res) => {
   let one = [];
-  let two = ['No iniciada'];
-  let three = ['Finalizada'];
+  let two = [];
+  let three = [];
   Search.findAll({
     where: { StatusId: 1 },
     attributes: [
@@ -22,7 +22,7 @@ router.get('/chart', (req, res) => {
     ],
     group: ['CountryId'],
   }).then((search1) => {
-    one.push('En proceso', search1);
+    one.push(search1);
   });
 
   Search.findAll({
