@@ -1,52 +1,19 @@
 const seedCountry = [
-    {
-        name: 'Iran',
-
-    },
-    {
-        name: 'Austria',
-
-    },
-    {
-        name: 'Suiza',
-
-    },
-    {
-        name: 'Canada',
-
-    },
-    {
-        name: 'Finlandia',
-
-    },
-    {
-        name: 'Francia',
-
-    },
-    {
-        name: 'Honduras',
-
-    },
-    {
-        name: 'Perú',
-
-    },
-    {
-        name: 'Colombia',
-
-    },
-    {
-        name: 'Mexico',
-
-    },
-    {
-        name: 'Argentina',
-
-    },{
-        name: 'Alemania',
-
-    },
+  {
+    name: 'Uruguay',
+  },
+  {
+    name: 'Paraguay',
+  },
+  {
+    name: 'Bolivia',
+  },
+  {
+    name: 'Argentina',
+  },
+  {
+    name: 'Chile',
+  },
 ];
 
 module.exports = seedCountry;
-    

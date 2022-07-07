@@ -1,8 +1,9 @@
-const Recruiter = require("./Recruiter");
-const Search = require("./Search");
-const Status = require("./Status");
-const Country = require("./Country");
-const Area = require("./Area");
+const Recruiter = require('./Recruiter');
+const Search = require('./Search');
+const Status = require('./Status');
+const Country = require('./Country');
+const Area = require('./Area');
+const { sequelize } = require('./Search');
 
 Search.belongsTo(Recruiter);
 Search.belongsTo(Status);
