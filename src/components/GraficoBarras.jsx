@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {
   BarChart,
@@ -14,10 +15,18 @@ import {
 import "../sass/stadistics.scss";
 
 const GraficosBarras = () => {
-  
-  const data = useSelector((state)=> state.stadistics)
-  console.log(data)
 
+
+
+  const [estatico, setEstatico] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/search/chart")
+      .then((res) => setEstatico(res.data));
+  }, []);
+
+  //console.log(estatico);
 
   const data1 = [
     {
@@ -50,38 +59,33 @@ const GraficosBarras = () => {
       "in process": 15,
       finished: 5,
     },
-
   ];
 
-  data1.map((e) => {
-    if (e.country === 1) {
-      e.country = "Uruguay"
+  estatico.map((e) => {
+    if (e.CountryId === 1) {
+      e.CountryId = "Uruguay";
     }
-    if (e.country === 2) {
-      e.country = "Paraguay"
+    if (e.CountryId === 2) {
+      e.CountryId = "Paraguay";
     }
-    if (e.country === 3) {
-      e.country = "Bolivia"
+    if (e.CountryId === 3) {
+      e.CountryId = "Bolivia";
     }
-    if (e.country === 4) {
-      e.country = "Argentina"
+    if (e.CountryId === 4) {
+      e.CountryId = "Argentina";
     }
-    if (e.country === 5) {
-      e.country = "Chile"
+    if (e.CountryId === 5) {
+      e.CountryId = "Chile";
     }
-  })
-
- 
-
+  });
 
   return (
     <div>
-
       <ResponsiveContainer width="100%" aspect={3}>
         <BarChart
           width={300}
           height={100}
-          data={data1}//es el arreglo de objetos mutado con el map
+          data={estatico} //es el arreglo de objetos mutado con el map
           margin={{
             top: 100,
             right: 100,
@@ -90,7 +94,7 @@ const GraficosBarras = () => {
           }}
         >
           <CartesianGrid strokeDasharray="2 2" />
-          <XAxis dataKey="country">
+          <XAxis dataKey="CountryId">
             <Label
               value="Evolución de las busquedas por país"
               position="bottom"
@@ -106,13 +110,12 @@ const GraficosBarras = () => {
           </YAxis>
           <Tooltip />
           <Legend />
-          <Bar dataKey="started" fill="#00DCD4" />
-          <Bar dataKey="in process" fill="#eb0064" />
-          <Bar dataKey="finished" fill="#000cf1" />
+          <Bar dataKey="En_Proceso" fill="#00DCD4" />
+          <Bar dataKey="No_Iniciada" fill="#eb0064" />
+          <Bar dataKey="Finalizada" fill="#000cf1" />
           {/*  barSize={20} */}
         </BarChart>
       </ResponsiveContainer>
-
     </div>
   );
 };

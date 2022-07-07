@@ -58,6 +58,9 @@ router.get('/chart/table', (req, res) => {
   });
 });
 
+
+
+
 //Asigna a un recruiter -TAMPOCO VA ACA
 router.put('/:id', async function (req, res, next) {
   try {
