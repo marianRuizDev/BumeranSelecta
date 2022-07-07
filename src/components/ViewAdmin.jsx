@@ -11,8 +11,26 @@ import "../sass/viewAdmin.scss"
 const ViewAdmin = () => {
   const dispatch = useDispatch();
   const recruiters = useSelector((state) => state.recruiters);
-  const countries = useSelector((state) => state.country);
-  const areas = useSelector((state) => state.area);
+  /* const countries = useSelector((state) => state.country);
+  const areas = useSelector((state) => state.area); */
+
+  const countries = ['Alemania', 'Argentina', 'Austria', 'Canada', 'Colombia', 'Finlandia', 'Francia', 'Honduras', 'México', 'Iran', 'Suiza', 'Perú'
+  ]
+
+  const areas = [
+    'Administración',
+    'Atención al Cliente',
+    'Comercial',
+    'Gastronomía',
+    'Ingenierías',
+    'Logística',
+    'Marketing',
+    'Producción',
+    'Recursos Humanos',
+    'Salud',
+    'Tecnologia',
+
+  ]
   const recruitersCopy = [...recruiters];
 
   const [selectedCountry, setSelectedContry] = useState("");
