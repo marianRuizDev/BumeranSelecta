@@ -253,21 +253,21 @@ const Stadistics = () => {
         .filter((val) => {
           if (jobArea === "") {
             return val;
-          } else if (val.area === jobArea) {
+          } else if (val.AreaId === jobArea) {
             return val;
           }
         })
         .filter((val) => {
           if (selectedCountry === "") {
             return val;
-          } else if (val.country === selectedCountry) {
+          } else if (val.CountryId === selectedCountry) {
             return val;
           }
         })
         .filter((val) => {
           if (searchStatus === "") {
             return val;
-          } else if (val.status === searchStatus) {
+          } else if (val.StatusId === searchStatus) {
             return val;
           }
         })
