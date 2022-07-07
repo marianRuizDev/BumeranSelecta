@@ -27,7 +27,8 @@ const Profile = () => {
   const userRedux = useSelector((state) => state.recruiters);
   const searchs = useSelector((state) => state.assigned);
   const user = userRedux[0];
-  console.log(searchs);
+
+  // console.log(user);
 
   const workersNum = useInput();
 
@@ -82,7 +83,7 @@ const Profile = () => {
             </div>
             <form onSubmit={handleSubmit}>
               <div class="modal-body">
-                {" "}
+            
                 <div class="mb-3">
                   <label for="recipient-name" class="col-form-label">
                     Número de candidatos presentados:
@@ -135,40 +136,46 @@ const Profile = () => {
 
       <div className="container card-container">
         <div className="card glass-card">
-          <div className="row">
+          <div className="container2">
             <div class="col-md-4 sidebar profile-card">
               <img className="profile-img" src={perfil} alt="" />
               <h2>{user.name}</h2>
-              <h5>
-                {user.rating}
-                <AiFillStar />
-              </h5>
-              <Link to={`/admin/profiles/${user.id}`}>
-                <FaEdit />
-              </Link>
-              <ul>
+              <div className="boxRatingEdit">
+                <div className="d-flex align-items-center">
+                  <AiFillStar className="start" />
+                  <h5>{user.rating}</h5>
+                </div>
+
+                {/* <Link to={`/admin/profiles/${user.id}`}>
+                  <FaEdit />
+                </Link> */}
+              </div>
+
+              <ul className="boxAtributos">
                 <li>
-                  <IoLocationSharp className="local" />
-                  {user.country}
+                  <IoLocationSharp className="local local2" />
+                  <p>{user.email}</p>
                 </li>
                 <li>
-                  <MdWork className="work" />
-                  {user.experienceField}
+                  <MdWork className="work work2" />
+                  <p>{user.email}</p>
                 </li>
                 <li>
-                  <MdEmail className="build" />
-                  {user.email}
+                  <MdEmail className="build  mail" />
+                  <p>{user.email}</p>
                 </li>
               </ul>
             </div>
-            <div class="col-md-8">
+            {/* col-md-8 */}
+            <div class=" boxCard">   
+              <div className="header">
+                <h2>{user.activeSearchs + " "}Búsquedas Activas</h2>
+                <span>{date.toLocaleDateString("es")}</span>
+              </div>
+
               <div class="card-body main">
-                <div className="row">
-                  <div className="col-md-10">
-                    <div className="header">
-                      <h2>{user.activeSearchs + " "}Búsquedas Activas</h2>
-                      <span>{date.toLocaleDateString("es")}</span>
-                    </div>
+                <div className="">
+                
                     {searchs.length !== 0 ? (
                       searchs
                         .filter((search) => search.StatusId !== 3)
@@ -201,10 +208,8 @@ const Profile = () => {
                     ) : (
                       <h2>NO HAY BÚSQUEDAS ASIGNADAS</h2>
                     )}
-                  </div>
-                  <div className="col-md-1">
-                    <img className="phone" src={phone} alt="" />
-                  </div>
+             
+                
                 </div>
               </div>
             </div>
@@ -222,3 +227,9 @@ const Profile = () => {
 };
 
 export default Profile;
+
+
+
+{/* <div className="col-md-1">
+<img className="phone" src={phone} alt="" />
+</div> */}

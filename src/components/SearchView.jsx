@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
@@ -7,7 +7,6 @@ import { FiUsers } from "react-icons/fi";
 import { BiCube } from "react-icons/bi";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaBuilding } from "react-icons/fa";
-import { fetchClient } from "../config";
 import { TbEdit } from "react-icons/tb";
 import { VscTrash } from "react-icons/vsc";
 import { deleteSearch, getOneSearches } from "../redux/search";
@@ -27,7 +26,7 @@ function SearchView() {
   const searchTime = new Date(selectedSearch[0].time).getTime();
   const diff = (date - searchTime) / (1000 * 60 * 60 * 24);
 
-  const [updateRec, setUpdateRec] = useState();
+
 
   const params = useParams();
   const id = params.id;
@@ -37,37 +36,13 @@ function SearchView() {
     .slice(1, 4)
     .sort((a, b) => b.rating - a.rating);
 
+
+
   useEffect(() => {
-    if (updateRec) {
-      asignRecruiter();
-    }
-
     dispatch(getOneSearches(id));
-    dispatch(sendAllRecruiters());
-  }, [updateRec]);
+    //dispatch(sendAllRecruiters());
+  }, []);
 
-  // ASIGNAR UN RECRUITER//
-  const asignRecruiter = async () => {
-    try {
-      const { data } = await fetchClient.put(
-        `http://localhost:8000/api/search/${id}`,
-        {
-          RecruiterId: updateRec,
-        }
-      );
-      const { data2 } = await fetchClient.put(
-        `http://localhost:8000/api/recruiter/${updateRec}/activeSearchs?count=1`
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleAsignament = (id) => {
-    setUpdateRec(id);
-  };
-
-  // FIN ASIGNAR UN RECRUITER//
 
   const handleDeleteSearch = () => {
     dispatch(deleteSearch(id));

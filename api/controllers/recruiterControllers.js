@@ -60,31 +60,9 @@ class recruiterControllers {
   static async edit(req, res) {
     const { id } = req.params;
 
-    const {
-      // country,
-      // area,
-      position,
-      description,
-      jobSchedules,
-      status,
-      vacancies,
-      salary,
-      title,
-      category,
-    } = req.body;
-
     Recruiter.update(
       {
-        // country,
-        // area,
-        position,
-        description,
-        jobSchedules,
-        vacancies,
-        status,
-        salary,
-        title,
-        category,
+        ...req.body,
       },
       { where: { id } }
     )
@@ -92,16 +70,17 @@ class recruiterControllers {
       .catch((err) => res.status(404).send(err));
   }
 
+
+
+
+  
   static async delete(req, res) {
     await recruiterServices.remove({
       where: { id: req.params.id },
     });
 
-    res.sendStatus(202)
+    res.sendStatus(202);
   }
-
-
-  
 }
 
 module.exports = recruiterControllers;
