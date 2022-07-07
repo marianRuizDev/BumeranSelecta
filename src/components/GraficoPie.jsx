@@ -3,7 +3,7 @@ import { PieChart, Pie, Tooltip, ResponsiveContainer, Label, XAxis } from 'recha
 import "../sass/stadistics.scss"
 
 
-const GraficoPie = ({ data }) => {
+const GraficoPie = () => {
 
     const data01 = [
         { name: 'Administracióm', tiempo: 60 },
@@ -34,13 +34,6 @@ const GraficoPie = ({ data }) => {
                         fill="#f43c87"
                         label="Tiempo promedio de las busquedas por area"
                     />
-                    {/*  <XAxis>
-
-                    <Label value="Tiempo promedio de las busquedas por area" /> 
-                    </XAxis> */}
-
-
-
                     <Tooltip />
                 </PieChart>
             </ResponsiveContainer>
