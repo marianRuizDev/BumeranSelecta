@@ -3,9 +3,10 @@ import { createReducer, createAsyncThunk } from "@reduxjs/toolkit";
 
 
 
-export const getAllData = createAsyncThunk("STADISTICS", async () => {
+export const getAllData = createAsyncThunk("STADISTICS_CHART", async () => {
     try {
-     const data = await axios.get("http://localhost:8000/api/");
+     
+     const data = await axios.get("http://localhost:8000/api/search/chart");
       return data.data;
     } catch (error) {
       console.log(error);
