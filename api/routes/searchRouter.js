@@ -9,7 +9,7 @@ const { search } = require('./recruiter');
 router.get('/all', searchControllers.allSearch);
 router.post('/add', searchControllers.createSearch);
 
-//getall
+//getall status - Chart
 router.get('/chart', (req, res) => {
   let one = [];
   let two = [];
@@ -50,12 +50,27 @@ router.get('/chart', (req, res) => {
     res.send(one);
   });
 });
+//get all Searchs - Chart
+
+router.get('/chart/table', (req, res) => {
+  Search.findAll({
+    attributes: [
+      'title',
+      'StatusId',
+      'createdAt',
+      'CountryId',
+      'AreaId',
+      'vacancies',
+    ],
+  }).then((search) => {
+    res.send(search);
+  });
+});
 
 //Asigna a un recruiter -TAMPOCO VA ACA
 router.put('/:id', async function (req, res, next) {
   try {
     const searcher = await Search.findOne({ where: { id: req.params.id } });
-
 
     searcher.setRecruiter(req.body.RecruiterId);
     searcher.setStatus(1);
@@ -64,24 +79,6 @@ router.put('/:id', async function (req, res, next) {
     console.log(error);
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //Trae las busquedas asignadas a X reclutador
 router.get('/asigned/:id', (req, res) => {

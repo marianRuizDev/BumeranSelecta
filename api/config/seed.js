@@ -18,10 +18,10 @@ const seedArea = require('../seeders/SeedArea');
 const setupSeed = async () => {
   try {
     console.log('starting seed');
-    const recruiter = await Recruiter.bulkCreate(seedRecruiter);
     const status = await Status.bulkCreate(SeedStatus);
     const country = await Country.bulkCreate(seedCountry);
     const area = await Area.bulkCreate(seedArea);
+    const recruiter = await Recruiter.bulkCreate(seedRecruiter);
     const search = await Search.bulkCreate(seedSearch);
     console.log('seed succesfully');
     Promise.all([recruiter, search, country, area, status]);

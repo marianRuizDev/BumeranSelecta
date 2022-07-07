@@ -1,6 +1,3 @@
-
-
-
 const seedRecruiter = [
   {
     email: 'mari@mail.com',
@@ -10,6 +7,8 @@ const seedRecruiter = [
     admin: true,
     createdAt: new Date(),
     updatedAt: new Date(),
+    CountryId: 3,
+    AreaId: 7,
   },
   {
     email: 'john@hola.com',
@@ -17,7 +16,7 @@ const seedRecruiter = [
     name: 'John',
     lastName: 'Doe',
     description:
-    'Zombies reversus ab inferno, nam malum cerebro. De carne animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.',
+      'Zombies reversus ab inferno, nam malum cerebro. De carne animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.',
     rating: 5,
     activeSearchs: 0,
     admin: false,
