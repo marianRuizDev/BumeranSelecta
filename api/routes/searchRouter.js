@@ -11,43 +11,34 @@ router.post('/add', searchControllers.createSearch);
 
 //getall status - Chart
 router.get('/chart', (req, res) => {
-  let one = [];
-  let two = [];
-  let three = [];
   Search.findAll({
-    where: { StatusId: 1 },
     attributes: [
       'CountryId',
-      [sequelize.fn('COUNT', sequelize.col('StatusId')), 'En proceso'],
+      [
+        sequelize.fn(
+          'COUNT',
+          sequelize.literal('CASE WHEN StatusId = 1 THEN 1 END')
+        ),
+        'En_Proceso',
+      ],
+      [
+        sequelize.fn(
+          'COUNT',
+          sequelize.literal('CASE WHEN StatusId = 2 THEN 1 END')
+        ),
+        'No_Iniciada',
+      ],
+      [
+        sequelize.fn(
+          'COUNT',
+          sequelize.literal('CASE WHEN StatusId = 3 THEN 1 END')
+        ),
+        'Finalizada',
+      ],
     ],
     group: ['CountryId'],
-  }).then((search1) => {
-    one.push(search1);
-  });
-
-  Search.findAll({
-    where: { StatusId: 2 },
-    attributes: [
-      'CountryId',
-      [sequelize.fn('COUNT', sequelize.col('StatusId')), 'No iniciada'],
-    ],
-    group: ['CountryId'],
-  }).then((search2) => {
-    two.push(search2);
-  });
-
-  Search.findAll({
-    where: { StatusId: 3 },
-    attributes: [
-      'CountryId',
-      [sequelize.fn('COUNT', sequelize.col('StatusId')), 'Finalizada'],
-    ],
-    group: ['CountryId'],
-  }).then((search3) => {
-    three.push(search3);
-    one.push(two);
-    one.push(three);
-    res.send(one);
+  }).then((search) => {
+    res.send(search);
   });
 });
 //get all Searchs - Chart
