@@ -1,41 +1,24 @@
 import React, { useState } from "react";
-import { BiTrash } from 'react-icons/bi'
+import { BiTrash } from "react-icons/bi";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sendAllRecruiters } from "../redux/recruiters";
 import { getCountriesRequest } from "../redux/getCountries";
 import { getAreasRequest } from "../redux/getAreas";
 import CardsAdmin from "./CardsAdmin";
-import "../sass/viewAdmin.scss"
+import "../sass/viewAdmin.scss";
 
 const ViewAdmin = () => {
   const dispatch = useDispatch();
   const recruiters = useSelector((state) => state.recruiters);
-  /* const countries = useSelector((state) => state.country);
-  const areas = useSelector((state) => state.area); */
-
-  const countries = ['Alemania', 'Argentina', 'Austria', 'Canada', 'Colombia', 'Finlandia', 'Francia', 'Honduras', 'México', 'Iran', 'Suiza', 'Perú'
-  ]
-
-  const areas = [
-    'Administración',
-    'Atención al Cliente',
-    'Comercial',
-    'Gastronomía',
-    'Ingenierías',
-    'Logística',
-    'Marketing',
-    'Producción',
-    'Recursos Humanos',
-    'Salud',
-    'Tecnologia',
-
-  ]
   const recruitersCopy = [...recruiters];
 
+  const areas = useSelector((state) => state.area);
+  const countries = useSelector((state) => state.country);
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [value, setValue] = useState("");
+  console.log(typeof selectedCountry);
 
   const handlerClick = (e) => {
     setValue(e.target.value);
@@ -91,7 +74,11 @@ const ViewAdmin = () => {
                   {countries
                     ?.filter((pais) => pais !== null)
                     .map((pais, i) => {
-                      return <option key={i}>{pais}</option>;
+                      return (
+                        <option key={i} value={pais.id}>
+                          {pais.name}
+                        </option>
+                      );
                     })}
                 </select>
               </div>
@@ -107,17 +94,22 @@ const ViewAdmin = () => {
                   {areas
                     ?.filter((area) => area !== null)
                     .map((area, i) => {
-                      return <option key={i}>{area}</option>;
+                      return (
+                        <option key={i} value={area.id}>
+                          {area.name}
+                        </option>
+                      );
                     })}
                 </select>
               </div>
               <div class="col-1">
-                <BiTrash className="borrar"
+                <BiTrash
+                  className="borrar"
                   type="button"
                   id="button-addon2"
-                  onClick={handleReset} />
+                  onClick={handleReset}
+                />
               </div>
-
             </div>
           </div>
         </div>
@@ -167,14 +159,14 @@ const ViewAdmin = () => {
           .filter((val) => {
             if (jobArea === "") {
               return val;
-            } else if (val.experienceField === jobArea) {
+            } else if (val.AreaId === Number(jobArea)) {
               return val;
             }
           })
           .filter((val) => {
             if (selectedCountry === "") {
               return val;
-            } else if (val.country === selectedCountry) {
+            } else if (val.CountryId === Number(selectedCountry)) {
               return val;
             }
           })

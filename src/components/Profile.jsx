@@ -159,11 +159,11 @@ const Profile = () => {
               <ul className="boxAtributos">
                 <li>
                   <IoLocationSharp className="local local2" />
-                  <p>{user.email}</p>
+                  <p>{user.CountryId}</p>
                 </li>
                 <li>
                   <MdWork className="work work2" />
-                  <p>{user.email}</p>
+                  <p>{user.AreaId}</p>
                 </li>
                 <li>
                   <MdEmail className="build  mail" />
