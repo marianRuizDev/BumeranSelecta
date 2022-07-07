@@ -89,7 +89,6 @@ const Profile = () => {
             </div>
             <form onSubmit={handleSubmit}>
               <div class="modal-body">
-            
                 <div class="mb-3">
                   <label for="recipient-name" class="col-form-label">
                     Número de candidatos presentados:
@@ -173,7 +172,7 @@ const Profile = () => {
               </ul>
             </div>
             {/* col-md-8 */}
-            <div class=" boxCard">   
+            <div class=" boxCard">
               <div className="header">
                 <h2>{user.activeSearchs + " "}Búsquedas Activas</h2>
                 <span>{date.toLocaleDateString("es")}</span>
@@ -181,41 +180,38 @@ const Profile = () => {
 
               <div class="card-body main">
                 <div className="">
-                
-                    {searchs.length !== 0 ? (
-                      searchs
-                        .filter((search) => search.StatusId !== 3)
-                        .map((search, i) => (
-                          <div key={i} className="tasks">
-                            <div className="search-card">
-                              <Link to={`/searchs/${search.id}`}>
-                                <div className="content">
-                                  <div className="left">
-                                    <img src={logo} width="50" alt="" />
-                                  </div>
-                                  <div className="right">
-                                    <div className="task">{search.title}</div>
-                                  </div>
+                  {searchs.length !== 0 ? (
+                    searchs
+                      .filter((search) => search.StatusId !== 3)
+                      .map((search, i) => (
+                        <div key={i} className="tasks">
+                          <div className="search-card">
+                            <Link to={`/searchs/${search.id}`}>
+                              <div className="content">
+                                <div className="left">
+                                  <img src={logo} width="50" alt="" />
                                 </div>
-                              </Link>
-                              <div className="buttons">
-                                <button
-                                  className="botn "
-                                  data-bs-toggle="modal"
-                                  data-bs-target="#exampleModal"
-                                  onClick={() => setSelectedSearch(search.id)}
-                                >
-                                  Completar
-                                </button>
+                                <div className="right">
+                                  <div className="task">{search.title}</div>
+                                </div>
                               </div>
+                            </Link>
+                            <div className="buttons">
+                              <button
+                                className="botn "
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"
+                                onClick={() => setSelectedSearch(search.id)}
+                              >
+                                Completar
+                              </button>
                             </div>
                           </div>
-                        ))
-                    ) : (
-                      <h2>NO HAY BÚSQUEDAS ASIGNADAS</h2>
-                    )}
-             
-                
+                        </div>
+                      ))
+                  ) : (
+                    <h2>NO HAY BÚSQUEDAS ASIGNADAS</h2>
+                  )}
                 </div>
               </div>
             </div>
@@ -234,8 +230,8 @@ const Profile = () => {
 
 export default Profile;
 
-
-
-{/* <div className="col-md-1">
+{
+  /* <div className="col-md-1">
 <img className="phone" src={phone} alt="" />
-</div> */}
+</div> */
+}
