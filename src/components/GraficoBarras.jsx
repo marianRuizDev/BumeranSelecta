@@ -90,11 +90,8 @@ const GraficosBarras = () => {
     }
   })
 
-  console.log(concat)//me devuelve CountryId con los nombres de los paises :) 
+  //me devuelve CountryId con los nombres de los paises :) 
 
-
-
-  const listaPaises = ["Uruguay", "Paraguay", "Bolivia", "Argentina", "Chile"]
 
 
   /* const data1 = [
