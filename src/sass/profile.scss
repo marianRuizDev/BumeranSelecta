@@ -240,7 +240,7 @@
     }
   }
   .header {
-    border: solid rgba(46, 56, 233, 0.8);
+  //  border: solid rgba(46, 56, 233, 0.8);
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.14);
     // width: 95% !important;
@@ -393,13 +393,14 @@
     }
   }
   .header {
-    border: solid rgba(46, 56, 233, 0.8);
+    //border: solid rgba(46, 56, 233, 0.8);
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.14);
     // width: 95% !important;
     text-align: center;
     padding: 15px;
     margin: 15px;
+    
     h2 {
       font-size: 2.5vmax;
       color: rgba(255, 255, 255, 0.8);
@@ -559,13 +560,14 @@
     }
   }
   .header {
-    border: solid rgba(46, 56, 233, 0.8);
+   // border: solid rgba(46, 56, 233, 0.8);
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.14);
     // width: 95% !important;
     text-align: center;
     padding: 15px;
     margin: 15px;
+    width: 77%;
     h2 {
       font-size: 2.5vmax;
       color: rgba(255, 255, 255, 0.8);
