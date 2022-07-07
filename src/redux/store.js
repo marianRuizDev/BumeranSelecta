@@ -11,6 +11,7 @@ import areaReducer from "./getAreas";
 import searchReducer from "./search";
 import assignedSearchReducer from "./assignedSearch";
 import contSlice from "./contSlice";
+import activeSearchesReducer from "./modifyActiveSearches";
 
 const persistConfig = {
   key: "root",
@@ -25,6 +26,7 @@ const reducer = combineReducers({
   area: areaReducer,
   search: searchReducer,
   assigned: assignedSearchReducer,
+  activeSearches: activeSearchesReducer,
   cont: contSlice,
 });
 

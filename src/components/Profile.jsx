@@ -16,6 +16,10 @@ import { getOneRecruiter } from "../redux/recruiters";
 import { getAssignedSearchRequest } from "../redux/assignedSearch";
 import { getOneUpDate } from "../redux/search";
 import "../sass/profile.scss";
+import {
+  addAvtiveSearches,
+  subtractAvtiveSearches,
+} from "../redux/modifyActiveSearches";
 
 const Profile = () => {
   const date = new Date();
@@ -35,10 +39,12 @@ const Profile = () => {
     e.preventDefault();
     if (workersNum.value !== undefined && workersNum.value !== "0") {
       dispatch(getOneUpDate({ id: selectedSearch, StatusId: 3 }));
+      dispatch(subtractAvtiveSearches(userId));
+      //dispatch(addAvtiveSearches(userId));
       setValidate(true);
       setTimeout(() => {
         document.getElementById("closeBtn").click();
-        //window.location.reload();
+        window.location.reload();
       }, 1000);
     }
 
