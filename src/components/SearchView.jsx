@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
@@ -16,33 +16,50 @@ import RecruiterSideBar from "./RecruiterSideBar";
 import "../sass/searchs.scss";
 
 function SearchView() {
-  const selectedSearch = useSelector((state) => state.search);
-  const recruiters = useSelector((state) => state.recruiters);
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
-
-  const date = new Date().getTime();
-  const searchTime = new Date(selectedSearch[0].time).getTime();
-  const diff = (date - searchTime) / (1000 * 60 * 60 * 24);
-
-
+  const [bool, setBool] = useState(false);
 
   const params = useParams();
   const id = params.id;
 
+  const selectedSearch = useSelector((state) => state.search);
+  const recruiters = useSelector((state) => state.recruiters);
+
+  console.log(selectedSearch[0].createdAt);
+
+  const searchCountry = useSelector((state) => state.country).filter(
+    (pais) => pais.id === selectedSearch[0].CountryId
+  );
+  const searchArea = useSelector((state) => state.area).filter(
+    (area) => area.id === selectedSearch[0].AreaId
+  );
+
+  const date = new Date().getTime();
+  const searchTime = new Date(selectedSearch[0].createdAt);
+  const diff = (date - searchTime) / (1000 * 60 * 60 * 24);
+
+  let timeStamp = "";
+
+  if (parseInt(diff) === 1) {
+    timeStamp = "Publicado hace 1 día";
+  } else if (diff > 1) {
+    timeStamp = `Publicado hace ${parseInt(diff)} días`;
+  } else if (diff * 24 < 24 && diff * 24 * 60 >= 120) {
+    timeStamp = `Publicado hace ${parseInt(diff * 24)} horas`;
+  } else if (diff * 24 * 60 < 120) {
+    timeStamp = "Nuevo";
+  }
+
   // PRIMERO 3 MEJORES RECRUITERS
   const mejoresRecruiters = recruiters
-    .slice(1, 4)
+    .filter(
+      (rec) =>
+        rec.AreaId === selectedSearch[0].AreaId &&
+        rec.CountryId === selectedSearch[0].CountryId
+    )
+    .slice(0, 3)
     .sort((a, b) => b.rating - a.rating);
-
-
-
-  useEffect(() => {
-    dispatch(getOneSearches(id));
-    //dispatch(sendAllRecruiters());
-  }, []);
-
 
   const handleDeleteSearch = () => {
     dispatch(deleteSearch(id));
@@ -52,6 +69,10 @@ function SearchView() {
     }, 500);
   };
 
+  useEffect(() => {
+    dispatch(sendAllRecruiters());
+    dispatch(getOneSearches(id));
+  }, []);
   return (
     <div class="containerBox">
       <div className="boxTitle">
@@ -77,7 +98,7 @@ function SearchView() {
             <div className="grup01 text-danger">
               <div class="boxicon">
                 <BiCube />
-                <p>{"Servicios"}</p>
+                <p>{searchArea[0].name}</p>
               </div>
 
               <div class="boxicon">
@@ -94,7 +115,7 @@ function SearchView() {
             <div className="grup02 text-primary">
               <div class="boxicon">
                 <IoLocationSharp />
-                <p> {selectedSearch[0].country}</p>
+                <p> {searchCountry[0].name}</p>
               </div>
 
               <div class="boxicon">
@@ -111,13 +132,7 @@ function SearchView() {
             <div className="grup02 text-primary">
               <div class="boxicon">
                 <AiOutlineClockCircle />
-                <span>
-                  {diff >= 1
-                    ? parseInt(diff) === 1
-                      ? "Publicado hace 1 día"
-                      : `Publicado hace ${parseInt(diff)} días`
-                    : `Publicado hace ${parseInt(diff * 24)} horas`}
-                </span>
+                <span>{timeStamp}</span>
               </div>
             </div>
           </div>
@@ -128,9 +143,17 @@ function SearchView() {
         </div>
 
         <div className="boxMoreSerach">
-          {mejoresRecruiters.map((recruiter, index) => {
-            return <RecruiterSideBar key={index} recruiter={recruiter} />;
-          })}
+          {selectedSearch[0].RecruiterId === null
+            ? mejoresRecruiters.map((recruiter, index) => {
+                return (
+                  <RecruiterSideBar
+                    key={index}
+                    recruiter={recruiter}
+                    search={selectedSearch}
+                  />
+                );
+              })
+            : "Búsqueda ya asignada"}
         </div>
       </div>
     </div>

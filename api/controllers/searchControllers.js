@@ -12,6 +12,7 @@ class RouterSearch {
   }
 
   static async createSearch(req, res) {
+    console.log("ACA REQ BODY", req.body);
     const { error, data } = await searchServices.create(req.body);
 
     if (error) {
@@ -22,7 +23,6 @@ class RouterSearch {
 
   static async edit(req, res) {
     const { id } = req.params;
-
 
     Search.update(
       {

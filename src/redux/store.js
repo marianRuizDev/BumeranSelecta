@@ -12,7 +12,9 @@ import searchReducer from "./search";
 import assignedSearchReducer from "./assignedSearch";
 import contSlice from "./contSlice";
 import activeSearchesReducer from "./modifyActiveSearches";
-import staticReducerReducer from "./stadistics";
+import staticReducer from "./stadistics";
+import assignRecruiterReducer from "./assignRecruiter";
+import staticTableReducer from "./stadisticsTable";
 
 const persistConfig = {
   key: "root",
@@ -27,8 +29,10 @@ const reducer = combineReducers({
   area: areaReducer,
   search: searchReducer,
   assigned: assignedSearchReducer,
+  assignRecuiter: assignRecruiterReducer,
   activeSearches: activeSearchesReducer,
-  stadistics: staticReducerReducer,
+  stadistics: staticReducer,
+  stadisticsTable: staticTableReducer,
   cont: contSlice,
 });
 

@@ -18,7 +18,6 @@ const ViewAdmin = () => {
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [value, setValue] = useState("");
-  console.log(typeof selectedCountry);
 
   const handlerClick = (e) => {
     setValue(e.target.value);

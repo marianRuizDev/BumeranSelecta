@@ -1,68 +1,66 @@
-const express = require('express');
-const sequelize = require('sequelize');
+const express = require("express");
+const sequelize = require("sequelize");
 const router = express.Router();
-const searchControllers = require('../controllers/searchControllers');
+const searchControllers = require("../controllers/searchControllers");
 //no va aca
-const { Search, Recruiter } = require('../models');
-const { search } = require('./recruiter');
+const { Search, Recruiter } = require("../models");
+const { search } = require("./recruiter");
 ///
-router.get('/all', searchControllers.allSearch);
-router.post('/add', searchControllers.createSearch);
+router.get("/all", searchControllers.allSearch);
+router.post("/add", searchControllers.createSearch);
 
 //getall status - Chart
-router.get('/chart', (req, res) => {
+router.get("/chart", (req, res) => {
   Search.findAll({
     attributes: [
-      'CountryId',
+      "CountryId",
       [
         sequelize.fn(
-          'COUNT',
-          sequelize.literal('CASE WHEN StatusId = 1 THEN 1 END')
+          "COUNT",
+          sequelize.literal("CASE WHEN StatusId = 1 THEN 1 END")
         ),
-        'En_Proceso',
+        "En_Proceso",
       ],
       [
         sequelize.fn(
-          'COUNT',
-          sequelize.literal('CASE WHEN StatusId = 2 THEN 1 END')
+          "COUNT",
+          sequelize.literal("CASE WHEN StatusId = 2 THEN 1 END")
         ),
-        'No_Iniciada',
+        "No_Iniciada",
       ],
       [
         sequelize.fn(
-          'COUNT',
-          sequelize.literal('CASE WHEN StatusId = 3 THEN 1 END')
+          "COUNT",
+          sequelize.literal("CASE WHEN StatusId = 3 THEN 1 END")
         ),
-        'Finalizada',
+        "Finalizada",
       ],
     ],
-    group: ['CountryId'],
+    group: ["CountryId"],
   }).then((search) => {
     res.send(search);
   });
 });
 //get all Searchs - Chart
 
-router.get('/chart/table', (req, res) => {
+router.get("/chart/table", (req, res) => {
   Search.findAll({
     attributes: [
-      'title',
-      'StatusId',
-      'createdAt',
-      'CountryId',
-      'AreaId',
-      'vacancies',
+      "title",
+      "StatusId",
+      "createdAt",
+      "CountryId",
+      "AreaId",
+      "vacancies",
     ],
   }).then((search) => {
     res.send(search);
   });
 });
 
-
-
-
 //Asigna a un recruiter -TAMPOCO VA ACA
-router.put('/:id', async function (req, res, next) {
+router.put("/:id", async function (req, res, next) {
+  console.log("ACA REQ BODY", req.body);
   try {
     const searcher = await Search.findOne({ where: { id: req.params.id } });
 
@@ -75,7 +73,7 @@ router.put('/:id', async function (req, res, next) {
 });
 
 //Trae las busquedas asignadas a X reclutador
-router.get('/asigned/:id', (req, res) => {
+router.get("/asigned/:id", (req, res) => {
   Search.findAll({ where: { RecruiterId: req.params.id } })
     .then((search) => {
       res.send(search);
@@ -85,7 +83,7 @@ router.get('/asigned/:id', (req, res) => {
     });
 });
 
-router.get('/:id', searchControllers.getOne);
-router.put('/edit/:id', searchControllers.edit);
-router.delete('/:id', searchControllers.delete);
+router.get("/:id", searchControllers.getOne);
+router.put("/edit/:id", searchControllers.edit);
+router.delete("/:id", searchControllers.delete);
 module.exports = router;

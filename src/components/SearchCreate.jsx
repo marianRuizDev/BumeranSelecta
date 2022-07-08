@@ -1,16 +1,15 @@
-
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import useInput from "../hooks/useInput";
-import { createSearches } from "../redux/search";
+import { createSearches, sendAllSearches } from "../redux/search";
 import "../sass/createSearch.scss";
 
 export default function SearchCreate() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const country = useInput();
-  const area = useInput();
+  const [selectedCountry, setSelectedContry] = useState("");
+  const [jobArea, setJobArea] = useState("");
   const position = useInput();
   const description = useInput();
   const vacancies = useInput();
@@ -19,15 +18,23 @@ export default function SearchCreate() {
   const title = useInput();
   const category = useInput();
 
+  const areas = useSelector((state) => state.area);
+  const paises = useSelector((state) => state.country);
 
+  const handleJobAreaChange = (e) => {
+    setJobArea(e.target.value);
+  };
+  const handleCountryChange = (e) => {
+    setSelectedContry(e.target.value);
+  };
 
   const createSearch = (e) => {
     e.preventDefault();
 
     dispatch(
       createSearches({
-        country,
-        area,
+        selectedCountry,
+        jobArea,
         position,
         description,
         vacancies,
@@ -39,9 +46,10 @@ export default function SearchCreate() {
     );
 
     setTimeout(() => {
+      dispatch(sendAllSearches());
       navigate("/searchs");
       window.location.reload();
-    }, 500);
+    }, 100);
   };
 
   return (
@@ -59,18 +67,6 @@ export default function SearchCreate() {
                 class="form-control"
                 placeholder="Ej.: Empleado administrativo"
                 {...title}
-              />
-            </div>
-
-            <div class="mb-3">
-              <label for="area_search" class="form-label">
-                Área
-              </label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Area de trabajo"
-                {...area}
               />
             </div>
 
@@ -96,6 +92,23 @@ export default function SearchCreate() {
                 placeholder="Ej.: Junior"
                 {...category}
               />
+            </div>
+            <div class="mb-3">
+              <label for="area_search" class="form-label">
+                Área
+              </label>
+              <select
+                onChange={handleJobAreaChange}
+                aria-label="Default select example"
+                className="form-select"
+              >
+                <option value={""}>Área</option>
+                {areas.map((area, index) => (
+                  <option key={index} value={area.id}>
+                    {area.name}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 
@@ -142,12 +155,18 @@ export default function SearchCreate() {
                   <label for="country" class="form-label">
                     País
                   </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Seleccione un país"
-                    {...country}
-                  />
+                  <select
+                    aria-label="Default select example"
+                    onChange={handleCountryChange}
+                    className="form-select"
+                  >
+                    <option value={""}>País</option>
+                    {paises.map((pais, index) => (
+                      <option key={index} value={pais.id}>
+                        {pais.name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
             </div>

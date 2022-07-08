@@ -1,6 +1,5 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
+
 import {
   BarChart,
   Bar,
@@ -12,56 +11,11 @@ import {
   ResponsiveContainer,
   Label,
 } from "recharts";
+
 import "../sass/stadistics.scss";
 
-const GraficosBarras = () => {
-
-
-
-  const [estatico, setEstatico] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/search/chart")
-      .then((res) => setEstatico(res.data));
-  }, []);
-
-  //console.log(estatico);
-
-  const data1 = [
-    {
-      country: 1,
-      started: 20,
-      "in process": 19,
-      finished: 1,
-    },
-    {
-      country: 2,
-      started: 20,
-      "in process": 19,
-      finished: 1,
-    },
-    {
-      country: 3,
-      started: 20,
-      "in process": 19,
-      finished: 1,
-    },
-    {
-      country: 4,
-      started: 20,
-      "in process": 10,
-      finished: 10,
-    },
-    {
-      country: 5,
-      started: 5,
-      "in process": 15,
-      finished: 5,
-    },
-  ];
-
-  estatico.map((e) => {
+const GraficosBarras = ({ data }) => {
+  data.map((e) => {
     if (e.CountryId === 1) {
       e.CountryId = "Uruguay";
     }
@@ -85,7 +39,7 @@ const GraficosBarras = () => {
         <BarChart
           width={300}
           height={100}
-          data={estatico} //es el arreglo de objetos mutado con el map
+          data={data} //es el arreglo de objetos mutado con el map
           margin={{
             top: 100,
             right: 100,

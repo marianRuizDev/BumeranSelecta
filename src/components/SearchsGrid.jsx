@@ -21,7 +21,6 @@ function SearchsGrid() {
   const [jobArea, setJobArea] = useState("");
   const [searchTime, setSearchTime] = useState("");
   const [searchStatus, setSearchStatus] = useState("");
-  console.log(searchs);
 
   const handleCountryChange = (e) => {
     setSelectedContry(e.target.value);
@@ -46,9 +45,9 @@ function SearchsGrid() {
     setSearchStatus("");
   };
   useEffect(() => {
-    dispatch(sendAllSearches());
     dispatch(getCountriesRequest());
     dispatch(getAreasRequest());
+    dispatch(sendAllSearches());
   }, []);
   return (
     <div class="container">
@@ -170,8 +169,8 @@ function SearchsGrid() {
               return (
                 <SearchCard
                   key={index}
-                  country={search.country}
-                  area={search.area}
+                  country={search.CountryId}
+                  area={search.AreaId}
                   time={search.createdAt}
                   status={search.StatusId}
                   id={search.id}

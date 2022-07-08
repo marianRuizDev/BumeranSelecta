@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BiTrash } from "react-icons/bi";
 import { AiOutlineDownload } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Tables from "../components/Tables";
 import GraficoBarras from "./GraficoBarras";
 import GraficoBarras2 from "./GraficoBarras2";
@@ -10,17 +10,42 @@ import "../sass/viewAdmin.scss";
 import "../sass/stadistics.scss";
 import { CSVLink } from "react-csv";
 import axios from "axios";
+import { getAlldata } from "../redux/stadistics";
+import { getAreasRequest } from "../redux/getAreas";
+import { getCountriesRequest } from "../redux/getCountries";
+import { Types } from "mysql";
+import { sendAllSearches } from "../redux/search";
+import { getAlldataTable } from "../redux/stadisticsTable";
 
 const Stadistics = () => {
   const [info, setInfo] = useState([]);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/search/chart/table")
-      .then((res) => setInfo(res.data));
-  }, []);
+  const countries = useSelector((state) => state.country);
+  const areas = useSelector((state) => state.area);
 
-  info.map((e) => {
+  // const estados = ["En proceso", "No iniciada", "Finalizada"];
+
+  const table = useSelector((state) => state.stadisticsTable);
+  const datos = useSelector((state) => state.stadistics);
+
+  const tableData = [
+    { ...table[0] },
+    { ...table[1] },
+    { ...table[2] },
+    { ...table[3] },
+    { ...table[4] },
+    { ...table[5] },
+    { ...table[6] },
+    { ...table[7] },
+    { ...table[8] },
+    { ...table[9] },
+    { ...table[10] },
+    { ...table[11] },
+    { ...table[12] },
+    { ...table[13] },
+  ];
+  tableData.map((e) => {
     if (e.CountryId === 1) {
       e.CountryId = "Uruguay";
     }
@@ -94,53 +119,24 @@ const Stadistics = () => {
       e.AreaId = "Atención al Cliente";
     }
   });
-
-  console.log(info);
-  /* Cambiar por state de area countries y status */
-  const estados = ["No iniciada", "En proceso", "Finalizada"];
-  const countries = [
-    "Alemania",
-    "Argentina",
-    "Austria",
-    "Canada",
-    "Colombia",
-    "Finlandia",
-    "Francia",
-    "Honduras",
-    "México",
-    "Iran",
-    "Suiza",
-    "Perú",
+  console.log(tableData);
+  const data = [
+    { ...datos[0] },
+    { ...datos[1] },
+    { ...datos[2] },
+    { ...datos[3] },
+    { ...datos[4] },
   ];
-
-  const areas = [
-    "Administración",
-    "Atención al Cliente",
-    "Comercial",
-    "Gastronomía",
-    "Ingenierías",
-    "Logística",
-    "Marketing",
-    "Producción",
-    "Recursos Humanos",
-    "Salud",
-    "Tecnologia",
-  ];
-
-  const datos = useSelector((state) => state.stadistics);
-  /*  console.log(datos) */
-  /*  const infoCopy = [...info]  */
 
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [searchStatus, setSearchStatus] = useState("");
-  const [data, setData] = useState([]);
+  console.log(searchStatus);
 
   const handleCountryChange = (e) => {
     setSelectedContry(e.target.value);
   };
   const handleJobAreaChange = (e) => {
-    console.log(e.target.value);
     setJobArea(e.target.value);
   };
   const handlSearchStatusChange = (e) => {
@@ -151,7 +147,13 @@ const Stadistics = () => {
     setJobArea("");
     setSearchStatus("");
   };
-
+  useEffect(() => {
+    dispatch(getCountriesRequest());
+    dispatch(getAreasRequest());
+    dispatch(getAlldata());
+    dispatch(sendAllSearches());
+    dispatch(getAlldataTable());
+  }, []);
   return (
     <div>
       <div className="container-xxl">
@@ -171,7 +173,11 @@ const Stadistics = () => {
                   {countries
                     ?.filter((pais) => pais !== null)
                     .map((pais, i) => {
-                      return <option key={i}>{pais}</option>;
+                      return (
+                        <option key={i} value={pais.id}>
+                          {pais.name}
+                        </option>
+                      );
                     })}
                 </select>
               </div>
@@ -186,7 +192,11 @@ const Stadistics = () => {
                   {areas
                     ?.filter((area) => area !== null)
                     .map((area, i) => {
-                      return <option key={i}>{area}</option>;
+                      return (
+                        <option key={i} value={area.id}>
+                          {area.name}
+                        </option>
+                      );
                     })}
                 </select>
               </div>
@@ -199,11 +209,9 @@ const Stadistics = () => {
                   onChange={handlSearchStatusChange}
                 >
                   <option value={""}>Estado</option>
-                  {estados
-                    ?.filter((estado) => estado !== null)
-                    .map((estado, i) => {
-                      return <option key={i}>{estado}</option>;
-                    })}
+                  <option value={2}>No iniciada</option>
+                  <option value={1}>En proceso</option>
+                  <option value={3}>Finalizada</option>
                 </select>
               </div>
               <div class="col-1">
@@ -217,7 +225,7 @@ const Stadistics = () => {
 
               <div class="col-1">
                 {/* pasar infoCopy */}
-                <CSVLink data={info} target=" _blank">
+                <CSVLink data={tableData} target=" _blank">
                   <AiOutlineDownload className="borrar" />
                 </CSVLink>
               </div>
@@ -249,25 +257,25 @@ const Stadistics = () => {
         </div>
       </div>
 
-      {info
+      {table
         .filter((val) => {
           if (jobArea === "") {
             return val;
-          } else if (val.AreaId === jobArea) {
+          } else if (val.AreaId === Number(jobArea)) {
             return val;
           }
         })
         .filter((val) => {
           if (selectedCountry === "") {
             return val;
-          } else if (val.CountryId === selectedCountry) {
+          } else if (val.CountryId === Number(selectedCountry)) {
             return val;
           }
         })
         .filter((val) => {
           if (searchStatus === "") {
             return val;
-          } else if (val.StatusId === searchStatus) {
+          } else if (val.StatusId === Number(searchStatus)) {
             return val;
           }
         })
@@ -278,7 +286,15 @@ const Stadistics = () => {
             </div>
           );
         })}
-      <GraficoBarras data={[...info]} />
+      <GraficoBarras
+        data={data.filter((val) => {
+          if (selectedCountry === "") {
+            return val;
+          } else if (val.CountryId === Number(selectedCountry)) {
+            return val;
+          }
+        })}
+      />
       <GraficoBarras2 data={info} />
       <GraficoPie data={info} />
     </div>
