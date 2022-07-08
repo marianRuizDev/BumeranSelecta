@@ -1,4 +1,4 @@
-const { Search } = require('../models');
+const { Search } = require("../models");
 
 class searchServices {
   /////////// RUTAS ARIEL/////////
@@ -7,38 +7,19 @@ class searchServices {
       const allSearch = await Search.findAll();
       return { error: false, data: allSearch };
     } catch (error) {
-      return { error: true, data: 'Publicaciones no encontradas' };
+      return { error: true, data: "Publicaciones no encontradas" };
     }
   }
 
   static async create(body) {
-    const {
-      country,
-      area,
-      description,
-      vacancies,
-      status,
-      jobSchedules,
-      salary,
-      title,
-      category,
-    } = body;
     try {
       const newSearch = Search.create({
-        country,
-        area,
-        description,
-        vacancies,
-        status,
-        jobSchedules,
-        salary,
-        title,
-        category,
+        ...body,
       });
 
       return { error: false, data: newSearch };
     } catch (error) {
-      return { error: true, data: 'No se puedo crear una nueva Publicacion' };
+      return { error: true, data: "No se puedo crear una nueva Publicacion" };
     }
   }
 
@@ -53,7 +34,7 @@ class searchServices {
       console.error(error);
       return {
         error: true,
-        data: 'error 404: product not found',
+        data: "error 404: product not found",
       };
     }
   }

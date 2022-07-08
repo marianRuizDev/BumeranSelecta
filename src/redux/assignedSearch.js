@@ -1,6 +1,8 @@
 import axios from "axios";
 import { createReducer, createAsyncThunk } from "@reduxjs/toolkit";
 
+//trea las búsquedas que le fueron asignadas a un recruiter en específico
+
 export const getAssignedSearchRequest = createAsyncThunk(
   "ASSIGNED",
   async (userId) => {

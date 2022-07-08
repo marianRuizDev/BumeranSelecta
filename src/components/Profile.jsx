@@ -16,10 +16,7 @@ import { getOneRecruiter } from "../redux/recruiters";
 import { getAssignedSearchRequest } from "../redux/assignedSearch";
 import { getOneUpDate } from "../redux/search";
 import "../sass/profile.scss";
-import {
-  addAvtiveSearches,
-  subtractAvtiveSearches,
-} from "../redux/modifyActiveSearches";
+import { subtractAvtiveSearches } from "../redux/modifyActiveSearches";
 
 const Profile = () => {
   const date = new Date();
@@ -32,8 +29,13 @@ const Profile = () => {
   const searchs = useSelector((state) => state.assigned);
   const user = userRedux[0];
 
-  // console.log(user);
-
+  const userCountry = useSelector((state) => state.country).filter(
+    (pais) => pais.id === user.CountryId
+  );
+  const userExperienceField = useSelector((state) => state.area).filter(
+    (area) => area.id === user.AreaId
+  );
+  console.log("AAAAAAAA", userCountry);
   const workersNum = useInput();
 
   const handleSubmit = (e) => {
@@ -41,7 +43,6 @@ const Profile = () => {
     if (workersNum.value !== undefined && workersNum.value !== "0") {
       dispatch(getOneUpDate({ id: selectedSearch, StatusId: 3 }));
       dispatch(subtractAvtiveSearches(userId));
-      //dispatch(addAvtiveSearches(userId));
       setValidate(true);
       setTimeout(() => {
         document.getElementById("closeBtn").click();
@@ -58,10 +59,8 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    if (userRedux) {
-      dispatch(getOneRecruiter(userId));
-      dispatch(getAssignedSearchRequest(userId));
-    }
+    dispatch(getOneRecruiter(userId));
+    dispatch(getAssignedSearchRequest(userId));
   }, []);
 
   return (
@@ -151,19 +150,23 @@ const Profile = () => {
                   <h5>{user.rating}</h5>
                 </div>
 
-                {/* <Link to={`/admin/profiles/${user.id}`}>
+                <Link to={`/admin/profiles/${user.id}`}>
                   <FaEdit />
-                </Link> */}
+                </Link>
               </div>
 
               <ul className="boxAtributos">
                 <li>
                   <IoLocationSharp className="local local2" />
-                  <p>{user.email}</p>
+                  <p>{userCountry[0] ? userCountry[0].name : "No asignado"}</p>
                 </li>
                 <li>
                   <MdWork className="work work2" />
-                  <p>{user.email}</p>
+                  <p>
+                    {userExperienceField[0]
+                      ? userExperienceField[0].name
+                      : "No asignado"}
+                  </p>
                 </li>
                 <li>
                   <MdEmail className="build  mail" />
@@ -180,38 +183,36 @@ const Profile = () => {
 
               <div class="card-body main">
                 <div className="">
-                  {searchs.length !== 0 ? (
-                    searchs
-                      .filter((search) => search.StatusId !== 3)
-                      .map((search, i) => (
-                        <div key={i} className="tasks">
-                          <div className="search-card">
-                            <Link to={`/searchs/${search.id}`}>
-                              <div className="content">
-                                <div className="left">
-                                  <img src={logo} width="50" alt="" />
+                  {searchs.length !== 0
+                    ? searchs
+                        .filter((search) => search.StatusId !== 3)
+                        .map((search, i) => (
+                          <div key={i} className="tasks">
+                            <div className="search-card">
+                              <Link to={`/searchs/${search.id}`}>
+                                <div className="content">
+                                  <div className="left">
+                                    <img src={logo} width="50" alt="" />
+                                  </div>
+                                  <div className="right">
+                                    <div className="task">{search.title}</div>
+                                  </div>
                                 </div>
-                                <div className="right">
-                                  <div className="task">{search.title}</div>
-                                </div>
+                              </Link>
+                              <div className="buttons">
+                                <button
+                                  className="botn "
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#exampleModal"
+                                  onClick={() => setSelectedSearch(search.id)}
+                                >
+                                  Completar
+                                </button>
                               </div>
-                            </Link>
-                            <div className="buttons">
-                              <button
-                                className="botn "
-                                data-bs-toggle="modal"
-                                data-bs-target="#exampleModal"
-                                onClick={() => setSelectedSearch(search.id)}
-                              >
-                                Completar
-                              </button>
                             </div>
                           </div>
-                        </div>
-                      ))
-                  ) : (
-                    <h2>NO HAY BÚSQUEDAS ASIGNADAS</h2>
-                  )}
+                        ))
+                    : ""}
                 </div>
               </div>
             </div>

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { IoLocationSharp } from "react-icons/io5";
 import bu from "../assets/navbar/bu.png";
 import useTime from "../hooks/useTime";
@@ -12,6 +12,12 @@ function SearchCard({ id, country, area, time, status, description, title }) {
   const date = new Date().getTime();
   const searchTime = new Date(time);
   const diff = (date - searchTime) / (1000 * 60 * 60 * 24);
+  const countryName = useSelector((state) => state.country).filter(
+    (pais) => pais.id === country
+  );
+  const areaName = useSelector((state) => state.area).filter(
+    (areas) => areas.id === area
+  );
 
   let timeStamp = "";
 
@@ -52,8 +58,6 @@ function SearchCard({ id, country, area, time, status, description, title }) {
     }, 500);
   };
 
-  // const desc = description.slice(0, 400);
-
   return (
     <div className="card">
       <div className="boxTime">
@@ -66,7 +70,7 @@ function SearchCard({ id, country, area, time, status, description, title }) {
             <Link to={`/searchs/${id}`}>
               <div>
                 <h5>{title}</h5>
-                <p>{area}</p>
+                <p>{areaName[0].name}</p>
                 <p class="card-text card-texto">{description}</p>
               </div>
             </Link>
@@ -88,7 +92,7 @@ function SearchCard({ id, country, area, time, status, description, title }) {
           </div>
           <div class="boxLocation">
             <IoLocationSharp class="local" size={30} />
-            <p>{country}</p>
+            <p>{countryName[0].name}</p>
           </div>
         </div>
       </div>

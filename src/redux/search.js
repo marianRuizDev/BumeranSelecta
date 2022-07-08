@@ -19,9 +19,11 @@ export const getOneSearches = createAsyncThunk("ONE_SEARCH", async (id) => {
   }
 });
 
-export const createSearches = createAsyncThunk( "CREATE_SEARCH", async ({
-    country,
-    area,
+export const createSearches = createAsyncThunk(
+  "CREATE_SEARCH",
+  async ({
+    selectedCountry,
+    jobArea,
     position,
     description,
     vacancies,
@@ -32,8 +34,8 @@ export const createSearches = createAsyncThunk( "CREATE_SEARCH", async ({
   }) => {
     try {
       const data = await axios.post("http://localhost:8000/api/search/add", {
-        country: country.value,
-        area: area.value,
+        CountryId: Number(selectedCountry),
+        AreaId: Number(jobArea),
         position: position.value,
         description: description.value,
         vacancies: vacancies.value,
@@ -96,10 +98,10 @@ export const getOneUpDate = createAsyncThunk(
 const searchReducer = createReducer(
   {},
   {
-    [sendAllSearches.fulfilled]: (state, action) => action.payload,
-    [createSearches.fulfilled]: (state, action) => action.payload,
     [getOneSearches.fulfilled]: (state, action) => action.payload,
+    [createSearches.fulfilled]: (state, action) => action.payload,
     [getOneUpDate.fulfilled]: (state, action) => action.payload,
+    [sendAllSearches.fulfilled]: (state, action) => action.payload,
   }
 );
 

@@ -1,38 +1,58 @@
-import React from 'react'
-import '../sass/stadistics.scss'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-
+import { getCountriesRequest } from "../redux/getCountries";
+import "../sass/stadistics.scss";
 
 const Tables = ({ items }) => {
+  const dispatch = useDispatch();
+  const countries = useSelector((state) => state.country).filter(
+    (pais) => pais.id === items.CountryId
+  );
+  const areas = useSelector((state) => state.area).filter(
+    (area) => area.id === items.AreaId
+  );
 
-    /* console.log(items.updatedAt) */
-
-    return (
-        <div>
-            <div class="container container-resultados table-responsive">
-
-                <div class="row row-resultados">
-                    <div class="col"><p>{items.title}</p></div>
-                    <div class="col">
-                        {items.status === "No iniciada" ?
-                            <h6 className='text-no-iniciada'><strong>{items.status}</strong></h6> : ""
-                        }
-                        {items.status === "En proceso" ?
-                            <h6 className='text-proceso'><strong>{items.status}</strong></h6> : ""
-                        }
-                        {items.status === "Finalizada" ?
-                            <h6 className='text-finalizada'><strong>{items.status}</strong></h6> : ""
-                        }
-
-                    </div>
-                    <div class="col">{items.updatedAt}</div>
-                    <div class="col">{items.country}</div>
-                    <div class="col">{items.area}</div>
-                    <div class="col">{items.vacancies}</div>
-                </div>
-            </div>
-        </div >
-    )
-}
+  return (
+    <div>
+      <div class="container container-resultados table-responsive">
+        <div class="row row-resultados">
+          <div class="col">
+            <p>{items.title}</p>
+          </div>
+          <div class="col">
+            {items.StatusId === 2 ? (
+              <h6 className="text-no-iniciada">
+                <strong>No iniciada</strong>
+              </h6>
+            ) : (
+              ""
+            )}
+            {items.StatusId === 1 ? (
+              <h6 className="text-proceso">
+                <strong>En proceso</strong>
+              </h6>
+            ) : (
+              ""
+            )}
+            {items.StatusId === 3 ? (
+              <h6 className="text-finalizada">
+                <strong>Finalizada</strong>
+              </h6>
+            ) : (
+              ""
+            )}
+          </div>
+          <div class="col">
+            {new Date(items.createdAt).toLocaleDateString("es")}
+          </div>
+          <div class="col">{countries[0].name}</div>
+          <div class="col">{areas[0].name}</div>
+          <div class="col">{items.vacancies}</div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Tables;

@@ -1,52 +1,42 @@
 import React, { useEffect, useState } from "react";
-import avatar from "../assets/profiles/perfil1.png";
 import { BsStarFill } from "react-icons/bs";
-
-import "../sass/searchs.scss";
-
+import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import { useDispatch } from "react-redux";
-import { getOneUpDate, sendAllSearches } from "../redux/search";
-import { updateActiveSearch } from "../redux/recruiters";
-import { Link } from "react-router-dom";
 
-export default function RecruiterSideBar({ recruiter }) {
-  const [updateRec, setUpdateRec] = useState();
+import "../sass/searchs.scss";
+import avatar from "../assets/profiles/perfil1.png";
 
-  const dispatch = useDispatch();
+import { addAvtiveSearches } from "../redux/modifyActiveSearches";
+import { assignRecruiterToSearch } from "../redux/assignRecruiter";
 
+export default function RecruiterSideBar({ recruiter, search }) {
   const { id } = useParams();
+  const dispatch = useDispatch();
+  const [bool, setBool] = useState(false);
 
   // ASIGNAR UN RECRUITER//
   const asignRecruiter = async () => {
-    dispatch(getOneUpDate({ id, updateRec })); //SEARCH
-    dispatch(updateActiveSearch({ updateRec })); //RECRUITER
+    dispatch(addAvtiveSearches(recruiter.id));
+    dispatch(
+      assignRecruiterToSearch({ searchId: id, RecruiterId: recruiter.id })
+    ); //RECRUITER
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
   };
 
-  useEffect(() => {
-    if (updateRec) {
-      asignRecruiter();
-    }
-    dispatch(sendAllSearches());
-  }, [updateRec]);
+  console.log(search);
 
-  const handleAsignament = (id) => {
-    setUpdateRec(id);
-  };
-
-  // console.log(recruiter);
-
-  // const handleAsignament = (id) => {
-
-  //   console.log("RECRUTER NUMERO: ", + id)
-
-  // };
+  /*  useEffect(() => {
+    console.log("funciono");
+  }, [bool]); */
 
   return (
-    
+    <>
       <div className="card">
         <Link to={`/profile/${recruiter.id}`}>
-        <img src={avatar} alt="imagen" />
+          <img src={avatar} alt="imagen" />
         </Link>
         <div className="boxData">
           <div className="boxPerson">
@@ -64,11 +54,10 @@ export default function RecruiterSideBar({ recruiter }) {
           <p className="numero">{recruiter.rating}</p>
         </div>
 
-        <button onClick={() => handleAsignament(recruiter.id)} type="button">
+        <button onClick={asignRecruiter} type="button">
           asignar
         </button>
-        
       </div>
-    
+    </>
   );
 }

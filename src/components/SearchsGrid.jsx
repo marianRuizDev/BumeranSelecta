@@ -7,37 +7,16 @@ import { sendAllSearches } from "../redux/search";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import "../sass/searchs.scss";
 import "../sass/viewAdmin.scss";
+import { getCountriesRequest } from "../redux/getCountries";
+import { getAreasRequest } from "../redux/getAreas";
 
 function SearchsGrid() {
   const dispatch = useDispatch();
   const date = new Date().getTime();
-  const paises = [
-    "Argentina",
-    "Chile",
-    "Colombia",
-    "Ecuador",
-    "Mexico",
-    "Panama",
-    "Peru",
-    "Uruguay",
-  ];
-  const areas = [
-    "Administración",
-    "Comercial",
-    "Producción",
-    "Tecnología",
-    "Logística",
-    "Gastronomía",
-    "Recursos Humanos",
-    "Salud",
-    "Ingenierías",
-    "Atención al Cliente",
-    "Marketing",
-    "Construcción",
-    "Comercio Exterior",
-  ];
 
   const searchs = useSelector((state) => state.search);
+  const areas = useSelector((state) => state.area);
+  const paises = useSelector((state) => state.country);
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [searchTime, setSearchTime] = useState("");
@@ -55,7 +34,7 @@ function SearchsGrid() {
   const handleSearchTimeChange = (e) => {
     setSearchTime(e.target.value);
     searchs.map((s) => {
-      console.log(date - s.time);
+      console.log(date - new Date(s.createdAt));
     });
   };
 
@@ -66,6 +45,8 @@ function SearchsGrid() {
     setSearchStatus("");
   };
   useEffect(() => {
+    dispatch(getCountriesRequest());
+    dispatch(getAreasRequest());
     dispatch(sendAllSearches());
   }, []);
   return (
@@ -88,8 +69,8 @@ function SearchsGrid() {
             >
               <option value={""}>País</option>
               {paises.map((pais, index) => (
-                <option key={index} value={pais}>
-                  {pais}
+                <option key={index} value={pais.id}>
+                  {pais.name}
                 </option>
               ))}
             </select>
@@ -102,8 +83,8 @@ function SearchsGrid() {
             >
               <option value={""}>Área</option>
               {areas.map((area, index) => (
-                <option key={index} value={area}>
-                  {area}
+                <option key={index} value={area.id}>
+                  {area.name}
                 </option>
               ))}
             </select>
@@ -128,9 +109,9 @@ function SearchsGrid() {
               className="form-select"
             >
               <option value={""}>Status</option>
-              <option value={"No iniciada"}>No iniciada</option>
-              <option value={"En proceso"}>En proceso</option>
-              <option value={"Finalizada"}>Finalizada</option>
+              <option value={2}>No iniciada</option>
+              <option value={1}>En proceso</option>
+              <option value={3}>Finalizada</option>
             </select>
           </div>
         </div>
@@ -156,7 +137,7 @@ function SearchsGrid() {
             .filter((val) => {
               if (searchStatus === "") {
                 return val;
-              } else if (val.status === searchStatus) {
+              } else if (val.StatusId === Number(searchStatus)) {
                 return val;
               }
             })
@@ -164,7 +145,7 @@ function SearchsGrid() {
               if (searchTime === "") {
                 return val;
               } else if (
-                (date - val.time) / (1000 * 60 * 60 * 24) <=
+                (date - new Date(val.createdAt)) / (1000 * 60 * 60 * 24) <=
                 searchTime
               ) {
                 return val;
@@ -173,14 +154,14 @@ function SearchsGrid() {
             .filter((val) => {
               if (jobArea === "") {
                 return val;
-              } else if (val.area === jobArea) {
+              } else if (val.AreaId === Number(jobArea)) {
                 return val;
               }
             })
             .filter((val) => {
               if (selectedCountry === "") {
                 return val;
-              } else if (val.country === selectedCountry) {
+              } else if (val.CountryId === Number(selectedCountry)) {
                 return val;
               }
             })
@@ -188,8 +169,8 @@ function SearchsGrid() {
               return (
                 <SearchCard
                   key={index}
-                  country={search.country}
-                  area={search.area}
+                  country={search.CountryId}
+                  area={search.AreaId}
                   time={search.createdAt}
                   status={search.StatusId}
                   id={search.id}

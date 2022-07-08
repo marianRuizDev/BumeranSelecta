@@ -66,7 +66,7 @@ export const modifyRecruiter = createAsyncThunk(
   }
 );
 
-export const updateActiveSearch = createAsyncThunk(
+/* export const updateActiveSearch = createAsyncThunk(
   "ACTIVESEARCH_MODIFY",
   async ({ updateRec }) => {
     try {
@@ -79,14 +79,14 @@ export const updateActiveSearch = createAsyncThunk(
       console.log(error);
     }
   }
-);
+); */
 
 const recruiterReducer = createReducer([], {
   [sendAllRecruiters.fulfilled]: (state, action) => action.payload,
   [getOneRecruiter.fulfilled]: (state, action) => action.payload,
   [deleteRecruiter.fulfilled]: (state, action) => action.payload,
   [modifyRecruiter.fulfilled]: (state, action) => action.payload,
-  [updateActiveSearch.fulfilled]: (state, action) => action.payload,
+  //[updateActiveSearch.fulfilled]: (state, action) => action.payload,
 });
 
 export default recruiterReducer;
