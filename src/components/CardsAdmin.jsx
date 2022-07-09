@@ -5,6 +5,7 @@ import { VscTrash } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 import { deleteRecruiter } from "../redux/recruiters";
 import { BiTrash } from 'react-icons/bi'
+import { FaEdit } from "react-icons/fa";
 import perfil from "../assets/profiles/perfil2.png";
 import "../sass/cardsAdmin.scss";
 import "../sass/ranking.scss";
@@ -22,10 +23,10 @@ const CardsAdmin = ({ items }) => {
 
   return (
     <div>
-      <div className="container-xxl">
-        <div class="card-recluter">
+      {/* <div className="container-xxl">
+        <div class="card-recluter d-flex   align-items-center">
           <div class="card-body">
-            <div class="row">
+            <div class="row ">
               <div class="col-lg-1">
                 <Link to={`/profile/${items.id}`}>
                   <img src={perfil} height={75} />
@@ -37,7 +38,7 @@ const CardsAdmin = ({ items }) => {
                   <h6 className="nombre">{items.name + " " + items.lastName} </h6>
                 </Link>
               </div>
-              <div class="col-lg-2" id="ranking">
+              <div class="col-lg-1 " id="ranking">
                 <div className="skills-wrapper">
                   <div className="skill">
                     <div className="skill-content">
@@ -69,34 +70,40 @@ const CardsAdmin = ({ items }) => {
           </div>
         </div>
       </div>
+ */}
+      <div className="container-parent">
+        <div className="container-card">
 
-      {/* <div class="container container-resultados table-responsive">
-        <div class="row row-table">
-          <div class="col col-nombre">
+          <div className="avatar">
+            <img src={perfil} height={75} />
             <Link to={`/profile/${items.id}`}>
-              <img src={perfil} height={75} />
-              <h6 className="nombre">{items.name + " " + items.lastName} </h6>
+              <h6>{items.name + " " + items.lastName} </h6>
             </Link>
           </div>
 
-          <div class="col">
-            <div className="skills-wrapper">
-              <div className="skill">
-                <div className="skill-content">
-                  <span>{items.rating}</span>
+          <div className="flex">
+
+            <div className="container-ranking">
+              <div className="skills-wrapper">
+                <div className="skill">
+                  <div className="skill-content">
+                    <span>{items.rating}</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col ">
-            <h6>{items.activeSearchs} </h6> 
-          </div>
+
+            <div className="container-busquedas">
+              <p>{items.activeSearchs} </p>
+            </div>
 
 
-          <div class="btn-group" role="group" aria-label="Basic example">
-           <Link to={`/admin/profiles/${items.id}`}>
+          </div>
+
+          <div className="btn-grupo">
+            <Link to={`/admin/profiles/${items.id}`}>
               <button type="button" class="btn btn-danger">
-                Modificar
+                <FaEdit />
               </button>
             </Link>
             <button
@@ -105,13 +112,11 @@ const CardsAdmin = ({ items }) => {
               class="btn btn-dander trash-btn"
             >
               <BiTrash />
-            </button> 
+            </button>
           </div>
         </div>
       </div>
-    </div> */}
-
-    </div>
+    </div >
 
 
   );

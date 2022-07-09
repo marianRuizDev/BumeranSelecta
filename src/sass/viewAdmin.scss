@@ -1,9 +1,9 @@
 .card-busqueda {
   background-color: #d8dcfc;
   height: 56px;
-  /*   margin-left: 7.5%; */
-  width: 87.5%;
-  margin-left: 6.5%;
+  width: 90%;
+  margin: 0 auto;
+  /* margin-left: 6.5%; */
   border-radius: 0.3rem;
 }
 
@@ -66,20 +66,6 @@ option {
   align-content: center;
 }
 
-//Barra de filtro vista aadmin - selección de reclutadores
-
-
-.col-4 {
-  margin-top: 0.55%;
-}
-
-
-.col-3 {
-  margin-top: 0.55%;
-}
-
- 
-
 
 //Boton de borrar y boton de descargas
 .borrar {
@@ -93,12 +79,47 @@ option {
   color: #FFFFFF;
 }
 
-/* .editar {
-  color: #000cf1;
-  font-size: x-large;
-} */
 
-/* Estilos barra de filtros estadisticas */
-.col-2 {
-  margin-top: 0.55%;
+
+.container-titulos {
+
+  width: 88%;
+  margin: 0 auto;
+  background-color: #eb0064;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+
+  .card-titulos {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: space-around;
+
+    h5 {
+      color: #FFFFFF;
+    }
+
+    .permisos {
+      /* margin-right: 6%; */
+      color: #FFFFFF;
+    }
+  }
+
+}
+
+@media screen and (min-width: 390px) {
+  .container-titulos {
+    display: none;
+  }
+
+
+}
+
+
+@media screen and (min-width: 768px) {
+  .container-titulos {
+    display: block;
+  }
+
+
 }
