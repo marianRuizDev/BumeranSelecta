@@ -155,8 +155,7 @@ const Stadistics = () => {
         dispatch(getAlldataTable());
     }, []);
 
-    //Data picker configuración
-    /*  const [selectedDate, setSelectedDate] = useState(null) */
+
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(null);
     const onChange = (dates) => {
@@ -166,7 +165,7 @@ const Stadistics = () => {
     }
     return (
         <div>
-            <h1>Reportes y Estadisticas</h1>
+            <h3 className="estadisticas-titulo">Reportes y Estadisticas</h3>
             <div className="container-xxl">
 
                 <div className="card card-busqueda">
@@ -175,7 +174,7 @@ const Stadistics = () => {
                             <div class="col-3">
                                 <DatePicker
 
-                                    selected={startDate}
+                                    
                                     onChange={onChange}
                                     startDate={startDate}
                                     endDate={endDate}
@@ -183,13 +182,13 @@ const Stadistics = () => {
 
                                     dateFormat='dd/MM/yyyy'
                                     placeholderText="Seleccione un fecha"
-                                    locale="es"
                                     /* minDate= {new Date()} */
                                     /* No debería elegir el fin de semana */
                                     /* filterDate={date => date.getDate(date) !== 6 && date.getDate(date) !== 0} */
                                     isClearable
                                     showYearDropdown
                                     scrollableMonthYearDropdown
+                                    className="calendar"
                                 />
                             </div>
 
@@ -256,10 +255,7 @@ const Stadistics = () => {
 
                             <div class="col-1">
                                 <CSVLink data={tableData} target=" _blank">
-
                                     <AiOutlineDownload className="borrar" />
-
-
                                 </CSVLink>
                             </div>
                         </div>

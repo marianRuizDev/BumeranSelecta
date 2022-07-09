@@ -58,3 +58,30 @@
   color: rgb(78, 74, 74);
   font-weight: 600;
 }
+
+.calendar {
+  color: #29293d;
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  height: 37px;
+  margin-left: 17%;
+  margin-top: 0.5%;
+}
+
+.calendar:focus {
+  color: #000cf1;
+  border-color: #000cf1;
+  height: 37px;
+  margin-left: 17%;
+  margin-top: 0.5%;
+  outline: 0;
+  border-radius: 0.5rem;
+  background-color: #FFFFFF
+}
+
+.estadisticas-titulo{
+  text-align: left;
+  margin-left: 7%;
+  margin-top: 2.5%;
+  color: #000cf1;
+} 
