@@ -45,8 +45,9 @@ const ViewAdmin = () => {
 
   return (
     <div>
+      <h1>Selección de Recluatores</h1>
       <div className="container-xxl">
-        <div className="card-busqueda">
+        <div className="card card-busqueda">
           <div class="container">
             <div class="row row-admin">
               <div class="col-3">
@@ -105,7 +106,7 @@ const ViewAdmin = () => {
                 <BiTrash
                   className="borrar"
                   type="button"
-                  id="button-addon2"
+                  /* id="button-addon2" */
                   onClick={handleReset}
                 />
               </div>
@@ -114,25 +115,22 @@ const ViewAdmin = () => {
         </div>
       </div>
 
-      <div className="card-titulos">
-        <div className="card-body">
-          <div className="row fila-titulos">
-            <div className="col-lg-4">
-              <h5 className="title-admin">Reclutador</h5>
-            </div>
-            <div className="col-lg-3">
-              <h5 className="title-admin">Ranking</h5>
-            </div>
-            <div className="col-lg-2">
-              <h5 className="title-admin">Bus. Asignadas</h5>
-            </div>
-            <div className="col-lg-3">
-              <h5 className="title-admin">Permisos</h5>
-            </div>
+      <div class="container container-titulos table-responisve">
+        <div class="row row-tabla">
+          <div class="col">
+            <h5>Recluatdor</h5>
+          </div>
+          <div class="col">
+            <h5>Ranking</h5>
+          </div>
+          <div class="col">
+            <h5>Bus. Asignadas</h5>
+          </div>
+          <div class="col">
+            <h5>Permisos</h5>
           </div>
         </div>
       </div>
-      <hr className="linea" />
 
       <div>
         {recruitersCopy

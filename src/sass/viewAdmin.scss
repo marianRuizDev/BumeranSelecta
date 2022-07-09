@@ -1,8 +1,9 @@
 .card-busqueda {
   background-color: #d8dcfc;
-  height: 52px;
+  height: 56px;
   /*   margin-left: 7.5%; */
-  width: 100%;
+  width: 87.5%;
+  margin-left: 6.5%;
   border-radius: 0.3rem;
 }
 
@@ -65,9 +66,8 @@ option {
   align-content: center;
 }
 
-.row-admin {
-  margin-top: 2%;
-}
+//Barra de filtro vista aadmin - selección de reclutadores
+
 
 .col-4 {
   margin-top: 0.55%;
@@ -78,22 +78,27 @@ option {
   margin-top: 0.55%;
 }
 
-.col-1 {
-  margin-top: 1.2%;
-}
+ 
 
 
+//Boton de borrar y boton de descargas
 .borrar {
-  color: #000cf1;
-  font-size: x-large;
+  background-color: #000cf1;
+  width: 36px;
+  height: 36px;
+  padding: 9px;
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+  color: #FFFFFF;
 }
 
-.editar {
+/* .editar {
   color: #000cf1;
   font-size: x-large;
-}
+} */
 
-/* Estilos barra de filtros */
+/* Estilos barra de filtros estadisticas */
 .col-2 {
   margin-top: 0.55%;
 }

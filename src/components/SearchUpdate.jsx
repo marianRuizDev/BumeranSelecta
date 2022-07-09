@@ -24,7 +24,7 @@ export default function SearchCreate() {
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search);
 
-  
+
 
   const editSearch = (e) => {
     e.preventDefault();
@@ -178,12 +178,12 @@ export default function SearchCreate() {
         </div>
 
         <div className="box_button">
-          <button type="submit" class="btn btn-danger cambios m-2">
-            Guardar
-          </button>
           <Link to={"/searchs"} class="btn btn-danger cancelar m-2">
             Cancelar
           </Link>
+          <button type="submit" class="btn btn-danger cambios m-2">
+            Guardar
+          </button>
         </div>
       </form>
     </div>

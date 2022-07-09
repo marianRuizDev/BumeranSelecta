@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchCard from "./SearchCard";
-import { FiTrash } from "react-icons/fi";
+import { BiTrash } from "react-icons/bi";
+import { BsPlusCircle } from "react-icons/bs"
 import { useDispatch, useSelector } from "react-redux";
 import { sendAllSearches } from "../redux/search";
 import { AiOutlinePlusCircle } from "react-icons/ai";
@@ -57,7 +58,7 @@ function SearchsGrid() {
             to={"/admin/searchs/create"}
             className="navbar-brand btn btn-search "
           >
-            <AiOutlinePlusCircle />
+            <BsPlusCircle />
           </Link>
         </div>
         <div class="d-flex justify-content-center boxBusqueda">
@@ -126,7 +127,7 @@ function SearchsGrid() {
           </div>
 
           <div class="col col-lg-1">
-            <FiTrash onClick={handleReset} class="btnDelete " />
+            <BiTrash onClick={handleReset} class="btnDelete " />
           </div>
         </div>
       </div>
