@@ -20,22 +20,21 @@ const FormProfile = () => {
   const password = useInput();
   const rating = useInput();
   const description = useInput();
-  const country = useInput();
-  const experienceField = useInput();
-
-  const countries = useSelector((state) => state.country);
-  const areas = useSelector((state) => state.area);
-
+  const CountryId = useInput();
+  const AreaId = useInput();
   const [selectedCountry, setSelectedContry] = useState("");
-  const [jobArea, setSelectedJob] = useState("");
+  const [jobArea, setJobArea] = useState("");
 
+  const areas = useSelector((state) => state.area);
+  const paises = useSelector((state) => state.country);
+
+  const handleJobAreaChange = (e) => {
+    console.log(e.target.value)
+    setJobArea(e.target.value);
+  };
   const handleCountryChange = (e) => {
     console.log(e.target.value)
     setSelectedContry(e.target.value);
-  };
-  const handleJobAreaChange = (e) => {
-    console.log(e.target.vaalue)
-    setSelectedJob(e.target.value);
   };
 
   const handlerSubmit = (e) => {
@@ -48,8 +47,8 @@ const FormProfile = () => {
         email,
         rating,
         description,
-        country,
-        experienceField,
+        CountryId,
+        AreaId,
       })
     );
   };
@@ -116,21 +115,16 @@ const FormProfile = () => {
             País
           </label>
           <select
-            className="form-select"
             aria-label="Default select example"
-            placeholder="Seleccione un país"
             onChange={handleCountryChange}
+            className="form-select"
           >
-            <option value={""}>Seleccione un pais</option>
-            {countries
-              ?.filter((pais) => pais !== null)
-              .map((pais, i) => {
-                return (
-                  <option key={i} value={pais.id}>
-                    {pais.name}
-                  </option>
-                );
-              })}
+            <option value={""}>Seleccione un país</option>
+            {paises.map((pais, index) => (
+              <option key={index} value={pais.id}>
+                {pais.name}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -139,21 +133,16 @@ const FormProfile = () => {
             Área
           </label>
           <select
-            className="form-select"
-            aria-label="Default select example"
-            placeholder="Seleccione un área"
             onChange={handleJobAreaChange}
+            aria-label="Default select example"
+            className="form-select"
           >
             <option value={""}>Seleccione un área</option>
-            {areas
-              ?.filter((area) => area !== null)
-              .map((area, i) => {
-                return (
-                  <option key={i} value={area.id}>
-                    {area.name}
-                  </option>
-                );
-              })}
+            {areas.map((area, index) => (
+              <option key={index} value={area.id}>
+                {area.name}
+              </option>
+            ))}
           </select>
         </div>
 
