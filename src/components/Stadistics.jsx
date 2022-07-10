@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Tables from "../components/Tables";
 import CarouselGraficos from "./CarouselGraficos";
 import "../sass/stadistics.scss";
+import "../sass/viewAdmin.scss"
 import "react-datepicker/dist/react-datepicker.css"
 import { CSVLink } from "react-csv";
 import DatePicker from "react-datepicker"

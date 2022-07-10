@@ -57,13 +57,35 @@ const CardsAdmin = ({ items }) => {
                 <FaEdit />
               </button>
             </Link>
-            <button
-              onClick={handleDelete}
+            {/* <button
+              
               type="button"
               class="btn btn-dander trash-btn"
             >
               <BiTrash />
+            </button> */}
+
+            <button type="button" class="btn btn-danger trash-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <BiTrash />
             </button>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Eliminar reclutador</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    ¿Desea eliminar a este reclutador de la base de datos?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger trash-btn" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger trash-btn" onClick={handleDelete} >Aceptar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
