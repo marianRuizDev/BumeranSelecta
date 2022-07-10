@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createReducer, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const getAlldata = createAsyncThunk("ONE_UPDATE", async () => {
+export const getAlldata = createAsyncThunk("STATIC", async () => {
   try {
     const data = await axios.get("http://localhost:8000/api/search/chart");
     return data.data;

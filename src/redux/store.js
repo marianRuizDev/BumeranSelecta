@@ -12,7 +12,7 @@ import searchReducer from "./search";
 import assignedSearchReducer from "./assignedSearch";
 import contSlice from "./contSlice";
 import activeSearchesReducer from "./modifyActiveSearches";
-import staticReducerReducer from "./stadistics";
+import staticReducer from "./stadistics";
 
 const persistConfig = {
   key: "root",
@@ -28,7 +28,7 @@ const reducer = combineReducers({
   search: searchReducer,
   assigned: assignedSearchReducer,
   activeSearches: activeSearchesReducer,
-  stadistics: staticReducerReducer,
+  stadistics: staticReducer,
   cont: contSlice,
 });
 
