@@ -6,9 +6,6 @@ import Tables from "../components/Tables";
 import CarouselGraficos from "./CarouselGraficos";
 import "../sass/stadistics.scss";
 import "react-datepicker/dist/react-datepicker.css"
-import GraficoBarras from "./GraficoBarras";
-import GraficoBarras2 from "./GraficoBarras2";
-import GraficoPie from "./GraficoPie";
 import { CSVLink } from "react-csv";
 import DatePicker from "react-datepicker"
 import { getAlldata } from "../redux/stadistics";
@@ -155,13 +152,13 @@ const Stadistics = () => {
     }, []);
 
 
-    /*  const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(new Date());
      const [endDate, setEndDate] = useState(null);
      const onChange = (dates) => {
          const [start, end] = dates;
          setStartDate(start);
          setEndDate(end);
-     } */
+     } 
     return (
         <div>
             <h3 className="estadisticas-titulo">Reportes y Estadisticas</h3>
@@ -169,7 +166,7 @@ const Stadistics = () => {
                 <div className="card card-busqueda">
                     <div class="container">
                         <div class="row d-flex justify-content-center  align-items-center">
-                            {/* <div class="col- col-sm-1">
+                            <div class="col-3 ">
                                 <DatePicker
 
                                     
@@ -185,9 +182,9 @@ const Stadistics = () => {
                                     scrollableMonthYearDropdown
                                     className="calendar"
                                 />
-                            </div>  */}
+                            </div>  
 
-                            <div class="col-2 col-sm-2">
+                            <div class="col-2 ">
                                 <select
                                     className="form-select"
                                     aria-label="Default select example"
@@ -206,7 +203,7 @@ const Stadistics = () => {
                                         })}
                                 </select>
                             </div>
-                            <div class="col-3 col-sm-2 ">
+                            <div class="col-3 ">
                                 <select
                                     className="form-select"
                                     aria-label="Default select example"
@@ -226,7 +223,7 @@ const Stadistics = () => {
                                 </select>
                             </div>
 
-                            <div class="col-2 col-sm-2">
+                            <div class="col-2">
                                 <select
                                     className="form-select"
                                     aria-label="Default select example"
@@ -239,7 +236,7 @@ const Stadistics = () => {
                                     <option value={3}>Finalizada</option>
                                 </select>
                             </div>
-                            <div class="col-1 col-sm-1">
+                            <div class="col-1">
                                 <BiTrash
                                     className="borrar"
                                     type="button"
@@ -248,7 +245,7 @@ const Stadistics = () => {
                                 />
                             </div>
 
-                            <div class="col-1 col-sm-1">
+                            <div class="col-1 ">
                                 <CSVLink data={tableData}
                                     target=" _blank"
                                     filename="Estadísticas"
@@ -326,10 +323,6 @@ const Stadistics = () => {
                  }
              })} 
             /> */}
-            {/*  <GraficoBarras data={data}/> */}
-            {/*  <GraficoBarras2 /> */}
-            {/*  <GraficoPie />   */}
-
         </div>
     );
 };

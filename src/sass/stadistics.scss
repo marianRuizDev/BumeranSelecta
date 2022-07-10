@@ -4,7 +4,7 @@
   color: #ffffff;
   font-weight: 500;
   text-align: center;
-/*   border: solid red;  */
+  /*   border: solid red;  */
   margin-top: 2%;
 
   .row-tabla {
@@ -22,12 +22,12 @@
   background: #FFFFFF;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
   width: 88%;
- /*  border: solid red; */
+  /*  border: solid red; */
 
   .row-resultados {
     text-align: center;
     margin-top: 1.5%;
-   /*  border: solid red; */
+    /*  border: solid red; */
     width: 100%;
   }
 
@@ -53,8 +53,68 @@
 }
 
 //Una de las clases de los graficos
-.recharts-responsive-container{
+/* .recharts-responsive-container {
   padding: 0;
+} */
+
+.calendar {
+  outline: 0;
+  box-shadow: none;
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  height: 38px;
 }
 
-//Hacer que desaparezcan los titulos si es menos a 768px
+.calendar:focus {
+  color: #000cf1;
+  border-color: #000cf1
+}
+
+@media screen and (max-width: 390px) {
+  .calendar {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .calendar {
+    outline: 0;
+    box-shadow: none;
+    background-color: #FFFFFF;
+    border-radius: 0.5rem;
+    height: 38px;
+    width: 120px;
+  }
+
+}
+
+@media screen and (max-width: 425px) {
+  .calendar {
+    outline: 0;
+    box-shadow: none;
+    background-color: #FFFFFF;
+    border-radius: 0.5rem;
+    height: 38px;
+    width: 70px;
+  }
+
+  
+
+}
+
+
+/* @media screen and (max-width: 768px) {
+  .calendar {
+    outline: 0;
+    box-shadow: none;
+    background-color: #FFFFFF;
+    border-radius: 0.5rem;
+    height: 38px;
+    width: 100px;
+  }
+
+} */
+
+
+
