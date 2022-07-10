@@ -1,87 +1,60 @@
-.titulos-table {
-  margin-left: 5%;
-  /*  margin-top: 25%; */
-  color: #eb0064;
-}
-
-.container .row h5 {
+//Estilos de los titulos de la tabla
+.container-titulos {
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
   color: #ffffff;
   font-weight: 500;
   text-align: center;
+/*   border: solid red;  */
+  margin-top: 2%;
+
+  .row-tabla {
+    background-color: #eb0064;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    /*  border: solid red;  */
+  }
+
 }
 
-.row-tabla {
-  background-color: #eb0064;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-}
 
-.row-resultados {
-  text-align: center;
-  margin-top: 1.5%;
-}
-
-.container-titulos {
-  margin-top: 5%;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
-}
-
+//Estilos de los resultados de la tabla
 .container-resultados {
-  background: white;
+  background: #FFFFFF;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+  width: 88%;
+ /*  border: solid red; */
+
+  .row-resultados {
+    text-align: center;
+    margin-top: 1.5%;
+   /*  border: solid red; */
+    width: 100%;
+  }
+
+  .text-no-iniciada {
+    color: #eb0064;
+  }
+
+  .text-proceso {
+    color: #00dcd4;
+  }
+
+  .text-finalizada {
+    color: #000df1;
+  }
+
 }
 
-
-.text-no-iniciada {
-  color: #eb0064;
-}
-
-.text-proceso {
-  color: #00dcd4;
-}
-
-.text-finalizada {
-  color: #000df1;
-}
-
-.grafico-barras {
-  width: 300;
-  margin-top: 10%;
-  margin-right: 50%;
-  background: #ffffff;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-}
-
-.nombre {
-  color: rgb(78, 74, 74);
-  font-weight: 600;
-}
-
-.calendar {
-  color: #29293d;
-  background-color: #FFFFFF;
-  border-radius: 0.5rem;
-  height: 37px;
-  margin-left: 17%;
-  margin-top: 0.5%;
-}
-
-.calendar:focus {
-  color: #000cf1;
-  border-color: #000cf1;
-  height: 37px;
-  margin-left: 17%;
-  margin-top: 0.5%;
-  outline: 0;
-  border-radius: 0.5rem;
-  background-color: #FFFFFF
-}
-
-.estadisticas-titulo{
+.estadisticas-titulo {
   text-align: left;
   margin-left: 7%;
   margin-top: 2.5%;
   color: #000cf1;
-} 
+}
+
+//Una de las clases de los graficos
+.recharts-responsive-container{
+  padding: 0;
+}
+
+//Hacer que desaparezcan los titulos si es menos a 768px

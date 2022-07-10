@@ -3,12 +3,12 @@ import { BiTrash } from "react-icons/bi";
 import { AiOutlineDownload } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import Tables from "../components/Tables";
+import CarouselGraficos from "./CarouselGraficos";
+import "../sass/stadistics.scss";
+import "react-datepicker/dist/react-datepicker.css"
 import GraficoBarras from "./GraficoBarras";
 import GraficoBarras2 from "./GraficoBarras2";
 import GraficoPie from "./GraficoPie";
-import "../sass/viewAdmin.scss";
-import "../sass/stadistics.scss";
-import "react-datepicker/dist/react-datepicker.css"
 import { CSVLink } from "react-csv";
 import DatePicker from "react-datepicker"
 import { getAlldata } from "../redux/stadistics";
@@ -18,7 +18,6 @@ import { sendAllSearches } from "../redux/search";
 import { getAlldataTable } from "../redux/stadisticsTable";
 
 const Stadistics = () => {
-    const [info, setInfo] = useState([]);
     const dispatch = useDispatch();
 
     const countries = useSelector((state) => state.country);
@@ -156,22 +155,21 @@ const Stadistics = () => {
     }, []);
 
 
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(null);
-    const onChange = (dates) => {
-        const [start, end] = dates;
-        setStartDate(start);
-        setEndDate(end);
-    }
+    /*  const [startDate, setStartDate] = useState(new Date());
+     const [endDate, setEndDate] = useState(null);
+     const onChange = (dates) => {
+         const [start, end] = dates;
+         setStartDate(start);
+         setEndDate(end);
+     } */
     return (
         <div>
             <h3 className="estadisticas-titulo">Reportes y Estadisticas</h3>
             <div className="container-xxl">
-
                 <div className="card card-busqueda">
                     <div class="container">
-                        <div class="row ">
-                            <div class="col-3">
+                        <div class="row d-flex justify-content-center  align-items-center">
+                            {/* <div class="col- col-sm-1">
                                 <DatePicker
 
                                     
@@ -182,17 +180,14 @@ const Stadistics = () => {
 
                                     dateFormat='dd/MM/yyyy'
                                     placeholderText="Seleccione un fecha"
-                                    /* minDate= {new Date()} */
-                                    /* No debería elegir el fin de semana */
-                                    /* filterDate={date => date.getDate(date) !== 6 && date.getDate(date) !== 0} */
                                     isClearable
                                     showYearDropdown
                                     scrollableMonthYearDropdown
                                     className="calendar"
                                 />
-                            </div>
+                            </div>  */}
 
-                            <div class="col-2">
+                            <div class="col-2 col-sm-2">
                                 <select
                                     className="form-select"
                                     aria-label="Default select example"
@@ -211,7 +206,7 @@ const Stadistics = () => {
                                         })}
                                 </select>
                             </div>
-                            <div class="col-2">
+                            <div class="col-3 col-sm-2 ">
                                 <select
                                     className="form-select"
                                     aria-label="Default select example"
@@ -231,7 +226,7 @@ const Stadistics = () => {
                                 </select>
                             </div>
 
-                            <div class="col-2">
+                            <div class="col-2 col-sm-2">
                                 <select
                                     className="form-select"
                                     aria-label="Default select example"
@@ -244,7 +239,7 @@ const Stadistics = () => {
                                     <option value={3}>Finalizada</option>
                                 </select>
                             </div>
-                            <div class="col-1">
+                            <div class="col-1 col-sm-1">
                                 <BiTrash
                                     className="borrar"
                                     type="button"
@@ -253,8 +248,11 @@ const Stadistics = () => {
                                 />
                             </div>
 
-                            <div class="col-1">
-                                <CSVLink data={tableData} target=" _blank">
+                            <div class="col-1 col-sm-1">
+                                <CSVLink data={tableData}
+                                    target=" _blank"
+                                    filename="Estadísticas"
+                                >
                                     <AiOutlineDownload className="borrar" />
                                 </CSVLink>
                             </div>
@@ -263,9 +261,10 @@ const Stadistics = () => {
                 </div>
             </div>
 
+            <CarouselGraficos data={data} />
             <div class="container container-titulos table-responisve">
                 <div class="row row-tabla">
-                    <div class="col">
+                    <div class="col col-sm-3">
                         <h5>Titulos</h5>
                     </div>
                     <div class="col">
@@ -318,17 +317,19 @@ const Stadistics = () => {
                         </div>
                     );
                 })}
-            <GraficoBarras
-                data={data.filter((val) => {
-                    if (selectedCountry === "") {
-                        return val;
-                    } else if (val.CountryId === Number(selectedCountry)) {
-                        return val;
-                    }
-                })}
-            />
-            <GraficoBarras2 data={info} />
-            <GraficoPie data={info} />
+            {/*   <GraficoBarras data={data}
+            data={data.filter((val) => {
+                 if (selectedCountry === "") {
+                     return val;
+                 } else if (val.CountryId === Number(selectedCountry)) {
+                     return val;
+                 }
+             })} 
+            /> */}
+            {/*  <GraficoBarras data={data}/> */}
+            {/*  <GraficoBarras2 /> */}
+            {/*  <GraficoPie />   */}
+
         </div>
     );
 };

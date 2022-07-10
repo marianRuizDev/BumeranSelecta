@@ -49,7 +49,7 @@ const ViewAdmin = () => {
       <div className="container-xxl">
         <div className="card card-busqueda">
           <div class="container">
-            <div class="row row-admin d-flex justify-content-center  align-items-center">
+            <div class="row row-admin d-flex justify-content-center  align-items-center ">
               <div class="col-3">
                 <form>
                   <input
@@ -114,23 +114,6 @@ const ViewAdmin = () => {
           </div>
         </div>
       </div>
-
-      {/* <div class="container container-titulos table-responisve">
-        <div class="row row-tabla">
-          <div class="col">
-            <h5>Recluatdor</h5>
-          </div>
-          <div class="col">
-            <h5>Ranking</h5>
-          </div>
-          <div class="col">
-            <h5>Bus. Asignadas</h5>
-          </div>
-          <div class="col">
-            <h5>Permisos</h5>
-          </div>
-        </div>
-      </div> */}
 
       <div className=" container-titulos">
         <div className="card-titulos">
