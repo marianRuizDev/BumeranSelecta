@@ -20,9 +20,10 @@ const GraficoPie = () => {
 
 
     return (
-        <div>
-
-            <ResponsiveContainer width="100%" aspect={5}>
+        <>
+        Grafico 3 - Tiempo de cierre de las busquedas por area?
+        Grafico 4 - Tiempo de cierre de las busquedas por reclutador?
+           {/*  <ResponsiveContainer width="100%" aspect={5}>
                 <PieChart width={300} height={300}>
                     <Pie
                         dataKey="tiempo"
@@ -37,9 +38,10 @@ const GraficoPie = () => {
                     <Tooltip />
                 </PieChart>
             </ResponsiveContainer>
-            <p>Tiempo promedio de las busquedas por area</p>
+            <p>Tiempo promedio de las busquedas por area</p> */}
+        </>
 
-        </div>
+
     )
 }
 
