@@ -1,18 +1,27 @@
 footer {
+  //border: red solid;
   width: 100%;
   margin-top: 5%;
   padding: 0px 0px 5px 0px;
   background-color: #000cf1;
+  padding: 15px;
+
   position: absolute;
   bottom: 0;
 }
-
 .container-footer {
+  // border: rgb(0, 255, 149) solid;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: auto;
+  align-items: center;
+}
+
+.boxIncon {
+  display: flex;
+  justify-content: space-evenly;
+  //border: rgb(229, 255, 0) solid;
+  width: 100%;
 }
 
 .box-footer {
@@ -22,7 +31,8 @@ footer {
 }
 
 .box-footer {
-  margin-bottom: 2px;
+  margin: 0 !important;
+  padding: 5px;
   color: #f7f8f8;
 }
 

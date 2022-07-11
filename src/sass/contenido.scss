@@ -42,3 +42,255 @@ li {
 .candidatos {
   margin-left: 16%;
 }
+
+.titulo_qs {
+  //margin-top: 50px;
+}
+
+.boxQuienesSomos {
+  // border: rgb(0, 0, 0) solid;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 30px;
+  width: 100%;
+
+  margin-top: 50px;
+
+  .item_img_1 {
+    // border: red solid;
+    width: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+
+    .bg1 {
+      background: url("../assets/quienesSomos/Captura\ desde\ 2022-07-10\ 19-04-24.png");
+      // border: red solid;
+      background-repeat: no-repeat;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      min-height: 350px;
+    }
+  }
+
+  .item_img_2 {
+    // border: red solid;
+    width: 100%;
+
+    .bg2 {
+      background: url("../assets/quienesSomos/Captura\ desde\ 2022-07-10\ 22-10-03.png");
+      background-repeat: no-repeat;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      background-position: center;
+      object-fit: cover;
+      width: 100%;
+      height: 300px;
+    }
+  }
+}
+
+.boxContenedor {
+ // border: red solid;
+  padding: 20px;
+}
+
+.contenido {
+  //border: rgb(126, 150, 21) solid 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.home {
+  //border: black solid;
+  display: flex;
+
+  justify-content: space-evenly;
+  margin: 0;
+}
+
+@media screen and (min-width: 810px) {
+  .boxQuienesSomos {
+    // border: rgb(0, 0, 0) solid;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    width: 100%;
+
+    margin-top: 50px;
+
+    .item_img_1 {
+      // border: red solid;
+      width: 100%;
+
+      .bg1 {
+        background: url("../assets/quienesSomos/Captura\ desde\ 2022-07-10\ 19-04-24.png");
+        //border: red solid;
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: center;
+        width: 50%;
+        min-height: 350px;
+      }
+    }
+
+    .item_img_2 {
+      //border: red solid;
+      width: 95%;
+      margin: 0 auto;
+      .bg2 {
+        background: url("../assets/quienesSomos/Captura\ desde\ 2022-07-10\ 22-10-03.png");
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: center;
+        object-fit: cover;
+        width: 100%;
+        height: 515px;
+      }
+    }
+
+    // .bg1 {
+    //   border: red solid;
+    //   background: url("../assets/quienesSomos/Captura\ desde\ 2022-07-10\ 19-04-24.png");
+    //   object-fit: cover;
+    //   background-position: center;
+    //   width: 100%;
+    //   height: 430px;
+    //   background-repeat: no-repeat;
+    // }
+
+    // .bg2 {
+    //   border: red solid;
+    //   background: url("../assets/quienesSomos/Captura\ desde\ 2022-07-10\ 19-41-05.png");
+    //   object-fit: cover;
+    //   width: 100%;
+    //   background-position: center;
+    //   background-repeat: no-repeat;
+
+    //   height: 530px;
+  }
+
+  .boxContenedor {
+   // border: red solid;
+    padding: 20px;
+  }
+
+  .contenido {
+   // border: rgb(126, 150, 21) solid 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+ 
+
+  .home {
+   // border: rgb(158, 13, 13) solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+
+    .home2{
+     // border: rgb(158, 13, 13) solid;
+      display: flex;
+      flex-direction: column;
+     align-items: center;
+    
+    }
+  }
+}
+@media screen and (min-width: 1280px) {
+
+.titulo_qs {
+  margin-top: 50px;
+}
+  .boxQuienesSomos {
+   // border: rgb(0, 0, 0) solid;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 0;
+    width: 100%;
+
+    margin-top: 50px;
+
+    .item_img_1 {
+     //border: red solid;
+      width: 100%;
+      min-height: 300px;
+
+      .bg1 {
+       //border: rgb(24, 163, 42) solid;
+        background: url("../assets/quienesSomos/Captura\ desde\ 2022-07-10\ 19-04-24.png");
+
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: center;
+        width: 70%;
+        min-height: 450px;
+      }
+    }
+
+    .item_img_2 {
+     //border: red solid;
+      width: 111%;
+      min-height: 300px;
+      .bg2 {
+        //border: red solid;
+        background: url("../assets/quienesSomos/Captura\ desde\ 2022-07-10\ 22-10-03.png");
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: center;
+
+        width: 100%;
+        height: 460px;
+      }
+    }
+
+  }
+  .boxContenedor{
+   // border: red solid;
+    padding: 20px;
+   }
+
+   .contenido{
+    //border: rgb(126, 150, 21) solid 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+   }
+
+  
+
+   .home{
+    //border: black solid;
+    display: flex;
+
+   justify-content: space-evenly;
+   margin: 0;
+   }
+}

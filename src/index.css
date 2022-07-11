@@ -10,11 +10,17 @@ body {
   margin-bottom: 17.6%;
 
   background: #edf1f7;;
+
+  margin: 0;
+  margin-bottom:200px;
 }
 html {
-  min-height: 100%;
+  min-height: 100% !important;
   position: relative;
 }
+
+
+
 
 a {
   text-decoration: none;
