@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getOneSearches, getOneUpDate } from "../redux/search";
@@ -23,7 +23,20 @@ export default function SearchCreate() {
 
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search);
+  const areas = useSelector((state) => state.area);
+  const paises = useSelector((state) => state.country);
 
+  const [selectedCountry, setSelectedContry] = useState("");
+  const [jobArea, setJobArea] = useState("");
+
+  const handleJobAreaChange = (e) => {
+    console.log(e.target.value)
+    setJobArea(e.target.value);
+  };
+  const handleCountryChange = (e) => {
+    console.log(e.target.value)
+    setSelectedContry(e.target.value);
+  };
 
 
   const editSearch = (e) => {
@@ -70,14 +83,14 @@ export default function SearchCreate() {
             </div>
 
             <div class="mb-3">
-              <label for="area_search" class="form-label">
-                Área
+              <label for="category" class="form-label">
+                Categoría{" "}
               </label>
               <input
                 type="text"
                 class="form-control"
-                placeholder={search[0].area}
-                {...area}
+                placeholder={search[0].category}
+                {...category}
               />
             </div>
 
@@ -94,15 +107,31 @@ export default function SearchCreate() {
             </div>
 
             <div class="mb-3">
-              <label for="category" class="form-label">
-                Categoría{" "}
+              {/*<label for="area_search" class="form-label">
+                Área
               </label>
-              <input
+               <input
                 type="text"
                 class="form-control"
-                placeholder={search[0].category}
-                {...category}
-              />
+                placeholder={search[0].area}
+                {...area}
+              /> */}
+
+              <label for="inputEmail4" class="form-label">
+                Área
+              </label>
+              <select
+                onChange={handleJobAreaChange}
+                aria-label="Default select example"
+                className="form-select"
+              >
+                <option value={""}>Seleccione un área</option>
+                {areas.map((area, index) => (
+                  <option key={index} value={area.id}>
+                    {area.name}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 
@@ -149,12 +178,24 @@ export default function SearchCreate() {
                   <label for="country" class="form-label">
                     País
                   </label>
-                  <input
+                  {/*   <input
                     type="text"
                     class="form-control"
                     placeholder={search[0].country}
                     {...country}
-                  />
+                  /> */}
+                  <select
+                    aria-label="Default select example"
+                    onChange={handleCountryChange}
+                    className="form-select"
+                  >
+                    <option value={""}>Seleccione un país</option>
+                    {paises.map((pais, index) => (
+                      <option key={index} value={pais.id}>
+                        {pais.name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
             </div>

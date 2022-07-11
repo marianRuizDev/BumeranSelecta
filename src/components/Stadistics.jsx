@@ -7,6 +7,8 @@ import CarouselGraficos from "./CarouselGraficos";
 import "../sass/stadistics.scss";
 import "../sass/viewAdmin.scss"
 import "react-datepicker/dist/react-datepicker.css"
+import { registerLocale, setDefaultLocale } from  "react-datepicker";
+import es from 'date-fns/locale/es';
 import { CSVLink } from "react-csv";
 import DatePicker from "react-datepicker"
 import { getAlldata } from "../redux/stadistics";
@@ -15,6 +17,8 @@ import { getCountriesRequest } from "../redux/getCountries";
 import { sendAllSearches } from "../redux/search";
 import { getAlldataTable } from "../redux/stadisticsTable";
 
+/* react-datepicker__day react-datepicker__day--010 react-datepicker__day--keyboard-selected react-datepicker__day--today react-datepicker__day--weekend
+ */
 const Stadistics = () => {
     const dispatch = useDispatch();
 
@@ -154,12 +158,17 @@ const Stadistics = () => {
 
 
     const [startDate, setStartDate] = useState(new Date());
-     const [endDate, setEndDate] = useState(null);
-     const onChange = (dates) => {
-         const [start, end] = dates;
-         setStartDate(start);
-         setEndDate(end);
-     } 
+    const [endDate, setEndDate] = useState(null);
+    
+    const onChange = (dates) => {
+        const [start, end] = dates;
+
+        setStartDate(start);
+        console.log('inicio',start)
+        setEndDate(end);
+        console.log('final',end)
+    }
+    registerLocale('es', es)
     return (
         <div>
             <h3 className="estadisticas-titulo">Reportes y Estadisticas</h3>
@@ -170,20 +179,20 @@ const Stadistics = () => {
                             <div class="col-3 ">
                                 <DatePicker
 
-                                    
+
                                     onChange={onChange}
                                     startDate={startDate}
                                     endDate={endDate}
                                     selectsRange
-
-                                    dateFormat='dd/MM/yyyy'
+                                    dateFormat='dd/MMM/yyyy'
                                     placeholderText="Seleccione un fecha"
+                                    locale="es"
                                     isClearable
                                     showYearDropdown
                                     scrollableMonthYearDropdown
                                     className="calendar"
                                 />
-                            </div>  
+                            </div>
 
                             <div class="col-2 ">
                                 <select
