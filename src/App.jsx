@@ -14,7 +14,6 @@ import Profile from "./components/Profile";
 import SearchCreate from "./components/SearchCreate";
 import SearchUpdate from "./components/SearchUpdate";
 import FormProfile from "./commons/FormProfile";
-import ProfileMod from "./commons/ProfileMod.jsx";
 import Stadistics from "./components/Stadistics";
 import { sendAllSearches } from "./redux/search";
 import { sendAllRecruiters } from "./redux/recruiters";
@@ -26,10 +25,8 @@ import { getCountriesRequest } from "./redux/getCountries";
 const App = () => {
   const dispatch = useDispatch();
   const condition = useSelector((state) => state.cont);
-  const data = useSelector((state) => state.stadistics);
   useEffect(() => {
-    if (condition.value === 0 && data.value === 0) {
-      console.log("SE ESTA EJECUTANDO MAL");
+    if (condition.value === 0) {
       dispatch(sendAllSearches());
       dispatch(sendAllRecruiters());
       dispatch(increment());
