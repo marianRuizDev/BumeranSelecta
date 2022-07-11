@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-import { getCountriesRequest } from "../redux/getCountries";
 import "../sass/stadistics.scss";
 
 const Tables = ({ items }) => {
@@ -16,9 +14,9 @@ const Tables = ({ items }) => {
   return (
     <div>
       <div class="container container-resultados table-responsive">
-        <div class="row row-resultados">
+        <div class="row row-resultados align-items-center">
           <div class="col">
-            <p>{items.title}</p>
+            <h6 className="nombre">{items.title}</h6>
           </div>
           <div class="col">
             {items.StatusId === 2 ? (
@@ -49,6 +47,7 @@ const Tables = ({ items }) => {
           <div class="col">{countries[0].name}</div>
           <div class="col">{areas[0].name}</div>
           <div class="col">{items.vacancies}</div>
+          <div class="col">q</div>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ import SingUp from "./components/SingUp";
 import SearchsGrid from "./components/SearchsGrid";
 import SearchView from "./components/SearchView";
 import ViewAdmin from "./components/ViewAdmin";
-import Profile from "./components/Profile";
+import Profile2 from "./components/Profile2";
 import SearchCreate from "./components/SearchCreate";
 import SearchUpdate from "./components/SearchUpdate";
 import FormProfile from "./commons/FormProfile";
@@ -28,8 +28,7 @@ const App = () => {
   const condition = useSelector((state) => state.cont);
   const data = useSelector((state) => state.stadistics);
   useEffect(() => {
-    if (condition.value === 0 && data.value === 0) {
-      console.log("SE ESTA EJECUTANDO MAL");
+    if (condition.value === 0) {
       dispatch(sendAllSearches());
       dispatch(sendAllRecruiters());
       dispatch(increment());
@@ -50,11 +49,10 @@ const App = () => {
         <Route path="/searchs" element={<SearchsGrid />} />
         <Route path="/searchs/:id" element={<SearchView />} />
         <Route path="/admin" element={<ViewAdmin />} />
-        <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/profile/:id" element={<Profile2 />} />
         <Route path="/admin/searchs/create" element={<SearchCreate />} />
         <Route path="/admin/searchs/update/:id" element={<SearchUpdate />} />
         <Route path="/admin/profiles/:id" element={<FormProfile />} />
-        <Route path="/mod" element={<ProfileMod />} />
         <Route path="/info" element={<Stadistics />} />
       </Routes>
       <Footer />

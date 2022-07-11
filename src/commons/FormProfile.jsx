@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import useInput from "../hooks/useInput";
 import { Link } from 'react-router-dom'
-import { getCountriesRequest } from "../redux/getCountries";
 import { getAreasRequest } from "../redux/getAreas";
+import { getCountriesRequest } from "../redux/getCountries";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneRecruiter, modifyRecruiter } from "../redux/recruiters";
@@ -20,17 +20,21 @@ const FormProfile = () => {
   const password = useInput();
   const rating = useInput();
   const description = useInput();
-  const country = useInput();
-  const experienceField = useInput();
+  const CountryId = useInput();
+  const AreaId = useInput();
+  const [selectedCountry, setSelectedContry] = useState("");
+  const [jobArea, setJobArea] = useState("");
 
-  const countries = useSelector((state) => state.country);
   const areas = useSelector((state) => state.area);
+  const paises = useSelector((state) => state.country);
 
-  const handleCountryChange = (e) => {
-    setSelectedContry(e.target.value);
-  };
   const handleJobAreaChange = (e) => {
-    setSelectedJob(e.target.value);
+    console.log(e.target.value)
+    setJobArea(e.target.value);
+  };
+  const handleCountryChange = (e) => {
+    console.log(e.target.value)
+    setSelectedContry(e.target.value);
   };
 
   const handlerSubmit = (e) => {
@@ -43,8 +47,8 @@ const FormProfile = () => {
         email,
         rating,
         description,
-        country,
-        experienceField,
+        CountryId,
+        AreaId,
       })
     );
   };
@@ -110,26 +114,36 @@ const FormProfile = () => {
           <label for="inputEmail4" class="form-label">
             País
           </label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder={user[0].country}
-            aria-label=""
-            {...country}
-          />
+          <select
+            aria-label="Default select example"
+            onChange={handleCountryChange}
+            className="form-select"
+          >
+            <option value={""}>Seleccione un país</option>
+            {paises.map((pais, index) => (
+              <option key={index} value={pais.id}>
+                {pais.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div class="col-md-5">
           <label for="inputEmail4" class="form-label">
             Área
           </label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder={user[0].experienceField}
-            aria-label=""
-            {...experienceField}
-          />
+          <select
+            onChange={handleJobAreaChange}
+            aria-label="Default select example"
+            className="form-select"
+          >
+            <option value={""}>Seleccione un área</option>
+            {areas.map((area, index) => (
+              <option key={index} value={area.id}>
+                {area.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div class="col-md-2">
@@ -156,11 +170,11 @@ const FormProfile = () => {
         </div>
         <div>
           <Link to={`/profile/${user[0].id}`}>
-            <button type="submit" class="btn btn-danger cancelar">
+            <button type="submit" class="btn btn-danger cancelar align-items-center">
               Cancelar
             </button>
           </Link>
-          <button type="submit" class="btn btn-danger cambios">
+          <button type="submit" class="btn btn-danger cambios align-items-center">
             Guardar
           </button>
         </div>

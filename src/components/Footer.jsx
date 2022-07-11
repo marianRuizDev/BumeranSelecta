@@ -19,6 +19,8 @@ const Footer = () => {
                     <img src={logo} width={200} alt="" />
                 </div>
 
+                <div className='d-flex boxIncon'>
+
                 <div className='box-footer nav justify-content-end'>
                     <a href='https://www.facebook.com/bumerancom/' target="_blank"><GrFacebook className='rrss' /></a>
                 </div>
@@ -38,6 +40,10 @@ const Footer = () => {
                 <div className='box-footer nav justify-content-end'>
                     <a href='https://www.youtube.com/channel/UC3fIXQKvWcYwCd8f0J7aiSQ' target="_blank"><IoLogoYoutube className='rrss' /></a>
                 </div>
+
+                </div>
+
+               
             </div>
 
             <div className='box-copyright'>

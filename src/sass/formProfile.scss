@@ -5,16 +5,15 @@
     color: rgba(0, 0, 0, 0.836);
 }
 
-.edit-recruiters {
+/* .edit-recruiters {
     display: flex;
     flex-direction: column;
-    /*  align-items: flex-start; */
     padding: 4%;
     gap: 32px;
 
     position: relative;
 
-    width: 60%;
+    width: 40%;
     height: 40%;
     left: 20%;
     margin-top: 4%;
@@ -24,7 +23,7 @@
     border-radius: 16px;
 
 }
-
+ */
 textarea {
     height: 100px;
     width: 100%;
@@ -54,16 +53,23 @@ textarea:focus {
     box-shadow: none;
 }
 
-.form-edit select {
-    background-color: #f5f5f5;
+.form-select {
+    border-radius: 0.5rem;
+    background-color: #FFFFFF;
 }
 
-.form-edit select:focus {
+.form-select:focus {
     color: #000cf1;
-    background-color: #f5f5f5;
     border-color: #000cf1;
     outline: 0;
     box-shadow: none;
+    border-radius: 0.5rem;
+    background-color: #FFFFFF;
+}
+
+option {
+    color: rgba(0, 0, 0, 0.589);
+    font-weight: bold;
 }
 
 .cancelar {
@@ -72,7 +78,7 @@ textarea:focus {
     color: #eb0064;
     width: 160px;
     height: 40px;
-    margin-left: 25%;
+    margin-left: 30%;
     border-radius: 0.5rem;
 }
 
@@ -99,9 +105,10 @@ textarea:focus {
 .from-edit-1 {
     padding: 4%;
     position: relative;
-    width: 80%;
+    width: 60%;
     height: 40%;
-    left: 10%;
+    /* left: 10%; */
+    margin: 0 auto;
     margin-top: 4%;
     margin-bottom: 4%;
     background: #FFFFFF;

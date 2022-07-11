@@ -102,7 +102,7 @@ export default function SearchCreate() {
                 aria-label="Default select example"
                 className="form-select"
               >
-                <option value={""}>Área</option>
+                <option value={""}>Seleccione un área</option>
                 {areas.map((area, index) => (
                   <option key={index} value={area.id}>
                     {area.name}
@@ -160,7 +160,7 @@ export default function SearchCreate() {
                     onChange={handleCountryChange}
                     className="form-select"
                   >
-                    <option value={""}>País</option>
+                    <option value={""}>Seleccione un país</option>
                     {paises.map((pais, index) => (
                       <option key={index} value={pais.id}>
                         {pais.name}
@@ -190,12 +190,12 @@ export default function SearchCreate() {
         </div>
 
         <div className="box_button">
-          <button type="submit" class="btn btn-danger cambios m-2">
-            Guardar
-          </button>
           <Link to={"/searchs"} class="btn btn-danger cancelar m-2">
             Cancelar
           </Link>
+          <button type="submit" class="btn btn-danger cambios m-2">
+            Guardar
+          </button>
         </div>
       </form>
     </div>

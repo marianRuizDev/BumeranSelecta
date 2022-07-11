@@ -3,22 +3,23 @@ import { BiTrash } from "react-icons/bi";
 import { AiOutlineDownload } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import Tables from "../components/Tables";
-import GraficoBarras from "./GraficoBarras";
-import GraficoBarras2 from "./GraficoBarras2";
-import GraficoPie from "./GraficoPie";
-import "../sass/viewAdmin.scss";
+import CarouselGraficos from "./CarouselGraficos";
 import "../sass/stadistics.scss";
+import "../sass/viewAdmin.scss";
+import "react-datepicker/dist/react-datepicker.css";
+import { registerLocale, setDefaultLocale } from "react-datepicker";
+import es from "date-fns/locale/es";
 import { CSVLink } from "react-csv";
-import axios from "axios";
+import DatePicker from "react-datepicker";
 import { getAlldata } from "../redux/stadistics";
 import { getAreasRequest } from "../redux/getAreas";
 import { getCountriesRequest } from "../redux/getCountries";
-import { Types } from "mysql";
 import { sendAllSearches } from "../redux/search";
 import { getAlldataTable } from "../redux/stadisticsTable";
 
+/* react-datepicker__day react-datepicker__day--010 react-datepicker__day--keyboard-selected react-datepicker__day--today react-datepicker__day--weekend
+ */
 const Stadistics = () => {
-  const [info, setInfo] = useState([]);
   const dispatch = useDispatch();
 
   const countries = useSelector((state) => state.country);
@@ -154,15 +155,43 @@ const Stadistics = () => {
     dispatch(sendAllSearches());
     dispatch(getAlldataTable());
   }, []);
+
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
+
+  const onChange = (dates) => {
+    const [start, end] = dates;
+
+    setStartDate(start);
+    console.log("inicio", start);
+    setEndDate(end);
+    console.log("final", end);
+  };
+  registerLocale("es", es);
   return (
     <div>
+      <h3 className="estadisticas-titulo">Reportes y Estadisticas</h3>
       <div className="container-xxl">
-        <div className="card-busqueda">
+        <div className="card card-busqueda">
           <div class="container">
-            <div class="row ">
-              <div class="col-3"></div>
+            <div class="row d-flex justify-content-center  align-items-center">
+              <div class="col-3 ">
+                <DatePicker
+                  onChange={onChange}
+                  startDate={startDate}
+                  endDate={endDate}
+                  selectsRange
+                  dateFormat="dd/MMM/yyyy"
+                  placeholderText="Seleccione un fecha"
+                  locale="es"
+                  isClearable
+                  showYearDropdown
+                  scrollableMonthYearDropdown
+                  className="calendar"
+                />
+              </div>
 
-              <div class="col-2">
+              <div class="col-2 ">
                 <select
                   className="form-select"
                   aria-label="Default select example"
@@ -181,7 +210,7 @@ const Stadistics = () => {
                     })}
                 </select>
               </div>
-              <div class="col-2">
+              <div class="col-3 ">
                 <select
                   className="form-select"
                   aria-label="Default select example"
@@ -223,9 +252,12 @@ const Stadistics = () => {
                 />
               </div>
 
-              <div class="col-1">
-                {/* pasar infoCopy */}
-                <CSVLink data={tableData} target=" _blank">
+              <div class="col-1 ">
+                <CSVLink
+                  data={tableData}
+                  target=" _blank"
+                  filename="Estadísticas"
+                >
                   <AiOutlineDownload className="borrar" />
                 </CSVLink>
               </div>
@@ -234,6 +266,7 @@ const Stadistics = () => {
         </div>
       </div>
 
+      <CarouselGraficos data={data} />
       <div class="container container-titulos table-responisve">
         <div class="row row-tabla">
           <div class="col">
@@ -253,6 +286,9 @@ const Stadistics = () => {
           </div>
           <div class="col">
             <h5>Vacantes</h5>
+          </div>
+          <div class="col">
+            <h5>Postulados</h5>
           </div>
         </div>
       </div>
@@ -286,17 +322,6 @@ const Stadistics = () => {
             </div>
           );
         })}
-      <GraficoBarras
-        data={data.filter((val) => {
-          if (selectedCountry === "") {
-            return val;
-          } else if (val.CountryId === Number(selectedCountry)) {
-            return val;
-          }
-        })}
-      />
-      <GraficoBarras2 data={info} />
-      <GraficoPie data={info} />
     </div>
   );
 };

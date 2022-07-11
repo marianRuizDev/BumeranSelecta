@@ -147,20 +147,16 @@
   text-align: justify;
 }
 
-
-
-
 // MOBILE
 @media (min-width: 260px) {
   .container2 {
-   // border: rgb(184, 23, 23) solid;
-   
+    // border: rgb(184, 23, 23) solid;
+
     background-image: url("../assets/fomrs/descarga3.png");
     background-repeat: no-repeat;
     background-position: bottom right;
-    
   }
-  
+
   .boxCard {
     display: flex;
     flex-direction: column;
@@ -240,7 +236,7 @@
     }
   }
   .header {
-  //  border: solid rgba(46, 56, 233, 0.8);
+    //  border: solid rgba(46, 56, 233, 0.8);
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.14);
     // width: 95% !important;
@@ -260,7 +256,7 @@
   .card-container {
     //border: 2px solid blue;
     margin-top: -8%;
-    margin-bottom: 100%;
+   // margin-bottom: 100%;
   }
   .sidebar {
     //border: 2px solid rgb(0, 255, 0);
@@ -300,14 +296,12 @@
 //TABLET
 @media (min-width: 810px) {
   .container2 {
-   // border: rgb(184, 23, 23) solid;
+    // border: rgb(184, 23, 23) solid;
     display: flex;
     background-image: url("../assets/fomrs/descarga3.png");
     background-repeat: no-repeat;
     background-position: bottom right;
-    
   }
- 
 
   // estilos ariel//
 
@@ -400,7 +394,7 @@
     text-align: center;
     padding: 15px;
     margin: 15px;
-    
+
     h2 {
       font-size: 2.5vmax;
       color: rgba(255, 255, 255, 0.8);
@@ -414,7 +408,7 @@
   .card-container {
     //border: 2px solid blue;
     margin-top: -8%;
-    margin-bottom: 100%;
+   // margin-bottom: 100%;
   }
 
   .sidebar {
@@ -456,28 +450,21 @@
   .main {
     padding: 2%;
     width: 90%;
-   
   }
-  
 }
 
-
 @media (min-width: 1280px) {
-
-  
   .container2 {
-   // border: rgb(184, 23, 23) solid;
+    // border: rgb(184, 23, 23) solid;
     display: flex;
     background-image: url("../assets/fomrs/descarga3.png");
     background-repeat: no-repeat;
     background-position: bottom right;
-    
   }
 
   // estilos ariel//
 
   .boxCard {
-  
     // border: red solid;
     // display: flex !important;
     // flex-direction: column;
@@ -488,7 +475,7 @@
 
   .profile-img {
     // border: red solid;
-    width:45%;
+    width: 45%;
   }
 
   .boxRatingEdit {
@@ -560,7 +547,7 @@
     }
   }
   .header {
-   // border: solid rgba(46, 56, 233, 0.8);
+    // border: solid rgba(46, 56, 233, 0.8);
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.14);
     // width: 95% !important;
@@ -581,7 +568,7 @@
   .card-container {
     //border: 2px solid blue;
     margin-top: -8%;
-    margin-bottom: 100%;
+   // margin-bottom: 100%;
   }
 
   .sidebar {
@@ -623,9 +610,6 @@
   .main {
     padding: 2%;
 
-    
-
-  
     width: 80%;
     margin: 0 auto;
   }

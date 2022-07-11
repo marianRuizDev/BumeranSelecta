@@ -1,0 +1,48 @@
+.carousel-graficos {
+  /*  border: solid red;  */
+  padding: 0;
+  height: 300px;
+  margin-bottom: 2%;
+  margin: 2% auto;
+  background-color: #ffffff;
+}
+
+.prev-slice,
+.next-slice {
+  background-color: #eb0064;
+}
+
+.btn-next,
+.btn-prev {
+  margin-top: 20%;
+  height: 20%;
+}
+
+//Hacer que desaparezca el carousel si es menos a 768px
+@media screen and (max-width: 1280) {
+  .carousel-graficos {
+    border: solid red;
+    padding: 0;
+    height: 300px;
+    margin-bottom: 2%;
+    margin: 2% auto;
+    background-color: #ffffff;
+  }
+
+  .prev-slice,
+  .next-slice {
+    background-color: #eb0064;
+  }
+
+  .btn-next,
+  .btn-prev {
+    margin-bottom: 20%;
+    height: 20%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .carousel-graficos {
+    display: none;
+  }
+}

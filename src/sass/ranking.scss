@@ -1,5 +1,6 @@
 .skills-wrapper {
-    display: flex;
+   display: flex; 
+   /*  border:solid #eb0064 !important; */
 }
 
 .skill {
@@ -9,6 +10,7 @@
     position: relative;
     display: grid;
     place-items: center;
+    margin-top: 10px;
 }
 
 
@@ -27,7 +29,7 @@
 }
 
 .skill-content {
-    font-size: 20px;
+    font-size: 17px;
     color: #eb0064;
     z-index: 1;
 }
