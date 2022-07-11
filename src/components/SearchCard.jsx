@@ -70,7 +70,7 @@ function SearchCard({ id, country, area, time, status, description, title }) {
             <Link to={`/searchs/${id}`}>
               <div>
                 <h5>{title}</h5>
-                <p>{areaName[0].name}</p>
+                <p>{areaName[0] ? areaName[0].name : ""}</p>
                 <p class="card-text card-texto">{description}</p>
               </div>
             </Link>
@@ -92,7 +92,7 @@ function SearchCard({ id, country, area, time, status, description, title }) {
           </div>
           <div class="boxLocation">
             <IoLocationSharp class="local" size={30} />
-            <p>{countryName[0].name}</p>
+            <p>{countryName[0] ? countryName[0].name : ""}</p>
           </div>
         </div>
       </div>
