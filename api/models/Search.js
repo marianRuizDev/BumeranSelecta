@@ -28,6 +28,15 @@ Search.init(
     title: {
       type: S.STRING,
     },
+    startDate: {
+      type: S.DATEONLY,
+    },
+    finishDate: {
+      type: S.DATEONLY,
+    },
+    searchTime: {
+      type: S.STRING,
+    },
   },
   {
     sequelize: db,
