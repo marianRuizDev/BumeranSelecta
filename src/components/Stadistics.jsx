@@ -178,8 +178,6 @@ const Stadistics = () => {
                         <div class="row d-flex justify-content-center  align-items-center">
                             <div class="col-3 ">
                                 <DatePicker
-
-
                                     onChange={onChange}
                                     startDate={startDate}
                                     endDate={endDate}
@@ -271,7 +269,7 @@ const Stadistics = () => {
             <CarouselGraficos data={data} />
             <div class="container container-titulos table-responisve">
                 <div class="row row-tabla">
-                    <div class="col col-sm-3">
+                    <div class="col">
                         <h5>Titulos</h5>
                     </div>
                     <div class="col">

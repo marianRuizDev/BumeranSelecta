@@ -26,9 +26,11 @@
 
   .row-resultados {
     text-align: center;
+    align-items: center;
     margin-top: 1.5%;
     /*  border: solid red; */
     width: 100%;
+    margin: 1% auto;
   }
 
   .text-no-iniciada {
@@ -52,11 +54,6 @@
   color: #000cf1;
 }
 
-//Una de las clases de los graficos
-/* .recharts-responsive-container {
-  padding: 0;
-} */
-
 .calendar {
   outline: 0;
   box-shadow: none;
@@ -69,8 +66,6 @@
 .calendar:focus {
   border-color: 1px #000cf1
 }
-
-
 
 @media screen and (max-width: 390px) {
   .calendar {
@@ -101,22 +96,9 @@
     width: 70px;
   }
 
-  
-
 }
 
 
-/* @media screen and (max-width: 768px) {
-  .calendar {
-    outline: 0;
-    box-shadow: none;
-    background-color: #FFFFFF;
-    border-radius: 0.5rem;
-    height: 38px;
-    width: 100px;
-  }
-
-} */
 
 
 

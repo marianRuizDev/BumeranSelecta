@@ -14,7 +14,7 @@ const Tables = ({ items }) => {
   return (
     <div>
       <div class="container container-resultados table-responsive">
-        <div class="row row-resultados">
+        <div class="row row-resultados align-items-center">
           <div class="col">
             <h6 className="nombre">{items.title}</h6>
           </div>
