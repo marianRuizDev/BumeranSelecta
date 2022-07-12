@@ -13,6 +13,9 @@ const seedSearch = [
     StatusId: 2,
     CountryId: 3,
     AreaId: 1,
+    startDate: '2022-07-10',
+    finishDate: '2022-07-30',
+    searchTime: 20,
   },
   {
     position: 'Chef',
@@ -28,6 +31,7 @@ const seedSearch = [
     StatusId: 3,
     CountryId: 2,
     AreaId: 1,
+    startDate: '2022-07-10',
   },
   {
     position: 'CM',
@@ -43,6 +47,9 @@ const seedSearch = [
     StatusId: 1,
     CountryId: 1,
     AreaId: 1,
+    startDate: '2022-07-20',
+    finishDate: '2022-07-30',
+    searchTime: 10,
   },
   {
     position: 'Administrador',
@@ -58,6 +65,9 @@ const seedSearch = [
     StatusId: 1,
     CountryId: 5,
     AreaId: 2,
+    startDate: '2022-07-15',
+    finishDate: '2022-08-1',
+    searchTime: 17,
   },
   {
     position: 'Seller',
@@ -73,6 +83,9 @@ const seedSearch = [
     StatusId: 3,
     CountryId: 4,
     AreaId: 3,
+    startDate: '2022-07-11',
+    finishDate: '2022-07-21',
+    searchTime: 10,
   },
   {
     position: 'Productor',
@@ -88,6 +101,9 @@ const seedSearch = [
     StatusId: 2,
     CountryId: 3,
     AreaId: 4,
+    startDate: '2022-07-06',
+    finishDate: '2022-07-15',
+    searchTime: 9,
   },
   {
     position: 'Project Manager',
@@ -103,6 +119,9 @@ const seedSearch = [
     StatusId: 1,
     CountryId: 2,
     AreaId: 5,
+    startDate: '2022-07-21',
+    finishDate: '2022-07-30',
+    searchTime: 9,
   },
   {
     position: 'Mensajero',
@@ -118,6 +137,9 @@ const seedSearch = [
     StatusId: 2,
     CountryId: 1,
     AreaId: 6,
+    startDate: '2022-07-10',
+    finishDate: '2022-07-17',
+    searchTime: 7,
   },
   {
     position: 'Sous Chef',
@@ -133,6 +155,9 @@ const seedSearch = [
     StatusId: 3,
     CountryId: 3,
     AreaId: 9,
+    startDate: '2022-07-15',
+    finishDate: '2022-07-30',
+    searchTime: 15,
   },
   {
     position: 'Director de Recursos Humanos',
@@ -148,6 +173,9 @@ const seedSearch = [
     StatusId: 1,
     CountryId: 5,
     AreaId: 10,
+    startDate: '2022-07-6',
+    finishDate: '2022-07-9',
+    searchTime: 3,
   },
   {
     position: 'Enfermero',
@@ -163,6 +191,9 @@ const seedSearch = [
     StatusId: 2,
     CountryId: 4,
     AreaId: 11,
+    startDate: '2022-07-11',
+    finishDate: '2022-07-23',
+    searchTime: 12,
   },
   {
     position: 'Ingeniero Biomédico',
@@ -178,6 +209,9 @@ const seedSearch = [
     StatusId: 3,
     CountryId: 3,
     AreaId: 1,
+    startDate: '2022-07-14',
+    finishDate: '2022-07-29',
+    searchTime: 15,
   },
   {
     position: 'Vendedor',
@@ -193,6 +227,9 @@ const seedSearch = [
     StatusId: 1,
     CountryId: 2,
     AreaId: 6,
+    startDate: '2022-07-12',
+    finishDate: '2022-07-15',
+    searchTime: 3,
   },
   {
     position: 'Growth Manager',
@@ -208,6 +245,9 @@ const seedSearch = [
     StatusId: 2,
     CountryId: 1,
     AreaId: 3,
+    startDate: '2022-07-18',
+    finishDate: '2022-07-25',
+    searchTime: 7,
   },
 ];
 

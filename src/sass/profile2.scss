@@ -118,19 +118,48 @@
 }
 
 .nav-link {
-  color: #eb0064;
+  color: #666666;
 }
-#nav-home-tab {
-  background-color: #e1e1e4;
-}
-#nav-profile-tab {
-  background-color: #e1e1e4;
-}
+
 #nav-home-tab:focus {
+  color: #eb0064;
   background-color: white;
 }
 #nav-profile-tab:focus {
+  color: #eb0064;
   background-color: white;
+}
+.profile-table {
+  border-radius: 16px;
+  overflow: hidden;
+}
+.searchTable-head {
+  background-color: #eb0064;
+  color: white;
+
+  th {
+    text-align: center;
+  }
+}
+.searchTable-body {
+  height: 100px;
+  th {
+    padding: 5%;
+  }
+
+  td {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+.check-btn {
+  color: #ffffff;
+  background-color: #eb0064;
+}
+
+.profile-description {
+  margin: 2%;
 }
 @media screen and (max-width: 1376px) {
   .profile-container {
@@ -158,6 +187,6 @@
     //border: black solid;
     width: 100%;
     border-radius: 1%;
-    margin-bottom: 500px;
+    //margin-bottom: 500px;
   }
 }

@@ -41,6 +41,7 @@ router.get("/chart", (req, res) => {
     res.send(search);
   });
 });
+
 //get all Searchs - Chart
 
 router.get("/chart/table", (req, res) => {
@@ -56,6 +57,56 @@ router.get("/chart/table", (req, res) => {
   }).then((search) => {
     res.send(search);
   });
+});
+
+//char time 1
+router.get("/chart/datearea", async (req, res) => {
+  let result = [];
+  const find = async (i) => {
+    const responsSearch = await Search.findAll({
+      where: {
+        AreaId: i,
+        searchTime: { [sequelize.Op.ne]: null },
+      },
+      attributes: [
+        "AreaId",
+        [sequelize.fn("AVG", sequelize.col("searchTime")), "avarage"],
+      ],
+    });
+    return responsSearch;
+  };
+
+  for (let i = 0; i <= 11; i++) {
+    result.push(find(i));
+  }
+
+  const response = await Promise.all(result);
+  res.status(200).json(response);
+});
+
+//char time 2
+router.get("/chart/daterecruiter", async (req, res) => {
+  let result = [];
+  const find = async (i) => {
+    const responsSearch = await Search.findAll({
+      where: {
+        RecruiterId: i,
+        searchTime: { [sequelize.Op.ne]: null },
+      },
+      attributes: [
+        "RecruiterId",
+        [sequelize.fn("AVG", sequelize.col("searchTime")), "avarage"],
+      ],
+    });
+    return responsSearch;
+  };
+
+  for (let i = 1; i <= 11; i++) {
+    result.push(find(i));
+  }
+
+  const response = await Promise.all(result);
+  res.status(200).json(response);
 });
 
 //Asigna a un recruiter -TAMPOCO VA ACA
