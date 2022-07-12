@@ -13,6 +13,7 @@ import logo from "../assets/navbar/Group.png";
 import background from "../assets/svg background/ondas.svg";
 import phone from "../assets/fomrs/descarga3.png";
 import useInput from "../hooks/useInput";
+import calculateRating from "../utils/calculateRating";
 import { getOneRecruiter } from "../redux/recruiters";
 import { getAssignedSearchRequest } from "../redux/assignedSearch";
 import { getOneUpDate } from "../redux/search";
@@ -33,7 +34,9 @@ const Profile = () => {
     addDaysToDate(search.updatedAt, 15)
   );
   const user = userRedux[0];
-  console.log("USER", user);
+  const finishedSearches = searchs.filter((search) => search.StatusId === 3);
+
+  const userRating = calculateRating(finishedSearches);
 
   const userCountry = useSelector((state) => state.country).filter(
     (pais) => pais.id === user.CountryId
@@ -43,11 +46,19 @@ const Profile = () => {
   );
 
   const workersNum = useInput();
+  const ratingNum = useInput();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (workersNum.value !== undefined && workersNum.value !== "0") {
-      dispatch(getOneUpDate({ id: selectedSearch, StatusId: 1 }));
+      dispatch(
+        getOneUpDate({
+          id: selectedSearch,
+          StatusId: 3,
+          candidates: workersNum,
+          ratingRecruiter: ratingNum,
+        })
+      );
       dispatch(subtractAvtiveSearches(userId));
       setValidate(true);
       setTimeout(() => {
@@ -112,6 +123,18 @@ const Profile = () => {
                     {...workersNum}
                     required
                   />
+                  <label for="recipient-name" class="col-form-label">
+                    Mi puntuación:
+                  </label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="recipient-name"
+                    min={0}
+                    defaultValue={0}
+                    {...ratingNum}
+                    required
+                  />
                 </div>
                 {validate ? (
                   <div
@@ -163,6 +186,7 @@ const Profile = () => {
             )}
             <img className="profile-photo" src={perfil} alt="" />
             <h5 className="user-name">{user.name + " " + user.lastName}</h5>
+            {userRating.toFixed(1)}
           </div>
           <div className="profile-infoContainer">
             <p className="profile-info">
@@ -247,7 +271,7 @@ const Profile = () => {
 
                   {filteredSearchs.length !== 0 ? (
                     filteredSearchs.map((search, i) => (
-                      <tbody className="searchTable-body">
+                      <tbody key={i} className="searchTable-body">
                         <tr>
                           <th scope="row" className="align-middle">
                             <span>{search.title}</span>

@@ -72,6 +72,8 @@ export const getOneUpDate = createAsyncThunk(
     title,
     category,
     updateRec,
+    candidates,
+    ratingRecruiter,
   }) => {
     try {
       const data = await axios.put(
@@ -86,6 +88,8 @@ export const getOneUpDate = createAsyncThunk(
           title: title?.value,
           category: category?.value,
           RecruiterId: updateRec,
+          candidates: candidates?.value,
+          ratingRecruiter: ratingRecruiter?.value,
         }
       );
       return data.data;
