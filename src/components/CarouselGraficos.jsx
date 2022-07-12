@@ -15,7 +15,7 @@ const CarouselGraficos = ({ data }) => {
                         <GraficoBarras data={data} />
                     </div>
                     <div class="carousel-item grafico-2" >
-                        <GraficoBarras data={data} />
+                      {/*   <GraficoBarras2 /> */}
                     </div>
                     <div class="carousel-item grafico-3">
                         <GraficoBarras data={data} />

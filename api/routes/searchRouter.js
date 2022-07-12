@@ -78,6 +78,8 @@ router.get('/chart/datearea/:areaId', (req, res) => {
   });
 });
 
+
+
 //char time 2
 router.get('/chart/daterecruiter/:RecruiterId', (req, res) => {
   let cant = 0;
