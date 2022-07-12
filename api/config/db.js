@@ -6,7 +6,7 @@ const { DB_USER, DB_HOST, DB_PASSWORD } = process.env;
 const db = new Sequelize('bumeranSelecta', 'root', 'password', {
   host: DB_HOST,
   dialect: 'mysql',
-  //logging: false,
+  logging: false,
   pool: {
     max: 5,
     min: 0,

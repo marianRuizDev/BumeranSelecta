@@ -1,7 +1,6 @@
 'use strict';
 const S = require('sequelize');
 const db = require('../config/db');
-const Recruiter = require('./Recruiter');
 
 class Search extends S.Model {}
 
@@ -43,5 +42,10 @@ Search.init(
     modelName: 'Search',
   }
 );
+
+Search.beforeCreate((search) => {
+  let date = new Date();
+  return (search.startDate = date.toISOString().split('T')[0]);
+});
 
 module.exports = Search;
