@@ -1,6 +1,4 @@
 import React from 'react'
-import { useEffect, useState } from 'react';
-import axios from 'axios'
 
 import {
     BarChart,
@@ -14,20 +12,31 @@ import {
 } from "recharts";
 
 import "../sass/stadistics.scss";
-
-
+import { useEffect, useState } from 'react';
+import axios from 'axios'
+import areaConversor from '../utils/areaConversor';
 
 
 const GraficoBarras2 = () => {
 
-   
+    const [info, setInfo] = useState([])
+    
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/search/chart/datearea`)
+            .then((res) => setInfo(res.data))
+    }, [])
+
+
+    const infoCopy = info.flat()
+    const newInfo = areaConversor(infoCopy)
+
 
     return (
-        <>Grafico 2 - Ranking reclutadores x area
+        <>
             <ResponsiveContainer width="100%" aspect={3} >
                 <BarChart width={500}
                     height={100}
-                    /*  data={data} */
+                    data={newInfo}
                     margin={{
                         top: 170,
                         right: 70,
@@ -35,7 +44,7 @@ const GraficoBarras2 = () => {
                         bottom: 30,
                     }}>
                     {/* Le tengo que pasar el area */}
-                    <XAxis dataKey="country" stroke="#8884d8" >
+                    <XAxis dataKey="AreaId" stroke="#8884d8" >
                         <Label value="Tiempo promedio de las búsquedas por país" offset={0} position="bottom" />
                     </XAxis>
                     <YAxis >
@@ -43,7 +52,7 @@ const GraficoBarras2 = () => {
                     </YAxis>
                     <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} />
                     <CartesianGrid stroke="#ccc" strokeDasharray="1 1" />
-                    <Bar dataKey="promedio" fill="#434bf0" barSize={37}>
+                    <Bar dataKey="avarage" fill="#434bf0" barSize={37}>
                     </Bar>
                 </BarChart>
             </ResponsiveContainer>
