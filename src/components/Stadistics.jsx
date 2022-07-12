@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from 'axios'
 import { BiTrash } from "react-icons/bi";
 import { AiOutlineDownload } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,8 +18,7 @@ import { getCountriesRequest } from "../redux/getCountries";
 import { sendAllSearches } from "../redux/search";
 import { getAlldataTable } from "../redux/stadisticsTable";
 
-/* react-datepicker__day react-datepicker__day--010 react-datepicker__day--keyboard-selected react-datepicker__day--today react-datepicker__day--weekend
- */
+
 const Stadistics = () => {
   const dispatch = useDispatch();
 
@@ -29,6 +29,7 @@ const Stadistics = () => {
 
   const table = useSelector((state) => state.stadisticsTable);
   const datos = useSelector((state) => state.stadistics);
+
 
   const tableData = [
     { ...table[0] },
@@ -132,7 +133,7 @@ const Stadistics = () => {
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [searchStatus, setSearchStatus] = useState("");
-  console.log(searchStatus);
+
 
   const handleCountryChange = (e) => {
     setSelectedContry(e.target.value);
@@ -168,6 +169,16 @@ const Stadistics = () => {
     console.log("final", end);
   };
   registerLocale("es", es);
+
+
+/*   const [info, setInfo] = useState([])
+
+  useEffect((areaId) => {
+    axios.get(`http://localhost:8000/api/search/chart/datearea/${areaId}`)
+      .then((res) => console.log(res))
+  }, []) */
+
+
   return (
     <div>
       <h3 className="estadisticas-titulo">Reportes y Estadisticas</h3>
