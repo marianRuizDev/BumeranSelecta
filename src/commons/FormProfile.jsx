@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useInput from "../hooks/useInput";
 import { Link } from "react-router-dom";
-import { getAreasRequest } from "../redux/getAreas";
-import { getCountriesRequest } from "../redux/getCountries";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneRecruiter, modifyRecruiter } from "../redux/recruiters";
@@ -20,12 +18,9 @@ const FormProfile = () => {
   const password = useInput();
   const rating = useInput();
   const description = useInput();
-  const CountryId = useInput();
-  const AreaId = useInput();
+
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
-
-  console.log(selectedCountry, jobArea);
 
   const areas = useSelector((state) => state.area);
   const paises = useSelector((state) => state.country);

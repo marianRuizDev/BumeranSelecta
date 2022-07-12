@@ -19,6 +19,9 @@ const CarouselGraficos = () => {
           <div class="carousel-item grafico-2" >
             <GraficoBarras2 />
           </div>
+          <div class="carousel-item grafico-3" >
+            <GraficoPie />
+          </div>
         </div>
         <button class="carousel-control-prev btn-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
           <span class="carousel-control-prev-icon prev-slice" aria-hidden="true"></span>

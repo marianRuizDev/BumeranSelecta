@@ -1,112 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { PieChart, Pie, Tooltip, ResponsiveContainer, Label, XAxis } from 'recharts';
+import { deleteNull } from '../utils/recluterConversor';
 import "../sass/stadistics.scss"
+import axios from 'axios'
 
 
 const GraficoPie = () => {
+    //Cambiar ID del reclutador por el nombre del mismo
 
-    
+    const [data, setData] = useState([])
 
-    const data01 = [
-        { name: 'Administracióm', tiempo: 60 },
-        { name: 'Atención al cliente', tiempo: 30 },
-        { name: 'Comercial', tiempo: 30 },
-        { name: 'Ingenierías', tiempo: 20 },
-        { name: 'Logística', tiempo: 27 },
-        { name: 'Marketing', tiempo: 18 },
-        { name: 'Producción', tiempo: 18 },
-        { name: 'Recursos Humanos', tiempo: 89 },
-        { name: 'Salud', tiempo: 19 },
-        { name: 'Tecnologia', tiempo: 1 },
-    ];
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/search/chart/daterecruiter`)
+            .then((res) => setData(res.data));
+    }, [])
 
-  /*   [
-        [
-        {
-        "RecruiterId": 1,
-        "avarage": null
-        }
-        ],
-        [
-        {
-        "RecruiterId": 2,
-        "avarage": null
-        }
-        ],
-        [
-        {
-        "RecruiterId": 3,
-        "avarage": null
-        }
-        ],
-        [
-        {
-        "RecruiterId": 4,
-        "avarage": null
-        }
-        ],
-        [
-        {
-        "RecruiterId": 5,
-        "avarage": null
-        }
-        ],
-        [
-        {
-        "RecruiterId": 6,
-        "avarage": null
-        }
-        ],
-        [
-        {
-        "RecruiterId": 7,
-        "avarage": null
-        }
-        ],
-        [
-        {
-        "RecruiterId": 8,
-        "avarage": null
-        }
-        ],
-        [
-        {
-        "RecruiterId": 9,
-        "avarage": null
-        }
-        ],
-        [
-        {
-        "RecruiterId": 10,
-        "avarage": null
-        }
-        ],
-        [
-        {
-        "RecruiterId": 11,
-        "avarage": null
-        }
-        ]
-        ] */
+    const newData = data.flat()
+    const depurateData = deleteNull(newData)
 
     return (
         <>
-           {/*  <ResponsiveContainer width="100%" aspect={5}>
+            <ResponsiveContainer width="100%" aspect={5}>
                 <PieChart width={300} height={300}>
                     <Pie
-                        dataKey="tiempo"
+                        dataKey="avarage"
                         isAnimationActive={false}
-                        data={data01}
+                        data={depurateData}
                         cx="50%"
                         cy="50%"
                         outerRadius={80}
                         fill="#f43c87"
-                        label="Tiempo promedio de las busquedas por area"
+                        label="Tiempo promedio de las busquedas por reclutador"
                     />
                     <Tooltip />
                 </PieChart>
             </ResponsiveContainer>
-            <p>Tiempo promedio de las busquedas por area</p> */}
+            <p>Tiempo promedio de las busquedas por area</p>
         </>
 
 

@@ -1,10 +1,8 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { useEffect } from "react";
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import useInput from "../hooks/useInput";
-import { getCountriesRequest } from "../redux/getCountries";
-import { getAreasRequest } from "../redux/getAreas";
 import { getOneRecruiter, modifyRecruiter } from "../redux/recruiters";
 import "../sass/formProfile.scss"
 
@@ -19,13 +17,16 @@ const ProfileMod = () => {
   const email = useInput();
   const description = useInput();
 
-  /*     const countries = useSelector((state) => state.country);
-         const areas = useSelector((state) => state.area); */
+  const paises = useSelector((state) => state.country);
+  const areas = useSelector((state) => state.area); 
+
 
   const handleCountryChange = (e) => {
+    console.log(e.target.value)
     setSelectedContry(e.target.value);
   };
   const handleJobAreaChange = (e) => {
+    console.log(e.target.value)
     setJobArea(e.target.value);
   };
 
@@ -43,7 +44,7 @@ const ProfileMod = () => {
   };
 
   /* useEffect(() => {
-    console.log("hgol");
+    dispatch(getOneRecruiter())
   }, []); */
 
   return (
@@ -88,11 +89,6 @@ const ProfileMod = () => {
             {...email}
           />
         </div>
-        {/* <div class="col-md-6">
-                    <label for="inputPassword4" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4"
-                        {...password} />
-                </div> */}
 
         <div class="col-md-6">
           <label for="inputCity" class="form-label">
@@ -103,15 +99,14 @@ const ProfileMod = () => {
             aria-label="Default select example"
             placeholder="Pais"
 
-          /*  onChange={handleCountryChange} */
+            onChange={handleCountryChange}
           >
             <option value={""}>Seleccione una opción</option>
-
-            {/* {countries
-                            ?.filter((pais) => pais !== null)
-                            .map((pais, i) => {
-                                return <option key={i}>{pais}</option>;
-                            })} */}
+            {paises.map((pais, index) => (
+              <option key={index} value={pais.id}>
+                {pais.name}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -123,15 +118,14 @@ const ProfileMod = () => {
             className="form-select"
             aria-label="Default select example"
             placeholder="Área"
-          /*  onChange={handleJobAreaChange} */
+            onChange={handleJobAreaChange}
           >
             <option value={""}>Seleccione una opción</option>
-
-            {/* {areas
-                                ?.filter((area) => area !== null)
-                                .map((area, i) => {
-                                    return <option key={i}>{area}</option>;
-                                })} */}
+            {areas.map((area, index) => (
+              <option key={index} value={area.id}>
+                {area.name}
+              </option>
+            ))}
           </select>
         </div>
 
