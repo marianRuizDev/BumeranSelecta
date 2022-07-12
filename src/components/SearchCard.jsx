@@ -6,8 +6,39 @@ import bu from "../assets/navbar/bu.png";
 import useTime from "../hooks/useTime";
 import logo from "../assets/navbar/Group.png";
 import "../sass/searchs.scss";
+import { useState } from "react";
+import { getOneRecruiter } from "../redux/recruiters";
 
-function SearchCard({ id, country, area, time, status, description, title }) {
+function SearchCard({
+  id,
+  country,
+  area,
+  time,
+  status,
+  description,
+  title,
+  ratingRecruiter,
+  candidates,
+  Recruiter,
+}) {
+  const dispatch = useDispatch();
+
+
+
+  const recruiters = useSelector((state) => state.recruiters);
+
+  let recluterName = [...recruiters]
+
+  useEffect(() => {
+    if (Recruiter !== null) dispatch(getOneRecruiter(Recruiter));
+    if(Recruiter === null) recluterName = null
+  }, []);
+
+  console.log(recluterName);
+
+
+  
+
   // tiempo
   const date = new Date().getTime();
   const searchTime = new Date(time);
@@ -93,6 +124,23 @@ function SearchCard({ id, country, area, time, status, description, title }) {
           <div class="boxLocation">
             <IoLocationSharp class="local" size={30} />
             <p>{countryName[0] ? countryName[0].name : ""}</p>
+          </div>
+          <div class="boxLocation">
+            <h6>Rating del reclutador</h6>
+            <p>{ratingRecruiter}</p>
+          </div>
+          <div class="boxLocation">
+            <h6>Candidatos presentados</h6>
+            <p>{candidates}</p>
+          </div>
+
+          <div class="boxLocation">
+            <h6>Reclutador</h6>
+            <p>
+              {recluterName[0].name !== null
+                ? recluterName[0].name
+                : "Reclutador no asignado"}
+            </p>
           </div>
         </div>
       </div>
