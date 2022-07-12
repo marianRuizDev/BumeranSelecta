@@ -6,6 +6,7 @@ import { MdEmail } from "react-icons/md";
 import { MdWork } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { AiFillStar } from "react-icons/ai";
+import { FaCheck } from "react-icons/fa";
 
 import perfil from "../assets/profiles/perfil1.png";
 import logo from "../assets/navbar/Group.png";
@@ -27,7 +28,12 @@ const Profile = () => {
 
   const userRedux = useSelector((state) => state.recruiters);
   const searchs = useSelector((state) => state.assigned);
+  const filteredSearchs = searchs.filter((search) => search.StatusId !== 3);
+  const filteredDate = filteredSearchs.map((search) =>
+    addDaysToDate(search.updatedAt, 15)
+  );
   const user = userRedux[0];
+  console.log("USER", user);
 
   const userCountry = useSelector((state) => state.country).filter(
     (pais) => pais.id === user.CountryId
@@ -41,7 +47,7 @@ const Profile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (workersNum.value !== undefined && workersNum.value !== "0") {
-      dispatch(getOneUpDate({ id: selectedSearch, StatusId: 3 }));
+      dispatch(getOneUpDate({ id: selectedSearch, StatusId: 1 }));
       dispatch(subtractAvtiveSearches(userId));
       setValidate(true);
       setTimeout(() => {
@@ -57,6 +63,12 @@ const Profile = () => {
     e.preventDefault();
     setValidate(false);
   };
+
+  function addDaysToDate(date, days) {
+    var res = new Date(date);
+    res.setDate(res.getDate() + days);
+    return res;
+  }
 
   useEffect(() => {
     dispatch(getOneRecruiter(userId));
@@ -140,7 +152,15 @@ const Profile = () => {
       <div className="card userInfo-card">
         <div className="card-body">
           <div className="profile-photo-container">
-            <FaEdit className="profile-edit" />
+            {user.admin ? (
+              <Link to={`/admin/profiles/${user.id}`}>
+                <FaEdit className="profile-edit" />
+              </Link>
+            ) : (
+              <Link to={`/recruiter/profiles/${user.id}`}>
+                <FaEdit className="profile-edit" />
+              </Link>
+            )}
             <img className="profile-photo" src={perfil} alt="" />
             <h5 className="user-name">{user.name + " " + user.lastName}</h5>
           </div>
@@ -185,7 +205,7 @@ const Profile = () => {
                 aria-controls="nav-home"
                 aria-selected="true"
               >
-                Búsquedas Activas
+                {"(" + user.activeSearchs + ")" + " " + "Búsquedas Activas"}
               </button>
               <button
                 class="nav-link"
@@ -202,7 +222,7 @@ const Profile = () => {
             </div>
           </nav>
         </div>
-        <div className="card-body">
+        <div className="card-body p-0">
           <div class="tab-content" id="nav-tabContent">
             <div
               class="tab-pane fade show active"
@@ -211,11 +231,75 @@ const Profile = () => {
               aria-labelledby="nav-home-tab"
             >
               <div className="">
-                {searchs.length !== 0 ? (
-                  searchs
-                    .filter((search) => search.StatusId !== 2)
-                    .map((search, i) => (
-                      <div key={i} className="tasks">
+                <table className="table profile-table">
+                  {filteredSearchs.length !== 0 ? (
+                    <thead className="searchTable-head">
+                      <tr className="">
+                        <th scope="col">Título</th>
+                        <th scope="col">Fecha de cierre</th>
+                        <th scope="col">Vacantes</th>
+                        <th scope="col">Completar</th>
+                      </tr>
+                    </thead>
+                  ) : (
+                    ""
+                  )}
+
+                  {filteredSearchs.length !== 0 ? (
+                    filteredSearchs.map((search, i) => (
+                      <tbody className="searchTable-body">
+                        <tr>
+                          <th scope="row" className="align-middle">
+                            <span>{search.title}</span>
+                          </th>
+                          <td className="align-middle">
+                            <span>
+                              {new Date(filteredDate[i]).toLocaleDateString(
+                                "es"
+                              )}
+                            </span>
+                          </td>
+                          <td className="align-middle">
+                            <span>{search.vacancies}</span>
+                          </td>
+                          <td className="align-middle">
+                            <button
+                              className="check-btn"
+                              data-bs-toggle="modal"
+                              data-bs-target="#exampleModal"
+                              onClick={() => setSelectedSearch(search.id)}
+                            >
+                              <FaCheck />
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    ))
+                  ) : (
+                    <div className="background">No hay búsquedas activas</div>
+                  )}
+                </table>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="nav-profile"
+              role="tabpanel"
+              aria-labelledby="nav-profile-tab"
+            >
+              <div className="profile-description">{user.description}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Profile;
+
+{
+  /* <div key={i} className="tasks">
                         <div className="card active-search-card">
                           <Link to={`/searchs/${search.id}`}>
                             <div className="left-content">
@@ -234,26 +318,5 @@ const Profile = () => {
                             </button>
                           </div>
                         </div>
-                      </div>
-                    ))
-                ) : (
-                  <div className="background">No hay búsquedas activas</div>
-                )}
-              </div>
-            </div>
-            <div
-              class="tab-pane fade"
-              id="nav-profile"
-              role="tabpanel"
-              aria-labelledby="nav-profile-tab"
-            >
-              {user.description}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Profile;
+                      </div> */
+}
