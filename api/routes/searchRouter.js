@@ -60,43 +60,55 @@ router.get('/chart/table', (req, res) => {
 });
 
 //char time 1
-router.get('/chart/datearea/:areaId', (req, res) => {
-  let cant = 0;
-  Search.findAll({
-    where: {
-      areaId: req.params.areaId,
-      searchTime: { [sequelize.Op.ne]: null },
-    },
-    attributes: ['areaId', 'searchTime'],
-  }).then((result) => {
-    for (let i = 0; i < result.length; i++) {
-      cant += parseInt(result[i].searchTime);
-    }
-    let avarege = cant / result.length;
-    result.push({ avarege });
-    res.send(result);
-  });
+router.get('/chart/datearea', async (req, res) => {
+  let result = [];
+  const find = async (i) => {
+    const responsSearch = await Search.findAll({
+      where: {
+        AreaId: i,
+        searchTime: { [sequelize.Op.ne]: null },
+      },
+      attributes: [
+        'AreaId',
+        [sequelize.fn('AVG', sequelize.col('searchTime')), 'avarage'],
+      ],
+    });
+    return responsSearch;
+  };
+
+  for (let i = 1; i <= 11; i++) {
+    result.push(find(i));
+  }
+
+  const response = await Promise.all(result);
+  res.status(200).json(response);
 });
 
 
 
 //char time 2
-router.get('/chart/daterecruiter/:RecruiterId', (req, res) => {
-  let cant = 0;
-  Search.findAll({
-    where: {
-      RecruiterId: req.params.RecruiterId,
-      searchTime: { [sequelize.Op.ne]: null },
-    },
-    attributes: ['RecruiterId', 'searchTime'],
-  }).then((result) => {
-    for (let i = 0; i < result.length; i++) {
-      cant += parseInt(result[i].searchTime);
-    }
-    let avarege = cant / result.length;
-    result.push({ avarege });
-    res.send(result);
-  });
+router.get('/chart/daterecruiter', async (req, res) => {
+  let result = [];
+  const find = async (i) => {
+    const responsSearch = await Search.findAll({
+      where: {
+        RecruiterId: i,
+        searchTime: { [sequelize.Op.ne]: null },
+      },
+      attributes: [
+        'RecruiterId',
+        [sequelize.fn('AVG', sequelize.col('searchTime')), 'avarage'],
+      ],
+    });
+    return responsSearch;
+  };
+
+  for (let i = 1; i <= 11; i++) {
+    result.push(find(i));
+  }
+
+  const response = await Promise.all(result);
+  res.status(200).json(response);
 });
 
 //Asigna a un recruiter -TAMPOCO VA ACA
