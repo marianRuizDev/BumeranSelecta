@@ -18,11 +18,77 @@ const GraficoPie = () => {
         { name: 'Tecnologia', tiempo: 1 },
     ];
 
+  /*   [
+        [
+        {
+        "RecruiterId": 1,
+        "avarage": null
+        }
+        ],
+        [
+        {
+        "RecruiterId": 2,
+        "avarage": null
+        }
+        ],
+        [
+        {
+        "RecruiterId": 3,
+        "avarage": null
+        }
+        ],
+        [
+        {
+        "RecruiterId": 4,
+        "avarage": null
+        }
+        ],
+        [
+        {
+        "RecruiterId": 5,
+        "avarage": null
+        }
+        ],
+        [
+        {
+        "RecruiterId": 6,
+        "avarage": null
+        }
+        ],
+        [
+        {
+        "RecruiterId": 7,
+        "avarage": null
+        }
+        ],
+        [
+        {
+        "RecruiterId": 8,
+        "avarage": null
+        }
+        ],
+        [
+        {
+        "RecruiterId": 9,
+        "avarage": null
+        }
+        ],
+        [
+        {
+        "RecruiterId": 10,
+        "avarage": null
+        }
+        ],
+        [
+        {
+        "RecruiterId": 11,
+        "avarage": null
+        }
+        ]
+        ] */
 
     return (
         <>
-        Grafico 3 - Tiempo de cierre de las busquedas por area?
-        Grafico 4 - Tiempo de cierre de las busquedas por reclutador?
            {/*  <ResponsiveContainer width="100%" aspect={5}>
                 <PieChart width={300} height={300}>
                     <Pie

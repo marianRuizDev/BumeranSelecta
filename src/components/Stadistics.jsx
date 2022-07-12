@@ -24,11 +24,8 @@ const Stadistics = () => {
 
   const countries = useSelector((state) => state.country);
   const areas = useSelector((state) => state.area);
-
-  // const estados = ["En proceso", "No iniciada", "Finalizada"];
-
   const table = useSelector((state) => state.stadisticsTable);
-  /* const datos = useSelector((state) => state.stadistics); */
+
 
   const tableData = [
     { ...table[0] },
@@ -86,13 +83,6 @@ const Stadistics = () => {
     console.log("final", end);
   };
   registerLocale("es", es);
-
-  /*   const [info, setInfo] = useState([])
-
-  useEffect((areaId) => {
-    axios.get(`http://localhost:8000/api/search/chart/datearea/${areaId}`)
-      .then((res) => console.log(res))
-  }, []) */
 
   return (
     <div>
