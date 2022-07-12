@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios'
+import axios from "axios";
 import { BiTrash } from "react-icons/bi";
 import { AiOutlineDownload } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,7 +17,7 @@ import { getAreasRequest } from "../redux/getAreas";
 import { getCountriesRequest } from "../redux/getCountries";
 import { sendAllSearches } from "../redux/search";
 import { getAlldataTable } from "../redux/stadisticsTable";
-
+import tableConversor from "../utils/tableConversor";
 
 const Stadistics = () => {
   const dispatch = useDispatch();
@@ -28,8 +28,7 @@ const Stadistics = () => {
   // const estados = ["En proceso", "No iniciada", "Finalizada"];
 
   const table = useSelector((state) => state.stadisticsTable);
-  const datos = useSelector((state) => state.stadistics);
-
+  /* const datos = useSelector((state) => state.stadistics); */
 
   const tableData = [
     { ...table[0] },
@@ -47,93 +46,11 @@ const Stadistics = () => {
     { ...table[12] },
     { ...table[13] },
   ];
-  tableData.map((e) => {
-    if (e.CountryId === 1) {
-      e.CountryId = "Uruguay";
-    }
-    if (e.CountryId === 2) {
-      e.CountryId = "Paraguay";
-    }
-    if (e.CountryId === 3) {
-      e.CountryId = "Bolivia";
-    }
-    if (e.CountryId === 4) {
-      e.CountryId = "Argentina";
-    }
-    if (e.CountryId === 5) {
-      e.CountryId = "Chile";
-    }
-
-    if (e.StatusId === 1) {
-      e.StatusId = "En proceso";
-    }
-    if (e.StatusId === 2) {
-      e.StatusId = "No iniciada";
-    }
-    if (e.StatusId === 3) {
-      e.StatusId = "Finalizada";
-    }
-    if (e.AreaId === 1) {
-      e.AreaId = "Tecnologia";
-    }
-
-    if (e.AreaId === 2) {
-      e.AreaId = "Gastronomía";
-    }
-
-    if (e.AreaId === 3) {
-      e.AreaId = "Marketing";
-    }
-
-    if (e.AreaId === 4) {
-      e.AreaId = "Administración";
-    }
-
-    if (e.AreaId === 5) {
-      e.AreaId = "Comercial";
-    }
-
-    if (e.AreaId === 6) {
-      e.AreaId = "Producción";
-    }
-
-    if (e.AreaId === 7) {
-      e.AreaId = "Logística";
-    }
-
-    if (e.AreaId === 8) {
-      e.AreaId = "Gastronomía";
-    }
-
-    if (e.AreaId === 9) {
-      e.AreaId = "Recursos Humanos";
-    }
-
-    if (e.AreaId === 10) {
-      e.AreaId = "Ingenierías";
-    }
-
-    if (e.AreaId === 11) {
-      e.AreaId = "Comercial";
-    }
-
-    if (e.AreaId === 12) {
-      e.AreaId = "Atención al Cliente";
-    }
-  });
-  console.log(tableData);
-  const data = [
-    { ...datos[0] },
-    { ...datos[1] },
-    { ...datos[2] },
-    { ...datos[3] },
-    { ...datos[4] },
-  ];
+  const newDataTable = tableConversor(tableData);
 
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [searchStatus, setSearchStatus] = useState("");
-
 
   const handleCountryChange = (e) => {
     setSelectedContry(e.target.value);
@@ -170,14 +87,12 @@ const Stadistics = () => {
   };
   registerLocale("es", es);
 
-
-/*   const [info, setInfo] = useState([])
+  /*   const [info, setInfo] = useState([])
 
   useEffect((areaId) => {
     axios.get(`http://localhost:8000/api/search/chart/datearea/${areaId}`)
       .then((res) => console.log(res))
   }, []) */
-
 
   return (
     <div>
@@ -265,7 +180,7 @@ const Stadistics = () => {
 
               <div class="col-1 ">
                 <CSVLink
-                  data={tableData}
+                  data={newDataTable}
                   target=" _blank"
                   filename="Estadísticas"
                 >
@@ -277,7 +192,7 @@ const Stadistics = () => {
         </div>
       </div>
 
-      <CarouselGraficos data={data} />
+      <CarouselGraficos />
       <div class="container container-titulos table-responisve">
         <div class="row row-tabla">
           <div class="col">
