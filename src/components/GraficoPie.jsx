@@ -5,6 +5,8 @@ import "../sass/stadistics.scss"
 
 const GraficoPie = () => {
 
+    
+
     const data01 = [
         { name: 'Administracióm', tiempo: 60 },
         { name: 'Atención al cliente', tiempo: 30 },

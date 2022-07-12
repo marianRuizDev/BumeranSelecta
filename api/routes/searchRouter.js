@@ -84,8 +84,13 @@ router.get("/chart/datearea", async (req, res) => {
   res.status(200).json(response);
 });
 
+//cantidad de reclutadores
+const rec = Recruiter.findAll({ attributes: ['id'] });
 //char time 2
-router.get("/chart/daterecruiter", async (req, res) => {
+
+router.get('/chart/daterecruiter', async (req, res) => {
+  let cantidad = (await rec).length;
+
   let result = [];
   const find = async (i) => {
     const responsSearch = await Search.findAll({
@@ -107,7 +112,7 @@ router.get("/chart/daterecruiter", async (req, res) => {
     }
   };
 
-  for (let i = 1; i <= 31; i++) {
+  for (let i = 1; i <= cantidad; i++) {
     result.push(find(i));
   }
 
