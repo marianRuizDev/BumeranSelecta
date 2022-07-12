@@ -14,11 +14,21 @@ export const sendAllRecruiters = createAsyncThunk(
 );
 
 export const getOneRecruiter = createAsyncThunk("ONE_RECUITER", async (id) => {
-  try {
-    const data = await axios.get(`http://localhost:8000/api/recruiter/${id}`);
-    return data.data;
-  } catch (error) {
-    console.log(error);
+  if (id === null) {
+    try {
+      console.log("entro null");
+      const data = null;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  } else if (id !== null) {
+    try {
+      const data = await axios.get(`http://localhost:8000/api/recruiter/${id}`);
+      return data.data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 });
 

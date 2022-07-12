@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchCard from "./SearchCard";
 import { BiTrash } from "react-icons/bi";
-import { BsPlusCircle } from "react-icons/bs"
+import { BsPlusCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { sendAllSearches } from "../redux/search";
 import { AiOutlinePlusCircle } from "react-icons/ai";
@@ -19,10 +19,6 @@ function SearchsGrid() {
 
   const areas = useSelector((state) => state.area);
   const paises = useSelector((state) => state.country);
-
-
-  //console.log(searchs)
-
 
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
@@ -180,9 +176,7 @@ function SearchsGrid() {
                   area={search.AreaId}
                   ratingRecruiter={search.ratingRecruiter}
                   candidates={search.candidates}
-
                   Recruiter={search.RecruiterId}
-                  
                   time={search.createdAt}
                   status={search.StatusId}
                   id={search.id}

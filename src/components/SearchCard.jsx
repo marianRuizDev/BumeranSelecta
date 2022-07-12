@@ -7,7 +7,7 @@ import useTime from "../hooks/useTime";
 import logo from "../assets/navbar/Group.png";
 import "../sass/searchs.scss";
 import { useState } from "react";
-import { getOneRecruiter } from "../redux/recruiters";
+import { getOneRecruiter, sendAllRecruiters } from "../redux/recruiters";
 
 function SearchCard({
   id,
@@ -23,21 +23,9 @@ function SearchCard({
 }) {
   const dispatch = useDispatch();
 
-
-
-  const recruiters = useSelector((state) => state.recruiters);
-
-  let recluterName = [...recruiters]
-
-  useEffect(() => {
-    if (Recruiter !== null) dispatch(getOneRecruiter(Recruiter));
-    if(Recruiter === null) recluterName = null
-  }, []);
-
-  console.log(recluterName);
-
-
-  
+  const recruiters = useSelector((state) => state.recruiters).filter(
+    (rec) => rec.id === Recruiter
+  );
 
   // tiempo
   const date = new Date().getTime();
@@ -88,7 +76,9 @@ function SearchCard({
       window.location.reload();
     }, 500);
   };
-
+  useEffect(() => {
+    dispatch(sendAllRecruiters());
+  }, []);
   return (
     <div className="card">
       <div className="boxTime">
@@ -137,9 +127,9 @@ function SearchCard({
           <div class="boxLocation">
             <h6>Reclutador</h6>
             <p>
-              {recluterName[0].name !== null
-                ? recluterName[0].name
-                : "Reclutador no asignado"}
+              {recruiters.length !== 0
+                ? recruiters[0].name
+                : "Recruiter no asignado"}
             </p>
           </div>
         </div>
