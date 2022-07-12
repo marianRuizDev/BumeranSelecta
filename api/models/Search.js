@@ -21,7 +21,7 @@ Search.init(
     },
     time: {
       type: S.DATEONLY,
-      allowNull: false,
+      allowNull: true,
     },
     jobSchedules: {
       type: S.STRING,

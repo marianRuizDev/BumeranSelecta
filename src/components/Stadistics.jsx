@@ -192,7 +192,6 @@ const Stadistics = () => {
         </div>
       </div>
 
-      <CarouselGraficos />
       <div class="container container-titulos table-responisve">
         <div class="row row-tabla">
           <div class="col">
@@ -248,6 +247,7 @@ const Stadistics = () => {
             </div>
           );
         })}
+      <CarouselGraficos />
     </div>
   );
 };

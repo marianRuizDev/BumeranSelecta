@@ -21,6 +21,8 @@ export default function SearchCreate() {
   const areas = useSelector((state) => state.area);
   const paises = useSelector((state) => state.country);
 
+  console.log(selectedCountry, jobArea);
+
   const handleJobAreaChange = (e) => {
     setJobArea(e.target.value);
   };
@@ -49,7 +51,7 @@ export default function SearchCreate() {
       dispatch(sendAllSearches());
       navigate("/searchs");
       window.location.reload();
-    }, 100);
+    }, 500);
   };
 
   return (

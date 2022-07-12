@@ -32,17 +32,18 @@ export const createSearches = createAsyncThunk(
     title,
     category,
   }) => {
+    console.log("LLEGO A REDUX");
     try {
       const data = await axios.post("http://localhost:8000/api/search/add", {
         CountryId: Number(selectedCountry),
         AreaId: Number(jobArea),
-        position: position.value,
-        description: description.value,
-        vacancies: vacancies.value,
-        jobSchedules: jobSchedules.value,
-        salary: salary.value,
-        title: title.value,
-        category: category.value,
+        position: position?.value,
+        description: description?.value,
+        vacancies: vacancies?.value,
+        jobSchedules: jobSchedules?.value,
+        salary: salary?.value,
+        title: title?.value,
+        category: category?.value,
       });
       return data.data;
     } catch (error) {
@@ -63,6 +64,8 @@ export const getOneUpDate = createAsyncThunk(
   "ONE_UPDATE",
   async ({
     id,
+    selectedCountry,
+    jobArea,
     position,
     description,
     vacancies,
@@ -79,6 +82,8 @@ export const getOneUpDate = createAsyncThunk(
       const data = await axios.put(
         `http://localhost:8000/api/search/edit/${id}`,
         {
+          CountryId: selectedCountry,
+          AreaId: jobArea,
           position: position?.value,
           description: description?.value,
           vacancies: vacancies?.value,

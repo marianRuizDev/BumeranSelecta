@@ -42,8 +42,8 @@ export const modifyRecruiter = createAsyncThunk(
     email,
     rating,
     description,
-    country,
-    experienceField,
+    selectedCountry,
+    jobArea,
   }) => {
     try {
       // console.log("RECRUTER ID:",id)
@@ -55,8 +55,8 @@ export const modifyRecruiter = createAsyncThunk(
           email: email?.value,
           rating: rating?.value,
           description: description?.value,
-          country: country?.value,
-          experienceField: experienceField?.value,
+          CountryId: selectedCountry,
+          AreaId: jobArea,
         }
       );
       return data.data;

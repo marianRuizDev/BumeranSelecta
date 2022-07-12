@@ -29,23 +29,25 @@ export default function SearchCreate() {
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
 
+  console.log(selectedCountry);
+  console.log(jobArea);
+
   const handleJobAreaChange = (e) => {
-    console.log(e.target.value)
+    console.log(e.target.value);
     setJobArea(e.target.value);
   };
   const handleCountryChange = (e) => {
-    console.log(e.target.value)
+    console.log(e.target.value);
     setSelectedContry(e.target.value);
   };
-
 
   const editSearch = (e) => {
     e.preventDefault();
     dispatch(
       getOneUpDate({
         id,
-        country,
-        area,
+        selectedCountry,
+        jobArea,
         position,
         description,
         vacancies,
