@@ -1,14 +1,14 @@
-const express = require("express");
-const sequelize = require("sequelize");
+const express = require('express');
+const sequelize = require('sequelize');
 const router = express.Router();
-const { Recruiter } = require("../models");
-const Sequelize = require("sequelize");
+const { Recruiter } = require('../models');
+const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 //all unic countrys
-router.get("/country", (req, res) => {
+router.get('/country', (req, res) => {
   let countrys = [];
-  Recruiter.findAll({ attributes: ["country"], group: ["country"] })
+  Recruiter.findAll({ attributes: ['country'], group: ['country'] })
     .then((recruiter) =>
       recruiter.map((recruiter) => {
         countrys.push(recruiter.country);
@@ -18,11 +18,11 @@ router.get("/country", (req, res) => {
 });
 
 //all unic experience fields
-router.get("/area", (req, res) => {
+router.get('/area', (req, res) => {
   let areas = [];
   Recruiter.findAll({
-    attributes: ["experienceField"],
-    group: ["experienceField"],
+    attributes: ['experienceField'],
+    group: ['experienceField'],
   })
     .then((area) =>
       area.map((area) => {
@@ -33,7 +33,7 @@ router.get("/area", (req, res) => {
 });
 
 //Pagination simple
-router.get("/list", (req, res) => {
+router.get('/list', (req, res) => {
   let { page } = req.query;
   Number(page);
   console.log(page);
@@ -45,7 +45,7 @@ router.get("/list", (req, res) => {
 });
 
 //Encontrar por nombre -deberia tener mas opciones ajustadas al formulario-
-router.post("/search", (req, res) => {
+router.post('/search', (req, res) => {
   Recruiter.findAll({
     where: { name: { [Op.like]: `%${req.body.search}%` } },
   }).then((users) => res.send(users));
@@ -53,10 +53,8 @@ router.post("/search", (req, res) => {
 
 //update activeSearchs
 
-router.put("/:id/activeSearchs", async function (req, res, next) {
+router.put('/:id/activeSearchs', async function (req, res, next) {
   const { id } = req.params;
-
-
   const recruiter = await Recruiter.findOne({ where: { id } });
 
   const { count } = req.query;
