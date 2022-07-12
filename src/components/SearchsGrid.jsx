@@ -16,8 +16,14 @@ function SearchsGrid() {
   const date = new Date().getTime();
 
   const searchs = useSelector((state) => state.search);
+
   const areas = useSelector((state) => state.area);
   const paises = useSelector((state) => state.country);
+
+
+  //console.log(searchs)
+
+
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [searchTime, setSearchTime] = useState("");
@@ -172,6 +178,11 @@ function SearchsGrid() {
                   key={index}
                   country={search.CountryId}
                   area={search.AreaId}
+                  ratingRecruiter={search.ratingRecruiter}
+                  candidates={search.candidates}
+
+                  Recruiter={search.RecruiterId}
+                  
                   time={search.createdAt}
                   status={search.StatusId}
                   id={search.id}
