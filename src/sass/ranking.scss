@@ -1,6 +1,6 @@
 .skills-wrapper {
    display: flex; 
-   /*  border:solid #eb0064 !important; */
+  /*  border:solid #eb0064 ;  */
 }
 
 .skill {
@@ -32,4 +32,13 @@
     font-size: 17px;
     color: #eb0064;
     z-index: 1;
+}
+
+@media screen and (max-width: 1880) {
+    .skills-wrapper {
+        display: flex; 
+        padding-left: 20%;
+        border:solid #eb0064 ; 
+     }
+     
 }

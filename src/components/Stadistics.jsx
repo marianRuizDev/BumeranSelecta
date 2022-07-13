@@ -126,7 +126,7 @@ const Stadistics = () => {
                     })}
                 </select>
               </div>
-              <div class="col-3 ">
+              <div class="col-2 ">
                 <select
                   className="form-select"
                   aria-label="Default select example"

@@ -2,7 +2,7 @@
 .card-busqueda {
   background-color: #d8dcfc;
   height: 62px;
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   border-radius: 0.3rem;
   /* border: solid red; */
@@ -11,7 +11,7 @@
     color: #29293d;
     background-color: #FFFFFF;
     border-radius: 0.5rem;
-   /*  border: solid red */
+    /*  border: solid red */
   }
 
   .form-select:focus {
@@ -67,9 +67,9 @@
 }
 
 
-//Media query para los titulos
+
 .container-titulos {
-  width: 88%;
+  width: 80%;
   margin: 0 auto;
   background-color: #eb0064;
   border-top-left-radius: 16px;
@@ -92,6 +92,7 @@
 
 }
 
+//Media query para los titulos
 @media screen and (min-width: 375px) {
   .container-titulos {
     display: none;
@@ -112,7 +113,7 @@
   }
 }
 
-@media screen and (max-width: 390px){
+@media screen and (max-width: 390px) {
   .card-busqueda {
     background-color: #d8dcfc;
     height: 62px;
@@ -120,14 +121,14 @@
     margin: 0 auto;
     border-radius: 0.3rem;
     /* border: solid red; */
-  
+
     .form-select {
       color: #29293d;
       background-color: #FFFFFF;
       border-radius: 0.5rem;
-     /*  border: solid red */
+      /*  border: solid red */
     }
-  
+
     .form-select:focus {
       color: #000cf1;
       border-color: #000cf1;
@@ -136,19 +137,19 @@
       border-radius: 0.5rem;
       background-color: #FFFFFF;
     }
-  
+
     option {
       color: rgba(0, 0, 0, 0.589);
       font-weight: bold;
     }
-  
+
     //barra de busqueda
     .form-admin {
       background-color: #ffffff !important;
       border-radius: 0.5rem;
       /* border: solid red; */
     }
-  
+
     .form-admin:focus {
       color: #000cf1;
       border-color: #000cf1;
@@ -156,7 +157,7 @@
       box-shadow: none;
       background-color: #FFFFFF;
     }
-  
+
     //Boton de borrar y boton de descargas
     .borrar {
       background-color: #000cf1;
@@ -168,6 +169,8 @@
       margin: 10px;
       color: #FFFFFF;
     }
-  
+
   }
 }
+
+
