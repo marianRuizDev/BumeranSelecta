@@ -7,6 +7,7 @@ import { MdWork } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { AiFillStar } from "react-icons/ai";
 import { FaCheck } from "react-icons/fa";
+import axios from "axios";
 
 import perfil from "../assets/profiles/perfil1.png";
 import logo from "../assets/navbar/Group.png";
@@ -19,6 +20,7 @@ import { getAssignedSearchRequest } from "../redux/assignedSearch";
 import { getOneUpDate } from "../redux/search";
 import { subtractAvtiveSearches } from "../redux/modifyActiveSearches";
 import "../sass/profile2.scss";
+import { modifyRating } from "../redux/modifyRecruiterRating";
 
 const Profile = () => {
   const date = new Date().toISOString().split("T")[0];
@@ -61,8 +63,10 @@ const Profile = () => {
         })
       );
       dispatch(subtractAvtiveSearches(userId));
+      //dispatch(modifyRating(userId));
       setValidate(true);
       setTimeout(() => {
+        axios.put(`http://localhost:8000/api/recruiter/${userId}/rating`);
         document.getElementById("closeBtn").click();
         window.location.reload();
       }, 1000);
