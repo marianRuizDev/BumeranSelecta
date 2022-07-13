@@ -21,7 +21,8 @@ import { subtractAvtiveSearches } from "../redux/modifyActiveSearches";
 import "../sass/profile2.scss";
 
 const Profile = () => {
-  const date = new Date();
+  const date = new Date().toISOString().split("T")[0];
+  console.log(date);
   const dispatch = useDispatch();
   let userId = useParams().id;
   const [validate, setValidate] = useState(false);
@@ -186,7 +187,7 @@ const Profile = () => {
             )}
             <img className="profile-photo" src={perfil} alt="" />
             <h5 className="user-name">{user.name + " " + user.lastName}</h5>
-            {userRating.toFixed(1)}
+            {userRating ? userRating.toFixed(1) : 0}
           </div>
           <div className="profile-infoContainer">
             <p className="profile-info">

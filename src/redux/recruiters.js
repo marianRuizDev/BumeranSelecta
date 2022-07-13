@@ -14,11 +14,21 @@ export const sendAllRecruiters = createAsyncThunk(
 );
 
 export const getOneRecruiter = createAsyncThunk("ONE_RECUITER", async (id) => {
-  try {
-    const data = await axios.get(`http://localhost:8000/api/recruiter/${id}`);
-    return data.data;
-  } catch (error) {
-    console.log(error);
+  if (id === null) {
+    try {
+      console.log("entro null");
+      const data = null;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  } else if (id !== null) {
+    try {
+      const data = await axios.get(`http://localhost:8000/api/recruiter/${id}`);
+      return data.data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 });
 
@@ -42,11 +52,11 @@ export const modifyRecruiter = createAsyncThunk(
     email,
     rating,
     description,
-    country,
-    experienceField,
+    selectedCountry,
+    jobArea,
   }) => {
     try {
-      // console.log("RECRUTER ID:",id)
+      console.log("RECRUTER NAME:", jobArea);
       const data = await axios.put(
         `http://localhost:8000/api/recruiter/edit/${id}`,
         {
@@ -55,8 +65,8 @@ export const modifyRecruiter = createAsyncThunk(
           email: email?.value,
           rating: rating?.value,
           description: description?.value,
-          country: country?.value,
-          experienceField: experienceField?.value,
+          CountryId: selectedCountry ? Number(selectedCountry) : undefined,
+          AreaId: jobArea ? Number(jobArea) : undefined,
         }
       );
       return data.data;

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import useInput from "../hooks/useInput";
-import { Link } from 'react-router-dom'
-import { getAreasRequest } from "../redux/getAreas";
-import { getCountriesRequest } from "../redux/getCountries";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneRecruiter, modifyRecruiter } from "../redux/recruiters";
-import "../sass/formProfile.scss"
+import "../sass/formProfile.scss";
 
 /* El administrador puede modificar al recluter */
 const FormProfile = () => {
@@ -20,8 +18,7 @@ const FormProfile = () => {
   const password = useInput();
   const rating = useInput();
   const description = useInput();
-  const CountryId = useInput();
-  const AreaId = useInput();
+
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
 
@@ -29,11 +26,11 @@ const FormProfile = () => {
   const paises = useSelector((state) => state.country);
 
   const handleJobAreaChange = (e) => {
-    console.log(e.target.value)
+    console.log(e.target.value);
     setJobArea(e.target.value);
   };
   const handleCountryChange = (e) => {
-    console.log(e.target.value)
+    console.log(e.target.value);
     setSelectedContry(e.target.value);
   };
 
@@ -47,8 +44,8 @@ const FormProfile = () => {
         email,
         rating,
         description,
-        CountryId,
-        AreaId,
+        selectedCountry,
+        jobArea,
       })
     );
   };
@@ -170,16 +167,22 @@ const FormProfile = () => {
         </div>
         <div>
           <Link to={`/profile/${user[0].id}`}>
-            <button type="submit" class="btn btn-danger cancelar align-items-center">
+            <button
+              type="submit"
+              class="btn btn-danger cancelar align-items-center"
+            >
               Cancelar
             </button>
           </Link>
-          <button type="submit" class="btn btn-danger cambios align-items-center">
+          <button
+            type="submit"
+            class="btn btn-danger cambios align-items-center"
+          >
             Guardar
           </button>
         </div>
-      </form >
-    </div >
+      </form>
+    </div>
   );
 };
 

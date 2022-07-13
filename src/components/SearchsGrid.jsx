@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchCard from "./SearchCard";
 import { BiTrash } from "react-icons/bi";
-import { BsPlusCircle } from "react-icons/bs"
+import { BsPlusCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { sendAllSearches } from "../redux/search";
 import { AiOutlinePlusCircle } from "react-icons/ai";
@@ -16,8 +16,10 @@ function SearchsGrid() {
   const date = new Date().getTime();
 
   const searchs = useSelector((state) => state.search);
+
   const areas = useSelector((state) => state.area);
   const paises = useSelector((state) => state.country);
+
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [searchTime, setSearchTime] = useState("");
@@ -52,7 +54,7 @@ function SearchsGrid() {
   }, []);
   return (
     <div class="container">
-      <div class="card card-search p-2">
+      <div class="card card-search p-2 mt-5">
         <div class="col col-lg-1  justify-content-center create ">
           <Link
             to={"/admin/searchs/create"}
@@ -172,6 +174,9 @@ function SearchsGrid() {
                   key={index}
                   country={search.CountryId}
                   area={search.AreaId}
+                  ratingRecruiter={search.ratingRecruiter}
+                  candidates={search.candidates}
+                  Recruiter={search.RecruiterId}
                   time={search.createdAt}
                   status={search.StatusId}
                   id={search.id}

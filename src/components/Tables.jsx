@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import "../sass/stadistics.scss";
 
 const Tables = ({ items }) => {
-  const dispatch = useDispatch();
   const countries = useSelector((state) => state.country).filter(
     (pais) => pais.id === items.CountryId
   );
@@ -47,7 +46,9 @@ const Tables = ({ items }) => {
           <div class="col">{countries[0].name}</div>
           <div class="col">{areas[0].name}</div>
           <div class="col">{items.vacancies}</div>
-          <div class="col">q</div>
+          <div class="col">
+            {items.candidates !== null ? items.candidates : 0}
+          </div>
         </div>
       </div>
     </div>

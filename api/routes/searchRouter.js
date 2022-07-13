@@ -53,6 +53,7 @@ router.get("/chart/table", (req, res) => {
       "CountryId",
       "AreaId",
       "vacancies",
+      "candidates",
     ],
   }).then((search) => {
     res.send(search);
@@ -84,28 +85,40 @@ router.get("/chart/datearea", async (req, res) => {
   res.status(200).json(response);
 });
 
+//cantidad de reclutadores
+const rec = Recruiter.findAll({ attributes: ["id"] });
 //char time 2
+
 router.get("/chart/daterecruiter", async (req, res) => {
+  let cantidad = (await rec).length;
+
   let result = [];
   const find = async (i) => {
     const responsSearch = await Search.findAll({
       where: {
-        RecruiterId: i,
+        [sequelize.Op.and]: [
+          { RecruiterId: i },
+          { RecruiterId: { [sequelize.Op.ne]: null } },
+        ],
         searchTime: { [sequelize.Op.ne]: null },
       },
       attributes: [
         "RecruiterId",
         [sequelize.fn("AVG", sequelize.col("searchTime")), "avarage"],
       ],
+      group: ["RecruiterId"],
     });
-    return responsSearch;
+    if (responsSearch.length != 0) {
+      return responsSearch;
+    }
   };
 
-  for (let i = 1; i <= 11; i++) {
+  for (let i = 1; i <= cantidad; i++) {
     result.push(find(i));
   }
 
   const response = await Promise.all(result);
+
   res.status(200).json(response);
 });
 

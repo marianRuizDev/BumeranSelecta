@@ -70,10 +70,6 @@ class recruiterControllers {
       .catch((err) => res.status(404).send(err));
   }
 
-
-
-
-  
   static async delete(req, res) {
     await recruiterServices.remove({
       where: { id: req.params.id },

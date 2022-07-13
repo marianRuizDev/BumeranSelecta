@@ -1,7 +1,3 @@
-// .nav-item {
-//   // border: red solid;
-// }
-
 .boxSaludo {
   // border: red solid;
   display: flex;
@@ -17,29 +13,6 @@
   }
 }
 
-// .text {
-//   color: #000cf1;
-//   font-weight: bold;
-
-//   display: flex;
-//   align-items: center;
-//   gap: 10px;
-
-//   text-transform: uppercase;
-
-//   font-size: 0.9rem;
-//   letter-spacing: 1.5px;
-
-//   text-decoration: none;
-//   //padding: 0.5rem 1rem;
-//   height: 100%;
-//   border-bottom: 3px solid transparent;
-// }
-
-// text:hover {
-//   color: #96b973;
-// }
-
 .boxButtont {
   // border: red solid;
   display: flex;
@@ -47,11 +20,17 @@
 }
 
 .registro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 0.5rem;
-  width: 140px;
-  font-weight: 800;
-  letter-spacing: 1px;
+  font-size: 15px;
+  width: 115px;
+  height: 35px;
+
   cursor: pointer !important;
+
+  font-weight: 800;
 
   color: #ffffff;
   background-color: #eb0064;
@@ -63,17 +42,21 @@
 }
 
 .login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 0.5rem;
   font-size: 15px;
-  width: 125px;
-  //height: 36px;
-  //margin-top: 7%;
+  width: 115px;
+  height: 35px;
   cursor: pointer !important;
-  letter-spacing: 1px;
+
   font-weight: 800;
   border-color: #eb0064;
   background-color: #ffffff;
   color: #eb0064;
+
+  // border: blue solid;
 }
 
 .login:hover {
@@ -203,23 +186,24 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 992px) {
   .boxNav {
     padding: 0 !important;
   }
+
   .menu {
     display: none;
   }
 
   .bor2 {
-    // border: rgb(18, 16, 16) solid;
+    //border: rgb(18, 16, 16) solid;
     display: flex;
     flex-direction: row !important;
     padding: 0 !important;
     justify-content: space-between !important;
     //align-items: baseline !important;
-    gap: 0px;
-    margin-left: 30px !important;
+    gap: 40px;
+    // margin-left:2% !important;
   }
 
   .bor {
@@ -227,9 +211,12 @@
     display: flex !important;
     flex-direction: row !important;
     padding: 0 !important;
-
+    justify-content: right;
     align-items: baseline !important;
-    margin: 0px !important;
+    gap: 20px;
+    margin-top: 5px !important;
+    align-items: baseline !important;
+    // margin-right: 30px !important;
     width: 100%;
   }
 
@@ -245,6 +232,106 @@
     h4 {
       margin: 0 !important;
       padding: 0 !important;
+      font-size: 15px;
+    }
+  }
+
+  .nav-iten {
+    line-height: 40px;
+    text-align: center;
+    margin: 0 auto;
+
+    h2 {
+      color: #000cf1;
+      font-size: 15px;
+      margin: 0;
+    }
+
+    .icon {
+      color: #000cf1;
+    }
+  }
+
+  .logo {
+    // border: red solid;
+    width: 250px;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .boxNav {
+    padding: 0 !important;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .bor2 {
+    //border: rgb(18, 16, 16) solid;
+    display: flex;
+    flex-direction: row !important;
+    padding: 0 !important;
+    justify-content: space-between !important;
+    //align-items: baseline !important;
+    gap: 23px;
+    // margin-left:2% !important;
+  }
+
+  .bor {
+    //border: red solid;
+    display: flex !important;
+    flex-direction: row !important;
+    padding: 0 !important;
+    justify-content: right;
+    align-items: baseline !important;
+    gap: 15px;
+    margin-top: 5px !important;
+    align-items: baseline !important;
+    margin-right: 0 !important;
+    margin-top: 5px !important;
+    width: 100%;
+  }
+
+  .boxSaludo {
+    //border: red solid;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 15%;
+
+    h4 {
+      margin: 0 !important;
+      padding: 0 !important;
+      font-size: 15px;
+    }
+  }
+
+  .nav-iten {
+    line-height: 40px;
+    text-align: center;
+    margin: 0 auto;
+
+    h2 {
+      color: #000cf1;
+      font-size: 17px;
+      margin: 0;
+    }
+
+    .icon {
+      color: #000cf1;
+    }
+  }
+  .logo {
+    // border: red solid;
+    width: 250px;
+    img {
+      width: 100%;
     }
   }
 }
