@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -10,25 +9,26 @@ import {
   ResponsiveContainer,
   Label,
 } from "recharts";
-
+import { deleteNull } from "../utils/recluterConversor";
 import "../sass/stadistics.scss";
-import { useEffect, useState } from "react";
 import axios from "axios";
-import areaConversor from "../utils/areaConversor";
 
-const GraficoBarras2 = () => {
-  const [info, setInfo] = useState([]);
+const GraficoPie = () => {
+  //Cambiar ID del reclutador por el nombre del mismo
+
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/search/chart/datearea`)
-      .then((res) => setInfo(res.data));
+      .get(`http://localhost:8000/api/search/chart/daterecruiter`)
+      .then((res) => setData(res.data));
   }, []);
 
-  const infoCopy = info.flat();
-  const newInfo = areaConversor(infoCopy);
+  const newData = data.flat();
+  const depurateData = deleteNull(newData);
 
-  console.log(newInfo);
+  console.log(depurateData);
+
 
   return (
     <>
@@ -36,7 +36,7 @@ const GraficoBarras2 = () => {
         <BarChart
           width={500}
           height={100}
-          data={newInfo.filter((info) => info.AreaId !== null)}
+          data={depurateData}
           margin={{
             top: 170,
             right: 70,
@@ -44,10 +44,10 @@ const GraficoBarras2 = () => {
             bottom: 30,
           }}
         >
-          {/* Le tengo que pasar el area */}
-          <XAxis dataKey="AreaId" stroke="#8884d8">
+
+          <XAxis dataKey="RecruiterId" stroke="#8884d8">
             <Label
-              value="Tiempo promedio de las búsquedas por area"
+              value="Tiempo promedio de las búsquedas por reclutador en días"
               offset={0}
               position="bottom"
             />
@@ -62,11 +62,11 @@ const GraficoBarras2 = () => {
           </YAxis>
           <Tooltip wrapperStyle={{ width: 100, backgroundColor: "#ccc" }} />
           <CartesianGrid stroke="#ccc" strokeDasharray="1 1" />
-          <Bar dataKey="avarage" fill="#434bf0" barSize={37}></Bar>
+          <Bar dataKey="avarage" fill="#eb0064" barSize={37}></Bar>
         </BarChart>
       </ResponsiveContainer>
     </>
   );
 };
 
-export default GraficoBarras2;
+export default GraficoPie;

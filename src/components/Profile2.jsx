@@ -21,6 +21,7 @@ import { getOneUpDate } from "../redux/search";
 import { subtractAvtiveSearches } from "../redux/modifyActiveSearches";
 import "../sass/profile2.scss";
 import { deleteNull } from "../utils/recluterConversor";
+import { modifyRating } from "../redux/modifyRecruiterRating";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -98,8 +99,10 @@ const Profile = () => {
         })
       );
       dispatch(subtractAvtiveSearches(userId));
+      //dispatch(modifyRating(userId));
       setValidate(true);
       setTimeout(() => {
+        axios.put(`http://localhost:8000/api/recruiter/${userId}/rating`);
         document.getElementById("closeBtn").click();
         window.location.reload();
       }, 1000);

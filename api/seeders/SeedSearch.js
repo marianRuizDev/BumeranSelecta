@@ -16,8 +16,8 @@ const seedSearch = [
     startDate: '2022-07-10',
     finishDate: '2022-07-30',
     searchTime: 20,
-    ratingRecruiter:0,
-    candidates:0
+    ratingRecruiter: 0,
+    candidates: 0,
   },
   {
     position: 'Chef',
@@ -34,8 +34,8 @@ const seedSearch = [
     CountryId: 2,
     AreaId: 1,
     startDate: '2022-07-10',
-    ratingRecruiter:0,
-    candidates:0
+    ratingRecruiter: 0,
+    candidates: 0,
   },
   {
     position: 'CM',
@@ -54,8 +54,8 @@ const seedSearch = [
     startDate: '2022-07-20',
     finishDate: '2022-07-30',
     searchTime: 10,
-    ratingRecruiter:0,
-    candidates:0
+    ratingRecruiter: 0,
+    candidates: 0,
   },
   {
     position: 'Administrador',
@@ -74,8 +74,8 @@ const seedSearch = [
     startDate: '2022-07-15',
     finishDate: '2022-08-1',
     searchTime: 17,
-    ratingRecruiter:0,
-    candidates:0
+    ratingRecruiter: 0,
+    candidates: 0,
   },
   {
     position: 'Seller',
@@ -94,8 +94,8 @@ const seedSearch = [
     startDate: '2022-07-11',
     finishDate: '2022-07-21',
     searchTime: 10,
-    ratingRecruiter:0,
-    candidates:0
+    ratingRecruiter: 0,
+    candidates: 0,
   },
   {
     position: 'Productor',
@@ -114,8 +114,8 @@ const seedSearch = [
     startDate: '2022-07-06',
     finishDate: '2022-07-15',
     searchTime: 9,
-    ratingRecruiter:0,
-    candidates:0
+    ratingRecruiter: 0,
+    candidates: 0,
   },
   {
     position: 'Project Manager',
@@ -134,8 +134,10 @@ const seedSearch = [
     startDate: '2022-07-21',
     finishDate: '2022-07-30',
     searchTime: 9,
-    ratingRecruiter:0,
-    candidates:0
+    ratingRecruiter: 0,
+    candidates: 0,
+    RecruiterId: 1,
+    ratingRecruiter: 10,
   },
   {
     position: 'Mensajero',
@@ -154,8 +156,10 @@ const seedSearch = [
     startDate: '2022-07-10',
     finishDate: '2022-07-17',
     searchTime: 7,
-    ratingRecruiter:0,
-    candidates:0
+    ratingRecruiter: 0,
+    candidates: 0,
+    RecruiterId: 1,
+    ratingRecruiter: 6,
   },
   {
     position: 'Sous Chef',
@@ -174,8 +178,8 @@ const seedSearch = [
     startDate: '2022-07-15',
     finishDate: '2022-07-30',
     searchTime: 15,
-    ratingRecruiter:0,
-    candidates:0
+    ratingRecruiter: 0,
+    candidates: 0,
   },
   {
     position: 'Director de Recursos Humanos',
@@ -194,8 +198,8 @@ const seedSearch = [
     startDate: '2022-07-6',
     finishDate: '2022-07-9',
     searchTime: 3,
-    ratingRecruiter:0,
-    candidates:0
+    ratingRecruiter: 0,
+    candidates: 0,
   },
   {
     position: 'Enfermero',
@@ -214,8 +218,8 @@ const seedSearch = [
     startDate: '2022-07-11',
     finishDate: '2022-07-23',
     searchTime: 12,
-    ratingRecruiter:0,
-    candidates:0
+    ratingRecruiter: 0,
+    candidates: 0,
   },
   {
     position: 'Ingeniero Biomédico',
@@ -234,8 +238,8 @@ const seedSearch = [
     startDate: '2022-07-14',
     finishDate: '2022-07-29',
     searchTime: 15,
-    ratingRecruiter:0,
-    candidates:0
+    ratingRecruiter: 0,
+    candidates: 0,
   },
   {
     position: 'Vendedor',
@@ -254,8 +258,8 @@ const seedSearch = [
     startDate: '2022-07-12',
     finishDate: '2022-07-15',
     searchTime: 3,
-    ratingRecruiter:0,
-    candidates:0
+    ratingRecruiter: 0,
+    candidates: 0,
   },
   {
     position: 'Growth Manager',
@@ -274,8 +278,8 @@ const seedSearch = [
     startDate: '2022-07-18',
     finishDate: '2022-07-25',
     searchTime: 7,
-    ratingRecruiter:0,
-    candidates:0
+    ratingRecruiter: 0,
+    candidates: 0,
   },
 ];
 
