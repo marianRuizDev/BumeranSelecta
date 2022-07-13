@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import {
-  PieChart,
-  Pie,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
   Tooltip,
   ResponsiveContainer,
   Label,
-  XAxis,
 } from "recharts";
 import { deleteNull } from "../utils/recluterConversor";
 import "../sass/stadistics.scss";
@@ -27,24 +29,42 @@ const GraficoPie = () => {
 
   console.log(depurateData);
 
+
   return (
     <>
-      <ResponsiveContainer width="100%" aspect={5}>
-        <PieChart width={300} height={300}>
-          <Pie
-            dataKey="avarage"
-            isAnimationActive={false}
-            data={depurateData}
-            cx="50%"
-            cy="50%"
-            outerRadius={80}
-            fill="#f43c87"
-            label="Tiempo promedio de las busquedas por reclutador"
-          />
-          <Tooltip />
-        </PieChart>
+      <ResponsiveContainer width="100%" aspect={3}>
+        <BarChart
+          width={500}
+          height={100}
+          data={depurateData}
+          margin={{
+            top: 170,
+            right: 70,
+            left: 50,
+            bottom: 30,
+          }}
+        >
+
+          <XAxis dataKey="RecruiterId" stroke="#8884d8">
+            <Label
+              value="Tiempo promedio de las búsquedas por reclutador en días"
+              offset={0}
+              position="bottom"
+            />
+          </XAxis>
+          <YAxis>
+            <Label
+              value="Días promedio"
+              angle="-90"
+              offset={0}
+              position="center"
+            />
+          </YAxis>
+          <Tooltip wrapperStyle={{ width: 100, backgroundColor: "#ccc" }} />
+          <CartesianGrid stroke="#ccc" strokeDasharray="1 1" />
+          <Bar dataKey="avarage" fill="#eb0064" barSize={37}></Bar>
+        </BarChart>
       </ResponsiveContainer>
-      <p>Tiempo promedio de las busquedas por reclutador</p>
     </>
   );
 };

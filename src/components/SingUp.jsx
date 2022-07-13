@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import useInput from "../hooks/useInput";
 import { sendUserRegister } from "../redux/login";
-/* import img from '../assets/contenido/descarga4.png' */
 import "../sass/forms.scss"
 
 const SingUp = () => {
@@ -22,7 +21,6 @@ const SingUp = () => {
 
   return (
     <div className="prueba">
-     {/*  <img src={img} /> */}
       <form className="form" onSubmit={handlerRegister}>
         <h3 className="title-register-login">Crea una cuenta</h3>
         <div class="row">

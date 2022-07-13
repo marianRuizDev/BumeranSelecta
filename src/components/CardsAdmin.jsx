@@ -24,10 +24,10 @@ const CardsAdmin = ({ items }) => {
 
   const handleDelete = () => {
     console.log(selectedId);
-    //dispatch(deleteRecruiter(id));
-    /*  setTimeout(() => {
+    dispatch(deleteRecruiter(id));
+    setTimeout(() => {
       window.location.reload();
-    }, 500); */
+    }, 500); 
   };
 
   useEffect(() => {
@@ -109,23 +109,14 @@ const CardsAdmin = ({ items }) => {
                 <FaEdit />
               </button>
             </Link>
-            {/* <button
+          <button
               
               type="button"
               class="btn btn-dander trash-btn"
-            >
-              <BiTrash />
-            </button> */}
-
-            <button
-              type="button"
-              class="btn btn-danger trash-btn"
-              /*  data-bs-toggle="modal"
-              data-bs-target="#exampleModal" */
               onClick={handleDelete}
             >
               <BiTrash />
-            </button>
+            </button> 
           </div>
         </div>
       </div>

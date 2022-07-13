@@ -46,7 +46,7 @@ const GraficoBarras2 = () => {
           {/* Le tengo que pasar el area */}
           <XAxis dataKey="AreaId" stroke="#8884d8">
             <Label
-              value="Tiempo promedio de las búsquedas por país"
+              value="Tiempo promedio de las búsquedas por area"
               offset={0}
               position="bottom"
             />
