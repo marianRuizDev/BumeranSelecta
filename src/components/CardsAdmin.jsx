@@ -16,7 +16,7 @@ import calculateRating from "../utils/calculateRating";
 const CardsAdmin = ({ items }) => {
   const dispatch = useDispatch();
   const [selectedId, setSelectedId] = useState("");
-  console.log("selected", selectedId);
+
   const searchs = useSelector((state) => state.search).filter(
     (search) => search.RecruiterId === items.id && search.StatusId === 3
   );
@@ -27,7 +27,7 @@ const CardsAdmin = ({ items }) => {
     dispatch(deleteRecruiter(id));
     setTimeout(() => {
       window.location.reload();
-    }, 500); 
+    }, 500);
   };
 
   useEffect(() => {
@@ -109,14 +109,13 @@ const CardsAdmin = ({ items }) => {
                 <FaEdit />
               </button>
             </Link>
-          <button
-              
+            <button
               type="button"
               class="btn btn-dander trash-btn"
               onClick={handleDelete}
             >
               <BiTrash />
-            </button> 
+            </button>
           </div>
         </div>
       </div>
