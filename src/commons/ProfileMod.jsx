@@ -1,36 +1,45 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { useEffect } from "react";
-import { Link } from 'react-router-dom'
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import useInput from "../hooks/useInput";
-import { getCountriesRequest } from "../redux/getCountries";
-import { getAreasRequest } from "../redux/getAreas";
 import { getOneRecruiter, modifyRecruiter } from "../redux/recruiters";
-import "../sass/formProfile.scss"
+import "../sass/formProfile.scss";
+import { useState } from "react";
 
 /* El rucluter puede modificar su perfil */
 const ProfileMod = () => {
   const dispatch = useDispatch();
-  const me = useSelector((state) => state.login);
-  const id = me.id;
+  const user = useSelector((state) => state.recruiters);
+  /*  const id = me.id; */
+  const { id } = useParams();
+  console.log(user);
 
   const name = useInput();
   const lastName = useInput();
   const email = useInput();
   const description = useInput();
 
-  /*     const countries = useSelector((state) => state.country);
-         const areas = useSelector((state) => state.area); */
+  const paises = useSelector((state) => state.country);
+  const areas = useSelector((state) => state.area);
+
+  const [selectedCountry, setSelectedContry] = useState("");
+  const [jobArea, setJobArea] = useState("");
+
+  console.log(selectedCountry, jobArea);
 
   const handleCountryChange = (e) => {
+    console.log(e.target.value);
     setSelectedContry(e.target.value);
   };
   const handleJobAreaChange = (e) => {
+    console.log(e.target.value);
     setJobArea(e.target.value);
   };
 
   const handlerSubmit = (e) => {
     e.preventDefault();
+    console.log("ejecutando");
     dispatch(
       modifyRecruiter({
         id,
@@ -38,17 +47,18 @@ const ProfileMod = () => {
         lastName,
         email,
         description,
+        selectedCountry,
+        jobArea,
       })
     );
   };
 
-  /* useEffect(() => {
-    console.log("hgol");
-  }, []); */
+  useEffect(() => {
+    dispatch(getOneRecruiter(id));
+  }, []);
 
   return (
     <div className="edit-recruiters">
-
       <h4 className="title-recruiters">Editar perfil</h4>
       <form class="row g-3 form-edit" onSubmit={handlerSubmit}>
         <div class="col-md-6">
@@ -58,7 +68,7 @@ const ProfileMod = () => {
           <input
             type="text"
             class="form-control form-1"
-            placeholder={me.name}
+            placeholder={user[0].name}
             aria-label=""
             {...name}
           />
@@ -70,7 +80,7 @@ const ProfileMod = () => {
           <input
             type="text"
             class="form-control"
-            placeholder={me.lastName}
+            placeholder={user[0].lastName}
             aria-label=""
             {...lastName}
           />
@@ -83,16 +93,11 @@ const ProfileMod = () => {
           <input
             type="text"
             class="form-control"
-            placeholder={me.email}
+            placeholder={user[0].email}
             aria-label=""
             {...email}
           />
         </div>
-        {/* <div class="col-md-6">
-                    <label for="inputPassword4" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4"
-                        {...password} />
-                </div> */}
 
         <div class="col-md-6">
           <label for="inputCity" class="form-label">
@@ -102,16 +107,14 @@ const ProfileMod = () => {
             className="form-select"
             aria-label="Default select example"
             placeholder="Pais"
-
-          /*  onChange={handleCountryChange} */
+            onChange={handleCountryChange}
           >
             <option value={""}>Seleccione una opción</option>
-
-            {/* {countries
-                            ?.filter((pais) => pais !== null)
-                            .map((pais, i) => {
-                                return <option key={i}>{pais}</option>;
-                            })} */}
+            {paises.map((pais, index) => (
+              <option key={index} value={pais.id}>
+                {pais.name}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -123,15 +126,14 @@ const ProfileMod = () => {
             className="form-select"
             aria-label="Default select example"
             placeholder="Área"
-          /*  onChange={handleJobAreaChange} */
+            onChange={handleJobAreaChange}
           >
             <option value={""}>Seleccione una opción</option>
-
-            {/* {areas
-                                ?.filter((area) => area !== null)
-                                .map((area, i) => {
-                                    return <option key={i}>{area}</option>;
-                                })} */}
+            {areas.map((area, index) => (
+              <option key={index} value={area.id}>
+                {area.name}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -140,7 +142,7 @@ const ProfileMod = () => {
             name="textarea"
             rows="10"
             cols="50"
-            placeholder={me.description}
+            placeholder={user[0].description}
             {...description}
           ></textarea>
         </div>

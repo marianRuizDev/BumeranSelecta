@@ -78,12 +78,13 @@ export const getOneUpDate = createAsyncThunk(
     candidates,
     ratingRecruiter,
   }) => {
+    console.log("ACAAAA", typeof selectedCountry);
     try {
       const data = await axios.put(
         `http://localhost:8000/api/search/edit/${id}`,
         {
-          CountryId: selectedCountry,
-          AreaId: jobArea,
+          CountryId: selectedCountry ? Number(selectedCountry) : undefined,
+          AreaId: jobArea ? Number(jobArea) : undefined,
           position: position?.value,
           description: description?.value,
           vacancies: vacancies?.value,

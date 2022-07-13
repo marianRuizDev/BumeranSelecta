@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import "../sass/stadistics.scss";
 
 const Tables = ({ items }) => {
-  const dispatch = useDispatch();
   const countries = useSelector((state) => state.country).filter(
     (pais) => pais.id === items.CountryId
   );
   const areas = useSelector((state) => state.area).filter(
     (area) => area.id === items.AreaId
   );
+
 
   return (
     <div>

@@ -56,7 +56,7 @@ export const modifyRecruiter = createAsyncThunk(
     jobArea,
   }) => {
     try {
-      // console.log("RECRUTER ID:",id)
+      console.log("RECRUTER NAME:", jobArea);
       const data = await axios.put(
         `http://localhost:8000/api/recruiter/edit/${id}`,
         {
@@ -65,8 +65,8 @@ export const modifyRecruiter = createAsyncThunk(
           email: email?.value,
           rating: rating?.value,
           description: description?.value,
-          CountryId: selectedCountry,
-          AreaId: jobArea,
+          CountryId: selectedCountry ? Number(selectedCountry) : undefined,
+          AreaId: jobArea ? Number(jobArea) : undefined,
         }
       );
       return data.data;
