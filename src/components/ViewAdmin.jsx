@@ -7,6 +7,7 @@ import { getCountriesRequest } from "../redux/getCountries";
 import { getAreasRequest } from "../redux/getAreas";
 import CardsAdmin from "./CardsAdmin";
 import "../sass/viewAdmin.scss";
+import { getAssignedSearchRequest } from "../redux/assignedSearch";
 
 const ViewAdmin = () => {
   const dispatch = useDispatch();
@@ -117,32 +118,22 @@ const ViewAdmin = () => {
 
       <div className=" container-titulos">
         <div className="card-titulos">
-
           <div className="reclutadores">
-            <h5>
-              Reclutadores
-            </h5>
+            <h5>Reclutadores</h5>
           </div>
 
           <div className="ranking">
-            <h5>
-              Ranking
-            </h5>
+            <h5>Ranking</h5>
           </div>
 
           <div className="busquedas">
-            <h5>
-              Bus. Asignadas
-            </h5>
+            <h5>Bus. Asignadas</h5>
           </div>
 
           <div className="permisos">
-            <h5>
-              Permisos
-            </h5>
+            <h5>Permisos</h5>
           </div>
         </div>
-
       </div>
 
       <div>

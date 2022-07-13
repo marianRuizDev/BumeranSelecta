@@ -186,7 +186,7 @@ const Profile = () => {
             )}
             <img className="profile-photo" src={perfil} alt="" />
             <h5 className="user-name">{user.name + " " + user.lastName}</h5>
-            {userRating.toFixed(1)}
+            {userRating ? userRating.toFixed(1) : 0}
           </div>
           <div className="profile-infoContainer">
             <p className="profile-info">
