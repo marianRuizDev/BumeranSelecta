@@ -25,9 +25,10 @@ const GraficoBarras2 = () => {
       .then((res) => setInfo(res.data));
   }, []);
 
-
   const infoCopy = info.flat();
   const newInfo = areaConversor(infoCopy);
+
+  console.log(newInfo);
 
   return (
     <>

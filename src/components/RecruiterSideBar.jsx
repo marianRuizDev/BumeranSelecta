@@ -9,10 +9,13 @@ import avatar from "../assets/profiles/perfil1.png";
 
 import { addAvtiveSearches } from "../redux/modifyActiveSearches";
 import { assignRecruiterToSearch } from "../redux/assignRecruiter";
+import { getOneUpDate } from "../redux/search";
 
 export default function RecruiterSideBar({ recruiter, search }) {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const date = new Date().toISOString().split("T")[0];
+  console.log(date);
   const [bool, setBool] = useState(false);
 
   // ASIGNAR UN RECRUITER//
@@ -20,13 +23,17 @@ export default function RecruiterSideBar({ recruiter, search }) {
     dispatch(addAvtiveSearches(recruiter.id));
     dispatch(
       assignRecruiterToSearch({ searchId: id, RecruiterId: recruiter.id })
-    ); //RECRUITER
+    );
+    dispatch(
+      getOneUpDate({
+        id,
+        startDate: date,
+      })
+    );
     setTimeout(() => {
       window.location.reload();
     }, 100);
   };
-
-  console.log(search);
 
   /*  useEffect(() => {
     console.log("funciono");

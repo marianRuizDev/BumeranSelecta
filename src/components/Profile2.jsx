@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { IoLocationSharp } from "react-icons/io5";
@@ -14,19 +15,25 @@ import background from "../assets/svg background/ondas.svg";
 import phone from "../assets/fomrs/descarga3.png";
 import useInput from "../hooks/useInput";
 import calculateRating from "../utils/calculateRating";
-import { getOneRecruiter } from "../redux/recruiters";
+import { getOneRecruiter, modifyRecruiter } from "../redux/recruiters";
 import { getAssignedSearchRequest } from "../redux/assignedSearch";
 import { getOneUpDate } from "../redux/search";
 import { subtractAvtiveSearches } from "../redux/modifyActiveSearches";
 import "../sass/profile2.scss";
+import { deleteNull } from "../utils/recluterConversor";
 
 const Profile = () => {
-  const date = new Date().toISOString().split("T")[0];
-  console.log(date);
   const dispatch = useDispatch();
+
   let userId = useParams().id;
   const [validate, setValidate] = useState(false);
   const [selectedSearch, setSelectedSearch] = useState(0);
+  const [startTime, setStartTime] = useState("");
+  const date = new Date().toLocaleDateString("en-us");
+  const day1 = new Date(date);
+  const day2 = new Date(startTime);
+
+  var difference = (day1.getTime() - day2.getTime()) / (1000 * 60 * 60 * 24);
 
   const userRedux = useSelector((state) => state.recruiters);
   const searchs = useSelector((state) => state.assigned);
@@ -35,9 +42,16 @@ const Profile = () => {
     addDaysToDate(search.updatedAt, 15)
   );
   const user = userRedux[0];
+
+  console.log("RATING", user);
+
   const finishedSearches = searchs.filter((search) => search.StatusId === 3);
 
-  const userRating = calculateRating(finishedSearches);
+  console.log("BUSQUEDAS FINALIZADAS", finishedSearches);
+
+  const userRating = calculateRating(finishedSearches) || 0;
+
+  console.log(userRating);
 
   const userCountry = useSelector((state) => state.country).filter(
     (pais) => pais.id === user.CountryId
@@ -49,6 +63,20 @@ const Profile = () => {
   const workersNum = useInput();
   const ratingNum = useInput();
 
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/api/search/chart/daterecruiter`)
+      .then((res) => setData(res.data));
+  }, []);
+
+  const newData = data.flat();
+  const depurateData = deleteNull(newData);
+  const filteredData = depurateData.filter(
+    (data) => data.RecruiterId == userId
+  );
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (workersNum.value !== undefined && workersNum.value !== "0") {
@@ -58,6 +86,15 @@ const Profile = () => {
           StatusId: 3,
           candidates: workersNum,
           ratingRecruiter: ratingNum,
+          finishDate: date,
+          searchTime: difference > 0 ? difference.toFixed(0) : 1,
+        })
+      );
+
+      dispatch(
+        modifyRecruiter({
+          id: userId,
+          rating: user.rating === 0 ? ratingNum : userRating,
         })
       );
       dispatch(subtractAvtiveSearches(userId));
@@ -205,6 +242,12 @@ const Profile = () => {
               </span>
             </p>
             <p className="profile-info">
+              <span className="userInfo-tag">Demora por búsqueda:</span>
+              <span className="userInfo-content">
+                {filteredData[0]?.avarage}
+              </span>
+            </p>
+            <p className="profile-info">
               <span className="userInfo-tag">Email:</span>
               <span className="userInfo-content">{user.email}</span>
             </p>
@@ -292,7 +335,10 @@ const Profile = () => {
                               className="check-btn"
                               data-bs-toggle="modal"
                               data-bs-target="#exampleModal"
-                              onClick={() => setSelectedSearch(search.id)}
+                              onClick={() => {
+                                setSelectedSearch(search.id),
+                                  setStartTime(search.startDate);
+                              }}
                             >
                               <FaCheck />
                             </button>

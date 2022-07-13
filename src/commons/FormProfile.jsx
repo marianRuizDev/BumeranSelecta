@@ -42,7 +42,7 @@ const FormProfile = () => {
         name,
         lastName,
         email,
-        rating,
+        rating: rating.value,
         description,
         selectedCountry,
         jobArea,

@@ -26,8 +26,6 @@ function SearchView() {
   const selectedSearch = useSelector((state) => state.search);
   const recruiters = useSelector((state) => state.recruiters);
 
-  console.log(selectedSearch[0].createdAt);
-
   const searchCountry = useSelector((state) => state.country).filter(
     (pais) => pais.id === selectedSearch[0].CountryId
   );

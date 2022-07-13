@@ -123,7 +123,7 @@ const ViewAdmin = () => {
           </div>
 
           <div className="ranking">
-            <h5>Ranking</h5>
+            <h5>Rating</h5>
           </div>
 
           <div className="busquedas">
