@@ -15,16 +15,19 @@ import calculateRating from "../utils/calculateRating";
 
 const CardsAdmin = ({ items }) => {
   const dispatch = useDispatch();
+  const [selectedId, setSelectedId] = useState("");
+  console.log("selected", selectedId);
   const searchs = useSelector((state) => state.search).filter(
-    (search) => search.RecruiterId === items.id
+    (search) => search.RecruiterId === items.id && search.StatusId === 3
   );
   const userRating = calculateRating(searchs);
 
   const handleDelete = () => {
-    dispatch(deleteRecruiter(items.id));
-    setTimeout(() => {
+    console.log(selectedId);
+    //dispatch(deleteRecruiter(id));
+    /*  setTimeout(() => {
       window.location.reload();
-    }, 500);
+    }, 500); */
   };
 
   useEffect(() => {
@@ -33,6 +36,48 @@ const CardsAdmin = ({ items }) => {
 
   return (
     <div>
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Eliminar reclutador
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              ¿Desea eliminar a este reclutador de la base de datos?
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-danger trash-btn"
+                data-bs-dismiss="modal"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger trash-btn"
+                onClick={handleDelete}
+              >
+                Aceptar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="container-parent">
         <div className="container-card">
           <div className="avatar">
@@ -47,7 +92,7 @@ const CardsAdmin = ({ items }) => {
               <div className="skills-wrapper">
                 <div className="skill">
                   <div className="skill-content">
-                    <span>{userRating ? userRating : 0}</span>
+                    <span>{userRating ? userRating.toFixed(1) : 0}</span>
                   </div>
                 </div>
               </div>
@@ -75,54 +120,12 @@ const CardsAdmin = ({ items }) => {
             <button
               type="button"
               class="btn btn-danger trash-btn"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
+              /*  data-bs-toggle="modal"
+              data-bs-target="#exampleModal" */
+              onClick={handleDelete}
             >
               <BiTrash />
             </button>
-
-            <div
-              class="modal fade"
-              id="exampleModal"
-              tabindex="-1"
-              aria-labelledby="exampleModalLabel"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                      Eliminar reclutador
-                    </h5>
-                    <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div class="modal-body">
-                    ¿Desea eliminar a este reclutador de la base de datos?
-                  </div>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-danger trash-btn"
-                      data-bs-dismiss="modal"
-                    >
-                      Cancelar
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-danger trash-btn"
-                      onClick={handleDelete}
-                    >
-                      Aceptar
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

@@ -54,7 +54,7 @@ function SearchsGrid() {
   }, []);
   return (
     <div class="container">
-      <div class="card card-search p-2">
+      <div class="card card-search p-2 mt-5">
         <div class="col col-lg-1  justify-content-center create ">
           <Link
             to={"/admin/searchs/create"}

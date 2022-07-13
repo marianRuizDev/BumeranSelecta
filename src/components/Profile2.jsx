@@ -21,7 +21,8 @@ import { subtractAvtiveSearches } from "../redux/modifyActiveSearches";
 import "../sass/profile2.scss";
 
 const Profile = () => {
-  const date = new Date();
+  const date = new Date().toISOString().split("T")[0];
+  console.log(date);
   const dispatch = useDispatch();
   let userId = useParams().id;
   const [validate, setValidate] = useState(false);

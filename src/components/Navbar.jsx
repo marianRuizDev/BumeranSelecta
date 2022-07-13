@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark  shadow-lg p-3  bg-white    nav-menu_medium ">
+    <nav class="navbar navbar-expand-lg navbar-dark  shadow-lg p-4  bg-white    nav-menu_medium ">
       <div class="container-fluid  align-items-baseline d-flex p-2 boxNav ">
         <Link to={"/"} className="logo">
           <img src={marca} width={250} />
@@ -58,7 +58,7 @@ const Navbar = () => {
                   </li>
                 </Link>
 
-                <a href="#quienes_somos">
+                <a href="#quienesSomos">
                   <li className="nav-iten active">
                     <h2 className="nav-links">¿Quíenes Somos?</h2>
                   </li>
@@ -72,7 +72,7 @@ const Navbar = () => {
 
                 
 
-                <a href="https://www.bumeran.com.ar/selecta/#!/contacto">
+                <a href="#contacto">
                   <li className="nav-iten active">
                     <h2 className="nav-links">Contactos</h2>
                   </li>

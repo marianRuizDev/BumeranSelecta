@@ -53,6 +53,7 @@ router.get("/chart/table", (req, res) => {
       "CountryId",
       "AreaId",
       "vacancies",
+      "candidates",
     ],
   }).then((search) => {
     res.send(search);
@@ -85,10 +86,10 @@ router.get("/chart/datearea", async (req, res) => {
 });
 
 //cantidad de reclutadores
-const rec = Recruiter.findAll({ attributes: ['id'] });
+const rec = Recruiter.findAll({ attributes: ["id"] });
 //char time 2
 
-router.get('/chart/daterecruiter', async (req, res) => {
+router.get("/chart/daterecruiter", async (req, res) => {
   let cantidad = (await rec).length;
 
   let result = [];
@@ -105,7 +106,7 @@ router.get('/chart/daterecruiter', async (req, res) => {
         "RecruiterId",
         [sequelize.fn("AVG", sequelize.col("searchTime")), "avarage"],
       ],
-      group: ['RecruiterId'],
+      group: ["RecruiterId"],
     });
     if (responsSearch.length != 0) {
       return responsSearch;

@@ -10,7 +10,6 @@ const Tables = ({ items }) => {
     (area) => area.id === items.AreaId
   );
 
-
   return (
     <div>
       <div class="container container-resultados table-responsive">
@@ -47,7 +46,9 @@ const Tables = ({ items }) => {
           <div class="col">{countries[0].name}</div>
           <div class="col">{areas[0].name}</div>
           <div class="col">{items.vacancies}</div>
-          <div class="col">q</div>
+          <div class="col">
+            {items.candidates !== null ? items.candidates : 0}
+          </div>
         </div>
       </div>
     </div>
