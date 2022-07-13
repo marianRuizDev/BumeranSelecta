@@ -1,7 +1,7 @@
 const express = require('express');
 const sequelize = require('sequelize');
 const router = express.Router();
-const { Recruiter } = require('../models');
+const { Recruiter, Search } = require('../models');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
@@ -52,7 +52,6 @@ router.post('/search', (req, res) => {
 });
 
 //update activeSearchs
-
 router.put('/:id/activeSearchs', async function (req, res, next) {
   const { id } = req.params;
   const recruiter = await Recruiter.findOne({ where: { id } });
@@ -66,6 +65,29 @@ router.put('/:id/activeSearchs', async function (req, res, next) {
   Recruiter.update(
     {
       activeSearchs: newActiveSearch,
+    },
+    { where: { id } }
+  )
+    .then((result) => res.status(201).send(result))
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+router.put('/:id/rating', async function (req, res, next) {
+  const { id } = req.params;
+  const searches = await Search.findAll({
+    where: { RecruiterId: id },
+    attributes: [
+      'RecruiterId',
+      [sequelize.fn('AVG', sequelize.col('ratingRecruiter')), 'avarage'],
+    ],
+  });
+  const avarageRating = searches[0].dataValues.avarage;
+
+  Recruiter.update(
+    {
+      rating: avarageRating,
     },
     { where: { id } }
   )
