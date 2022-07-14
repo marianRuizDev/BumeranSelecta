@@ -13,7 +13,11 @@ import { deleteSearch, getOneSearches } from "../redux/search";
 import { sendAllRecruiters } from "../redux/recruiters";
 import { Link } from "react-router-dom";
 import RecruiterSideBar from "./RecruiterSideBar";
+
+import imagen from "../assets/figma/imagen.png";
+
 import "../sass/searchs.scss";
+import { subtractAvtiveSearches } from "../redux/modifyActiveSearches";
 
 function SearchView() {
   const dispatch = useDispatch();
@@ -24,6 +28,8 @@ function SearchView() {
   const id = params.id;
 
   const selectedSearch = useSelector((state) => state.search);
+
+  console.log("SELECTED", selectedSearch);
   const recruiters = useSelector((state) => state.recruiters);
 
   const searchCountry = useSelector((state) => state.country).filter(
@@ -60,6 +66,8 @@ function SearchView() {
     .sort((a, b) => b.rating - a.rating);
 
   const handleDeleteSearch = () => {
+    console.log("hola");
+    dispatch(subtractAvtiveSearches(selectedSearch[0].RecruiterId));
     dispatch(deleteSearch(id));
     setTimeout(() => {
       navigate("/searchs");
@@ -96,29 +104,29 @@ function SearchView() {
             <div className="grup01 text-danger">
               <div class="boxicon">
                 <BiCube />
-                <p>{searchArea[0].name}</p>
+                <p>{searchArea[0]?.name}</p>
               </div>
 
               <div class="boxicon">
                 <FiUsers />
-                <p>{selectedSearch[0].vacancies}</p>
+                <p>{selectedSearch[0]?.vacancies}</p>
               </div>
 
               <div class="boxicon ">
                 <AiOutlineClockCircle />
-                <p>{selectedSearch[0].jobSchedules}</p>
+                <p>{selectedSearch[0]?.jobSchedules}</p>
               </div>
             </div>
 
             <div className="grup02 text-primary">
               <div class="boxicon">
                 <IoLocationSharp />
-                <p> {searchCountry[0].name}</p>
+                <p> {searchCountry[0]?.name}</p>
               </div>
 
               <div class="boxicon">
                 <RiMoneyDollarCircleLine />
-                <p>{"$" + selectedSearch[0].salary}</p>
+                <p>{"$" + selectedSearch[0]?.salary}</p>
               </div>
 
               <div class="boxicon">
@@ -136,22 +144,27 @@ function SearchView() {
           </div>
 
           <div className="boxText">
-            <p>{selectedSearch[0].description}</p>
+            <p>{selectedSearch[0]?.description}</p>
           </div>
         </div>
 
         <div className="boxMoreSerach">
-          {selectedSearch[0].RecruiterId === null
-            ? mejoresRecruiters.map((recruiter, index) => {
-                return (
-                  <RecruiterSideBar
-                    key={index}
-                    recruiter={recruiter}
-                    search={selectedSearch}
-                  />
-                );
-              })
-            : "Búsqueda ya asignada"}
+          {selectedSearch[0]?.RecruiterId === null ? (
+            mejoresRecruiters.map((recruiter, index) => {
+              return (
+                <RecruiterSideBar
+                  key={index}
+                  recruiter={recruiter}
+                  search={selectedSearch}
+                />
+              );
+            })
+          ) : (
+            <div className="boxNotificacion">
+              <img src={imagen} alt="" />
+              <h2>¡Ya le has asignado un recluter!</h2>
+            </div>
+          )}
         </div>
       </div>
     </div>

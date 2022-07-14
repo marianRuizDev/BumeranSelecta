@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useInput from "../hooks/useInput";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneRecruiter, modifyRecruiter } from "../redux/recruiters";
@@ -10,6 +10,7 @@ import "../sass/formProfile.scss";
 const FormProfile = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.recruiters);
 
   const name = useInput();
@@ -48,6 +49,9 @@ const FormProfile = () => {
         jobArea,
       })
     );
+    setTimeout(() => {
+      navigate("/admin");
+    }, 500);
   };
 
   useEffect(() => {
@@ -107,7 +111,7 @@ const FormProfile = () => {
           />
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-6">
           <label for="inputEmail4" class="form-label">
             País
           </label>
@@ -125,7 +129,7 @@ const FormProfile = () => {
           </select>
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-6">
           <label for="inputEmail4" class="form-label">
             Área
           </label>
@@ -143,7 +147,7 @@ const FormProfile = () => {
           </select>
         </div>
 
-        <div class="col-md-2">
+        {/* <div class="col-md-2">
           <label for="inputZip" class="form-label">
             Rating
           </label>
@@ -154,7 +158,7 @@ const FormProfile = () => {
             placeholder={user[0].rating}
             {...rating}
           />
-        </div>
+        </div> */}
 
         <div class="form-floating">
           <textarea

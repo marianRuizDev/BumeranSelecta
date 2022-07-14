@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { IoLocationSharp } from "react-icons/io5";
+import { AiOutlineUser, AiFillStar } from "react-icons/ai";
+import { IoIosPeople } from "react-icons/io";
+
 import bu from "../assets/navbar/bu.png";
 import useTime from "../hooks/useTime";
 import logo from "../assets/navbar/Group.png";
@@ -80,56 +83,64 @@ function SearchCard({
     dispatch(sendAllRecruiters());
   }, []);
   return (
-    <div className="card">
-      <div className="boxTime">
-        <small>{timeStamp}</small>
-      </div>
+    <>
+      <div className="card">
+        <div className="boxTime d-flex justify-content-between align-items-center">
+          <span class="status">{actualStatus}</span>
+          <small>{timeStamp}</small>
+        </div>
 
-      <div className="box">
-        <div className="flex">
-          <div class="col ">
-            <Link to={`/searchs/${id}`}>
-              <div>
-                <h5>{title}</h5>
-                <p>{areaName[0] ? areaName[0].name : ""}</p>
-                <p class="card-text card-texto">{description}</p>
-              </div>
-            </Link>
+        <div className="box">
+          <div className="flex">
+            <div class="col ">
+              <Link to={`/searchs/${id}`}>
+                <div>
+                  <h5>{title}</h5>
+                  <p className="area">{areaName[0] ? areaName[0].name : ""}</p>
+                  <p class="card-text card-texto2">
+                    {description?.substring(0, 230) + "... "}
+                    <strong>ver más</strong>
+                  </p>
+                </div>
+              </Link>
+            </div>
+          </div>
+
+          <div className="infoCard">
+            {/* <div class=" d-flex justify-content-left p-2">
+      <span class="badge">{actualStatus}</span>
+    </div> */}
+
+            <div class="boxLocation">
+              <IoLocationSharp class="local" size={30} />
+              <p>{countryName[0] ? countryName[0].name : ""}</p>
+            </div>
+            <div class="boxLocation">
+              <AiFillStar class="local" size={30} />
+
+              <p>{ratingRecruiter}</p>
+            </div>
+            <div class="boxLocation">
+              <IoIosPeople class="local" size={30} />
+              <p>{candidates !== "0" ? candidates : "Cto. no asignado"}</p>
+            </div>
+
+            <div class="boxLocation">
+              <AiOutlineUser class="local" size={30} />
+              <p>
+                {recruiters.length !== 0
+                  ? recruiters[0].name
+                  : "Rter. no asignado"}
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="infoCard">
-          <div class=" d-flex justify-content-left p-2">
-            <span class="badge">{actualStatus}</span>
-          </div>
-          <div class="boxLocation">
-            <IoLocationSharp class="local" size={30} />
-            <p>{countryName[0] ? countryName[0].name : ""}</p>
-          </div>
-          <div class="boxLocation">
-            <h6>Rating del reclutador</h6>
-            <p>{ratingRecruiter}</p>
-          </div>
-          <div class="boxLocation">
-            <h6>Candidatos presentados</h6>
-            <p>{candidates}</p>
-          </div>
-
-          <div class="boxLocation">
-            <h6>Reclutador</h6>
-            <p>
-              {recruiters.length !== 0
-                ? recruiters[0].name
-                : "Recruiter no asignado"}
-            </p>
-          </div>
+        <div className="col bumeran-container">
+          <img src={bu} className="bumeran" />
         </div>
       </div>
-
-      <div className="col bumeran-container">
-        <img src={bu} className="bumeran" />
-      </div>
-    </div>
+    </>
   );
 }
 

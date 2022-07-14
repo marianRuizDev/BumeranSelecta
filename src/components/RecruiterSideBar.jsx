@@ -11,7 +11,7 @@ import { addAvtiveSearches } from "../redux/modifyActiveSearches";
 import { assignRecruiterToSearch } from "../redux/assignRecruiter";
 import { getOneUpDate } from "../redux/search";
 
-export default function RecruiterSideBar({ recruiter, search }) {
+function RecruiterSideBar({ recruiter, search }) {
   const { id } = useParams();
   const dispatch = useDispatch();
   const date = new Date().toISOString().split("T")[0];
@@ -32,7 +32,7 @@ export default function RecruiterSideBar({ recruiter, search }) {
     );
     setTimeout(() => {
       window.location.reload();
-    }, 100);
+    }, 500);
   };
 
   /*  useEffect(() => {
@@ -68,3 +68,5 @@ export default function RecruiterSideBar({ recruiter, search }) {
     </>
   );
 }
+
+export default RecruiterSideBar;
