@@ -114,15 +114,25 @@ function SearchCard({
             <div class="boxLocation">
               <IoLocationSharp class="local" size={30} />
               <p>{countryName[0] ? countryName[0].name : ""}</p>
+              <div className="popUpLocation">
+                <p>Pais</p>
+              </div>
             </div>
-            <div class="boxLocation">
-              <AiFillStar class="local" size={30} />
 
-              <p>{ratingRecruiter}</p>
+            <div class="boxLocation">
+              <AiFillStar class="local " size={30} />
+              <p alt>{ratingRecruiter}</p>
+              <div className="popUpRating">
+                <p>Rating</p>
+              </div>
             </div>
+
             <div class="boxLocation">
               <IoIosPeople class="local" size={30} />
               <p>{candidates !== "0" ? candidates : "Cto. no asignado"}</p>
+              <div className="popUpCandidatos">
+                <p>Candidatos asignados</p>
+              </div>
             </div>
 
             <div class="boxLocation">
@@ -132,6 +142,9 @@ function SearchCard({
                   ? recruiters[0].name
                   : "Rter. no asignado"}
               </p>
+              <div className="popUpReclutador">
+                <p>Reclutador</p>
+              </div>
             </div>
           </div>
         </div>
