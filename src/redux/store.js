@@ -15,6 +15,7 @@ import activeSearchesReducer from "./modifyActiveSearches";
 import staticReducer from "./stadistics";
 import assignRecruiterReducer from "./assignRecruiter";
 import staticTableReducer from "./stadisticsTable";
+import modifyRatingReducer from "./modifyRecruiterRating";
 
 const persistConfig = {
   key: "root",
@@ -33,6 +34,7 @@ const reducer = combineReducers({
   activeSearches: activeSearchesReducer,
   stadistics: staticReducer,
   stadisticsTable: staticTableReducer,
+  rating: modifyRatingReducer,
   cont: contSlice,
 });
 

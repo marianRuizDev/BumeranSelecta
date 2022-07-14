@@ -111,7 +111,7 @@ function SearchsGrid() {
               aria-label="Default select example"
               className="form-select"
             >
-              <option value={""}>Status</option>
+              <option value={""}>Estado</option>
               <option value={2}>No iniciada</option>
               <option value={1}>En proceso</option>
               <option value={3}>Finalizada</option>

@@ -77,6 +77,9 @@ export const getOneUpDate = createAsyncThunk(
     updateRec,
     candidates,
     ratingRecruiter,
+    startDate,
+    finishDate,
+    searchTime,
   }) => {
     console.log("ACAAAA", typeof selectedCountry);
     try {
@@ -96,6 +99,9 @@ export const getOneUpDate = createAsyncThunk(
           RecruiterId: updateRec,
           candidates: candidates?.value,
           ratingRecruiter: ratingRecruiter?.value,
+          startDate: startDate,
+          finishDate: finishDate,
+          searchTime: searchTime,
         }
       );
       return data.data;
