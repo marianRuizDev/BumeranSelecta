@@ -18,6 +18,7 @@ import { getCountriesRequest } from "../redux/getCountries";
 import { sendAllSearches } from "../redux/search";
 import { getAlldataTable } from "../redux/stadisticsTable";
 import tableConversor from "../utils/tableConversor";
+import getDatesInRange from "../utils/dates";
 
 const Stadistics = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,6 @@ const Stadistics = () => {
   const countries = useSelector((state) => state.country);
   const areas = useSelector((state) => state.area);
   const table = useSelector((state) => state.stadisticsTable);
-
 
   const tableData = [
     { ...table[0] },
@@ -73,6 +73,17 @@ const Stadistics = () => {
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
+
+  const filterDates =
+    startDate !== null && endDate !== null
+      ? getDatesInRange(startDate, endDate)
+      : "";
+
+  const datesDepurate =
+    startDate !== null && endDate !== null
+      ? filterDates.map((date) => date.toLocaleDateString("es"))
+      : [];
+  console.log("FECHAS FILTRADAS", datesDepurate);
 
   const onChange = (dates) => {
     const [start, end] = dates;
@@ -209,6 +220,17 @@ const Stadistics = () => {
       </div>
 
       {table
+        .filter((val) => {
+          if (filterDates === "") {
+            return val;
+          } else if (
+            datesDepurate.includes(
+              new Date(val.createdAt).toLocaleDateString("es")
+            )
+          ) {
+            return val;
+          }
+        })
         .filter((val) => {
           if (jobArea === "") {
             return val;
