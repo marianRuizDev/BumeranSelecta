@@ -32,7 +32,7 @@ function RecruiterSideBar({ recruiter, search }) {
     );
     setTimeout(() => {
       window.location.reload();
-    }, 100);
+    }, 500);
   };
 
   /*  useEffect(() => {

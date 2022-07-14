@@ -23,8 +23,7 @@ const CardsAdmin = ({ items }) => {
   const userRating = calculateRating(searchs);
 
   const handleDelete = () => {
-    console.log(selectedId);
-    dispatch(deleteRecruiter(id));
+    dispatch(deleteRecruiter(items.id));
     setTimeout(() => {
       window.location.reload();
     }, 500);
@@ -36,7 +35,7 @@ const CardsAdmin = ({ items }) => {
 
   return (
     <div>
-      <div
+      {/* <div
         class="modal fade"
         id="exampleModal"
         tabindex="-1"
@@ -77,7 +76,7 @@ const CardsAdmin = ({ items }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="container-parent">
         <div className="container-card">
           <div className="avatar">
