@@ -67,7 +67,9 @@ function SearchView() {
 
   const handleDeleteSearch = () => {
     console.log("hola");
-    dispatch(subtractAvtiveSearches(selectedSearch[0].RecruiterId));
+    if (selectedSearch[0].RecruiterId) {
+      dispatch(subtractAvtiveSearches(selectedSearch[0].RecruiterId));
+    }
     dispatch(deleteSearch(id));
     setTimeout(() => {
       navigate("/searchs");

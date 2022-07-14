@@ -64,7 +64,7 @@ const Navbar = () => {
                   </li>
                 </a>
 
-                <a href="#Servicios">
+                <a href="#OtrosServicios">
                   <li className="nav-iten active">
                     <h2 className="nav-links">Otros Servicios</h2>
                   </li>

@@ -43,7 +43,6 @@ const FormProfile = () => {
         name,
         lastName,
         email,
-        rating: rating.value,
         description,
         selectedCountry,
         jobArea,
@@ -51,7 +50,8 @@ const FormProfile = () => {
     );
     setTimeout(() => {
       navigate("/admin");
-    }, 500);
+      window.location.reload();
+    }, 100);
   };
 
   useEffect(() => {

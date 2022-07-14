@@ -89,8 +89,8 @@ const CardContenido = () => {
         </div>
       </div>
 
-      <h3 id="Servicios" className="justify center">
-        Otros servicios
+      <h3 id="OtrosServicios" className="justify center">
+        Otros servicios{" "}
       </h3>
       <div class="containerBoxContent">
         <div className="container__cards">

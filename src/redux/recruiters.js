@@ -64,7 +64,7 @@ export const modifyRecruiter = createAsyncThunk(
           name: name?.value,
           lastName: lastName?.value,
           email: email?.value,
-          rating: parseInt(rating),
+          rating: rating ? parseInt(rating) : undefined,
           description: description?.value,
           CountryId: selectedCountry ? Number(selectedCountry) : undefined,
           AreaId: jobArea ? Number(jobArea) : undefined,

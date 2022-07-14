@@ -14,7 +14,7 @@
   letter-spacing: 0.5px;
   font-size: 12px;
 
-  width: 15%;
+  width: 30%;
   height: 20px;
 
   text-align: center;
@@ -131,6 +131,117 @@
   width: 21px;
 }
 
+.boxLocation {
+  position: relative;
+}
+
+.popUpLocation {
+  position: absolute;
+  width: 93px;
+  border-radius: 2px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 0.5s ease;
+  border: rgba(0, 0, 0, 0.432) solid 1px;
+  border-radius: 5px;
+  padding-left: 23px;
+  p {
+    // border: black solid 1px;
+    //width: 60%;
+    height: 24px;
+    text-align: center !important;
+    background: #eb0064;
+    color: white !important;
+    font-size: 15px !important;
+  }
+}
+
+.popUpRating {
+  position: absolute;
+  width: 93px;
+  border-radius: 2px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 0.5s ease;
+  border: rgba(0, 0, 0, 0.432) solid 1px;
+  border-radius: 5px;
+  padding-left: 23px;
+
+  p {
+    // border: black solid 1px;
+    //width: 70%;
+    background: rgba(199, 181, 82, 0.562);
+    height: 24px;
+    text-align: center !important;
+    background: #eb0064;
+    color: white !important;
+    font-size: 15px !important;
+  }
+}
+
+.popUpCandidatos {
+  position: absolute;
+  width: 120px;
+  border-radius: 2px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 0.5s ease;
+  border: rgba(0, 0, 0, 0.432) solid 1px;
+  border-radius: 5px;
+  padding-left: 25px;
+
+  p {
+    // border: black solid 1px;
+    width: 100%;
+    background: rgba(199, 181, 82, 0.562);
+    height: 24px;
+    text-align: center !important;
+    background: #eb0064;
+    color: white !important;
+    font-size: 15px !important;
+  }
+}
+
+.popUpReclutador {
+  position: absolute;
+  width: 121px;
+  border-radius: 2px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 0.5s ease;
+  border: rgba(0, 0, 0, 0.432) solid 1px;
+  border-radius: 5px;
+  padding-left: 25px;
+
+  p {
+    width: 100%;
+    background: rgba(199, 181, 82, 0.562);
+    height: 24px;
+    text-align: center !important;
+    background: #eb0064;
+    color: white !important;
+    font-size: 15px !important;
+  }
+}
+
+.popUpCandidatos:hover {
+  opacity: 1;
+}
+
+.popUpLocation:hover {
+  opacity: 1;
+}
+.popUpRating:hover {
+  opacity: 1;
+}
+.popUpReclutador:hover {
+  opacity: 1;
+}
+
 .ContainerSearch {
   .flex {
     display: flex !important;
@@ -240,7 +351,7 @@
         p {
           margin: 0;
           font-size: 1.3vmax;
-          font-weight: 900;
+          font-weight: 400;
           color: #33323a;
         }
       }
@@ -262,6 +373,11 @@
 }
 
 @media screen and (min-width: 810px) {
+  .status {
+    width: 15%;
+    height: 20px;
+  }
+
   .ContainerSearch {
     .flex {
       display: flex !important;
@@ -586,7 +702,7 @@
       }
 
       .boxNotificacion {
-       // border: red solid;
+        // border: red solid;
         text-align: center;
         background: rgba(128, 128, 128, 0.192);
         border: grey solid;
@@ -594,7 +710,7 @@
         height: 100%;
 
         img {
-         // border: red solid;
+          // border: red solid;
         }
         h2 {
           color: #0a26ee;
@@ -604,7 +720,7 @@
           line-height: 32px;
           width: 246px;
           height: 64px;
-          margin:  0 auto;
+          margin: 0 auto;
         }
       }
     }
@@ -827,6 +943,131 @@
     h1 {
       color: black;
     }
+  }
+
+  ///HOVERS ICONS//
+
+  .boxLocation {
+    //border: red solid;
+    position: relative;
+  }
+
+  .popUpLocation {
+    position: absolute;
+    width: 100%;
+
+    border-radius: 2px;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    transition: all 0.5s ease;
+    border: rgba(0, 0, 0, 0.432) solid 1px;
+    border-radius: 5px;
+    color: wheat;
+
+    p {
+      // border: black solid 1px;
+      // width: 60%;
+      height: 28px;
+      text-align: center !important;
+      background: #eb0064;
+      color: white !important;
+      font-size: 15px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .popUpRating {
+    position: absolute;
+    width: 100%;
+
+    border-radius: 2px;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    transition: all 0.5s ease;
+    border: rgba(0, 0, 0, 0.432) solid 1px;
+    border-radius: 5px;
+    color: wheat;
+
+    p {
+      // border: black solid 1px;
+      height: 28px;
+      text-align: center !important;
+      background: #eb0064;
+      color: white !important;
+      font-size: 15px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .popUpCandidatos {
+    position: absolute;
+    width: 100%;
+
+    border-radius: 2px;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    transition: all 0.5s ease;
+    border: rgba(0, 0, 0, 0.432) solid 1px;
+    border-radius: 5px;
+    color: wheat;
+    p {
+      height: 28px;
+      text-align: center !important;
+      background: #eb0064;
+      color: white !important;
+      font-size: 15px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px !important;
+    }
+  }
+
+  .popUpReclutador {
+    position: absolute;
+    width: 100%;
+
+    border-radius: 2px;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    transition: all 0.5s ease;
+    border: rgba(0, 0, 0, 0.432) solid 1px;
+    border-radius: 5px;
+    color: wheat;
+
+    p {
+      // border: black solid 1px;
+      height: 28px;
+      text-align: center !important;
+      background: #eb0064;
+      color: white !important;
+      font-size: 15px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .popUpCandidatos:hover {
+    opacity: 1;
+  }
+
+  .popUpLocation:hover {
+    opacity: 1;
+  }
+  .popUpRating:hover {
+    opacity: 1;
+  }
+  .popUpReclutador:hover {
+    opacity: 1;
   }
 }
 
@@ -1066,6 +1307,130 @@
       color: black;
     }
   }
+///HOVERS ICONS//
+
+.boxLocation {
+  //border: red solid;
+  position: relative;
+}
+
+.popUpLocation {
+  position: absolute;
+  width: 100%;
+
+  border-radius: 2px;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  transition: all 0.5s ease;
+  border: rgba(0, 0, 0, 0.432) solid 1px;
+  border-radius: 5px;
+  color: wheat;
+
+  p {
+    // border: black solid 1px;
+    // width: 60%;
+    height: 28px;
+    text-align: center !important;
+    background: #eb0064;
+    color: white !important;
+    font-size: 15px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.popUpRating {
+  position: absolute;
+  width: 100%;
+
+  border-radius: 2px;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  transition: all 0.5s ease;
+  border: rgba(0, 0, 0, 0.432) solid 1px;
+  border-radius: 5px;
+  color: wheat;
+
+  p {
+    // border: black solid 1px;
+    height: 28px;
+    text-align: center !important;
+    background: #eb0064;
+    color: white !important;
+    font-size: 15px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.popUpCandidatos {
+  position: absolute;
+  width: 100%;
+
+  border-radius: 2px;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  transition: all 0.5s ease;
+  border: rgba(0, 0, 0, 0.432) solid 1px;
+  border-radius: 5px;
+  color: wheat;
+  p {
+    height: 28px;
+    text-align: center !important;
+    background: #eb0064;
+    color: white !important;
+    font-size: 15px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px !important;
+  }
+}
+
+.popUpReclutador {
+  position: absolute;
+  width: 100%;
+
+  border-radius: 2px;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  transition: all 0.5s ease;
+  border: rgba(0, 0, 0, 0.432) solid 1px;
+  border-radius: 5px;
+  color: wheat;
+
+  p {
+    // border: black solid 1px;
+    height: 28px;
+    text-align: center !important;
+    background: #eb0064;
+    color: white !important;
+    font-size: 15px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.popUpCandidatos:hover {
+  opacity: 1;
+}
+
+.popUpLocation:hover {
+  opacity: 1;
+}
+.popUpRating:hover {
+  opacity: 1;
+}
+.popUpReclutador:hover {
+  opacity: 1;
+}
 }
 
 ////////////// FINAL INDIVIDUAL BUSQUEDA /////////////////
