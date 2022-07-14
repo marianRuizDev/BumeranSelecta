@@ -45,7 +45,7 @@ const ViewAdmin = () => {
   }, []);
 
   return (
-    <div>
+    <div> 
       <h3 className="estadisticas-titulo">Selección de reclutadores</h3>
       <div className="container-xxl">
         <div className="card card-busqueda">

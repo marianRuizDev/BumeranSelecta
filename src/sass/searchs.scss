@@ -1,4 +1,29 @@
 ////////////// barra busqueda /////////////////
+.titulo {
+  text-align: left;
+  margin-left: 7%;
+  margin-top: 2.5%;
+  color: #000cf1;
+}
+.status {
+  background: #eb0064;
+
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  font-size: 12px;
+
+  width: 15%;
+  height: 20px;
+
+  text-align: center;
+  color: wheat;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
 .btnDelete {
   cursor: pointer;
   background-color: #000cf1;
@@ -33,6 +58,7 @@
     color: rgb(206, 199, 199);
   }
 }
+
 .card-search {
   background: #d8dcfc;
   bleed: normal;
@@ -102,6 +128,7 @@
 ////////////// LISTA BUSQUEDA /////////////////
 .local {
   color: #eb002bee;
+  width: 21px;
 }
 
 .ContainerSearch {
@@ -109,7 +136,7 @@
     display: flex !important;
     flex-direction: column;
     width: 100%;
-    padding: 25px;
+    padding: 15px;
   }
 
   .card {
@@ -119,7 +146,7 @@
     margin-bottom: 50px;
     padding: 15px;
     border: rgba(137, 138, 139, 0.3) solid 1px !important;
-    padding: 0;
+    padding: 0px;
 
     -webkit-box-shadow: 0px 6px 17px -6px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 6px 17px -6px rgba(0, 0, 0, 0.75);
@@ -136,9 +163,9 @@
         text-transform: uppercase;
         font-weight: 500;
         padding: 10px;
-        letter-spacing: 1.5px;
-
+        letter-spacing: 0.5px;
         color: #948b8b;
+        font-size: 1.1vmax;
       }
     }
 
@@ -150,13 +177,36 @@
 
     h5 {
       text-align: left;
-      font-size: 2.3vmax;
+      font-size: 2.4vmax;
       color: #fba200;
     }
 
+    .area {
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif !important;
+      margin: 0;
+      font-size: 15px;
+      font-weight: 800;
+      padding-bottom: 5px;
+      color: #7b788b;
+      text-transform: uppercase;
+
+      font-size: 12px;
+    }
     p {
       text-align: left;
+      line-height: 20px;
+      letter-spacing: 0.2px;
+
+      strong {
+        color: rgb(156, 152, 152);
+      }
     }
+
+    // .card-texto2{
+    //   font-family: sans-serif;
+    //   font-weight: 500;
+    // }
 
     .card-img {
       width: 20%;
@@ -168,8 +218,8 @@
       display: flex !important;
       flex-direction: column;
       justify-content: center;
-      gap: 40px;
-      padding: 20px;
+      gap: 7px;
+      padding: 15px;
       // background: rgba(87, 85, 85, 0.027);
 
       span {
@@ -181,9 +231,18 @@
 
       .boxLocation {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        justify-content: start;
         gap: 10px;
+        border-bottom: rgba(150, 147, 147, 0.678) solid 1px;
+
+        p {
+          margin: 0;
+          font-size: 1.3vmax;
+          font-weight: 900;
+          color: #33323a;
+        }
       }
     }
 
@@ -217,11 +276,10 @@
       }
 
       .infoCard {
-        width: 35% !important;
+        // border: rgb(0, 255, 128) solid;
+        width: 40% !important;
         flex-direction: column;
         align-content: space-between;
-
-        padding: 20px;
 
         .badge {
           margin: 0 auto;
@@ -230,10 +288,23 @@
 
         .boxLocation {
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
           align-items: center;
+          justify-content: start;
           gap: 10px;
+          border-bottom: rgba(150, 147, 147, 0.678) solid 1px;
+
+          p {
+            margin: 0;
+            font-size: 1.3vmax;
+          }
         }
+      }
+
+      h5 {
+        text-align: left;
+        font-size: 1.8vmax;
+        color: #fba200;
       }
     }
   }
@@ -256,11 +327,29 @@
       margin: 30px auto;
 
       .infoCard {
-        width: 35% !important;
-        display: flex !important;
+        // border: rgb(0, 255, 128) solid;
+        width: 40% !important;
         flex-direction: column;
-        justify-content: center;
-        padding: 20px;
+        align-content: space-between;
+
+        .badge {
+          margin: 0 auto;
+          letter-spacing: 0.5px;
+        }
+
+        .boxLocation {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: start;
+          gap: 10px;
+          border-bottom: rgba(150, 147, 147, 0.678) solid 1px;
+
+          p {
+            margin: 0;
+            font-size: 1.2vmax;
+          }
+        }
       }
 
       .card-img {
@@ -276,6 +365,10 @@
 
       //   background: rgba(49, 49, 49, 0.274);
       // }
+    }
+
+    .status {
+      width: 12%;
     }
   }
 }
@@ -303,7 +396,7 @@
       align-items: center;
       h1 {
         color: #fba200;
-        font-size: 20px;
+        font-size: 25px;
       }
       h3 {
         display: inline;
@@ -388,7 +481,7 @@
 
   .boxText {
     width: 90%;
-    min-height: 400px;
+    // min-height: 400px;
 
     border-radius: 5px;
     box-shadow: 0px 6px 17px -6px rgba(0, 0, 0, 0.75);
@@ -397,7 +490,7 @@
     margin: 20px;
     padding: 15px;
 
-    padding-left: 35px;
+    padding-left: 15px;
 
     p {
       text-align: left;
@@ -436,7 +529,7 @@
         border-radius: 5px;
 
         img {
-          width: 50px;
+          width: 35px;
         }
 
         .boxData {
@@ -450,7 +543,7 @@
             align-items: center;
             width: 100%;
 
-            gap: 10px;
+            gap: 5px;
 
             h1 {
               font-size: 20px;
@@ -489,6 +582,29 @@
             color: rgb(224, 198, 58);
             font-size: 20px;
           }
+        }
+      }
+
+      .boxNotificacion {
+       // border: red solid;
+        text-align: center;
+        background: rgba(128, 128, 128, 0.192);
+        border: grey solid;
+        border-radius: 10px;
+        height: 100%;
+
+        img {
+         // border: red solid;
+        }
+        h2 {
+          color: #0a26ee;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 24px;
+          line-height: 32px;
+          width: 246px;
+          height: 64px;
+          margin:  0 auto;
         }
       }
     }
@@ -603,7 +719,7 @@
     }
 
     .boxText {
-      min-height: 400px;
+      // min-height: 400px;
 
       border-radius: 5px;
       box-shadow: 0px 6px 17px -6px rgba(0, 0, 0, 0.75);
@@ -716,6 +832,9 @@
 
 @media screen and (min-width: 1280px) {
   .containerBox {
+    width: 70%;
+    //border: red solid;
+
     .boxTitle {
       border-radius: 5px;
       box-shadow: 0px 6px 17px -6px rgba(0, 0, 0, 0.75);
@@ -728,6 +847,7 @@
       padding: 13px;
       padding-left: 13px;
       padding-left: 40px;
+      width: 98%;
       div {
         display: flex;
         flex-direction: column;
@@ -776,31 +896,40 @@
     }
 
     .contenedorInfo {
+      // border: red solid;
+      width: 60%;
+
       .boxInfo {
         display: flex;
         flex-direction: row;
+        justify-content: start;
+
+        //border: red solid;
 
         border-radius: 5px;
         box-shadow: 0px 6px 17px -6px rgba(0, 0, 0, 0.75);
         background: white;
         width: 95%;
         margin: 20px;
-        padding: 15px;
+        margin-top: 0;
+        padding: 10px;
 
-        padding-left: 35px;
+        //padding-left: 35px;
 
         .grup01,
         .grup02 {
           width: 30%;
 
           .boxicon {
+            //border: red solid;
+            width: max-content;
             font-size: 19px;
 
             display: flex;
             padding: 5px;
 
             align-items: center;
-            gap: 10px;
+            gap: px;
 
             p {
               font-size: 18px;
@@ -812,6 +941,8 @@
     }
 
     .boxText {
+      // border: rgb(25, 0, 255) solid;
+
       min-height: 400px;
 
       border-radius: 5px;
@@ -821,7 +952,7 @@
       margin: 20px;
       padding: 15px;
       width: 95%;
-      padding-left: 35px;
+      //padding-left: 35px;
 
       p {
         text-align: left;
@@ -831,10 +962,15 @@
     }
 
     .boxTree {
+      //border: rgb(0, 255, 98) solid;
+      width: 100%;
+
       display: flex;
       flex-direction: row;
 
       .boxMoreSerach {
+        // border: rgb(26, 25, 25) solid;
+
         display: flex;
         flex-direction: column;
 
@@ -843,8 +979,9 @@
         border-radius: 5px;
         box-shadow: 0px 6px 17px -6px rgba(0, 0, 0, 0.75);
         background: white;
-        width: 95%;
-        margin: 20px;
+        width: 40%;
+        margin: 0px;
+        margin-bottom: 20px;
         padding: 10px;
 
         .card {

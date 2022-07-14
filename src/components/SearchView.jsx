@@ -13,6 +13,9 @@ import { deleteSearch, getOneSearches } from "../redux/search";
 import { sendAllRecruiters } from "../redux/recruiters";
 import { Link } from "react-router-dom";
 import RecruiterSideBar from "./RecruiterSideBar";
+
+import imagen from "../assets/figma/imagen.png";
+
 import "../sass/searchs.scss";
 
 function SearchView() {
@@ -143,17 +146,22 @@ function SearchView() {
         </div>
 
         <div className="boxMoreSerach">
-          {selectedSearch[0].RecruiterId === null
-            ? mejoresRecruiters.map((recruiter, index) => {
-                return (
-                  <RecruiterSideBar
-                    key={index}
-                    recruiter={recruiter}
-                    search={selectedSearch}
-                  />
-                );
-              })
-            : "Búsqueda ya asignada"}
+          {selectedSearch[0].RecruiterId === null ? (
+            mejoresRecruiters.map((recruiter, index) => {
+              return (
+                <RecruiterSideBar
+                  key={index}
+                  recruiter={recruiter}
+                  search={selectedSearch}
+                />
+              );
+            })
+          ) : (
+            <div className="boxNotificacion">
+              <img src={imagen} alt="" />
+              <h2>¡Ya le has asignado un recluter!</h2>
+            </div>
+          )}
         </div>
       </div>
     </div>

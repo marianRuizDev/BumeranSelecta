@@ -54,7 +54,8 @@ function SearchsGrid() {
   }, []);
   return (
     <div class="container">
-      <div class="card card-search p-2 mt-5">
+        <h3 className="titulo">Selección de Busquedas</h3>
+      <div class="card card-search p-2 mt-3">
         <div class="col col-lg-1  justify-content-center create ">
           <Link
             to={"/admin/searchs/create"}
@@ -135,6 +136,7 @@ function SearchsGrid() {
       </div>
 
       <div class="mt-4">
+      
         <div class="col ContainerSearch">
           {searchs
             .filter((val) => {
@@ -168,6 +170,7 @@ function SearchsGrid() {
                 return val;
               }
             })
+
             .map((search, index) => {
               return (
                 <SearchCard
