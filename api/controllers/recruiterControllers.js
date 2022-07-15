@@ -1,4 +1,5 @@
 const recruiterServices = require("../services/recruiterServices");
+const { Recruiter } = require("../models");
 
 class recruiterControllers {
   /////////// RUTAS ARIEL/////////
@@ -26,6 +27,56 @@ class recruiterControllers {
     });
   }
   /////////// FIN RUTAS ARIEL/////////
+
+  /////////////////// NUEVAS  RUTAS MODULARIZADAS///////////////
+
+  static async getAll(req, res) {
+    const { error, data } = await recruiterServices.find();
+    if (error) {
+      return res.status(404).send(data);
+    }
+    res.status(200).send(data);
+  }
+
+  static async getOne(req, res) {
+    const { error, data } = await recruiterServices.one({
+      where: { id: req.params.id },
+    });
+    if (error) {
+      return res.status(404).send(data);
+    }
+    res.status(200).send(data);
+  }
+
+  static async create(req, res) {
+    const { error, data } = await recruiterServices.createOne(req.body);
+
+    if (error) {
+      return res.status(404).send(data);
+    }
+    res.status(201).send(data);
+  }
+
+  static async edit(req, res) {
+    const { id } = req.params;
+
+    Recruiter.update(
+      {
+        ...req.body,
+      },
+      { where: { id } }
+    )
+      .then((result) => res.status(201).send(result))
+      .catch((err) => res.status(404).send(err));
+  }
+
+  static async delete(req, res) {
+    await recruiterServices.remove({
+      where: { id: req.params.id },
+    });
+
+    res.sendStatus(202);
+  }
 }
 
 module.exports = recruiterControllers;

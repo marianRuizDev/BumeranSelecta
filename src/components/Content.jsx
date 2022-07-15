@@ -1,5 +1,5 @@
 import React from "react";
-import "../style/contenido.scss";
+import "../sass/contenido.scss";
 import { BsNewspaper } from "react-icons/bs";
 import {
   FaCodeBranch,
@@ -17,7 +17,7 @@ import img8 from "../assets/contenido/descarga15.png";
 
 const Content = () => {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid boxContenedor">
       <div className="contenido">
         <div class="card-contenido">
           <div class="card-body">
@@ -33,7 +33,7 @@ const Content = () => {
           </div>
         </div>
         <div class="row home">
-          <div class="col-lg-4 ">
+          <div class="col-lg-4 home2 ">
             <div>
               <img src={img8} />
             </div>
@@ -82,7 +82,7 @@ const Content = () => {
             </ul>
           </div>
 
-         
+
         </div>
       </div>
     </div>

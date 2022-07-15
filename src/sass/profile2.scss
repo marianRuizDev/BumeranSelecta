@@ -1,0 +1,197 @@
+.profile-container {
+  //border: 1px black solid;
+  padding: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.userInfo-card {
+  margin-right: 2%;
+  width: 20rem;
+  max-height: 23rem;
+  box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 3%;
+  //border: rgb(17, 57, 255) solid;
+}
+
+.userInfo-tag {
+  font-weight: bolder;
+  //border: rgb(17, 57, 255) solid;
+}
+
+.userInfo-content {
+  text-align: right;
+  //border: rgb(17, 255, 45) solid;
+}
+
+.profile-photo-container {
+  //border: red solid;
+  position: relative;
+  text-align: center;
+  font-weight: bolder;
+  color: #000df1;
+}
+
+.profile-photo {
+  width: 40%;
+}
+
+.profile-edit {
+  color: black;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.profile-infoContainer {
+  margin-top: 3%;
+  //border: black solid;
+}
+
+.profile-info {
+  display: flex;
+  justify-content: space-between;
+  //border: red solid;
+}
+
+.searchInfo-card {
+  //border: black solid;
+  overflow: hidden;
+  display: flex;
+  width: 45rem;
+  box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 2%;
+}
+
+.active-search-card {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5%;
+  border-radius: 1vmax;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  border: solid 1px rgb(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.15);
+  span {
+    font-size: larger;
+    font-weight: 500;
+  }
+}
+
+.left-content {
+  width: 35rem;
+}
+
+.right-content {
+  align-self: center;
+}
+
+.card-logo {
+  width: 5rem;
+  padding: 2%;
+}
+
+.botn {
+  width: 7rem;
+  background: #eb0064;
+  border: none;
+  font-weight: bolder;
+  color: white;
+  padding: 10px;
+  border-radius: 1rem;
+}
+
+.botn:hover {
+  box-shadow: 0 5px 10px 2px rgba(10, 137, 255, 0.5);
+}
+
+.background {
+  position: relative;
+  width: 40rem;
+  height: 40rem;
+  background-image: url("../assets/fomrs/descarga3.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.nav-link {
+  color: #666666;
+}
+
+#nav-home-tab:focus {
+  color: #eb0064;
+  background-color: white;
+}
+#nav-profile-tab:focus {
+  color: #eb0064;
+  background-color: white;
+}
+.profile-table {
+  border-radius: 16px;
+  overflow: hidden;
+}
+.searchTable-head {
+  background-color: #eb0064;
+  color: white;
+
+  th {
+    text-align: center;
+  }
+}
+.searchTable-body {
+  height: 100px;
+  th {
+    padding: 5%;
+  }
+
+  td {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+.check-btn {
+  color: #ffffff;
+  background-color: #7070708d;
+}
+
+.check-btn:focus {
+  color: #ffffff;
+  background-color: #eb0064;
+}
+
+.profile-description {
+  margin: 2%;
+}
+@media screen and (max-width: 1376px) {
+  .profile-container {
+    //border: 1px black solid;
+    padding: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .userInfo-card {
+    margin-right: 0;
+    margin-bottom: 1%;
+    width: 100%;
+    border-radius: 1%;
+    //border: rgb(17, 57, 255) solid;
+  }
+
+  .profile-photo {
+    width: 10%;
+  }
+
+  .searchInfo-card {
+    //border: black solid;
+    width: 100%;
+    border-radius: 1%;
+    //margin-bottom: 500px;
+  }
+}

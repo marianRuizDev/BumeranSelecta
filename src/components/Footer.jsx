@@ -5,7 +5,7 @@ import { FaInstagramSquare } from 'react-icons/fa'
 import { BsLinkedin } from 'react-icons/bs'
 import { IoLogoYoutube } from 'react-icons/io'
 import logo from '../assets/footer/descarga.png'
-import '../style/footer.scss'
+import '../sass/footer.scss'
 
 
 
@@ -13,11 +13,13 @@ const Footer = () => {
     return (
         <footer>
 
-            
+
             <div className='container-footer'>
                 <div className='box-footer nav justify-content-end'>
                     <img src={logo} width={200} alt="" />
                 </div>
+
+                <div className='d-flex boxIncon'>
 
                 <div className='box-footer nav justify-content-end'>
                     <a href='https://www.facebook.com/bumerancom/' target="_blank"><GrFacebook className='rrss' /></a>
@@ -38,6 +40,10 @@ const Footer = () => {
                 <div className='box-footer nav justify-content-end'>
                     <a href='https://www.youtube.com/channel/UC3fIXQKvWcYwCd8f0J7aiSQ' target="_blank"><IoLogoYoutube className='rrss' /></a>
                 </div>
+
+                </div>
+
+               
             </div>
 
             <div className='box-copyright'>

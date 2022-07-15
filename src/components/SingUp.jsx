@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import useInput from "../hooks/useInput";
 import { sendUserRegister } from "../redux/login";
-import "../style/forms.scss";
+import "../sass/forms.scss"
 
 const SingUp = () => {
   const name = useInput();
@@ -20,11 +20,9 @@ const SingUp = () => {
   };
 
   return (
-    <div>
-      <h3 className="title-register-login">Crea una cuenta</h3>
-
+    <div className="prueba">
       <form className="form" onSubmit={handlerRegister}>
-
+        <h3 className="title-register-login">Crea una cuenta</h3>
         <div class="row">
           <div class="col">
             <label>

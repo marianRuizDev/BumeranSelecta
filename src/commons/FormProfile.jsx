@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import "../style/formProfile.scss";
 import useInput from "../hooks/useInput";
-import { getCountriesRequest } from "../redux/getCountries";
-import { getAreasRequest } from "../redux/getAreas";
+import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneRecruiter, modifyRecruiter } from "../redux/recruiters";
+import "../sass/formProfile.scss";
 
 /* El administrador puede modificar al recluter */
 const FormProfile = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.recruiters);
 
   const name = useInput();
@@ -19,17 +19,20 @@ const FormProfile = () => {
   const password = useInput();
   const rating = useInput();
   const description = useInput();
-  const country = useInput();
-  const experienceField = useInput();
 
-  const countries = useSelector((state) => state.country);
+  const [selectedCountry, setSelectedContry] = useState("");
+  const [jobArea, setJobArea] = useState("");
+
   const areas = useSelector((state) => state.area);
+  const paises = useSelector((state) => state.country);
 
-  const handleCountryChange = (e) => {
-    setSelectedContry(e.target.value);
-  };
   const handleJobAreaChange = (e) => {
-    setSelectedJob(e.target.value);
+    console.log(e.target.value);
+    setJobArea(e.target.value);
+  };
+  const handleCountryChange = (e) => {
+    console.log(e.target.value);
+    setSelectedContry(e.target.value);
   };
 
   const handlerSubmit = (e) => {
@@ -40,12 +43,17 @@ const FormProfile = () => {
         name,
         lastName,
         email,
-        rating,
         description,
-        country,
-        experienceField,
+        selectedCountry,
+        jobArea,
       })
     );
+    setTimeout(() => {
+      navigate(-1);
+    }, 100);
+    setTimeout(() => {
+      window.location.reload();
+    }, 200);
   };
 
   useEffect(() => {
@@ -54,13 +62,8 @@ const FormProfile = () => {
 
   return (
     <div>
-      <div>
-        <div className="title-recruiters">
-          <h1>Admin - Edit Recruiters</h1>
-        </div>
-      </div>
-
       <form class="row g-3 from-edit-1" onSubmit={handlerSubmit}>
+        <h4 className="title-recruiters">Editar reclutadores</h4>
         <div class="col-md-6">
           <label for="inputPassword4" class="form-label">
             Nombre
@@ -114,29 +117,39 @@ const FormProfile = () => {
           <label for="inputEmail4" class="form-label">
             País
           </label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder={user[0].country}
-            aria-label=""
-            {...country}
-          />
+          <select
+            aria-label="Default select example"
+            onChange={handleCountryChange}
+            className="form-select"
+          >
+            <option value={""}>Seleccione un país</option>
+            {paises.map((pais, index) => (
+              <option key={index} value={pais.id}>
+                {pais.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div class="col-md-6">
           <label for="inputEmail4" class="form-label">
             Área
           </label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder={user[0].experienceField}
-            aria-label=""
-            {...experienceField}
-          />
+          <select
+            onChange={handleJobAreaChange}
+            aria-label="Default select example"
+            className="form-select"
+          >
+            <option value={""}>Seleccione un área</option>
+            {areas.map((area, index) => (
+              <option key={index} value={area.id}>
+                {area.name}
+              </option>
+            ))}
+          </select>
         </div>
 
-        <div class="col-md-2">
+        {/* <div class="col-md-2">
           <label for="inputZip" class="form-label">
             Rating
           </label>
@@ -147,7 +160,7 @@ const FormProfile = () => {
             placeholder={user[0].rating}
             {...rating}
           />
-        </div>
+        </div> */}
 
         <div class="form-floating">
           <textarea
@@ -159,8 +172,19 @@ const FormProfile = () => {
           ></textarea>
         </div>
         <div>
-          <button type="submit" class="btn btn-dark">
-            Guardar cambios
+          <Link to={`/profile/${user[0].id}`}>
+            <button
+              type="submit"
+              class="btn btn-danger cancelar align-items-center"
+            >
+              Cancelar
+            </button>
+          </Link>
+          <button
+            type="submit"
+            class="btn btn-danger cambios align-items-center"
+          >
+            Guardar
           </button>
         </div>
       </form>

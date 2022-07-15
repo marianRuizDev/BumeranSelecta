@@ -1,25 +1,23 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { VscTrash } from "react-icons/vsc";
-import { BsSearch, BsPlus } from "react-icons/bs";
-import { GrEdit } from "react-icons/gr";
+import { BiTrash } from "react-icons/bi";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sendAllRecruiters } from "../redux/recruiters";
 import { getCountriesRequest } from "../redux/getCountries";
 import { getAreasRequest } from "../redux/getAreas";
-import { fetchClient } from "../config/index";
 import CardsAdmin from "./CardsAdmin";
-import "../style/viewAdmin.scss";
-import { Link } from "react-router-dom";
+import "../sass/viewAdmin.scss";
+import { getAssignedSearchRequest } from "../redux/assignedSearch";
 
 const ViewAdmin = () => {
   const dispatch = useDispatch();
   const recruiters = useSelector((state) => state.recruiters);
-  const countries = useSelector((state) => state.country);
-  const areas = useSelector((state) => state.area);
   const recruitersCopy = [...recruiters];
 
+  console.log(recruitersCopy);
+
+  const areas = useSelector((state) => state.area);
+  const countries = useSelector((state) => state.country);
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
   const [value, setValue] = useState("");
@@ -49,102 +47,108 @@ const ViewAdmin = () => {
   }, []);
 
   return (
-    <div className="container-xxl">
-      <div className="card-busqueda">
-        <div className="card-body">
-          <div className="input-group mb-3">
-            <button className="btn btn-dark" type="button" id="button-addon1">
-              <BsSearch />
-            </button>
-            <form>
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Nombre o Apellido"
-                aria-label="Search"
-                onChange={handlerClick}
-              />
-            </form>
+    <div>
+      <h3 className="estadisticas-titulo">Selección de reclutadores</h3>
+      <div className="container-xxl">
+        <div className="card card-busqueda">
+          <div class="container">
+            <div class="row row-admin d-flex justify-content-center  align-items-center ">
+              <div class="col-3">
+                <form>
+                  <input
+                    className="form-control form-admin me-2"
+                    type="search"
+                    placeholder="Nombre o Apellido"
+                    aria-label="Search"
+                    onChange={handlerClick}
+                  />
+                </form>
+              </div>
 
-            <select
-              className="form-select"
-              aria-label="Default select example"
-              placeholder="Pais"
-              onChange={handleCountryChange}
-            >
-              <option value={""}>Pais</option>
+              <div class="col-3">
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
+                  placeholder="Pais"
+                  onChange={handleCountryChange}
+                >
+                  <option value={""}>Pais</option>
 
-              {countries
-                ?.filter((pais) => pais !== null)
-                .map((pais, i) => {
-                  return <option key={i}>{pais}</option>;
-                })}
-            </select>
+                  {countries
+                    ?.filter((pais) => pais !== null)
+                    .map((pais, i) => {
+                      return (
+                        <option key={i} value={pais.id}>
+                          {pais.name}
+                        </option>
+                      );
+                    })}
+                </select>
+              </div>
+              <div class="col-3">
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
+                  placeholder="Área"
+                  onChange={handleJobAreaChange}
+                >
+                  <option value={""}>Área</option>
 
-            <select
-              className="form-select"
-              aria-label="Default select example"
-              placeholder="Área"
-              onChange={handleJobAreaChange}
-            >
-              <option value={""}>Área</option>
-
-              {areas
-                ?.filter((area) => area !== null)
-                .map((area, i) => {
-                  return <option key={i}>{area}</option>;
-                })}
-            </select>
-
-            <button
-              className="btn btn-dark"
-              type="button"
-              id="button-addon2"
-              onClick={handleReset}
-            >
-              <VscTrash />
-            </button>
-
-            <div>
-              <Link to={"/mod"}>
-                <button className="btn btn-dark btn-plus">Modificar</button>
-              </Link>
+                  {areas
+                    ?.filter((area) => area !== null)
+                    .map((area, i) => {
+                      return (
+                        <option key={i} value={area.id}>
+                          {area.name}
+                        </option>
+                      );
+                    })}
+                </select>
+              </div>
+              <div class="col-1">
+                <BiTrash
+                  className="borrar"
+                  type="button"
+                  /* id="button-addon2" */
+                  onClick={handleReset}
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="card-titulos">
-        <div className="card-body">
-          <div className="row fila-titulos">
-            <div className="col-lg-4">
-              <h5 className="title-admin">Reclutador</h5>
-            </div>
-            <div className="col-lg-3">
-              <h5 className="title-admin">Ranking</h5>
-            </div>
-            <div className="col-lg-2">
-              <h5 className="title-admin">Bus. Asignadas</h5>
-            </div>
-            <div className="col-lg-3">
-              <h5 className="title-admin">Permisos</h5>
-            </div>
+      <div className=" container-titulos">
+        <div className="card-titulos">
+          <div className="reclutadores">
+            <h5>Reclutadores</h5>
+          </div>
+
+          <div className="ranking">
+            <h5>Rating</h5>
+          </div>
+
+          <div className="busquedas">
+            <h5>Bus. Asignadas</h5>
+          </div>
+
+          <div className="permisos">
+            <h5>Permisos</h5>
           </div>
         </div>
       </div>
-      <hr className="linea" />
 
       <div>
         {recruitersCopy
           .filter((recruiter) => recruiter.admin !== true)
-          .sort((x, y) => {
-            if (x.rating < y.rating) {
-              return 1;
+          .sort((a, b) => {
+            if (a.rating == b.rating) {
+              return 0;
             }
-            if (x.rating > y.rating) {
+            if (a.rating > b.rating) {
               return -1;
             }
-            return 0;
+            return 1;
           })
           .filter((val) => {
             if (value === "") {
@@ -158,14 +162,14 @@ const ViewAdmin = () => {
           .filter((val) => {
             if (jobArea === "") {
               return val;
-            } else if (val.experienceField === jobArea) {
+            } else if (val.AreaId === Number(jobArea)) {
               return val;
             }
           })
           .filter((val) => {
             if (selectedCountry === "") {
               return val;
-            } else if (val.country === selectedCountry) {
+            } else if (val.CountryId === Number(selectedCountry)) {
               return val;
             }
           })

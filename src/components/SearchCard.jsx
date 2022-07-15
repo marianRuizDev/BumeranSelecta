@@ -1,21 +1,77 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { IoLocationSharp } from "react-icons/io5";
-import { FaBuilding } from "react-icons/fa";
-import { MdWork } from "react-icons/md";
-import { FaPencilAlt } from "react-icons/fa";
-import { VscTrash } from "react-icons/vsc";
+import { AiOutlineUser, AiFillStar } from "react-icons/ai";
+import { IoIosPeople } from "react-icons/io";
 
+import bu from "../assets/navbar/bu.png";
+import useTime from "../hooks/useTime";
 import logo from "../assets/navbar/Group.png";
-import "../style/searchs.scss";
-import { deleteSearch } from "../redux/search";
+import "../sass/searchs.scss";
+import { useState } from "react";
+import { getOneRecruiter, sendAllRecruiters } from "../redux/recruiters";
 
-function SearchCard({ id, country, area, time, status, description, title }) {
+function SearchCard({
+  id,
+  country,
+  area,
+  time,
+  status,
+  description,
+  title,
+  ratingRecruiter,
+  candidates,
+  Recruiter,
+}) {
   const dispatch = useDispatch();
+
+  const recruiters = useSelector((state) => state.recruiters).filter(
+    (rec) => rec.id === Recruiter
+  );
+
+  // tiempo
   const date = new Date().getTime();
-  const searchTime = new Date(time).getTime();
+  const searchTime = new Date(time);
   const diff = (date - searchTime) / (1000 * 60 * 60 * 24);
+  const countryName = useSelector((state) => state.country).filter(
+    (pais) => pais.id === country
+  );
+  const areaName = useSelector((state) => state.area).filter(
+    (areas) => areas.id === area
+  );
+
+  let timeStamp = "";
+
+  if (parseInt(diff) === 1) {
+    timeStamp = "Publicado hace 1 día";
+  } else if (diff > 1) {
+    timeStamp = `Publicado hace ${parseInt(diff)} días`;
+  } else if (diff * 24 < 24 && diff * 24 * 60 >= 120) {
+    timeStamp = `Publicado hace ${parseInt(diff * 24)} horas`;
+  } else if (diff * 24 * 60 < 120) {
+    timeStamp = "Nuevo";
+  }
+
+  let actualStatus;
+
+  switch (status) {
+    case null:
+      actualStatus = "No iniciada";
+      break;
+
+    case 2:
+      actualStatus = "No iniciada";
+      break;
+
+    case 1:
+      actualStatus = "En proceso";
+      break;
+
+    case 3:
+      actualStatus = "Finalizada";
+      break;
+  }
 
   const handleDeleteSearch = () => {
     dispatch(deleteSearch(id));
@@ -23,149 +79,82 @@ function SearchCard({ id, country, area, time, status, description, title }) {
       window.location.reload();
     }, 500);
   };
-
-  // const desc = description.slice(0, 400);
-
+  useEffect(() => {
+    dispatch(sendAllRecruiters());
+  }, []);
   return (
-    <div className="card">
-      <div className="box">
-        <div className="flex">
-          <div class="col img-container col-lg-2">
-            <img src={logo} alt="logo" class="card-img" />
-          </div>
-
-          <div class="col ">
-            <Link to={`/searchs/${id}`}>
-              <div>
-                <h5>{title}</h5>
-
-                <p class="card-text card-texto">{description}</p>
-              </div>
-            </Link>
-          </div>
+    <>
+      <div className="card">
+        <div className="boxTime d-flex justify-content-between align-items-center">
+          <span class="status">{actualStatus}</span>
+          <small>{timeStamp}</small>
         </div>
 
-        <div class="col p-3 boxLine">
-          <div class="vr mt-4 lineaDivisora"></div>
-        </div>
-
-        <div className="infoCard">
-          <div className="flexHorizontal">
-            <div class=" d-flex justify-content-left">
-              <span class="badge">{status}</span>
-            </div>
-            <div class="col d-flex justify-content-left">
-              <IoLocationSharp class="local" size={30} />
-              <p>{country}</p>
-            </div>
-            <div class="col d-flex justify-content-left">
-              <FaBuilding class="build" size={30} />
-              <p>Presencial</p>
-            </div>
-            <div class="col d-flex justify-content-left">
-              <MdWork class="work" size={30} />
-              <p>{area}</p>
-            </div>
-            <div class=" d-flex justify-content-left">
-              <Link to={`/admin/searchs/update/${id}`}>
-                <button className="btn ">
-                  <FaPencilAlt />
-                </button>
+        <div className="box">
+          <div className="flex">
+            <div class="col ">
+              <Link to={`/searchs/${id}`}>
+                <div>
+                  <h5>{title}</h5>
+                  <p className="area">{areaName[0] ? areaName[0].name : ""}</p>
+                  <p class="card-text card-texto2">
+                    {description?.substring(0, 230) + "... "}
+                    <strong>ver más</strong>
+                  </p>
+                </div>
               </Link>
-              <button onClick={handleDeleteSearch} className="btn ">
-                <VscTrash />
-              </button>
+            </div>
+          </div>
+
+          <div className="infoCard">
+            {/* <div class=" d-flex justify-content-left p-2">
+      <span class="badge">{actualStatus}</span>
+    </div> */}
+
+            <div class="boxLocation">
+              <IoLocationSharp class="local" size={30} />
+              <p>{countryName[0] ? countryName[0].name : ""}</p>
+              <div className="popUpLocation">
+                <p>Pais</p>
+              </div>
+            </div>
+
+            <div class="boxLocation">
+              <AiFillStar class="local " size={30} />
+              <p alt>{ratingRecruiter}</p>
+              <div className="popUpRating">
+                <p>Rating</p>
+              </div>
+            </div>
+
+            <div class="boxLocation">
+              <IoIosPeople class="local" size={30} />
+              <p>{candidates !== "0" ? candidates : "Cto. no asignado"}</p>
+              <div className="popUpCandidatos">
+                <p>Candidatos asignados</p>
+              </div>
+            </div>
+
+            <div class="boxLocation">
+              <AiOutlineUser class="local" size={30} />
+              <p>
+                {recruiters.length !== 0
+                  ? recruiters[0].name
+                  : "Rter. no asignado"}
+              </p>
+              <div className="popUpReclutador">
+                <p>Reclutador</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="col time-container">
-        <small>
-          {diff >= 1
-            ? parseInt(diff) === 1
-              ? "Publicado hace 1 día"
-              : `Publicado hace ${parseInt(diff)} días`
-            : `Publicado hace ${parseInt(diff * 24)} horas`}
-        </small>
+        <div className="col bumeran-container">
+          <img src={bu} className="bumeran" />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
 export default SearchCard;
-
-/* <div class="container mb-4 ">
-<div class="card">
-  <div class="row">
-    <div class="col img-container col-lg-2">
-      <img src={logo} alt="logo" class="card-img" />
-    </div>
-    <div class="col ">
-      <Link to={`/searchs/${id}`}>
-        <div
-          class="card-body "
-          style={{ maxHeight: "190px", overflow: "hidden" }}
-        >
-          <h5 class="card-title">
-            Supervisor Alto Horno y Laminación - Ternium
-          </h5>
-          <p class="card-text card-texto">{textSplit + "..."}</p>
-        </div>
-      </Link>
-    </div>
-
-    <div class="col col-lg-1">
-      <div
-        class="vr mt-4 bg-secondary"
-        style={{ height: "130px", width: "1px" }}
-      ></div>
-    </div>
-    <div class="col col-lg-2 mt-5">
-      <div class="row">
-        <div class="col d-flex justify-content-left">
-          <IoLocationSharp class="local" size={30} />
-          <p>{country}</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col d-flex justify-content-left">
-          <FaBuilding class="build" size={30} />
-          <p>Presencial</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col d-flex justify-content-left">
-          <MdWork class="work" size={30} />
-          <p>{area}</p>
-        </div>
-      </div>
-    </div>
-    <div class="col mt-2 col-lg-1">
-      <span class="badge">{status}</span>
-    </div>
-  </div>
-  <div class="card-footer d-flex justify-content-center">
-    <div className="col time-container">
-      <small>
-        {diff >= 1
-          ? parseInt(diff) === 1
-            ? "Publicado hace 1 día"
-            : `Publicado hace ${parseInt(diff)} días`
-          : `Publicado hace ${parseInt(diff * 24)} horas`}
-      </small>
-    </div>
-    <div className="col col-lg-5 modify-btns">
-      <Link to={`/admin/searchs/update/${id}`}>
-        <button className="btn ">
-          <FaPencilAlt />
-        </button>
-      </Link>
-
-      <button onClick={handleDeleteSearch} className="btn ">
-        <VscTrash />
-      </button>
-    </div>
-  </div>
-</div>
-</div> */

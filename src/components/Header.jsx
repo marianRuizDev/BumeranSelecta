@@ -4,7 +4,7 @@ import img2 from '../assets/header/img2.jpeg'
 import img5 from '../assets/header/img5.png'
 import Content from '../components/Content.jsx'
 import CardContenido from '../components/CardsContenido'
-import '../style/header.scss'
+import '../sass/header.scss'
 
 
 const Header = () => {
@@ -12,7 +12,7 @@ const Header = () => {
     /* Dar estilos */
     return (
         <div>
-            <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="false">
+            <div id="carouselExampleCaptions" className="carousel slide  carru" data-bs-ride="false">
                 <div className="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>

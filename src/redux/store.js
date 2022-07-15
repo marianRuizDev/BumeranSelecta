@@ -9,6 +9,13 @@ import recruiterReducer from "./recruiters";
 import countryReducer from "./getCountries";
 import areaReducer from "./getAreas";
 import searchReducer from "./search";
+import assignedSearchReducer from "./assignedSearch";
+import contSlice from "./contSlice";
+import activeSearchesReducer from "./modifyActiveSearches";
+import staticReducer from "./stadistics";
+import assignRecruiterReducer from "./assignRecruiter";
+import staticTableReducer from "./stadisticsTable";
+import modifyRatingReducer from "./modifyRecruiterRating";
 
 const persistConfig = {
   key: "root",
@@ -22,14 +29,20 @@ const reducer = combineReducers({
   country: countryReducer,
   area: areaReducer,
   search: searchReducer,
+  assigned: assignedSearchReducer,
+  assignRecuiter: assignRecruiterReducer,
+  activeSearches: activeSearchesReducer,
+  stadistics: staticReducer,
+  stadisticsTable: staticTableReducer,
+  rating: modifyRatingReducer,
+  cont: contSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);
 
 const store = configureStore({
-  reducer: persistedReducer,
-
   middleware: [thunk],
+  reducer: persistedReducer,
 });
 
 export default store;
