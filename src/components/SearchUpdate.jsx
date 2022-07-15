@@ -29,8 +29,7 @@ export default function SearchCreate() {
   const [selectedCountry, setSelectedContry] = useState("");
   const [jobArea, setJobArea] = useState("");
 
-  console.log(selectedCountry);
-  console.log(jobArea);
+ 
 
   const handleJobAreaChange = (e) => {
     console.log(e.target.value);
@@ -58,7 +57,7 @@ export default function SearchCreate() {
       })
     );
     setTimeout(() => {
-      navigate("/searchs");
+      navigate(`/searchs/${id}`);
     }, 500);
   };
 

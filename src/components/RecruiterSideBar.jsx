@@ -61,7 +61,7 @@ function RecruiterSideBar({ recruiter, search }) {
           <p className="numero">{recruiter.rating}</p>
         </div>
 
-        <button onClick={asignRecruiter} type="button">
+        <button className="buttonAsignar" onClick={asignRecruiter} type="button">
           asignar
         </button>
       </div>

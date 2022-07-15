@@ -23,6 +23,8 @@ import "../sass/profile2.scss";
 import { deleteNull } from "../utils/recluterConversor";
 import { modifyRating } from "../redux/modifyRecruiterRating";
 
+import { BsStarFill } from "react-icons/bs";
+
 const Profile = () => {
   const dispatch = useDispatch();
 
@@ -128,7 +130,11 @@ const Profile = () => {
   }, [userId]);
 
   return (
-    <div className=" profile-container">
+
+    <div className="contenedorPadre">
+    <h2 className="tituloPerfil">Mi perfil</h2>
+     <div className=" profile-container">
+      
       <div
         class="modal fade "
         id="exampleModal"
@@ -213,53 +219,87 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="card userInfo-card">
-        <div className="card-body">
-          <div className="profile-photo-container">
+      
+
+      <div className="boxPerfil ">
+
+        {/* info contacto */}
+        <div className="card-body boxInfo">
+          <div className="boxImg">
+            <img className="profile-photo" src={perfil} alt="" />
+          </div>
+
+          <div className="boxName">
+            <h5 className="user-name">{user.name + " " + user.lastName}</h5>
+          </div>
+
+          <div className="profile-photo-container boxEditRating">
             {user.admin ? (
               <Link to={`/admin/profiles/${user.id}`}>
                 <FaEdit className="profile-edit" />
               </Link>
             ) : (
               <Link to={`/recruiter/profiles/${user.id}`}>
-                <FaEdit className="profile-edit" />
+                <FaEdit className="profile-edit iconoEdit" />
               </Link>
             )}
-            <img className="profile-photo" src={perfil} alt="" />
-            <h5 className="user-name">{user.name + " " + user.lastName}</h5>
-            {userRating ? userRating.toFixed(1) : 0}
+
+            <div className="boxRating">
+              <BsStarFill className="icono" />
+              {userRating ? userRating.toFixed(1) : 0}
+            </div>
           </div>
-          <div className="profile-infoContainer">
-            <p className="profile-info">
-              <span className="userInfo-tag">Nacionalidad:</span>
-              <span className="userInfo-content">
-                {userCountry[0] ? userCountry[0].name : "No asignado"}
-              </span>
-            </p>
-            <p className="profile-info">
-              <span className="userInfo-tag">Área:</span>
-              <span className="userInfo-content">
-                {userExperienceField[0]
-                  ? userExperienceField[0].name
-                  : "No asignado"}
-              </span>
-            </p>
-            <p className="profile-info">
-              <span className="userInfo-tag">Demora por búsqueda:</span>
-              <span className="userInfo-content">
-                {filteredData[0]?.avarage}
-              </span>
-            </p>
-            <p className="profile-info">
-              <span className="userInfo-tag">Email:</span>
-              <span className="userInfo-content">{user.email}</span>
-            </p>
+
+          <div className="profile-infoContainer  boxData">
+            <div className="items">
+              <div>
+                <strong className="userInfo-tag titulo ">Nacionalidad:</strong>
+              </div>
+              <div>
+                <p className="atributo">
+                  {userCountry[0] ? userCountry[0].name : "No asignado"}
+                </p>
+              </div>
+            </div>
+
+            <div className="items">
+              <div>
+                <strong className="userInfo-tag titulo ">Área:</strong>
+              </div>
+              <div>
+                <p className="atributo">
+                  {userExperienceField[0]
+                    ? userExperienceField[0].name
+                    : "No asignado"}
+                </p>
+              </div>
+            </div>
+
+            <div className="items">
+              <div>
+                <strong className="userInfo-tag titulo ">Demora por búsqueda:</strong>
+              </div>
+              <div>
+                <p className="atributo">{filteredData[0]?.avarage}</p>
+              </div>
+            </div>
+
+            <div className="items">
+              <div>
+                <strong className="userInfo-tag titulo ">Email:</strong>
+              </div>
+              <div>
+                <p className="atributo">{user.email}</p>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/*  fin info contacto */}
       </div>
 
-      <div className="card searchInfo-card">
-        <div className="card-header">
+      <div className="boxDescrpcion">
+        <div className="card-header solapa">
           <nav>
             <div
               class="nav nav-tabs card-header-tabs"
@@ -267,7 +307,7 @@ const Profile = () => {
               role="tablist"
             >
               <button
-                class="nav-link active"
+                class="nav-link active  solapaBusq"
                 id="nav-home-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#nav-home"
@@ -276,10 +316,13 @@ const Profile = () => {
                 aria-controls="nav-home"
                 aria-selected="true"
               >
+                <p>
                 {"(" + user.activeSearchs + ")" + " " + "Búsquedas Activas"}
+                </p>
+               
               </button>
               <button
-                class="nav-link"
+                class="nav-link solapaDescrip"
                 id="nav-profile-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#nav-profile"
@@ -288,7 +331,8 @@ const Profile = () => {
                 aria-controls="nav-profile"
                 aria-selected="false"
               >
-                Descripción
+                <p>  Descripción</p>
+              
               </button>
             </div>
           </nav>
@@ -333,7 +377,7 @@ const Profile = () => {
                           <td className="align-middle">
                             <span>{search.vacancies}</span>
                           </td>
-                          <td className="align-middle">
+                          <td className="align-middle boxButtonCheck">
                             <button
                               className="check-btn"
                               data-bs-toggle="modal"
@@ -350,7 +394,9 @@ const Profile = () => {
                       </tbody>
                     ))
                   ) : (
-                    <div className="background">No hay búsquedas activas</div>
+                    <div className="boxBusquedasVacias">
+                      <h2>No hay búsquedas activas</h2>
+                    </div>
                   )}
                 </table>
               </div>
@@ -367,6 +413,8 @@ const Profile = () => {
         </div>
       </div>
     </div>
+    </div>
+   
   );
 };
 
