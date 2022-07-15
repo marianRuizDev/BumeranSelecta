@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import useInput from "../hooks/useInput";
 import { getOneRecruiter, modifyRecruiter } from "../redux/recruiters";
@@ -11,7 +11,7 @@ import { useState } from "react";
 const ProfileMod = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.recruiters);
-  /*  const id = me.id; */
+  const navigate = useNavigate();
   const { id } = useParams();
   console.log(user);
 
@@ -51,6 +51,12 @@ const ProfileMod = () => {
         jobArea,
       })
     );
+    setTimeout(() => {
+      navigate(-1);
+    }, 100);
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   };
 
   useEffect(() => {

@@ -58,7 +58,7 @@ export default function SearchCreate() {
       })
     );
     setTimeout(() => {
-      navigate("/searchs");
+      navigate(`/searchs/${id}`);
     }, 500);
   };
 

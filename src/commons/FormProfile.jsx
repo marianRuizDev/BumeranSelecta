@@ -49,9 +49,11 @@ const FormProfile = () => {
       })
     );
     setTimeout(() => {
-      navigate("/admin");
-      window.location.reload();
+      navigate(-1);
     }, 100);
+    setTimeout(() => {
+      window.location.reload();
+    }, 200);
   };
 
   useEffect(() => {

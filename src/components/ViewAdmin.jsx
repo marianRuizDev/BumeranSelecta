@@ -14,6 +14,8 @@ const ViewAdmin = () => {
   const recruiters = useSelector((state) => state.recruiters);
   const recruitersCopy = [...recruiters];
 
+  console.log(recruitersCopy);
+
   const areas = useSelector((state) => state.area);
   const countries = useSelector((state) => state.country);
   const [selectedCountry, setSelectedContry] = useState("");
@@ -45,7 +47,7 @@ const ViewAdmin = () => {
   }, []);
 
   return (
-    <div> 
+    <div>
       <h3 className="estadisticas-titulo">Selección de reclutadores</h3>
       <div className="container-xxl">
         <div className="card card-busqueda">
@@ -139,14 +141,14 @@ const ViewAdmin = () => {
       <div>
         {recruitersCopy
           .filter((recruiter) => recruiter.admin !== true)
-          .sort((x, y) => {
-            if (x.rating < y.rating) {
-              return 1;
+          .sort((a, b) => {
+            if (a.rating == b.rating) {
+              return 0;
             }
-            if (x.rating > y.rating) {
+            if (a.rating > b.rating) {
               return -1;
             }
-            return 0;
+            return 1;
           })
           .filter((val) => {
             if (value === "") {

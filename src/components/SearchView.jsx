@@ -23,6 +23,7 @@ function SearchView() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [bool, setBool] = useState(false);
+  const login = useSelector((state) => state.login);
 
   const params = useParams();
   const id = params.id;
@@ -90,14 +91,17 @@ function SearchView() {
           </h1>
           <h3>Nombre de la Empresa S.A</h3>
         </div>
+        {login.admin ? (
+          <div class=" boxEditDelet ">
+            <Link to={`/admin/searchs/update/${id}`}>
+              <TbEdit className="BtnEdit" />
+            </Link>
 
-        <div class=" boxEditDelet ">
-          <Link to={`/admin/searchs/update/${id}`}>
-            <TbEdit className="BtnEdit" />
-          </Link>
-
-          <VscTrash onClick={handleDeleteSearch} className="BtnDelete" />
-        </div>
+            <VscTrash onClick={handleDeleteSearch} className="BtnDelete" />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
 
       <div className="boxTree">

@@ -34,6 +34,8 @@ const Profile = () => {
   const day1 = new Date(date);
   const day2 = new Date(startTime);
 
+  const login = useSelector((state) => state.login);
+
   var difference = (day1.getTime() - day2.getTime()) / (1000 * 60 * 60 * 24);
 
   const userRedux = useSelector((state) => state.recruiters);
@@ -55,10 +57,10 @@ const Profile = () => {
   console.log(userRating);
 
   const userCountry = useSelector((state) => state.country).filter(
-    (pais) => pais.id === user.CountryId
+    (pais) => pais.id === user?.CountryId
   );
   const userExperienceField = useSelector((state) => state.area).filter(
-    (area) => area.id === user.AreaId
+    (area) => area.id === user?.AreaId
   );
 
   const workersNum = useInput();
@@ -92,12 +94,12 @@ const Profile = () => {
         })
       );
 
-      dispatch(
+      /* dispatch(
         modifyRecruiter({
           id: userId,
           rating: user.rating === 0 ? ratingNum : userRating,
         })
-      );
+      ); */
       dispatch(subtractAvtiveSearches(userId));
       //dispatch(modifyRating(userId));
       setValidate(true);
@@ -216,7 +218,7 @@ const Profile = () => {
       <div className="card userInfo-card">
         <div className="card-body">
           <div className="profile-photo-container">
-            {user.admin ? (
+            {login.admin ? (
               <Link to={`/admin/profiles/${user.id}`}>
                 <FaEdit className="profile-edit" />
               </Link>
@@ -244,12 +246,12 @@ const Profile = () => {
                   : "No asignado"}
               </span>
             </p>
-            <p className="profile-info">
+            {/*  <p className="profile-info">
               <span className="userInfo-tag">Demora por búsqueda:</span>
               <span className="userInfo-content">
                 {filteredData[0]?.avarage}
               </span>
-            </p>
+            </p> */}
             <p className="profile-info">
               <span className="userInfo-tag">Email:</span>
               <span className="userInfo-content">{user.email}</span>
@@ -321,7 +323,9 @@ const Profile = () => {
                       <tbody key={i} className="searchTable-body">
                         <tr>
                           <th scope="row" className="align-middle">
-                            <span>{search.title}</span>
+                            <Link to={`/searchs/${search.id}`}>
+                              <span>{search.title}</span>
+                            </Link>
                           </th>
                           <td className="align-middle">
                             <span>
