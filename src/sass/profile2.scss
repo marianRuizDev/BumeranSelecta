@@ -2,24 +2,28 @@
   // border: red solid;
   text-align: center;
   padding: 10px;
+  
 }
 
 .profile-container {
-  //border: red solid;
+ // border: red solid;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   min-height: 450px;
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
+  gap: 50px;
 
   border-radius: 10px;
   overflow: hidden;
   //info contacto
-  box-shadow: rgb(124, 124, 124) 0px 2px 5px 0px;
+ // box-shadow: rgb(124, 124, 124) 0px 2px 5px 0px;
   .boxPerfil {
-    // border: red solid;
+    // border: rgb(19, 16, 16) solid;
+border: rgba(128, 128, 128, 0.76) solid 1px;
+    
 
     .boxInfo {
       // border: green solid;
@@ -96,7 +100,7 @@
 
   .boxDescrpcion {
     //border: rgb(4, 0, 255) solid;
-
+    box-shadow: rgb(124, 124, 124) 0px 2px 5px 0px;
     position: relative;
     width: 100%;
     min-height: 500px;
